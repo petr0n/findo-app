@@ -2,7 +2,7 @@
 //=======================================================
 import React from "react";
 import "./TileAdd.css";
-//import { Link } from "reac-router-dom"
+//import { Link } from "react-router-dom"
 
 //CONTENT
 //=======================================================
