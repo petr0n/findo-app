@@ -6,11 +6,7 @@ import "./Board.css";
 
 //CONTENT
 //=======================================================
-const Board = (props) => (
-  <div className="md:flex">
-      {props.children}
-  </div>
-);
+const Board = (props) => (<div className="md:flex">{props.children}</div>);
 
 //EXPORT
 //=======================================================
