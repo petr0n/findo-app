@@ -6,8 +6,10 @@ import "./Board.css";
 
 //CONTENT
 //=======================================================
-const Board = () => (
-  <div ></div>
+const Board = (props) => (
+  <div className="md:flex">
+      {props.children}
+  </div>
 );
 
 //EXPORT

@@ -7,7 +7,9 @@ import "./Wrapper.css";
 //CONTENT
 //=======================================================
 const Wrapper = () => (
-  <div ></div>
+  <div className="md:flex">
+    
+  </div>
 );
 
 //EXPORT
