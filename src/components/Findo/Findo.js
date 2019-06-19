@@ -1,6 +1,6 @@
 //IMPORT
 //=======================================================
-import React from "react";
+import React, { Component } from 'react';
 import "./Findo.css";
 //import { Link } from "react-router-dom"
 
