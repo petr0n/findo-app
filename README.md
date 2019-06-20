@@ -1,3 +1,7 @@
+    "tailwind:css": "tailwind build src/css/tailwind.src.css -c tailwind.js -o src/css/tailwind.css",
+    "start": "npm run tailwind:css && react-scripts start",
+    "build": "npm run tailwind:css && react-scripts build",
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

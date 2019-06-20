@@ -7,9 +7,13 @@ import "./Wrapper.css";
 //CONTENT
 //=======================================================
 const Wrapper = ({children}) => (
-  <div className="md:flex mx-auto">{children}</div>
+  <div className="container mx-auto flex px-5">
+    <div className="md_w-2/12 sm_w-0"></div>
+    <div className="md_w-8/12 sm_w-full">
+      {children}
+    </div>
+    <div className="md_w-2/12 sm_w-0"></div>
+  </div>
 );
 
-//EXPORT
-//=======================================================
 export default Wrapper;

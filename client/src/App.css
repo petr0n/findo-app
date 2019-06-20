@@ -1,33 +1,14 @@
-.App {
-  text-align: center;
-}
+/* 
+brand colors 
+purple:   #32064a   rgba(50, 6, 74, 1)
+orange:   #e56b1f   rgba(229, 107, 31, 1)
+yellow:   #fcd02c   rgba(252, 208, 44, 1)
+red:      #e42c6a   rgba(228, 44, 106, 1)
+*/
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-image: url('../src/images/pageBG-lg.jpg');
+  background-color: #32064a;
+  background-position: top center;
+  background-repeat: no-repeat;
 }

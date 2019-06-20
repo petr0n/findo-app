@@ -9,11 +9,9 @@ import "./Header.css";
 //=======================================================
 
 const Header = () => (
-  <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-semibold text-xl tracking-tight">Findo Header</span>
-    </div>
-  </nav>
+  <div className="flex items-center my-10"> 
+    <img src="../../images/findo-logo.png" alt="FINDO LOGO" className="mx-auto" />
+  </div>
 );
 
 //EXPORT
