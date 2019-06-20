@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
@@ -46,18 +46,19 @@ class Game extends Component {
     return (
       <Wrapper>
         <Header />
-        {this.changePage()}
+          <ReactCSSTransitionGroup 
+            className="flex"
+            transitionName="page" 
+            transitionEnterTimeout={500} 
+            transitionLeaveTimeout={500}
+          >
+            {this.changePage()}
+          </ReactCSSTransitionGroup>
         <Footer />
         </Wrapper>
         );
       }
     }
-    // <ReactCSSTransitionGroup 
-    //   transitionName="page" 
-    //   transitionEnterTimeout={300} 
-    //   transitionLeaveTimeout={300}
-    // >
-    // </ReactCSSTransitionGroup>
   // <div>game page</div>
   // {this.state.loggedIn ?
   //   <Gameboard gameboardId={this.state.gameboardId} /> :

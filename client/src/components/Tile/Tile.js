@@ -7,7 +7,7 @@ import "./Tile.css";
 //CONTENT
 //=======================================================
 const Tile = () => (
-  <div ></div>
+  <div className="w-1/6 bg-white text-center mb-4 mr-4 rounded">Text goes here</div>
 );
 
 //EXPORT

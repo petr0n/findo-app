@@ -1,12 +1,27 @@
 //IMPORT
 //=======================================================
-import React from "react";
+import React, { Component } from "react";
 import "./Board.css";
-//import { Link } from "react-router-dom"
 
 //CONTENT
 //=======================================================
-const Board = (props) => (<div className="md:flex">{props.children}</div>);
+
+class Board extends Component {
+	// constructor(props) {
+  //   super(props); 
+  // }
+
+
+
+  render(){
+    // console.log('{this.props.tiles}', this.props.tiles)
+    return (
+      <div className="flex flex-wrap justify-center">
+        {this.props.tiles}
+      </div>
+    );
+  }
+};
 
 //EXPORT
 //=======================================================
