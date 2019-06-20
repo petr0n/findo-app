@@ -6,7 +6,7 @@ import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Home from "./Home";
-import AddTile from "./addTile";
+import AddTile from "./AddTile";
 
 
 //CONTENT

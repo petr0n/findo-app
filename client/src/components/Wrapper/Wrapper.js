@@ -6,7 +6,9 @@ import "./Wrapper.css";
 
 //CONTENT
 //=======================================================
-const Wrapper = () => (<div className="md:flex"></div>);
+const Wrapper = ({children}) => (
+  <div className="md:flex mx-auto">{children}</div>
+);
 
 //EXPORT
 //=======================================================
