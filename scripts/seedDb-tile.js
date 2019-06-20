@@ -23,6 +23,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
   {
@@ -30,6 +31,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
   {
@@ -37,6 +39,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
   {
@@ -44,6 +47,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
   {
@@ -51,6 +55,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
   {
@@ -58,6 +63,7 @@ const tileSeed = [
     isPG: true,
     isR: false, 
     status: "active",
+    eventType: "MNStateFair",
     UserId: "393"
   },
 ];
