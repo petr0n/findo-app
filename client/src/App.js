@@ -1,15 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import game from "./pages/game";
+import admin from "./pages/admin";
+
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-4xl">FINDO GAMES</h1>
-        <h4 className="text-sm">PRESENTS</h4>
-        <h2 className="text-6xl">FINDO</h2>
-        <p className="text-sm">The game that blends classic BINGO and a live scavenger hunt</p>
-      </header>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/" component={game} />
+          <Route path="/admin" exact component={admin} />
+        </Switch>
+      </Router>
     </div>
   );
 }

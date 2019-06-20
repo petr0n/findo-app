@@ -3,7 +3,7 @@ import React, { Component } from "react";
 //CONTENT
 //=======================================================
 
-class Home extends Component {
+class AddTile extends Component {
     state = {
         placeholder: "This is only a template"
     }
@@ -13,7 +13,7 @@ class Home extends Component {
     render() {
         return (
           <div>
-            <h2>Home</h2>
+            <h2>AddTile</h2>
           </div>
         );
     }
@@ -21,4 +21,4 @@ class Home extends Component {
 
 //EXPORT
 //=======================================================
-export default Home;
+export default AddTile;
