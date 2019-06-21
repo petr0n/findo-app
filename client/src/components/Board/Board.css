@@ -1,3 +1,10 @@
 /* GAME BOARD STYLES
 //=======================================================*/
 
+.board {
+  max-width: 720px;
+}
+
+.board-inner > div {
+  width: 20%;
+}

@@ -46,14 +46,13 @@ class Game extends Component {
     return (
       <Wrapper>
         <Header />
-          <ReactCSSTransitionGroup 
-            className="flex"
-            transitionName="page" 
-            transitionEnterTimeout={500} 
-            transitionLeaveTimeout={500}
-          >
-            {this.changePage()}
-          </ReactCSSTransitionGroup>
+        <ReactCSSTransitionGroup
+          transitionName="page" 
+          transitionEnterTimeout={500} 
+          transitionLeaveTimeout={500}
+        >
+          {this.changePage()}
+        </ReactCSSTransitionGroup>
         <Footer />
         </Wrapper>
         );

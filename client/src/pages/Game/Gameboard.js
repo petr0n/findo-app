@@ -16,9 +16,14 @@ class Gameboard extends Component {
 	};
 	
 	makeTileGrid = () => {
-    let tiles = [];
+		let tiles = [];
+		let isCenter = false;
 		for(let i = 0;i < 25; i++){
-			tiles.push(<Tile info={"info"} />);
+			if (i===12) {
+				isCenter = true;
+			}
+			tiles.push(<Tile info={"info"} key={"x"+i} isCenter={isCenter} />);
+			isCenter = false;
 		}
 		console.log('tiles', tiles);
 		return tiles;
@@ -36,9 +41,8 @@ class Gameboard extends Component {
 	
 	render() {
 		return (
-			<div>
-				<div className="trans-white mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-					<h2>Gameboard</h2>
+			<div className="board mx-auto">
+				<div className="trans-white mx-auto items-center justify-between mb-2 w-full">
 					<div className="cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
 				<Board tiles={this.state.tiles} />
