@@ -13,6 +13,26 @@
   transition: transform 500ms ease-in-out;
 }
 
-.trans-white {
-  background-color: rgba(255, 255, 255, 0.8);
+.background {
+  background-color: rgba(255,255,255,.8);
+  width: 400px;
+}
+
+.start-text, .info-text, .login-text {
+  color: #e01d60;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+  text-shadow: 2px 2px #FECE30;
+}
+
+.start-text {
+  font-size: 3rem;
+}
+
+.login-text {
+  font-size: 1.5rem;
+}
+
+.nav-toggle {
+  width: 200px;
 }

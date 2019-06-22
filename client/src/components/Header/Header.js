@@ -9,7 +9,7 @@ import "./Header.css";
 //=======================================================
 
 const Header = () => (
-  <div className="flex items-center my-10"> 
+  <div className="bounce-top flex items-center my-10">
     <img src="../../images/findo-logo.png" alt="FINDO LOGO" className="mx-auto" />
   </div>
 );

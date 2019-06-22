@@ -7,7 +7,7 @@ import "./Buttons.css";
 //CONTENT
 //=======================================================
 const Buttons = () => (
-  <div ></div>
+  <div></div>
 );
 
 //EXPORT

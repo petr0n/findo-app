@@ -7,7 +7,7 @@ import "./Footer.css";
 //CONTENT
 //=======================================================
 const Footer = () => (
-  <div className="text-center text-white py-10">
+  <div className="footer text-center text-white py-10">
     &copy; FINDO GAME - All rights reserved
   </div>
 );
