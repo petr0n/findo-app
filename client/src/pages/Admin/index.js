@@ -6,13 +6,13 @@ import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Home from "./Home";
-import AddTile from "./AddTile";
+import AddTile from "./addTile";
 
 
 //CONTENT
 //=======================================================
 
-class Game extends Component {
+class Admin extends Component {
   state = {
     placeholder: "This is only a template",
     loggedIn: true
@@ -31,4 +31,4 @@ class Game extends Component {
 
 //EXPORT
 //=======================================================
-export default Game;
+export default Admin;

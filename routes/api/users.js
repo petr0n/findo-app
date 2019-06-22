@@ -4,7 +4,7 @@ const axios = require("axios");
 
 // Matches with "/api/users"
 router.route("/")
-  .get(dbController.findAll)
+  .get(dbController.findAllUsers)
   .post(dbController.createUser);
 
 // Matches with "/api/users/:id"
@@ -15,9 +15,9 @@ router.route("/:id")
 
 // Matches with "/api/users/:facebookid"
 router.route("/:facebookId")
-  .get(dbController.findByFacebookId)
+  .get(dbController.findByFacebookId);
 
-  router.route("/:googleId")
-  .get(dbController.findByGoogleId)
+router.route("/:googleId")
+  .get(dbController.findByGoogleId);
 
 module.exports = router;
