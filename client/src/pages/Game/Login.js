@@ -28,11 +28,11 @@ class Login extends Component {
   render() {
 
     return (
-      <div className="trans-white mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-        <h2 className="text-2xl mb-10">Login</h2>
-        <div className="cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
-        <div className="cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
-        <div className="cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Start Game</div>
+      <div className="background mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
+        <div className="start-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Start Game</div>
+        <div className="info-text mb-4">Login to share!</div>
+        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
+        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
       </div>
     );
   }
