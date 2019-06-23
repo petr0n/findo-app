@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 //CONTENT
 //=======================================================
 
@@ -13,7 +14,7 @@ class AddTile extends Component {
     render() {
         return (
           <div>
-            <h2>AddTile</h2>
+            <h2>Add Tile</h2>
           </div>
         );
     }

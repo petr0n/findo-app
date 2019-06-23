@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import game from "./pages/game";
-import admin from "./pages/admin";
+import Game from "./pages/Game";
+import Admin from "./pages/Admin";
+import privacy from "./pages/privacy";
 
 
 import './App.css';
@@ -11,8 +12,9 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/" component={game} />
-          <Route path="/admin" exact component={admin} />
+          <Route path="/privacy" exact component={privacy} />
+          <Route path="/" component={Game} />
+          <Route path="/admin" exact component={Admin} />
         </Switch>
       </Router>
     </div>
