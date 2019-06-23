@@ -10,6 +10,7 @@ const gameboardSchema = new Schema({
   tiles: [
     {tile: {type: Schema.Types.ObjectId, ref: "Tile"}, 
     position: {type: String, required: true},
+    
     isChecked: {type: Boolean, required: true},
     isWinningTile: {type: Boolean},
     checkedTime: {type: Date}

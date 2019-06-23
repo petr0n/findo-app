@@ -1,23 +1,23 @@
 const router = require("express").Router();
-const dbController = require("../../controllers/dbController");
-const axios = require("axios");
+const dbUserController = require("../../controllers/dbUserController");
 
 // Matches with "/api/users"
 router.route("/")
-  .get(dbController.findAllUsers)
-  .post(dbController.createUser);
+  .get(dbUserController.findAllUsers)
+  .post(dbUserController.createUser);
 
 // Matches with "/api/users/:id"
 router.route("/:id")
-  .get(dbController.findById)
-  .delete(dbController.removeUser)
-  .put(dbController.updateUser);
+  .get(dbUserController.findById)
+  .delete(dbUserController.removeUser)
+  .put(dbUserController.updateUser);
 
-// Matches with "/api/users/:facebookid"
-router.route("/:facebookId")
-  .get(dbController.findByFacebookId);
+// Matches with "/api/users/fb/:facebookid"
+router.route("/fb/:id")
+  .get(dbUserController.findByFacebookId);
 
-router.route("/:googleId")
-  .get(dbController.findByGoogleId);
+// Matches with "/api/users/g/:googleId"
+router.route("/g/:id")
+  .get(dbUserController.findByGoogleId);
 
 module.exports = router;
