@@ -42,8 +42,8 @@ class Gameboard extends Component {
 	render() {
 		return (
 			<div className="board mx-auto">
-				<div className="trans-white mx-auto items-center justify-between mb-2 w-full">
-					<div className="cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
+				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
+					<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
 				<Board tiles={this.state.tiles} />
 			</div>
