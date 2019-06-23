@@ -1,3 +1,16 @@
 /* BUTTONS STYLES
 //=======================================================*/
 
+.button {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: box-shadow 1s;
+}
+
+.button:hover {
+box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+transition: box-shadow 1s;
+
+}

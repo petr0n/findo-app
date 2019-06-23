@@ -3,6 +3,13 @@
 
 .tile {
   line-height: 1;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 1s;
+}
+
+.tile:hover {
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 1s;
 }
 
 .center {
