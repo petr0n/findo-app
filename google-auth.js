@@ -1,5 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-let db = require("./models/");
+let db = require("./models");
 require("dotenv").config();
 
 

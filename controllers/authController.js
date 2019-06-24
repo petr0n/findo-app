@@ -19,7 +19,7 @@ router.get('/auth/google', (req, res, next) => {
 	authenticator(req, res, next);
 });  
 
-router.get('/auth/google/join', 
+router.get('/auth/google/login', 
   passport.authenticate('google', { 
 		failureRedirect: '/error',
 		session: true 
@@ -53,5 +53,12 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
+router.get('/auth/facebook', (req, res, next) => {
+});
+router.get('/auth/facebook/login', (req, res, next) => {
+});
+
 
 module.exports = router;

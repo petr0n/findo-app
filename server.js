@@ -4,7 +4,7 @@ const routes = require("./routes");
 
 const session = require('express-session')
 const passport = require("passport");
-const auth = require('./auth');
+const auth = require('./google-auth');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 
