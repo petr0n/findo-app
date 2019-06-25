@@ -7,7 +7,7 @@ import "./Buttons.css";
 //CONTENT
 //=======================================================
 const Buttons = () => (
-  <div></div>
+    <div className="btn rounded mx-auto items-center justify-between mb-2 w-full">button</div>
 );
 
 //EXPORT
