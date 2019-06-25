@@ -54,17 +54,8 @@ router.get('/logout', function(req, res){
 
 router.get('/facebook', (req, res, next) => {
 
-		//console.log('req.query: ', req.query);
-	// put any url params into the session
-	req.session.actions = req.query;
-
-	const authenticator = passport.authenticate('google', { 
-		scope: [
-			'https://www.googleapis.com/auth/userinfo.profile',
-			'https://www.googleapis.com/auth/userinfo.email'
-		]
-	})
-	authenticator(req, res, next);
+	console.log('req.query: ', req.query);
+	passport.authenticate('facebook')
 	
 });
 router.get('/facebook/login', (req, res, next) => {
