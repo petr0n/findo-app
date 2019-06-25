@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-let db = require("../models");
+const User = require("../controllers/dbUserController");
+
 require("dotenv").config();
 
 
@@ -17,19 +18,19 @@ const strategy = new GoogleStrategy(
 			};
 			done(null, userData);
 			console.log('g userData', userData);
-			// db.User.findOrCreate({
-			// 	where: {
-			// 		googleIdToken: profile.id
-			// 	},
-			// 	defaults: {
-			// 		googleIdToken: profile.id,
-			// 		fullName: profile.displayName,
-			// 		email: profile.emails[0].value
-			// 	}
-			// }).spread(user => {
-			// 	// console.log('findorCreate user: ', user);
-			// 	done(null, user);
-			// }).catch(err => done(err, false))
+			User.findOrCreate({
+				where: {
+					googleIdToken: profile.id
+				},
+				defaults: {
+					googleIdToken: profile.id,
+					fullName: profile.displayName,
+					email: profile.emails[0].value
+				}
+			}).spread(user => {
+				// console.log('findorCreate user: ', user);
+				done(null, user);
+			}).catch(err => done(err, false))
 		}
 );
 module.exports = strategy;
