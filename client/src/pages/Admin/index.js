@@ -18,14 +18,14 @@ class Admin extends Component {
     return (
       <Wrapper>
         <Header />
-          <Home />
-          <AddTile />
+        <Home />
         <Footer />
-      </Wrapper>
-    );
-  }
-}
-
+        </Wrapper>
+        );
+      }
+    }
+    
 //EXPORT
 //=======================================================
+// <AddTile />
 export default Admin;
