@@ -1,6 +1,3 @@
-//IMPORT
-//=======================================================
-
 import React, { Component } from "react";
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
