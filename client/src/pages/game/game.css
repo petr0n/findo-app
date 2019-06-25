@@ -32,11 +32,15 @@
 .login-text {
   font-size: 1.5rem;
   line-height: 1;
+  padding: 5px;
+}
+
+.back {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   transition: box-shadow 1s;
 }
 
-.login-text:hover {
+.back:hover {
   box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
   transition: box-shadow 1s;
 }
