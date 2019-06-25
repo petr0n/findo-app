@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+// import "./game.css";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
-import "./game.css";
+
 
 
 
