@@ -18,19 +18,7 @@ const strategy = new GoogleStrategy(
 			};
 			done(null, userData);
 			console.log('g userData', userData);
-			User.findOrCreate({
-				where: {
-					googleIdToken: profile.id
-				},
-				defaults: {
-					googleIdToken: profile.id,
-					fullName: profile.displayName,
-					email: profile.emails[0].value
-				}
-			}).spread(user => {
-				// console.log('findorCreate user: ', user);
-				done(null, user);
-			}).catch(err => done(err, false))
+			User.findByGoogleId({ googleId: profile.id });
 		}
 );
 module.exports = strategy;
