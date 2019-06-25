@@ -4,7 +4,8 @@ const routes = require("./routes");
 
 const session = require('express-session')
 const passport = require("passport");
-const auth = require('./google-auth');
+const gAuth = require('./auth/google-auth');
+const fAuth = require('./auth/facebook-auth');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 
@@ -26,14 +27,13 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb", {
-  useMongoClient: true
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb");
 
 mongoose.Promise = global.Promise;
 const db = mongoose.connection
 
-auth(passport);
+gAuth(passport);
+fAuth(passport);
 app.use(cookieParser());
 app.use(session({
     secret: 'findo-xx-rr-12e',
@@ -44,6 +44,9 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+let authRoutes = require('./controllers/authController.js');
+app.use(authRoutes);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);

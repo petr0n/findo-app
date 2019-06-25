@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom"; //react router dom
+import { Link } from "react-router-dom"; 
 
 
 //CONTENT
@@ -32,6 +32,7 @@ class Login extends Component {
         <div className="start-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Start Game</div>
         <div className="info-text mb-4">Login to share!</div>
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
+        <Link to="/auth/google">Google</Link>
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
       </div>
     );
