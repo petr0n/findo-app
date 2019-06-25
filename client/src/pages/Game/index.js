@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-// import "./game.css";
+import "./main.css";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
