@@ -9,6 +9,11 @@
     "type": "git",
     "url": "https://github.com/petr0n/findo-app.git"
   },
+  "engines": {
+    "node": ">= 11.14.0",
+    "npm": ">= 6.9.0",
+    "yarn": "^1.13.0"
+  },
   "dependencies": {
     "passport": "^0.4.0",
     "react": "^16.8.6",

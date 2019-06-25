@@ -26,9 +26,7 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb", {
-  useMongoClient: true
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb");
 
 mongoose.Promise = global.Promise;
 const db = mongoose.connection
