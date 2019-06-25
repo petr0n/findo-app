@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = {
 
     //Users
+    //TODO Change create to findbyid or create
     findAllUsers: function (req, res) {
         db.User
             .find(req.query)
@@ -25,18 +26,6 @@ module.exports = {
         db.User
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
-    findByFacebookId: function (req, res) {
-        db.User
-            .findOne({ facebookId: req.params.id })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
-    findByGoogleId: function (req, res) {
-        db.User
-            .findOne({ googleId: req.params.id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

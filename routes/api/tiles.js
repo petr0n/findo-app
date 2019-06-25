@@ -13,8 +13,4 @@ router.route("/:id")
   .delete(dbTileController.removeTile)
   .put(dbTileController.updateTile);
 
-// Matches with "/api/tiles/pending"
-// router.route("/?status=pending")
-//  .get(dbTileController.findAllPendingTiles); 
-
 module.exports = router;
