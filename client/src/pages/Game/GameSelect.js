@@ -17,8 +17,8 @@ class GameSelect extends Component {
     // add logic
   }
   
-  handleGameSelect = (e, gameType) => {
-    e.preventDefault();
+  handleGameSelect = (gameType) => {
+    // e.preventDefault();
 		console.log('gameType', gameType);
 		if (gameType === "isPG") {
 			// get PG tiles
@@ -27,13 +27,15 @@ class GameSelect extends Component {
 		}
     this.setState({
 			gameType: gameType,
-			handlePageChange: "game"
-    })
+			currentPage: "game"
+		});
+		this.props.handlePageChange("game");
 	}
 
 
   render() {
-		const btnStyle = "cursor-pointer rounded bg-white border-2 p-2 h-35 flex items-center justify-center";
+		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 p-2 h-30 flex items-center justify-center";
+		console.log('currentPage', this.state.currentPage);
     return (
       <div className="background mx-auto rounded flex items-center justify-between p-8 w-full">
         <div className={btnStyle} onClick={() => this.handleGameSelect("isPG")}>Kid Friendly Board</div>
