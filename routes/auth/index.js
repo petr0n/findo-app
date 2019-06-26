@@ -6,7 +6,6 @@ let db = require("../../models/user");
 
 router.get('/google', (req, res, next) => {
 	console.log('req.query: ', req.query);
-	
 	const authenticator = passport.authenticate('google', { 
 		scope: [
 			'https://www.googleapis.com/auth/userinfo.profile',
@@ -16,7 +15,7 @@ router.get('/google', (req, res, next) => {
 	authenticator(req, res, next);
 });  
 
-router.get('/google/login', 
+router.get('/google/callback', 
   passport.authenticate('google', { 
 		failureRedirect: '/error',
 		session: true 
@@ -53,9 +52,8 @@ router.get('/logout', function(req, res){
 
 
 router.get('/facebook', (req, res, next) => {
-
-	console.log('req.query: ', req.query);
-	passport.authenticate('facebook')
+	console.log('/auth/facebook req.query: ', req.query);
+	passport.authenticate('facebook');
 	
 });
 router.get('/facebook/login', (req, res, next) => {

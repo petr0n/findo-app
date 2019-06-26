@@ -44,6 +44,14 @@ app.use(passport.session());
 
 app.use("/auth", require("./routes/auth"));
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);

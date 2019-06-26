@@ -34,7 +34,7 @@ class Login extends Component {
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
         <a href="http://localhost:3001/auth/google">Login to Google</a>
-        <a href="http://localhost:3001/auth/facebook">Login to Facebook</a>
+        <a href="/auth/facebook">Login to Facebook</a>
         <a href="/">home</a>
       </div>
     );
