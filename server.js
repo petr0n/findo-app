@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const session = require('express-session')
@@ -7,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
@@ -49,7 +51,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 
 app.use(routes);
