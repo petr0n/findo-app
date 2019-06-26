@@ -23,7 +23,7 @@ class Game extends Component {
       loggedIn: false,
       hasPrevious: true,
       gameboardId: null,
-      currentPage: "login"
+      currentPage: this.props.page ? this.props.page : "login"
     }
   }
 

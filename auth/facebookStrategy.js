@@ -11,9 +11,9 @@ const strategy = new FacebookStrategy({
 	},
 	function(accessToken, refreshToken, profile, done) {
 		console.log('fb login', profile)
-		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+		return cb(err, profile);
+		// User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    // });
 	}
 );
 module.exports = strategy;

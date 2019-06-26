@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const path = require("path");
 const session = require('express-session')
 const passport = require("./auth");
 const cookieParser = require('cookie-parser');
@@ -44,13 +43,6 @@ app.use(passport.session());
 
 app.use("/auth", require("./routes/auth"));
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
 
 
 app.listen(PORT, () => {

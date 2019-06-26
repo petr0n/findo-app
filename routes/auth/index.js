@@ -21,7 +21,8 @@ router.get('/google/callback',
 		session: true 
 	}),
 	(req, res) => {
-		console.log('callback req.query: ', req.query);
+		console.log('callback req.user: ', req.user);
+		//req.session.googleId = req.user.googleId;
 		console.log('req.session: ', req.session);
 		// console.log('req.user.id: ', req.user.id);
 		// let loginUrl = '/?loggedIn=true';
@@ -46,8 +47,13 @@ router.get('/google/callback',
 );
 
 router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
+	req.session.destroy((err) => {
+		if(err) return next(err)
+		req.logout()
+		res.sendStatus(200)
+	})
+  // req.logout();
+  // res.redirect('/');
 });
 
 
@@ -63,21 +69,16 @@ router.get('/facebook',
 
 
 router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('facebook', { 
+		failureRedirect: '/login', 
+		session: true
+	}),
   function(req, res) {
+		console.log('fb callback req.user: ', req.user);
     // Successful authentication, redirect home.
-    res.redirect('/');
+    // res.redirect('/');
   });
-// router.get('/facebook/callback', (req, res, next) => {
-// 	passport.authenticate('facebook', { 
-// 		failureRedirect: '/error',
-// 		session: true 
-// 	}),
-// 	(req, res) => {
-// 		console.log('callback req.query: ', req.query);
-// 		console.log('req.session: ', req.session);
-// 	}
-// });
+
 
 
 module.exports = router;
