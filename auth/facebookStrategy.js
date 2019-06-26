@@ -9,9 +9,10 @@ const strategy = new FacebookStrategy({
 		callbackURL: process.env.FACEBOOK_CALLBACKURL,
 		profileFields: ['id', 'displayName', 'email']
 	},
-	function(accessToken, refreshToken, profile, done) {
-		console.log('fb login', profile)
-		return cb(err, profile);
+	function(accessToken, refreshToken, profile, cb) {
+		console.log('fb login', profile);
+		return cb(null, profile);
+		// return cb(profile);
 		// User.findOrCreate({ facebookId: profile.id }, function (err, user) {
     // });
 	}

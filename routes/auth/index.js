@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require("passport");
 
-let db = require("../../models/user");
+let db = require("../../models");
 
 router.get('/google', (req, res, next) => {
 	console.log('req.query: ', req.query);
@@ -23,7 +23,15 @@ router.get('/google/callback',
 	(req, res) => {
 		console.log('callback req.user: ', req.user);
 		//req.session.googleId = req.user.googleId;
-		console.log('req.session: ', req.session);
+		// console.log('req.session: ', req.session);
+		db.User
+			.findOneAndUpdate({socialId: req.user.id}, req.body, {new: true, upsert: true})
+			.then((dbModel) => {
+				// res.json(dbModel);
+				console.log(dbModel)
+				res.redirect("/gameselect");
+			})
+			.catch(err => res.status(422).json(err));
 		// console.log('req.user.id: ', req.user.id);
 		// let loginUrl = '/?loggedIn=true';
 		// if (req.session.actions) {
@@ -68,14 +76,24 @@ router.get('/facebook',
   passport.authenticate('facebook'));
 
 
-router.get('/auth/facebook/callback',
+router.get('/facebook/callback',
   passport.authenticate('facebook', { 
 		failureRedirect: '/login', 
 		session: true
 	}),
   function(req, res) {
 		console.log('fb callback req.user: ', req.user);
-    // Successful authentication, redirect home.
+		let userDoc = {
+			socialId: req.body.id,
+			socialType: "FB"
+		}
+		db.User
+			.findOneAndUpdate({ socialId: req.user.id }, {userDoc}, {new: true, upsert: true})
+			.then((dbModel) => {
+				console.log('dbModel' ,dbModel)
+				res.json(dbModel);
+				//res.redirect("/gameselect");
+			})
     // res.redirect('/');
   });
 

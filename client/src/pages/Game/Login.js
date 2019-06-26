@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom"; //react router dom
+import axios from 'axios';
 
+// import { Link } from "react-router-dom"; //react router dom
 
 //CONTENT
 //=======================================================
@@ -9,7 +10,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        placeholder: "This is only a template"
+        apiUrl: this.props.apiUrl
       }
   };
   
@@ -17,6 +18,7 @@ class Login extends Component {
     // add logic
   }
   
+
   // handleStartGame = (e, page) => {
   //   e.preventDefault();
   //   console.log(page);
@@ -24,6 +26,19 @@ class Login extends Component {
   //     currentPage: page
   //   })
   // }
+
+  handleFaceBookClick = () => {
+    axios.get(`${this.state.apiUrl}/auth/facebook`)
+      .then(response => {
+        console.log(response.data);
+      });
+  }
+  handleGoogleClick = () => {
+    axios.get(`${this.state.apiUrl}/auth/google`)
+      .then(response => {
+        console.log(response.data);
+      });
+  }
 
   render() {
 
@@ -33,8 +48,10 @@ class Login extends Component {
         <div className="info-text mb-4">Login to share!</div>
         {/* {<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>} */}
-        <a href="/auth/google">Login to Google</a>
-        <a href="/auth/facebook">Login to Facebook</a>
+        <div onClick={this.handleGoogleClick} className="cursor-pointer">Login to Google</div>
+        <div onClick={this.handleFaceBookClick} className="cursor-pointer">Login to Facebook</div>
+        <br />
+        <br />
         <a href="/">home</a>
         <a href="/logout">Logout</a>
       </div>

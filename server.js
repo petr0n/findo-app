@@ -20,19 +20,29 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.use(routes);
+// to prevent CORS error
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type,Accept,Authorization');
+  if (req.method === 'OPTIONS') {
+      res.header('Access-Control-Allow-Methods', 'PUT,POST,PATCH,DELETE,GET');
+      return res.status(200).json({});
+  }
+  next();
+});
+
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb",{ useNewUrlParser: true });
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 const db = mongoose.connection
 
 
 app.use(cookieParser()); 
 app.use(session({
   secret: 'findo-xx-rr-12e',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: db })
 }));
@@ -41,7 +51,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use("/auth", require("./routes/auth"));
+
+app.use(routes);
+// app.use("/auth", require("./routes/auth"));
+
+
 
 
 
