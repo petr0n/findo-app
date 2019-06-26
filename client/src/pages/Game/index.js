@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
+import GameSelect from "./GameSelect";
 
 
 
@@ -36,6 +37,8 @@ class Game extends Component {
     switch (this.state.currentPage) {
       case "login":
         return (<Login key={"login1"} hasPrevious={this.state.hasPrevious} handlePageChange={this.handlePageChange} />);
+      case "gameselect":
+        return (<GameSelect key={"game"} gameboardId={this.state.gameboardId} handlePageChange={this.handlePageChange} />);
       case "game":
         return (<Gameboard key={"game"} gameboardId={this.state.gameboardId} handlePageChange={this.handlePageChange} />);
       default:

@@ -51,21 +51,33 @@ router.get('/logout', function(req, res){
 });
 
 
-router.get('/facebook', (req, res, next) => {
-	console.log('/auth/facebook req.query: ', req.query);
-	passport.authenticate('facebook');
-	
-});
-router.get('/facebook/login', (req, res, next) => {
-	passport.authenticate('facebook', { 
-		failureRedirect: '/error',
-		session: true 
-	}),
-	(req, res) => {
-		console.log('callback req.query: ', req.query);
-		console.log('req.session: ', req.session);
-	}
-});
+// router.get('/facebook', (req, res, next) => {
+// 	console.log('/auth/facebook req.query: ', req.query);
+// 	// passport.authenticate('facebook');
+// 	const authenticator = passport.authenticate('facebook');
+// 	authenticator(req, res, next);
+
+// });
+router.get('/facebook',
+  passport.authenticate('facebook'));
+
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+// router.get('/facebook/callback', (req, res, next) => {
+// 	passport.authenticate('facebook', { 
+// 		failureRedirect: '/error',
+// 		session: true 
+// 	}),
+// 	(req, res) => {
+// 		console.log('callback req.query: ', req.query);
+// 		console.log('req.session: ', req.session);
+// 	}
+// });
 
 
 module.exports = router;
