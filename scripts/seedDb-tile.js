@@ -70,7 +70,7 @@ const tileSeed = [
 
 db.Tile
   .remove({})
-  .then(() => db.Book.collection.insertMany(tileSeed))
+  .then(() => db.Tile.collection.insertMany(tileSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

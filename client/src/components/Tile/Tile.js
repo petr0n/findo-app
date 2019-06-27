@@ -18,7 +18,7 @@ const Tile = (props) => {
   };
   return (
     <div className="tile-wrapper flex items-center justify-center text-center">
-      <div className={`"scale-in-center fade-in-fwd jello-horizontal tile md_p-3 sm_p-1 bg-white rounded" + ${props.isCenter ? 'center' : ''}`} style={tileStyle}>TEXT</div>
+      <div className={`"fade-in-fwd tile md_p-3 sm_p-1 bg-white rounded " + ${props.isCenter} ? 'center' : ''}`} style={tileStyle}><p>TEXT</p></div>
     </div>
   )
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Board from "../../components/Board";
 import Tile from "../../components/Tile";
+import axios from 'axios';
 
 
 
@@ -14,6 +15,10 @@ class Gameboard extends Component {
 			tiles: []
 		}
 	};
+
+	getTiles = () => {
+    axios.get("/api/tiles");
+  }
 	
 	makeTileGrid = () => {
 		let tiles = [];
@@ -43,7 +48,7 @@ class Gameboard extends Component {
 		return (
 			<div className="board mx-auto">
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
+					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
 				<Board tiles={this.state.tiles} />
 			</div>
