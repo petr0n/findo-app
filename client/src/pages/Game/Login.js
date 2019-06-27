@@ -27,16 +27,20 @@ class Login extends Component {
   //   })
   // }
 
-  handleFaceBookClick = () => {
+  handleFacebookClick = () => {
     axios.get(`${this.state.apiUrl}/auth/facebook`)
       .then(response => {
         console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
       });
   }
   handleGoogleClick = () => {
     axios.get(`${this.state.apiUrl}/auth/google`)
       .then(response => {
         console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
       });
   }
 
@@ -49,7 +53,7 @@ class Login extends Component {
         {/* {<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
         <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>} */}
         <div onClick={this.handleGoogleClick} className="cursor-pointer">Login to Google</div>
-        <div onClick={this.handleFaceBookClick} className="cursor-pointer">Login to Facebook</div>
+        <div onClick={this.handleFacebookClick} className="cursor-pointer">Login to Facebook</div>
         <br />
         <br />
         <a href="/">home</a>

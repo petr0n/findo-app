@@ -27,30 +27,10 @@ router.get('/google/callback',
 		db.User
 			.findOneAndUpdate({socialId: req.user.id}, req.body, {new: true, upsert: true})
 			.then((dbModel) => {
-				// res.json(dbModel);
 				console.log(dbModel)
-				res.redirect("/gameselect");
+				res.json(dbModel);
 			})
 			.catch(err => res.status(422).json(err));
-		// console.log('req.user.id: ', req.user.id);
-		// let loginUrl = '/?loggedIn=true';
-		// if (req.session.actions) {
-		// 	if (req.session.actions.action === 'join') {
-
-		// 		// add user and event to UserEvents table to join them up
-		// 	// 	db.UsersEvents.create({
-		// 	// 		UserId: req.user.id,
-		// 	// 		EventId: req.session.actions.eventId
-		// 	// 	}).then(function (dbUsersEvents) {
-		// 	// 		console.log('dbUsersEvents', dbUsersEvents);
-		// 	// 		// res.json(dbUsersEvents);
-		// 	// 	});
-		// 	// 	loginUrl = '/event/' + req.session.actions.eventId + '?joined=1';
-		// 	// } else {
-		// 	// 	loginUrl = '/addEvent';
-		// 	// }
-		// }
-		// res.redirect(loginUrl);
 	}
 );
 
@@ -65,13 +45,7 @@ router.get('/logout', function(req, res){
 });
 
 
-// router.get('/facebook', (req, res, next) => {
-// 	console.log('/auth/facebook req.query: ', req.query);
-// 	// passport.authenticate('facebook');
-// 	const authenticator = passport.authenticate('facebook');
-// 	authenticator(req, res, next);
 
-// });
 router.get('/facebook',
   passport.authenticate('facebook'));
 
@@ -81,7 +55,7 @@ router.get('/facebook/callback',
 		failureRedirect: '/login', 
 		session: true
 	}),
-  function(req, res) {
+  (req, res) => {
 		console.log('fb callback req.user: ', req.user);
 		let userDoc = {
 			socialId: req.body.id,
@@ -94,7 +68,7 @@ router.get('/facebook/callback',
 				res.json(dbModel);
 				//res.redirect("/gameselect");
 			})
-    // res.redirect('/');
+			.catch(err => res.status(422).json(err));
   });
 
 
