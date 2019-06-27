@@ -29,12 +29,10 @@ class Login extends Component {
 
     return (
       <div className="background mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-        <div className="start-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Start Game</div>
-        <div className="info-text mb-4">Login to share!</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
-        <a href="/auth/google">Login to Google</a>
-        <a href="/">home</a>
+        <div className="start-text cursor-pointer mb-4">Login</div>
+        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}><i className="fab fa-facebook-f"></i>FACEBOOK</div>
+        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}><i className="fab fa-google"></i>GOOGLE</div>
+          <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Continue as Guest</div>
       </div>
     );
   }
