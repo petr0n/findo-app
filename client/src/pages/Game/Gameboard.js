@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Board from "../../components/Board";
 import Tile from "../../components/Tile";
+import axios from 'axios';
 
 
 
@@ -14,6 +15,10 @@ class Gameboard extends Component {
 			tiles: []
 		}
 	};
+
+	getTiles = () => {
+    axios.get("/api/tiles");
+  }
 	
 	makeTileGrid = () => {
 		let tiles = [];
