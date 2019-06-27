@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import "./main.css";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
-import "./game.css";
+import GameSelect from "./GameSelect";
+
 
 
 
@@ -21,7 +23,8 @@ class Game extends Component {
       loggedIn: false,
       hasPrevious: true,
       gameboardId: null,
-      currentPage: "login"
+      currentPage: this.props.page ? this.props.page : "login",
+      apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games"
     }
   }
 
@@ -33,12 +36,27 @@ class Game extends Component {
   changePage(){
     console.log('this.state.currentPage' , this.state.currentPage);
     switch (this.state.currentPage) {
-      case "login":
-        return (<Login key={"login1"} hasPrevious={this.state.hasPrevious} handlePageChange={this.handlePageChange} />);
+      case "gameselect":
+        return (
+          <GameSelect 
+          key={"game"} 
+          gameboardId={this.state.gameboardId} 
+          handlePageChange={this.handlePageChange} />
+        );
       case "game":
-        return (<Gameboard key={"game"} gameboardId={this.state.gameboardId} handlePageChange={this.handlePageChange} />);
+        return (
+          <Gameboard 
+          key={"game"} 
+          gameboardId={this.state.gameboardId} 
+          handlePageChange={this.handlePageChange} />
+        );
       default:
-        return (<Login key={"login2"} hasPrevious={this.state.hasPrevious} handlePageChange={this.handlePageChange} />)
+        return (
+          <Login key={"login"} 
+          hasPrevious={this.state.hasPrevious} 
+          handlePageChange={this.handlePageChange}
+          apiUrl={this.state.apiUrl} />
+        );
     }
   }
 

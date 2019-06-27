@@ -3,7 +3,7 @@ import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Home from "./Home";
-import AddTile from "./addTile";
+// import AddTile from "./AddTile";
 
 
 //CONTENT
@@ -18,14 +18,14 @@ class Admin extends Component {
     return (
       <Wrapper>
         <Header />
-          <Home />
-          <AddTile />
+        <Home />
         <Footer />
-      </Wrapper>
-    );
-  }
-}
-
+        </Wrapper>
+        );
+      }
+    }
+    
 //EXPORT
 //=======================================================
+// <AddTile />
 export default Admin;

@@ -1,14 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-
 const session = require('express-session')
-const passport = require("passport");
-const auth = require('./google-auth');
+const passport = require("./auth");
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
+
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
@@ -21,29 +21,30 @@ if (process.env.NODE_ENV === "production") {
   require('dotenv'); 
 }
 
-// Define API routes here
-app.use(routes);
-
+app.use(cors());
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb", {
-  useMongoClient: true
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb",{ useNewUrlParser: true });
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 const db = mongoose.connection
 
-auth(passport);
-app.use(cookieParser());
+
+app.use(cookieParser()); 
 app.use(session({
-    secret: 'findo-xx-rr-12e',
-    resave: false,
-    saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: db })
+  secret: 'findo-xx-rr-12e',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: db })
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(routes);
+// app.use("/auth", require("./routes/auth"));
+
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);

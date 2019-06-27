@@ -6,20 +6,16 @@ module.exports = {
     findAllTiles: function (req, res) {
         db.Tile
             .find(req.query)
-            .populate("userId")
+            .populate("createdBy")
+            .populate("approvedBy")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    // findAllPendingTiles: function (req, res) {
-    //     db.Tile
-    //         .find({status: "Pending"})
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
-    // },
     findById: function (req, res) {
         db.Tile
             .findById(req.params.id)
-            .populate("userId")
+            .populate("createdBy")
+            .populate("approvedBy")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
