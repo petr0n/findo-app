@@ -1,8 +1,10 @@
     
-const passport = require('passport')
-const FacebookStrategy = require('./facebookStrategy')
-const GoogleStratgey = require('./googleStrategy')
-const User = require('../models/user')
+const passport = require('passport');
+const FacebookStrategy = require('./facebookStrategy');
+const GoogleStratgey = require('./googleStrategy');
+const db = require("../models");
+
+
 
 passport.serializeUser((user, done) => {
 	console.log('=== serialize ... called ===')
@@ -12,17 +14,19 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((id, done) => {
-	console.log('DEserialize ... called')
-	User.findOne(
-		{ _id: id },
-		'firstName lastName photos local.username',
-		(err, user) => {
-			console.log('======= DESERILAIZE USER CALLED ======')
-			console.log(user)
-			console.log('--------------')
-			done(null, user)
-		}
-	)
+	console.log('DEserialize ... called');
+	console.log('id', id);
+	done(null, id)
+	// db.User.findOne(
+	// 	{ socialId: id },
+	// 	(err, user) => {
+	// 		console.log('======= DESERILAIZE USER CALLED ======')
+	// 		console.log(user)
+	// 		console.log('--------------')
+	// 		done(null, user)
+	// 	}
+	// );
+	
 })
 
 // ==== Register Strategies ====

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom"; //react router dom
+import axios from 'axios';
 
+// import { Link } from "react-router-dom"; //react router dom
 
 //CONTENT
 //=======================================================
@@ -9,7 +10,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        placeholder: "This is only a template"
+        apiUrl: this.props.apiUrl
       }
   };
   
@@ -17,6 +18,7 @@ class Login extends Component {
     // add logic
   }
   
+
   // handleStartGame = (e, page) => {
   //   e.preventDefault();
   //   console.log(page);
@@ -25,16 +27,37 @@ class Login extends Component {
   //   })
   // }
 
+  handleFacebookClick = () => {
+    axios.get(`${this.state.apiUrl}/auth/facebook`)
+      .then(response => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+  handleGoogleClick = () => {
+    axios.get(`${this.state.apiUrl}/auth/google`)
+      .then(response => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
 
     return (
       <div className="background mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-        <div className="start-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Start Game</div>
+        <div className="start-text cursor-pointer mb-4 leading-none" onClick={() => this.props.handlePageChange("gameselect")}>Start Game as guest</div>
         <div className="info-text mb-4">Login to share!</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>
-        <a href="/auth/google">Login to Google</a>
+        {/* {<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
+        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>} */}
+        <div onClick={this.handleGoogleClick} className="cursor-pointer">Login to Google</div>
+        <div onClick={this.handleFacebookClick} className="cursor-pointer">Login to Facebook</div>
+        <br />
+        <br />
         <a href="/">home</a>
+        <a href="/logout">Logout</a>
       </div>
     );
   }
