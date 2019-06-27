@@ -36,3 +36,19 @@
 .nav-toggle {
   width: 200px;
 }
+
+.fa-facebook-f {
+  color: #4267B2;
+  text-shadow: none;
+  margin-right: 12px;
+}
+
+.fa-google {
+  color: #4185F4;
+  text-shadow: none;
+  margin-right: 12px;
+}
+
+.guest {
+  font-size: 1rem;
+}
