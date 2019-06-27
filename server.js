@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -21,7 +22,6 @@ if (process.env.NODE_ENV === "production") {
   require('dotenv'); 
 }
 
-app.use(cors());
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/findoDb",{ useNewUrlParser: true });
@@ -44,7 +44,14 @@ app.use(passport.session());
 
 app.use(routes);
 // app.use("/auth", require("./routes/auth"));
-
+  // If no API routes are hit, send the React app
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    })
+  });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);

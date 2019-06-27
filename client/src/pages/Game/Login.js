@@ -37,7 +37,7 @@ class Login extends Component {
   }
   handleGoogleClick = () => {
     axios.get(`${this.state.apiUrl}/auth/google`)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
       }).catch((error) => {
         console.log(error);
