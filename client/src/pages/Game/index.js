@@ -27,6 +27,11 @@ class Game extends Component {
     }
   }
 
+  componentDidMount(){
+    console.log('this.props.page', this.props.page);
+  }
+
+  
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
     this.changePage();

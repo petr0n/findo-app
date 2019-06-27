@@ -24,8 +24,9 @@ router.get('/callback', // url -> /auth/facebook/callback
     .findOneAndUpdate({ socialId: req.user.id }, {userDoc}, {new: true, upsert: true})
     .then((dbModel) => {
       console.log('dbModel' ,dbModel)
-      res.json(dbModel);
-      //res.redirect("/gameselect");
+      // res.json(dbModel);
+			res.redirect("http://localhost:3000/gameselect");
+			//res.redirect("http://localhost:3000/gameselect?token=" + req.user.id);
     })
     .catch(err => res.status(422).json(err));
 });

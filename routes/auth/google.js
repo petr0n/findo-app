@@ -4,13 +4,8 @@ const passport = require("passport");
 let db = require("../../models");
 
 router.get('/', (req, res, next) => { // url -> /auth/google
-	console.log('req.query: ', req.query);
-	passport.authenticate('google', { 
-		scope: [
-			'https://www.googleapis.com/auth/userinfo.profile',
-			'https://www.googleapis.com/auth/userinfo.email'
-		]
-	})
+	// console.log('/auth/google req.query: ', req.query);
+	passport.authenticate('google', { scope: ["profile", "email"] })
 });  
 
 
@@ -27,7 +22,8 @@ router.get('/callback', // url -> /auth/google/callback
 			.findOneAndUpdate({socialId: req.user.id}, req.body, {new: true, upsert: true})
 			.then((dbModel) => {
 				console.log(dbModel)
-				res.json(dbModel);
+				// res.json(dbModel);
+				res.redirect("http://localhost:3000?token=" + req.user.token);
 			})
 			.catch(err => res.status(422).json(err));
 	}
