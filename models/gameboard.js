@@ -9,8 +9,8 @@ const gameboardSchema = new Schema({
   status: {type: String, required: true},
   tiles: [
     {tile: {type: Schema.Types.ObjectId, ref: "Tile"}, 
-    position: {type: String, required: true},
-    
+    xPosition: {type: Number, required: true},
+    yPosition: {type: Number, required: true},
     isChecked: {type: Boolean, required: true},
     isWinningTile: {type: Boolean},
     checkedTime: {type: Date}

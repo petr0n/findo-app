@@ -1,28 +1,27 @@
 //IMPORT
 //=======================================================
 import React from "react";
-import "./TileAdd.css";
+import "./TilesManage.css";
 //import { Link } from "react-router-dom"
 
 //CONTENT
 //=======================================================
-const TileAdd = () => (
+const btnApprove = () => (
   <div ></div>
 );
 
 //EXPORT
 //=======================================================
-export default TileAdd;
+export default btnApprove;
 
 //REQUIREMENTS
 //=======================================================
 
 /*
 
-TileAdd (page 13, component to be passed to Admin => home)
-Description: contains a form to create a tile by a user
-Imports:React, Buttons
-Contains a clickEvent that is a POST
+used by TilesManage
+
+btnApprove = PUT that changes the <value> of status (copy, paste status value)
 
 
 */

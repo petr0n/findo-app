@@ -48,12 +48,10 @@ class Login extends Component {
 
     return (
       <div className="background mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-        <div className="start-text cursor-pointer mb-4 leading-none" onClick={() => this.props.handlePageChange("gameselect")}>Start Game as guest</div>
-        <div className="info-text mb-4">Login to share!</div>
-        {/* {<div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>FACEBOOK</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>GOOGLE</div>} */}
-        <div onClick={this.handleGoogleClick} className="cursor-pointer">Login to Google</div>
-        <div onClick={this.handleFacebookClick} className="cursor-pointer">Login to Facebook</div>
+        <div className="start-text cursor-pointer mb-4">Login</div>
+        <div className="login-text cursor-pointer mb-4" onClick={this.handleGoogleClick}><i className="fab fa-facebook-f"></i>FACEBOOK</div>
+        <div className="login-text cursor-pointer mb-4" onClick={this.handleFacebookClick}><i className="fab fa-google"></i>GOOGLE</div>
+          <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Continue as Guest</div>
         <br />
         <br />
         <a href="/">home</a>

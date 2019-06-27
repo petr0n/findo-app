@@ -1,28 +1,26 @@
 //IMPORT
 //=======================================================
 import React from "react";
-import "./TileAdd.css";
+import "./TilesView.css";
 //import { Link } from "react-router-dom"
 
 //CONTENT
 //=======================================================
-const TileAdd = () => (
+const btnActivate = () => (
   <div ></div>
 );
 
 //EXPORT
 //=======================================================
-export default TileAdd;
+export default btnActivate;
 
 //REQUIREMENTS
 //=======================================================
 
 /*
 
-TileAdd (page 13, component to be passed to Admin => home)
-Description: contains a form to create a tile by a user
-Imports:React, Buttons
-Contains a clickEvent that is a POST
+used by TIlesView
 
+btnActivate (handleClickEvent that is a PUT to change the status to active)
 
 */

@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+const winning
+=======
 const winningLogic = () => {
   // let xPosition 
   // yPosition: 
@@ -8,3 +11,4 @@ const winningLogic = () => {
   // is all xy = 04,13,22,31,40
 }
 export default winningLogic;
+>>>>>>> 8f68f2494d972e0dc2f0f6921dcb592fe41f7dfb
