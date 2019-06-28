@@ -2,18 +2,18 @@
 //=======================================================*/
 
 .tile {
-  line-height: 1;
+  background-color: rgba(255,255,255,.8);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 1s;
   font-family: 'Rubik', sans-serif;
+  font-size: 1em;
+  line-height: 1;
   text-align: center;
+  transition: box-shadow 1s;
+  width: 100%;
 }
 
 .tile p {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
 }
 
 .tile:hover {
@@ -47,5 +47,31 @@
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     opacity: 1;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .tile {
+    height: 125px;
+    margin: 5px;
+    border-radius: 4px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tile {
+    border-radius: 2px;
+    height: 75px;
+    font-size: .7em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tile {
+      border-radius: 2px;
+      height: 54px;
+      font-size: .65em;
   }
 }

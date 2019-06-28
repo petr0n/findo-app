@@ -29,19 +29,19 @@ class GameSelect extends Component {
 			gameType: gameType,
 			currentPage: "game"
 		});
-		this.props.handlePageChange("game");
+		this.props.handlePageChange("gameboard");
 	}
 
 
   render() {
-		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 p-2 h-30 flex items-center justify-center";
-		console.log('currentPage', this.state.currentPage);
+		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 p-1 flex items-center text-center ";
+		// console.log('currentPage', this.state.currentPage);
     return (
       <div>
         <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
 					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
-        <div className="background mx-auto rounded flex items-center justify-between p-8 w-full">
+        <div className="background mx-auto rounded flex items-center justify-between p-3 w-full login-box-md">
           <div className={btnStyle} onClick={() => this.handleGameSelect("isPG")}>Kid Friendly Board</div>
           <div className={btnStyle} onClick={() => this.handleGameSelect("isR")}>Adult Style Board</div>
         </div>
