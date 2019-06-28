@@ -16,7 +16,7 @@ function App() {
           <Route path="/gameselect" render={() => <Game page={"gameselect"} />} />
           <Route path="/gameboard" render={() => <Game page={"gameboard"} />} />
           <Route path="/login" render={() => <Game page={"login"} />} />
-          <Route path="/" exact component={Game} />
+          <Route path="/" component={Game} />
           <Route path="/admin" exact component={Admin} />
         </Switch>
       </Router>
