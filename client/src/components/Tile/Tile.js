@@ -12,9 +12,7 @@ class Tile extends Component {
   };
 
   componentDidMount() {
-    
   }
-
 
 
   handleTileClick = (tileId) => {
@@ -22,11 +20,13 @@ class Tile extends Component {
   }
     
   render() {
+    console.log('this.props.tileData', this.props.tileData);
+    const tileData = this.props.tileData;
     return (
       <div className="tile-container">
         <div className="tile-wrapper flex items-center justify-center text-center" onClick={() => this.handleTileClick(this.props.tileId)}>
           <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center " + (this.props.isCenter ? 'center-tile' : '')}> 
-            {this.props.tileId}
+            {tileData.tileText}
           </div>
         </div>
       </div>

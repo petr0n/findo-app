@@ -12,29 +12,36 @@ class Gameboard extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-			tiles: []
+			loading: true,
+			tiles: [],
+			tilesData: []
 		}
 	};
 
-	getTiles = () => {
-		axios.get("/api/tiles")
-			.then((res)=>{
-				console.log('tiles', res)
-
-			});
-	}
-	
-
 	componentDidMount(){
-		this.renderGrid();
 		this.getTiles();
+		// this.renderGrid();
 	}
 
-	handleTileClick = (tileId) => {
-    this.props.handleTileClick();
-  }
+	getTiles = () => {
+		axios.get("/api/tiles/game")
+			.then((result) => { 
+				const boardTiles = result.data;
+				this.setState({ 
+					loading: false,
+					tilesData: this.renderGrid(boardTiles)
+				}) 
+			})
+			.catch(error => { console.error(error); return Promise.reject(error); });
+	}
 	
-	makeTileGrid = () => {
+	renderGrid = (boardTiles) => {
+		this.setState({ 
+			tiles: this.makeTileGrid(boardTiles)
+		});
+	}
+
+	makeTileGrid = (boardTiles) => {
 		let tiles = [];
 		let isCenter = false;
 		for(let x = 0; x < 5; x++){
@@ -43,22 +50,25 @@ class Gameboard extends Component {
 				if (x ===2 && y === 2) {
 					isCenter = true;
 				}
-				tiles.push(<Tile info={"info"} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} />);
-				
+				tiles.push(<Tile tileData={boardTiles[x+y]} key={"xy"+x+""+y} isCenter={isCenter} />);
 			}
 		}
-		// console.log('tiles', tiles);
+		// console.log('t', t);
 		return tiles;
 	}
+	
 
-	renderGrid = () => {
-		this.setState({ 
-			tiles: this.makeTileGrid()
-		});
+	handleTileClick = (tileId) => {
+    this.props.handleTileClick();
 	}
+
+
 
 	
 	render() {
+		if (this.state.loading) {
+			return (<div className="background">Loading...</div>)
+		}
 		return (
 			<div className="board mx-auto">
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
