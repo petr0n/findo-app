@@ -1,3 +1,15 @@
 /*  TILEBIG STYLES
 //=======================================================*/
 
+.tileBig {
+  transition: all 1s ease;
+  position: absolute;
+}
+.tileBig.clicked {
+  background-color: rgba(255,255,255,.8);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  top: 1px;
+  left: 1px;
+  width: 300px;
+  z-index: 10;
+}

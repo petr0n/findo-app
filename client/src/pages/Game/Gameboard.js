@@ -17,32 +17,46 @@ class Gameboard extends Component {
 	};
 
 	getTiles = () => {
-    axios.get("/api/tiles");
+		axios.get("/api/tiles")
+			.then((res)=>{
+				console.log('tiles', res)
+
+			});
+	}
+	
+
+	componentDidMount(){
+		this.renderGrid();
+		this.getTiles();
+	}
+
+	handleTileClick = (tileId) => {
+    this.props.handleTileClick();
   }
 	
 	makeTileGrid = () => {
 		let tiles = [];
 		let isCenter = false;
-		for(let i = 0;i < 25; i++){
-			if (i===12) {
-				isCenter = true;
+		for(let x = 0; x < 5; x++){
+			for(let y = 0; y < 5; y++){
+				isCenter = false;
+				if (x ===2 && y === 2) {
+					isCenter = true;
+				}
+				tiles.push(<Tile info={"info"} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} />);
+				
 			}
-			tiles.push(<Tile info={"info"} key={"x"+i} isCenter={isCenter} />);
-			isCenter = false;
 		}
-		console.log('tiles', tiles);
+		// console.log('tiles', tiles);
 		return tiles;
 	}
 
 	renderGrid = () => {
 		this.setState({ 
-			tiles: this.makeTileGrid() 
+			tiles: this.makeTileGrid()
 		});
 	}
 
-	componentDidMount(){
-		this.renderGrid();
-	}
 	
 	render() {
 		return (
