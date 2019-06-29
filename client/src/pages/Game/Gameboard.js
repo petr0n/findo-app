@@ -61,7 +61,11 @@ class Gameboard extends Component {
 				if (x ===2 && y === 2) {
 					isCenter = true;
 				}
-				tiles.push(<Tile tileData={boardTiles[ctr]} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
+				let tileData = {
+					...boardTiles[ctr], 
+					selected: false, 
+				}
+				tiles.push(<Tile tileData={tileData} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
 				ctr++;
 			}
 		}
