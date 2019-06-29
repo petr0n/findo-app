@@ -7,6 +7,9 @@ router.route("/")
   .get(dbTileController.findAllTiles)
   .post(dbTileController.createTile);
 
+router.route("/game/:gameType?")
+  .get(dbTileController.findGameboardTiles)
+
 // Matches with "/api/tiles/:id"
 router.route("/:id")
   .get(dbTileController.findById)

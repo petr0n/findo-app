@@ -14,22 +14,21 @@ module.exports = {
             if (!err) {
                 console.log(results);
 
-                let x = 0;
-                let y = -1;
-                let tilesArray = [];
+				let x = 0; 
+				let y = -1;
+				let tilesArray = [];
 
-                results.splice(12, 0, { name: "free" });
-                // console.log("updated results " + results);
+				results.splice(12, 0, { name: "free" });
+				// console.log("updated results " + results);
 
-                for (let i = 0; i < results.length; i++) {
-                    if (i > 0 && i % 5 === 0) {
-                        x++;
-                        y = 0
-                    }
-                    else {
-                        y++;
-                    }
-
+				for (let i = 0; i < results.length; i++) {
+					if (i > 0 && i % 5 === 0) {
+						x++;
+						y = 0
+					}
+					else {
+						y++;
+					}
                     if (x === 2 && y === 2) {
                         //Handle FREE space
                         tilesArray.push({
@@ -98,4 +97,5 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
+
 };
