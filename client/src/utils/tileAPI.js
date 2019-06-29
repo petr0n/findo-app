@@ -8,7 +8,7 @@ export default {
     },
     //GET tiles pending approval 
     getPendingTiles: function () {
-        return axios.get("/api/tiles?status=Pending");
+        return axios.get("/api/tiles?status=pending");
     },
     //GET tile by id
     getTile: function (id) {
