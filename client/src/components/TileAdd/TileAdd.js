@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { AdminWrapper } from  "../AdminWrapper/AdminWrapper";
 import { TileAddBtn } from "../TileAdd/TileAddBtn";
-import axios from 'axios';
+import API from "../../utils/tileAPI";
 import "./TileAdd.css";
 //import { Link } from "react-router-dom"
 
@@ -13,7 +13,8 @@ class TileAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileText: " "
+      tileText: " ",
+      createdBy: " "
     }
   }
 
@@ -29,13 +30,14 @@ class TileAdd extends Component {
   //handle user submit
   //====================================================
   handleFormSubmit = event => {
-    event.preventDefault();//prevent default form submit (reresh page is defaul)
-    const { tileText } = this.state;//get form data out of state
-    axios.post('/', { tileText }) //axios post route 
+    event.preventDefault();//prevent default form submit 
+    API.createTile()
+    this.setState ({
+      tileText: this.state.value,
+      createdBy: this.state.userName
+    })
     .then((res) => {
       console.log(res);
-      // probably want to render a new page for an admin, like "TilesManage"
-      //might consider a confirmation of success
     })
     .catch(function(err) {
       //handle error
@@ -61,6 +63,7 @@ class TileAdd extends Component {
                 name="tileText"
                 value={tileText}
                 //maxLength="80"
+                userName={this.createdBy}
                 onChange={this.handleInputChange}
               />
               <p class="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
