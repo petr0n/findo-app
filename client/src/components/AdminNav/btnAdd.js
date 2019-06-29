@@ -1,7 +1,7 @@
 //IMPORT
 //=======================================================
-import React, { Component } from "react";
-import ".";
+import React from "react";
+import "./AdminNav.css";
 
 //CONTENT
 //=======================================================

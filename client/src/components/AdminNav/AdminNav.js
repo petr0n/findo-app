@@ -5,7 +5,6 @@ import "./AdminNav.css";
 import "./btnAdd";
 import "./btnSuggested";
 import "./btnView";
-//import { Link } from "react-router-dom"
 
 //CONTENT
 //=======================================================
