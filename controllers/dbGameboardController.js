@@ -12,7 +12,7 @@ module.exports = {
 
         db.Tile.findRandom(filter, {}, { limit: 24 }, function (err, results) {
             if (!err) {
-                console.log(results);
+                // console.log(results);
 
 				let x = 0; 
 				let y = -1;
@@ -94,6 +94,14 @@ module.exports = {
     updateGame: function(req, res) {
         db.Gameboard
             .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    updateGameTile: function(req,res) {
+        db.Gameboard
+            .findOneAndUpdate({ "tiles._id": req.params.id }, 
+                {"$set": {"tiles.$.isChecked": req.body.isChecked}}, 
+                { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
