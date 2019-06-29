@@ -84,15 +84,6 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    //send query params for user and status
-    getGames: function (req, res) {
-        db.Gameboard
-        .find(req.query)
-        .populate("userId")
-        .populate("tiles.tile")
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
     removeGameboard: function (req, res) {
         db.Gameboard
             .findById({ _id: req.params.id })
