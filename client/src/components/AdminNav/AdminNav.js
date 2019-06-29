@@ -8,55 +8,38 @@ import "./btnView";
 import Header from "../../Header";
 import Footer from "../../Footer";
 import AdminWrapper from "../../AdminWrapper";
+import TileAdd "../../TileAdd";
+import TilesManage from "../TilesManage";
+import TilesView from "../TilesView";
 
 //CONTENT
 //=======================================================
-class AdminNav extends Component {
-    state = {
-        open: false;
-    };
-
-    const toggleNav = () => {
-        this.setState({ open: !this.state.open });
-    };
-
+class NavBar extends Component {
+    displayTiles = () => {
+        this.setState({
+            displayTiles: !this.state.displayTiles
+        })
+    }
 }
 
 render(){
     return (
-        <nav className="navbar mb-2">
-            <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link
-                            onClick={this.toggleNav}
-                            className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
-                            to="/"
-                        >
-                            Suggested
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            onClick={this.toggleNav}
-                            className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
-                            to="/saved"
-                        >
-                            View All
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            onClick={this.toggleNav}
-                            className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
-                            to="/saved"
-                        >
-                            Add Tile
-                        </Link>
-                    </li>
+        <AdminWrapper>
+            <Header />
+            <nav className="admin-nav">
+                <ul>
+                    <li className="suggested" onClick={this.displayTiles}>Suggested</li>
+                    <li className="view-all" onClick={this.displayTiles}>View All</li>
+                    <li className="add-tile" onClick={this.displayTiles}>Add Tile</li>
                 </ul>
+            </nav>
+            <div>
+                <TilesManage/>
+                <TilesView/>
+                <TileAdd/>
             </div>
-        </nav>
+            <Footer />
+        </AdminWrapper>
     )
 };
 
