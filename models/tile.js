@@ -6,7 +6,7 @@ const tileSchema = new Schema({
   tileText: { type: String, required: true },
   isPG: { type: Boolean, required: true },
   isR: { type: Boolean, required: true },
-  status: { type: String, required: false, default: "Pending" },
+  status: { type: String, required: false, default: "pending" },
   eventType: { type: String, required: true },
   createdBy: {
     type: Schema.Types.ObjectId,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Board from "../../components/Board";
 import Tile from "../../components/Tile";
-import axios from 'axios';
+import gameboardAPI from '../../utils/gameboardAPI';
 
 
 
@@ -24,21 +24,33 @@ class Gameboard extends Component {
 		// this.renderGrid();
 	}
 
+	// getTiles = () => {
+	// 	axios.get("/api/tiles/game")
+	// 		.then((result) => { 
+	// 			const boardTiles = result.data;
+	// 			this.setState({ 
+	// 				loading: false,
+	// 				tilesData: this.renderGrid(boardTiles)
+	// 			}) 
+	// 		})
+	// 		.catch(error => { console.error(error); return Promise.reject(error); });
+	// }
+
 	getTiles = () => {
-		axios.get("/api/tiles/game")
-			.then((result) => { 
-				const boardTiles = result.data;
+		gameboardAPI.createGame({ gameType: "PG", userId: "5d16c2a8aa327c8da02bb17a" })
+			.then(res => {
 				this.setState({ 
 					loading: false,
-					tilesData: this.renderGrid(boardTiles)
+					tilesData: this.renderGrid(res)
 				}) 
 			})
-			.catch(error => { console.error(error); return Promise.reject(error); });
+			.catch(err => console.log(err))
 	}
 	
 	renderGrid = (boardTiles) => {
+		console.log('boardTiles',boardTiles.data.tiles);
 		this.setState({ 
-			tiles: this.makeTileGrid(boardTiles)
+			tiles: this.makeTileGrid(boardTiles.data.tiles)
 		});
 	}
 
