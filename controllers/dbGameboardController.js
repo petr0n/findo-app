@@ -46,56 +46,63 @@ module.exports = {
 						});
 					}
 
-					//Need to wait until the tiles array is built before saving the game... Can we do this differently?
-					if (i === 24) {
-						db.Gameboard
-							.create({
-								userId: req.body.userId,
-								tiles: tilesArray
-							})
-							.then(dbModel => {
-								db.Gameboard
-									.findById(dbModel._id)
-									.populate("userId")
-									.populate("tiles.tile")
-									.then(dbModel => res.json(dbModel))
-									.catch(err => res.status(422).json(err));
-							})
-							.catch(err => res.status(422).json(err));
-					}
-				}
-			}
-		});
-	},
-	findGameById: function (req, res) {
-		db.Gameboard
-			.findById(req.params.id)
-			.populate("userId")
-			.populate("tiles.tile")
-			.then(dbModel => res.json(dbModel))
-			.catch(err => res.status(422).json(err));
-	},
-	//send query params for user and status
-	getGames: function (req, res) {
-		db.Gameboard
-			.find(req.query)
-			.populate("userId")
-			.populate("tiles.tile")
-			.then(dbModel => res.json(dbModel))
-			.catch(err => res.status(422).json(err));
-	},
-	removeGameboard: function (req, res) {
-		db.Gameboard
-			.findById({ _id: req.params.id })
-			.then(dbModel => dbModel.remove())
-			.then(dbModel => res.json(dbModel))
-			.catch(err => res.status(422).json(err));
-	},
-	updateGame: function (req, res) {
-		db.Gameboard
-			.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-			.then(dbModel => res.json(dbModel))
-			.catch(err => res.status(422).json(err));
-	}
-
+                    //Need to wait until the tiles array is built before saving the game... Can we do this differently?
+                    if (i === 24) {
+                        db.Gameboard
+                            .create({
+                                userId: req.body.userId,
+                                tiles: tilesArray
+                            })
+                            .then(dbModel => {
+                                db.Gameboard
+                                .findById(dbModel._id)
+                                .populate("userId")
+                                .populate("tiles.tile")
+                                .then(dbModel => res.json(dbModel))
+                                .catch(err => res.status(422).json(err));
+                        })
+                     .catch(err => res.status(422).json(err));
+                    }
+                }
+            }
+        });
+    },
+    findGameById: function (req, res) {
+        db.Gameboard
+            .findById(req.params.id)
+            .populate("userId")
+            .populate("tiles.tile")
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    //send query params for user and status
+    getGames: function (req, res) {
+        db.Gameboard
+            .find(req.query)
+            .populate("userId")
+            .populate("tiles.tile")
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    removeGameboard: function (req, res) {
+        db.Gameboard
+            .findById({ _id: req.params.id })
+            .then(dbModel => dbModel.remove())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    updateGame: function(req, res) {
+        db.Gameboard
+            .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    updateGameTile: function(req,res) {
+        db.Gameboard
+            .findOneAndUpdate({ "tiles._id": req.params.id }, 
+                {"$set": {"tiles.$.isChecked": req.body.isChecked}}, 
+                { new: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    }
 };
