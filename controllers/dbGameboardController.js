@@ -3,12 +3,14 @@ const db = require("../models");
 module.exports = {
 
     //TODO: Routes: 
-    // Update game
-    createGame: function (req, res) {
-        // console.log(req.body.gameType);
-        let filter = (req.body.gameType === 'PG') ? { isPG: true, status: "Approved" } : { isR: true, status: "Approved" };
+    // Update tile in a game
+    // update whole game
 
-        db.Tile.findRandom({filter}, {}, { limit: 24 }, function (err, results) {
+    createGame: function (req, res) {
+        console.log(req.body.gameType);
+        let filter = (req.body.gameType === 'PG') ? { isPG: true, status: "active" } : { isR: true, status: "active" };
+
+        db.Tile.findRandom(filter, {}, { limit: 24 }, function (err, results) {
             if (!err) {
                 console.log(results);
 
@@ -44,22 +46,22 @@ module.exports = {
                             yPosition: y
                         });
                     }
-                    // console.log({
-                    //     tile: results[i]._id,
-                    //     xPosition: x,
-                    //     yPosition: y
-                    // });
-                    // console.log(tilesArray[i])
-                    // console.log(tilesArray)
-                    let gameboard = {
-                        userId: req.body.userId,
-                        tiles: tilesArray
-                    }
+
                     //Need to wait until the tiles array is built before saving the game... Can we do this differently?
                     if (i === 24) {
                         db.Gameboard
-                            .create(gameboard)
-                            .then(dbModel => res.json(dbModel))
+                            .create({
+                                userId: req.body.userId,
+                                tiles: tilesArray
+                            })
+                            .then(dbModel => {
+                                db.Gameboard
+                                .findById(dbModel._id)
+                                .populate("userId")
+                                .populate("tiles.tile")
+                                .then(dbModel => res.json(dbModel))
+                                .catch(err => res.status(422).json(err));
+                        })
                             .catch(err => res.status(422).json(err));
                     }
                 }
@@ -77,16 +79,22 @@ module.exports = {
     //send query params for user and status
     getGames: function (req, res) {
         db.Gameboard
-        .find(req.query)
-        .populate("userId")
-        .populate("tiles.tile")
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+            .find(req.query)
+            .populate("userId")
+            .populate("tiles.tile")
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     removeGameboard: function (req, res) {
         db.Gameboard
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    updateGame: function(req, res) {
+        db.Gameboard
+            .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
