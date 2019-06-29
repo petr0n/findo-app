@@ -1,8 +1,8 @@
 //IMPORT
 //=======================================================
 import React, { Component } from "react";
-import { AdminWrapper } from  "../AdminWrapper/AdminWrapper";
-import { TileEditBtn } from "../TileAdd/TileAddBtn";
+import AdminWrapper from  "../AdminWrapper";
+import TileEditBtn from "./TileAddBtn";
 import API from "../../utils/tileAPI";
 import "./TileEdit.css";
 //import { Link } from "react-router-dom"
@@ -14,7 +14,7 @@ class TileEdit extends Component {
     super(props);
     this.state = {
       tileText: " ",
-    }
+    } 
   }
 
   //handle user input change
