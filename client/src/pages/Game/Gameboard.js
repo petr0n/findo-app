@@ -47,7 +47,8 @@ class Gameboard extends Component {
 	handleTileClick = (tileData) => {
 		this.setState({ 
 			tileBigState: "active",
-			tileBigData: tileData
+			tileBigData: tileData,
+			// tiles: this.makeTileGrid(boardTiles)
 		});
 	}
 	
