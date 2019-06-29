@@ -4,7 +4,6 @@ export default {
 
     //USERS
     // Gets all users
-    //TODO UPDATE TO HAVE FIND OR CREATE
     getUsers: function () {
         return axios.get("/api/users");
     },
