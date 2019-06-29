@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import "./main.css";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
@@ -8,9 +7,10 @@ import Header from "../../components/Header";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
 import GameSelect from "./GameSelect";
+import "./main.css";
 
-
-
+import {createBrowserHistory} from "history";
+const history = createBrowserHistory();
 
 //CONTENT
 //=======================================================
@@ -28,13 +28,19 @@ class Game extends Component {
     }
   }
 
+  componentDidMount(){
+    // console.log('this.props.page', this.props.page);
+  }
+
+
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
+    history.push("/" + page);
     this.changePage();
   }
 
   changePage(){
-    console.log('this.state.currentPage' , this.state.currentPage);
+    // console.log('this.state.currentPage' , this.state.currentPage);
     switch (this.state.currentPage) {
       case "gameselect":
         return (
@@ -43,7 +49,7 @@ class Game extends Component {
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange} />
         );
-      case "game":
+      case "gameboard":
         return (
           <Gameboard 
           key={"game"} 
@@ -60,27 +66,21 @@ class Game extends Component {
     }
   }
 
-  render() {
-    return (
-      <Wrapper>
-        <Header />
-        <ReactCSSTransitionGroup
-          transitionName="page" 
-          transitionEnterTimeout={500} 
-          transitionLeaveTimeout={500}
-        >
-          {this.changePage()}
-        </ReactCSSTransitionGroup>
-        <Footer />
-        </Wrapper>
-        );
-      }
-    }
-  // <div>game page</div>
-  // {this.state.loggedIn ?
-  //   <Gameboard gameboardId={this.state.gameboardId} /> :
-  //   <Login hasPrevious={this.state.hasPrevious} />}
+render() {
+  return (
+    <Wrapper>
+      <Header />
+      <ReactCSSTransitionGroup
+        transitionName="fade" 
+        transitionEnterTimeout={1000} 
+        transitionLeaveTimeout={500}
+      >
+        {this.changePage()}
+      </ReactCSSTransitionGroup>
+      <Footer />
+    </Wrapper>
+    );
+  }
+}
 
-//EXPORT
-//=======================================================
 export default Game;

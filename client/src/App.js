@@ -13,10 +13,10 @@ function App() {
       <Router>
         <Switch>
           <Route path="/privacy" exact component={privacy} />
+          <Route path="/gameselect" render={() => <Game page={"gameselect"} />} />
+          <Route path="/gameboard" render={() => <Game page={"gameboard"} />} />
+          <Route path="/login" render={() => <Game page={"login"} />} />
           <Route path="/" component={Game} />
-          <Route path="/login" component={Game} page={"login"} />
-          <Route path="/gameselect" component={Game} page={"gameselect"} />
-          <Route path="/gameboard" component={Game} page={"gameboard"} />
           <Route path="/admin" exact component={Admin} />
         </Switch>
       </Router>

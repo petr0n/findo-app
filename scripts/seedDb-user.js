@@ -4,58 +4,65 @@ const db = require("../models");
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/findoDb"
+  process.env.MONGODB_URI || "mongodb://localhost/findoDb",
+  { useCreateIndex: true, useNewUrlParser: true }
 );
 
 const userSeed = [
   {
-    googleId: "xxx",
-    Email: "petron@gmail.com",
-    Name: "Peter Abeln",
-    Role: "admin"
+    email: "petron@gmail.com",
+    name: "Peter Abeln",
+    role: "admin", 
+    socialId: "12345a",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "juliafercello@gmail.com",
-    Name: "Julia Fercello",
-    Role: "admin"
+    email: "juliafercello@gmail.com",
+    name: "Julia Fercello",
+    role: "admin", 
+    socialId: "12345b",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "raper003@umn.edu",
-    Name: "Emily Raper",
-    Role: "admin"
+    email: "raper003@umn.edu",
+    name: "Emily Raper",
+    role: "admin", 
+    socialId: "12345c",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "jason.fleming@comcast.net",
-    Name: "Jason Fleming",
-    Role: "admin"
+    email: "jason.fleming@comcast.net",
+    name: "Jason Fleming",
+    role: "admin", 
+    socialId: "12345d",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "onahbosen@gmail.com",
-    Name: "Onah Bosen",
-    Role: "admin"
+    email: "onahbosen@gmail.com",
+    name: "Onah Bosen",
+    role: "admin", 
+    socialId: "12345e",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "samjones@gmail.com",
-    Name: "Sam Jones",
-    Role: "user"
+    email: "samjones@gmail.com",
+    name: "Sam Jones",
+    role: "user", 
+    socialId: "12345f",
+    socialType: "FB"
   },
   {
-    googleId: "xxx",
-    Email: "janemoneypenny@gmail.com",
-    Name: "Jane Moneypenny",
-    Role: "user"
+    email: "janemoneypenny@gmail.com",
+    name: "Jane Moneypenny",
+    role: "user", 
+    socialId: "12345g",
+    socialType: "FB"
   }
 ];
 
 db.User
   .remove({})
-  .then(() => db.Book.collection.insertMany(userSeed))
+  .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
