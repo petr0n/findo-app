@@ -10,11 +10,21 @@ class Home extends Component {
     }
     componentDidMount(){
       // add logic
+      // get new tile suggestion via axios 
+      // loop through and add to <TileEdit />
     }
+
+    
     render() {
         return (
           <div>
             <h2>Admin Home</h2>
+            {/*
+            <Header />
+            <AdminNav />
+            
+            <TileWrapper tiles={tiles} />
+            */}
           </div>
         );
     }

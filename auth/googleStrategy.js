@@ -16,9 +16,9 @@ const strategy = new GoogleStrategy(
 				name: profile.displayName,
 				token: accessToken
 			};
-			done(null, userData);
 			console.log('g userData', userData);
-			User.findByGoogleId({ googleId: profile.id });
+			done(null, userData);
+			// User.findByGoogleId({ googleId: profile.id });
 		}
 );
 module.exports = strategy;
