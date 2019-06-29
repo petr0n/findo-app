@@ -10,7 +10,9 @@ import "./btnEdit";
 //CONTENT
 //=======================================================
 const TilesView = () => (
-  <div ></div>
+  <div>
+    
+  </div>
 );
 
 //EXPORT
