@@ -10,6 +10,7 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   font-family: 'Rubik', sans-serif;
   font-size: 1em;
+  height: 110px;
   line-height: 1;
   text-align: center;
   transition: box-shadow 1s;
@@ -24,6 +25,7 @@
 .tile:hover {
   background-color: rgba(252, 208, 44, 0.8);
   box-shadow: 10px 10px 10px rgba(228, 44, 106, 0.8);
+  cursor: pointer;
   transition: box-shadow 1s;
 }
 
