@@ -10,21 +10,22 @@ class Board extends Component {
 	constructor(props) {
     super(props); 
     this.state = {
-      tileBigState: ''
+      tileBigState: "inactive"
     }
   }
 
   showtileBig = (tileId) => {
-    return (<TileBig key={"xy"} />)
+    return (<TileBig key={"xy"} tileBigState={this.state.tileBigState}  />)
   }
   
+
 
   render(){
 
     return (
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}
-        {this.state.tileBigState ?
+        {this.state.tileBigState === "active" ?
         this.showtileBig : ''}
       </div>
     );

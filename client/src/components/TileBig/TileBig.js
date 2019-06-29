@@ -8,13 +8,13 @@ class TileBig extends Component {
     super(props);
     //this.isCenter = this.props.isCenter;
     this.state = {
-      bigTileState: ''
+      tileBigState: ''
     }
   }
 
   render() {
     return (
-      <div className={"tileBig " + (this.state.bigTileState ? 'clicked' : '')} style={{display: "none"}} ref={this.props.tileId}>
+      <div className={"tileBig " + (this.state.tileBigState ? 'clicked' : '')} style={{display: "none"}} ref={this.props.tileId}>
         <div className="p-2">
           Someone walking barefoot
         </div>

@@ -41,27 +41,31 @@ class Gameboard extends Component {
 		});
 	}
 
+	  	
+
+	handleTileClick = (tileId) => {
+    this.showtileBig(tileId);
+	}
+
+
+
 	makeTileGrid = (boardTiles) => {
 		let tiles = [];
 		let isCenter = false;
+		let ctr = 0;
 		for(let x = 0; x < 5; x++){
 			for(let y = 0; y < 5; y++){
 				isCenter = false;
 				if (x ===2 && y === 2) {
 					isCenter = true;
 				}
-				tiles.push(<Tile tileData={boardTiles[x+y]} key={"xy"+x+""+y} isCenter={isCenter} />);
+				tiles.push(<Tile tileData={boardTiles[ctr]} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
+				ctr++;
 			}
 		}
 		// console.log('t', t);
 		return tiles;
 	}
-	
-
-	handleTileClick = (tileId) => {
-    this.props.handleTileClick();
-	}
-
 
 
 	

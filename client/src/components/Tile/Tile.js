@@ -7,7 +7,7 @@ class Tile extends Component {
     super(props);
     //this.isCenter = this.props.isCenter;
     this.state = {
-      tileBigState: ''
+      x: "inactive"
     }
   };
 
@@ -16,7 +16,8 @@ class Tile extends Component {
 
 
   handleTileClick = (tileId) => {
-    this.props.handleTileClick();
+    this.setState({  tileBigState: "active" })
+    this.props.handleTileClick(this.state.tileBigState);
   }
     
   render() {
