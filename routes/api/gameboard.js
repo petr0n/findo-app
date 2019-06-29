@@ -2,10 +2,9 @@ const router = require("express").Router();
 const dbGameboardController = require("../../controllers/dbGameboardController");
 
 // Matches with "/api/gameboard"
-
 router.route("/")
-//   .get(dbTileController.findAllTiles)
-  .post(dbGameboardController.createGame);
+  .post(dbGameboardController.createGame)
+  .get(dbGameboardController.getGames);
 
 // Matches with "/api/gameboard/:id"
 router.route("/:id")

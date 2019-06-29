@@ -1,29 +1,35 @@
 /* TILE STYLES
 //=======================================================*/
 
+
 .tile {
   background-color: rgba(255,255,255,.8);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   font-family: 'Rubik', sans-serif;
   font-size: 1em;
+  height: 110px;
   line-height: 1;
   text-align: center;
   transition: box-shadow 1s;
   width: 100%;
+  z-index: 1;
 }
-
-.tile p {
-
+.tile.center-tile {
+  background-color: rgba(229, 107, 31, 0.8);
+}
+.tile.selected {
+  background-color: rgba(252, 208, 44, 0.8);
 }
 
 .tile:hover {
-  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(252, 208, 44, 0.8);
+  box-shadow: 10px 10px 10px rgba(228, 44, 106, 0.8);
+  cursor: pointer;
   transition: box-shadow 1s;
 }
 
-.center {
-  background-color: rgba(249, 137, 44, 0.8) !important;
-}
+
+
 
 @-webkit-keyframes fade-in-fwd {
   0% {
