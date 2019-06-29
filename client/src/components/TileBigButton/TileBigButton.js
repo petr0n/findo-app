@@ -7,7 +7,9 @@ import "./TileBigButton.css";
 class TileBigButton extends Component {
 
 	handleClick = () => {
-		this.props.handleTileBigClick();
+		let data = this.props.tileBigData;
+		data.selected = true;
+		this.props.handleTileBigClick(data);
 	}
 
 	render() {

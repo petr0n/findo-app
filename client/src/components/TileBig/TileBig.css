@@ -15,16 +15,11 @@
   z-index: 10;
   overflow: hidden;
 }
-/* .tileBig.clicked {
-  transition: tileBigIn 1s linear;
-  width: 90%;
-  margin: 5%;
-  height: 90%;
-  opacity: 1;
-} */
 
+.tileBigText {
+  font-size: 6em;
+}
 .clicked-enter {
-
   opacity: 0;
 }
 .clicked-enter-active {

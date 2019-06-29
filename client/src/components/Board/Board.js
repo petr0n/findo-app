@@ -7,24 +7,13 @@ import TileBig from "../../components/TileBig";
 //=======================================================
 
 class Board extends Component {
-	constructor(props) {
-    super(props); 
-    this.state = {
-      tileBigState: this.props.tileBigState
-    }
-  }
-
-  showtileBig = (tileId) => {
-    return ""
-    //   if (this.props.tileBigState === "active") {
-    // } else {
-    //   return ""
-    // }
-  }
-  
-  // componentDidMount() {
-  //     this.showtileBig();
-  // } 
+	// constructor(props) {
+  //   super(props); 
+  //   this.state = {
+  //     tileBigState: this.props.tileBigState
+  //     tileBigData: this.
+  //   }
+  // }
 
   render(){
     console.log('<Board tileBigState', this.props.tileBigState);
@@ -36,6 +25,7 @@ class Board extends Component {
             key={"xy"} 
             tileData={"asdf"} 
             tileBigState={this.props.tileBigState} 
+            tileBigData={this.props.tileBigData}
             handleTileBigClick={this.props.handleTileBigClick} />
         }
       </div>

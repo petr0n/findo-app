@@ -17,7 +17,9 @@
 .tile.center-tile {
   background-color: rgba(229, 107, 31, 0.8);
 }
-
+.tile.selected {
+  background-color: rgba(252, 208, 44, 0.8);
+}
 
 .tile:hover {
   background-color: rgba(252, 208, 44, 0.8);
