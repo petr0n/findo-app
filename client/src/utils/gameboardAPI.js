@@ -3,11 +3,9 @@ import axios from "axios";
 export default {
 
     //GAMEBORAD
-    //TODO UPDATE GAME
 
     //Start new Game
     createGame: function (gameInfo) {
-        // console.log(gameInfo);
         return axios.post("/api/gameboard", gameInfo);
     },
     // Gets the game with the given id
@@ -21,5 +19,13 @@ export default {
     // Deletes the game with the given id
     deleteGame: function (id) {
         return axios.delete("/api/gameboard/" + id);
+    },
+    // Updates the game with the given id
+    updateGame: function (id) {
+        return axios.put("/api/gameboard/" + id);
+    },
+    // Updates tile to be checked
+    updateGameTile: function (id) {
+        return axios.delete("/api/gameboard/tile/" + id);
     }
 };

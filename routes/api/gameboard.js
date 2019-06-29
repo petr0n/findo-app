@@ -10,5 +10,10 @@ router.route("/")
 router.route("/:id")
   .get(dbGameboardController.findGameById)
   .delete(dbGameboardController.removeGameboard)
+  .put(dbGameboardController.updateGame);
+
+// Matches with "/api/gameboard/tile/:id"
+router.route("/tile/:id")
+.put(dbGameboardController.updateGameTile);
 
 module.exports = router;
