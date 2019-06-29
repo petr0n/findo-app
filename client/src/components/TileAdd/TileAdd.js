@@ -1,8 +1,8 @@
 //IMPORT
 //=======================================================
 import React, { Component } from "react";
-import { AdminWrapper } from  "../AdminWrapper/AdminWrapper";
-import { TileAddBtn } from "../TileAdd/TileAddBtn";
+import AdminWrapper from  "../AdminWrapper";
+import TileAddBtn from "./TileAddBtn";
 import API from "../../utils/tileAPI";
 import "./TileAdd.css";
 //import { Link } from "react-router-dom"
@@ -31,8 +31,7 @@ class TileAdd extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.createTile()
-    this.setState ({
+    API.createTile({
       tileText: this.state.value,
       createdBy: this.state.userName
     })

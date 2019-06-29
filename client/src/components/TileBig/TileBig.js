@@ -8,7 +8,7 @@ class TileBig extends Component {
   constructor(props) {
     super(props);
     this.isActive = this.props.tileBigState === "active" ? true : false;
-    this.tileBigData = this.props.tileBigData
+    this.tileBigData = this.props.tileBigData.tile
   }
 
   

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Game from "./pages/Game";
 import Admin from "./pages/Admin";
 import privacy from "./pages/privacy";
@@ -10,16 +10,16 @@ import './App.css';
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <Switch>
           <Route path="/privacy" exact component={privacy} />
           <Route path="/gameselect" render={() => <Game page={"gameselect"} />} />
           <Route path="/gameboard" render={() => <Game page={"gameboard"} />} />
           <Route path="/login" render={() => <Game page={"login"} />} />
+          <Route path="/admin" component={Admin} />
           <Route path="/" component={Game} />
-          <Route path="/admin" exact component={Admin} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

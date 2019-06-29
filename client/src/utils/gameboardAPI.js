@@ -6,7 +6,6 @@ export default {
 
     //Start new Game
     createGame: function (gameInfo) {
-        // console.log(gameInfo);
         return axios.post("/api/gameboard", gameInfo);
     },
     // Gets the game with the given id

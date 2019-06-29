@@ -1,8 +1,8 @@
 //IMPORT
 //=======================================================
 import React, { Component } from "react";
-import { AdminWrapper } from  "../AdminWrapper/AdminWrapper";
-import { TileEditBtn } from "../TileAdd/TileAddBtn";
+import AdminWrapper from  "../AdminWrapper";
+import TileEditBtn from "./TileAddBtn";
 import API from "../../utils/tileAPI";
 import "./TileEdit.css";
 //import { Link } from "react-router-dom"
@@ -14,7 +14,7 @@ class TileEdit extends Component {
     super(props);
     this.state = {
       tileText: " ",
-    }
+    } 
   }
 
   //handle user input change
@@ -30,9 +30,8 @@ class TileEdit extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.updateTile()
-    this.setState ({
-      tileText: this.state.value,
+    API.updateTile({
+      tileText: this.state.value
     })
     .then((res) => {
       console.log(res);

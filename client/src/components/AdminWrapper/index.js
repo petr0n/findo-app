@@ -1,3 +1,3 @@
 //EXPORT
 //=======================================================
-export { default } from "./Wrapper";
+export { default } from "./AdminWrapper";

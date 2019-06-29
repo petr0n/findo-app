@@ -15,6 +15,7 @@ class Admin extends Component {
     loggedIn: true
   }
   render() {
+    console.log('admin');
     return (
       <Wrapper>
         <Header />
