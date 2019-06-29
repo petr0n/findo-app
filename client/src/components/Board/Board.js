@@ -18,7 +18,9 @@ class Board extends Component {
     return (<TileBig key={"xy"} tileBigState={this.state.tileBigState}  />)
   }
   
-
+  componentDidMount() {
+    this.showtileBig();
+  }
 
   render(){
 
@@ -26,7 +28,8 @@ class Board extends Component {
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}
         {this.state.tileBigState === "active" ?
-        this.showtileBig : ''}
+          this.showtileBig :
+          ""}
       </div>
     );
   }

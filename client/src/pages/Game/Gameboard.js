@@ -44,7 +44,9 @@ class Gameboard extends Component {
 	  	
 
 	handleTileClick = (tileId) => {
-    this.showtileBig(tileId);
+		console.log('handleTileClick: ', tileId)
+		this.setState({  tileBigState: "active" });
+    // this.showtileBig(tileId);
 	}
 
 
@@ -59,7 +61,7 @@ class Gameboard extends Component {
 				if (x ===2 && y === 2) {
 					isCenter = true;
 				}
-				tiles.push(<Tile tileData={boardTiles[ctr]} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
+				tiles.push(<Tile tileData={boardTiles[ctr]} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
 				ctr++;
 			}
 		}
@@ -78,7 +80,7 @@ class Gameboard extends Component {
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
 					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
-				<Board tiles={this.state.tiles} />
+				<Board tiles={this.state.tiles} tileBigState={this.state.tileBigState} />
 			</div>
 		);
 	}
