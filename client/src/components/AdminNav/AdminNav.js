@@ -17,9 +17,9 @@ class AdminNav extends Component {
         return (
             <nav className="admin-nav">
                 <ul>
-                    <li className="suggested" onClick={() => this.props.handleNavClick("suggest")}>Suggested</li>
-                    <li className="view-all" onClick={() => this.props.handleNavClick("view all")}>View All</li>
-                    <li className="add-tile" onClick={() => this.props.handleNavClick("add tile")}>Add Tile</li>
+                    <li className="suggested cursor-pointer" onClick={() => this.props.handleNavClick("suggest")}>Suggested</li>
+                    <li className="view-all cursor-pointer" onClick={() => this.props.handleNavClick("viewall")}>View All</li>
+                    <li className="add-tile cursor-pointer" onClick={() => this.props.handleNavClick("addtile")}>Add Tile</li>
                 </ul>
             </nav>
         )

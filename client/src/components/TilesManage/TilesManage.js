@@ -9,7 +9,7 @@ import "./btnDeny";
 //CONTENT
 //=======================================================
 const TilesManage = () => (
-  <div ></div>
+  <div className="bg-white">Tiles Manage</div>
 );
 
 //EXPORT
