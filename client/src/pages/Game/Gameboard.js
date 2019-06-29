@@ -65,7 +65,7 @@ class Gameboard extends Component {
 	}
 	
 	handleTileBigClick = (tileBigData) => {
-		//console.log('handleTileBigClick tileBigData: ', tileBigData);
+		console.log('handleTileBigClick tileBigData: ', tileBigData);
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
@@ -78,15 +78,15 @@ class Gameboard extends Component {
 		for(let x = 0; x < 5; x++){
 			for(let y = 0; y < 5; y++){
 				isCenter = ctr === 12 ? true : false;
-				let tileData = {
-					...boardTiles[ctr], 
-					selected: false, 
-					coords: x + "," + y
-				}
+				// let tileData = {
+				// 	..., 
+				// 	isChecked: false, 
+				// 	coords: x + "," + y
+				// }
 				let id = "xy"+x+""+y;
 				tiles.push(
 					<Tile 
-						tileData={tileData} 
+						tileData={boardTiles[ctr]} 
 						tileId={id} 
 						key={id} 
 						isCenter={isCenter} 

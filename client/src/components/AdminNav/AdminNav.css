@@ -1,0 +1,18 @@
+.btn {
+    background-color: rgba(255,255,255,.8);
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 5px;
+    color: #e01d60;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px #FECE30;
+    width: 200px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 1s;
+}
+
+.btn:hover {
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 1s;
+}

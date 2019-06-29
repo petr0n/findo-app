@@ -1,22 +1,29 @@
 //IMPORT
 //=======================================================
-import React from "react";
+import React, {Component} from "react";
 import "./AdminNav.css";
-import "./btnAdd";
-import "./btnSuggested";
-import "./btnView";
-//import { Link } from "react-router-dom"
+
 
 //CONTENT
 //=======================================================
-const AdminNav = ({children}) => (
-  <div className="container mx-auto flex px-5">
-    <div className="lg_w-2/12 md_w-1/12 sm_w-0"></div>
-    <div className="lg_w-8/12 md_w-10/12 sm_w-full">
-      {children}
-    </div>
-    <div className="lg_w-2/12 md_w-1/12 sm_w-0"></div>
-  </div>
-);
+class AdminNav extends Component {
+    displayTiles = () => {
+        this.setState({
+            displayTiles: !this.state.displayTiles
+        })
+    }
+
+    render() {
+        return (
+            <nav className="admin-nav">
+                <ul>
+                    <li className="suggested" onClick={() => this.props.handleNavClick("suggest")}>Suggested</li>
+                    <li className="view-all" onClick={() => this.props.handleNavClick("view all")}>View All</li>
+                    <li className="add-tile" onClick={() => this.props.handleNavClick("add tile")}>Add Tile</li>
+                </ul>
+            </nav>
+        )
+    }
+}
 
 export default AdminNav;
