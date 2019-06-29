@@ -30,9 +30,8 @@ class TileEdit extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.updateTile()
-    this.setState ({
-      tileText: this.state.value,
+    API.updateTile({
+      tileText: this.state.value
     })
     .then((res) => {
       console.log(res);
