@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom"; //react router dom
 
-
 //CONTENT
 //=======================================================
 
@@ -9,7 +8,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        placeholder: "This is only a template"
+        apiUrl: this.props.apiUrl
       }
   };
   
@@ -17,6 +16,7 @@ class Login extends Component {
     // add logic
   }
   
+
   // handleStartGame = (e, page) => {
   //   e.preventDefault();
   //   console.log(page);
@@ -28,11 +28,15 @@ class Login extends Component {
   render() {
 
     return (
-      <div className="background mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
+      <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
         <div className="start-text cursor-pointer mb-4">Login</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}><i className="fab fa-facebook-f"></i>FACEBOOK</div>
-        <div className="login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}><i className="fab fa-google"></i>GOOGLE</div>
-          <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("game")}>Continue as Guest</div>
+        <a className="login-text cursor-pointer mb-4" href={`${this.state.apiUrl}/auth/facebook`}><i className="fab fa-facebook-f"></i>FACEBOOK</a>
+        <a className="login-text cursor-pointer mb-4" href={`${this.state.apiUrl}/auth/google`}><i className="fab fa-google"></i>GOOGLE</a>
+        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("gameselect")}>Continue as Guest</div>
+        <br />
+        <br />
+        <a href="/">home</a>
+        <a href="/logout">Logout</a>
       </div>
     );
   }
