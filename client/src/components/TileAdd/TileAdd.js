@@ -31,8 +31,7 @@ class TileAdd extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.createTile()
-    this.setState ({
+    API.createTile({
       tileText: this.state.value,
       createdBy: this.state.userName
     })
