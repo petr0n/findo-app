@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CSSTransition } from 'react-transition-group';
 import "./TileBig.css";
-import Button from "../Buttons";
+import TileBigButton from "../TileBigButton";
 
 
 class TileBig extends Component {
@@ -9,6 +9,10 @@ class TileBig extends Component {
     super(props);
     this.isActive = this.props.tileBigState === "active" ? true : false;
     // this.isActive = true; 
+  }
+
+  handleButtonClick = () => {
+    
   }
 
   render() {
@@ -20,7 +24,7 @@ class TileBig extends Component {
             Someone walking barefoot
           </div>
           <div className="button-wrapper">
-            <Button />
+            <TileBigButton handleTileBigClick={this.props.handleTileBigClick} />
           </div>
         </div>
       </CSSTransition>

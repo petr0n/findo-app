@@ -49,7 +49,11 @@ class Gameboard extends Component {
 		this.setState({ tileBigState: "active" });
 	}
 
-
+	handleTileBigClick = () => {
+		this.setState(prevstate => ({
+      tileBigState: !prevstate.display,
+    }));
+	}
 
 	makeTileGrid = (boardTiles) => {
 		let tiles = [];
@@ -60,7 +64,8 @@ class Gameboard extends Component {
 				isCenter = ctr === 12 ? true : false;
 				let tileData = {
 					...boardTiles[ctr], 
-					selected: false
+					selected: false, 
+					coords: x + "," + y
 				}
 				let id = "xy"+x+""+y;
 				tiles.push(
@@ -88,7 +93,10 @@ class Gameboard extends Component {
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
 					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
 				</div>
-				<Board tiles={this.state.tiles} tileBigState={this.state.tileBigState} />
+				<Board 
+					tiles={this.state.tiles} 
+					tileBigState={this.state.tileBigState} 
+					handleTileBigClick={this.handleTileBigClick} />
 			</div>
 		);
 	}

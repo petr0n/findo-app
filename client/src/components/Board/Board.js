@@ -32,7 +32,11 @@ class Board extends Component {
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}
         {this.props.tileBigState === "active" &&
-          <TileBig key={"xy"} tileData={"asdf"} tileBigState={this.props.tileBigState} />
+          <TileBig 
+            key={"xy"} 
+            tileData={"asdf"} 
+            tileBigState={this.props.tileBigState} 
+            handleTileBigClick={this.props.handleTileBigClick} />
         }
       </div>
     );

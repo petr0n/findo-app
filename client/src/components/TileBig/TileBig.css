@@ -29,7 +29,7 @@
 }
 .clicked-enter-active {
   opacity: 1;
-  transition: opacity 200ms;
+  transition: opacity 1000ms;
 }
 .clicked-exit {
   opacity: 1;
