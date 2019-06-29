@@ -2,14 +2,13 @@
 //=======================================================
 import React from "react";
 import "./AdminNav.css";
+import Buttons from "../..Buttons";
 
 //CONTENT
 //=======================================================
 
-class Board extends Component {
-	// constructor(props) {
-  //   super(props); 
-  // }
+const Add = () => (
+);
 
 
 
