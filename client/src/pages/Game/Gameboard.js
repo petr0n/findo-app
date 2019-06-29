@@ -14,7 +14,8 @@ class Gameboard extends Component {
     this.state = {
 			loading: true,
 			tiles: [],
-			tilesData: []
+			tilesData: [],
+			tileBigState: "inactive"
 		}
 	};
 
@@ -44,9 +45,8 @@ class Gameboard extends Component {
 	  	
 
 	handleTileClick = (tileId) => {
-		console.log('handleTileClick: ', tileId)
-		this.setState({  tileBigState: "active" });
-    // this.showtileBig(tileId);
+		console.log('handleTileClick: ', tileId);
+		this.setState({ tileBigState: "active" });
 	}
 
 
@@ -57,15 +57,19 @@ class Gameboard extends Component {
 		let ctr = 0;
 		for(let x = 0; x < 5; x++){
 			for(let y = 0; y < 5; y++){
-				isCenter = false;
-				if (x ===2 && y === 2) {
-					isCenter = true;
-				}
+				isCenter = ctr === 12 ? true : false;
 				let tileData = {
 					...boardTiles[ctr], 
-					selected: false, 
+					selected: false
 				}
-				tiles.push(<Tile tileData={tileData} tileId={"xy"+x+""+y} key={"xy"+x+""+y} isCenter={isCenter} handleTileClick={this.handleTileClick} />);
+				let id = "xy"+x+""+y;
+				tiles.push(
+					<Tile 
+						tileData={tileData} 
+						tileId={id} 
+						key={id} 
+						isCenter={isCenter} 
+						handleTileClick={this.handleTileClick} />);
 				ctr++;
 			}
 		}

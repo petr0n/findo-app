@@ -1,15 +1,40 @@
 /*  TILEBIG STYLES
 //=======================================================*/
-
-.tileBig {
-  transition: all 1s ease;
-  position: absolute;
+.board-inner {
+  position: relative;
 }
-.tileBig.clicked {
-  background-color: rgba(255,255,255,.8);
+.tileBig {
+  background-color: rgba(255,255,255,1);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
   top: 1px;
   left: 1px;
-  width: 300px;
+  width: 90%;
+  margin: 5%;
+  height: 90%;
   z-index: 10;
+  overflow: hidden;
+}
+/* .tileBig.clicked {
+  transition: tileBigIn 1s linear;
+  width: 90%;
+  margin: 5%;
+  height: 90%;
+  opacity: 1;
+} */
+
+.clicked-enter {
+
+  opacity: 0;
+}
+.clicked-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.clicked-exit {
+  opacity: 1;
+}
+.clicked-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }

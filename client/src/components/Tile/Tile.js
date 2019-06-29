@@ -16,7 +16,7 @@ class Tile extends Component {
 
 
   handleClick = (tileId) => {
-    // do something else? 
+    // do something else?  
     this.props.handleTileClick(tileId);
   }
     
