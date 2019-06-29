@@ -91,9 +91,6 @@ module.exports = {
       };
 window.onload(console.log(db.Tile));
 
-  
-
-
 
 //EXPORT
 //=======================================================

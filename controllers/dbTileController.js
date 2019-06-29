@@ -11,6 +11,21 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findGameboardTiles: function (req, res) {
+        let qry = {
+            isPG: true
+        }
+        if (req.params.gameType) {
+            qry = {
+                isPG: true,
+                isR: true
+            }
+        }
+        db.Tile
+            .find(qry).limit(25)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     findById: function (req, res) {
         db.Tile
             .findById(req.params.id)

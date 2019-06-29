@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { AdminWrapper } from  "../AdminWrapper/AdminWrapper";
 import { TileEditBtn } from "../TileAdd/TileAddBtn";
-import axios from 'axios';
+import API from "../../utils/tileAPI";
 import "./TileEdit.css";
 //import { Link } from "react-router-dom"
 
@@ -13,7 +13,7 @@ class TileEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileText: " "
+      tileText: " ",
     }
   }
 
@@ -29,14 +29,14 @@ class TileEdit extends Component {
   //handle user submit
   //====================================================
   handleFormSubmit = event => {
-    event.preventDefault();//prevent default form submit (reresh page is defaul)
-    const { tileText } = this.state;//get form data out of state
-    axios.put('/', { tileText }) //axios put route 
+    event.preventDefault();//prevent default form submit 
+    API.updateTile()
+    this.setState ({
+      tileText: this.state.value,
+    })
     .then((res) => {
       console.log(res);
-      // probably want to render a new page for an admin, like "TilesManage"
-      //might consider a confirmation of success
-    }) 
+    })
     .catch(function(err) {
       //handle error
       console.log(err);
