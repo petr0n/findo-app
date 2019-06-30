@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-// import "./TilesView.css";
+import "./TilesManage.css";
 // import "./Tile.js";
 // import "./Buttons/btnActivate";
 // import "./Buttons/btnDeactivate";
