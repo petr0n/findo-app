@@ -24,7 +24,10 @@ passport.deserializeUser((id, done) => {
 				console.log('--------------')
 				done(null, user)
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				done(null, null);
+			});
 		// db.User.findOne(
 		// 	{ _id: id },
 		// 	(err, user) => {
