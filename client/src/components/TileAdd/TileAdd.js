@@ -1,21 +1,17 @@
-//IMPORT
-//=======================================================
 import React, { Component } from "react";
-import AdminWrapper from  "../AdminWrapper";
 import TileAddBtn from "./TileAddBtn";
 import tileAPI from "../../utils/tileAPI";
 import "./TileAdd.css";
-//import { Link } from "react-router-dom"
 
-//CONTENT
-//=======================================================
+
 class TileAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileText: " ",
-      createdBy: " "
+      tileText: "",
+      createdBy: ""
     }
+    this.user = this.props.user
   }
 
   //handle user input change
@@ -33,7 +29,7 @@ class TileAdd extends Component {
     event.preventDefault();//prevent default form submit 
     tileAPI.createTile({
       tileText: this.state.value,
-      createdBy: this.state.userName
+      createdBy: this.user
     })
     .then((res) => {
       console.log(res);
@@ -49,33 +45,29 @@ class TileAdd extends Component {
   render() {
     //const { tileText } = this.state;
     return (
-      <AdminWrapper>
-        <div class="w-full max-w-xs">
-          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="tileText">
-              Tile Copy:
-              </label>
-              <input rows="20" col="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
-                id="tileText"
-                type="text-area"
-                name="tileText"
-                value={this.state.tileText}
-                //maxLength="80"
-                userName={this.createdBy}
-                onChange={this.handleInputChange}
-              />
-              <p class="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
-            </div>
-            <TileAddBtn class="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
-              disabled={!(this.state.tileText)} //prevent null submissions
-              onClick={this.handleFormSubmit}
-              >
-              Submit
-            </TileAddBtn>
-          </form>
-        </div>
-      </AdminWrapper>
+      <div className="w-full max-w-xs">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tileText">
+            Tile Copy:
+            </label>
+            <input rows="20" col="5" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
+              id="tileText"
+              type="text-area"
+              name="tileText"
+              value={this.state.tileText}
+              onChange={this.handleInputChange}
+            />
+            <p className="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
+          </div>
+          <TileAddBtn className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
+            disabled={!(this.state.tileText)} //prevent null submissions
+            onClick={this.handleFormSubmit}
+            >
+            Submit
+          </TileAddBtn>
+        </form>
+      </div>
     );
   }
 } // ==> end class TileAdd

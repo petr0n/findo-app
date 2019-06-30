@@ -16,7 +16,7 @@ class Board extends Component {
   // }
 
   render(){
-    console.log('<Board tileBigState', this.props.tileBigState);
+    // console.log('<Board tileBigState', this.props.tileBigState);
     return (
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}
@@ -26,7 +26,7 @@ class Board extends Component {
             tileData={"asdf"} 
             tileBigState={this.props.tileBigState} 
             tileBigData={this.props.tileBigData}
-            handleTileBigClick={this.props.handleTileBigClick} />
+            handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
         }
       </div>
     );

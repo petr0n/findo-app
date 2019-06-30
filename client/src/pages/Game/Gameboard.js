@@ -48,7 +48,7 @@ class Gameboard extends Component {
 	}
 	
 	renderGrid = (boardTiles) => {
-		console.log('boardTiles',boardTiles.data.tiles);
+		// console.log('boardTiles',boardTiles.data.tiles);
 		this.setState({ 
 			tiles: this.makeTileGrid(boardTiles.data.tiles)
 		});
@@ -64,12 +64,13 @@ class Gameboard extends Component {
 		});
 	}
 	
-	handleTileBigClick = (tileBigData) => {
-		console.log('handleTileBigClick tileBigData: ', tileBigData);
+	handleTileBigButtonClick = (tileData) => {
+		console.log('handleTileBigButtonClick data: ', tileData);
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
 	}
+
 
 	makeTileGrid = (boardTiles) => {
 		let tiles = [];
@@ -78,17 +79,11 @@ class Gameboard extends Component {
 		for(let x = 0; x < 5; x++){
 			for(let y = 0; y < 5; y++){
 				isCenter = ctr === 12 ? true : false;
-				// let tileData = {
-				// 	..., 
-				// 	isChecked: false, 
-				// 	coords: x + "," + y
-				// }
-				let id = "xy"+x+""+y;
+				let key = "xy"+x+""+y;
 				tiles.push(
 					<Tile 
 						tileData={boardTiles[ctr]} 
-						tileId={id} 
-						key={id} 
+						key={key} 
 						isCenter={isCenter} 
 						handleTileClick={this.handleTileClick} />);
 				ctr++;
@@ -119,7 +114,7 @@ class Gameboard extends Component {
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 
 					tileBigData={this.state.tileBigData}
-					handleTileBigClick={this.handleTileBigClick} />
+					handleTileBigButtonClick={this.handleTileBigButtonClick} />
 			</div>
 		);
 	}
