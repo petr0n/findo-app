@@ -4,7 +4,7 @@
   "description": "Findo is a scavenger hunt meets bingo app for the MN State Fair",
   "author": "Peter A, Jason F, Julia F, Emily R, Onah B",
   "private": true,
-  "proxy": "http://local.findo.games:3001/",
+  "proxy": "http://localhost:3001/",
   "repository": {
     "type": "git",
     "url": "https://github.com/petr0n/findo-app.git"
