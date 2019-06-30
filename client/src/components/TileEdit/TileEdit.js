@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AdminWrapper from  "../AdminWrapper";
 import TileEditBtn from "./TileAddBtn";
-import API from "../../utils/tileAPI";
+import tileAPI from "../../utils/tileAPI";
 import "./TileEdit.css";
 //import { Link } from "react-router-dom"
 
@@ -17,6 +17,22 @@ class TileEdit extends Component {
     } 
   }
 
+  // display the tile
+  //====================================================
+  componentDidMount() {
+    this.loadTile();
+  }
+
+  // load the tile
+  //====================================================
+  loadTile = () => {
+    tileAPI.getTile()
+    .then(res =>
+      this.setState({ tileText: res.data })
+    )
+    .catch(err => console.log(err));
+  }
+
   //handle user input change
   //====================================================
   handleInputChange = event => {
@@ -24,13 +40,13 @@ class TileEdit extends Component {
     this.setState({  //update the input's state
       [name]: value
     });
-  };// ==> end input change
+  };
 
   //handle user submit
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.updateTile({
+    tileAPI.updateTile({
       tileText: this.state.value
     })
     .then((res) => {
@@ -40,12 +56,12 @@ class TileEdit extends Component {
       //handle error
       console.log(err);
     });
-  };// ==> end form submit 
+  };
 
   //render
   //====================================================
   render() {
-    const { tileText } = this.state;
+    //const { tileText } = this.state;
     return (
       <AdminWrapper>
         <div class="w-full max-w-xs">
@@ -54,20 +70,21 @@ class TileEdit extends Component {
               <label class="block text-gray-700 text-sm font-bold mb-2" for="tileText">
               Tile Copy:
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
+              <input rows="20" col="5"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
                 id="tileText"
                 type="text-area"
                 name="tileText"
-                value={tileText}
+                value={this.state.tileText}
                 //maxLength="80"
                 onChange={this.handleInputChange}
               />
               <p class="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
             </div>
-            <TileEditBtn class="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
+            <TileEditBtn
               disabled={!(this.state.tileText)} //prevent null submissions
               onClick={this.handleFormSubmit}
               >
+              Save
             </TileEditBtn>
           </form>
         </div>
@@ -79,16 +96,3 @@ class TileEdit extends Component {
 //EXPORT
 //=======================================================
 export default TileEdit;
-
-
-//REQUIREMENTS
-//=======================================================
-
-/*
-
-TileEdit (page 14, component to be passed to Admin => Home)
-Description: contains a form to update a tile
-Imports:React
-Contains a handleclickEvent that is a PUT 
-
-*/

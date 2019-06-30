@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AdminWrapper from  "../AdminWrapper";
 import TileAddBtn from "./TileAddBtn";
-import API from "../../utils/tileAPI";
+import tileAPI from "../../utils/tileAPI";
 import "./TileAdd.css";
 //import { Link } from "react-router-dom"
 
@@ -31,7 +31,7 @@ class TileAdd extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.createTile({
+    tileAPI.createTile({
       tileText: this.state.value,
       createdBy: this.state.userName
     })
@@ -47,7 +47,7 @@ class TileAdd extends Component {
   //render
   //====================================================
   render() {
-    const { tileText } = this.state;
+    //const { tileText } = this.state;
     return (
       <AdminWrapper>
         <div class="w-full max-w-xs">
@@ -56,11 +56,11 @@ class TileAdd extends Component {
               <label class="block text-gray-700 text-sm font-bold mb-2" for="tileText">
               Tile Copy:
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
+              <input rows="20" col="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
                 id="tileText"
                 type="text-area"
                 name="tileText"
-                value={tileText}
+                value={this.state.tileText}
                 //maxLength="80"
                 userName={this.createdBy}
                 onChange={this.handleInputChange}
@@ -71,6 +71,7 @@ class TileAdd extends Component {
               disabled={!(this.state.tileText)} //prevent null submissions
               onClick={this.handleFormSubmit}
               >
+              Submit
             </TileAddBtn>
           </form>
         </div>
