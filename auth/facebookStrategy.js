@@ -11,10 +11,12 @@ const strategy = new FacebookStrategy({
 	},
 	function(accessToken, refreshToken, profile, cb) {
 		console.log('fb login', profile);
-		return cb(null, profile);
-		// return cb(profile);
-		// User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    // });
+		let userData = {
+			email: profile.emails[0].value,
+			name: profile.displayName,
+			token: accessToken
+		};
+		return cb(null, userData);
 	}
 );
 module.exports = strategy;
