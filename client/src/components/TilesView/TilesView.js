@@ -2,8 +2,8 @@
 //=======================================================
 import React, { Component } from "react";
 import "./TilesView.css";
-import "../List"; // componenet to hold the list
-import "../ListItem"; // will hold each item/tile in pending tiles list
+// import "../List"; // componenet to hold the list
+// import "../ListItem"; // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
 
 // this page will act like a "page" would, where it will render the UL/LI and buttons
