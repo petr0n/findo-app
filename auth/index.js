@@ -16,7 +16,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
 	console.log('_id', id);
-	if (id){
+	if (id.match(/^[0-9a-fA-F]{24}$/)){
 		db.User.findById(id)
 			.then(user => {
 				console.log('======= DESERILAIZE USER CALLED ======')
