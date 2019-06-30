@@ -17,7 +17,7 @@ router.get('/callback', // url -> /auth/facebook/callback
   (req, res) => {
   console.log('fb callback req.user: ', req.user);
   let userDoc = {
-    socialId: req.body.id,
+    socialId: req.user.id,
     socialType: "FB",
     name: req.user.displayName,
     role: "user", 
