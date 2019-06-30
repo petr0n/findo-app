@@ -17,14 +17,14 @@ passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
 	console.log('_id', id);
 	if (id){
-		db.User.findById({ _id: id })
+		db.User.findById(id)
 			.then(user => {
-					console.log('======= DESERILAIZE USER CALLED ======')
-					console.log(user)
-					console.log('--------------')
-					done(null, user)
-				})
-				.catch(err => console.log(err));
+				console.log('======= DESERILAIZE USER CALLED ======')
+				console.log(user)
+				console.log('--------------')
+				done(null, user)
+			})
+			.catch(err => console.log(err));
 		// db.User.findOne(
 		// 	{ _id: id },
 		// 	(err, user) => {
