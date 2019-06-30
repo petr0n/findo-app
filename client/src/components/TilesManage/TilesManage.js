@@ -3,13 +3,7 @@
 
 import React, {Component} from "react";
 import "./TilesManage.css";
-import "../List"; // componenet to hold the list
-import "../ListItem";  // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
-import "./Tile.js";
-import "./Buttons/btnActivate";
-import "./Buttons/btnDeactivate";
-import ".Buttons/btnEdit";
 
 // this page will act like a "page" would, where it will render the UL/LI and buttons for pending tiles
 //AdminNav will import this component
