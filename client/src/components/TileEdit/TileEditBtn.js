@@ -7,7 +7,7 @@ import React from "react";
 //=======================================================
 
 const FormBtn = props =>
-  <button class="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right" {...props}>
+  <button class="cursor-pointer bg-blue-500 hover_bg-blue-700 text-white font-bold py-2 px-4 rounded float-right" {...props}>
     {props.children}
   </button>;
 

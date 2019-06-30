@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
 import GameSelect from "./GameSelect";
+import SuggestTile from "./SuggestTile"
 import "./main.css";
 
 import {createBrowserHistory} from "history";
@@ -56,6 +57,13 @@ class Game extends Component {
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange} />
         );
+      case "suggesttile":
+          return (
+            <SuggestTile 
+            key={"game"} 
+            gameboardId={this.state.gameboardId} 
+            handlePageChange={this.handlePageChange} />
+          );  
       default:
         return (
           <Login key={"login"} 

@@ -60,7 +60,7 @@ class TileAdd extends Component {
             />
             <p className="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
           </div>
-          <TileAddBtn className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
+          <TileAddBtn className="cursor-pointer bg-blue-500 hover_bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
             disabled={!(this.state.tileText)} //prevent null submissions
             onClick={this.handleFormSubmit}
             >
