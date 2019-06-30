@@ -8,3 +8,5 @@ const winningLogic = () => {
   // is all xy = 04,13,22,31,40
 }
 export default winningLogic;
+=======
+>>>>>>> f7221b2713966ab2cb2118c2e382807584a55d94
