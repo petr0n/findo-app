@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import "./TilesView.css";
-import "./Tile.js";
-import "./Buttons/btnActivate";
-import "./Buttons/btnDeactivate";
-import ".Buttons/btnEdit";
+import "./TilesManage.css";
+// import "./Tile.js";
+// import "./Buttons/btnActivate";
+// import "./Buttons/btnDeactivate";
+// import ".Buttons/btnEdit";
 import tileApi from "../../utils/tileAPI";
-import AdminWrapper from "../AdminWrapper/AdminWrapper";
 
 class TilesManage extends Component {
   constructor(props) {
@@ -27,18 +26,18 @@ class TilesManage extends Component {
       this.loadPendingTiles();
     }
 
-    render() {
-      const { tileText } = this.state;
-      return (
-        <AdminWrapper>
-{/* List goes here */}
-
-        </AdminWrapper>
-      );
-    }
-  } // ==> end class TileAdd
+  render() {
+    // const { tileText } = this.state;
+    return (
+      <div>
+        <h2 className="text-2xl mb-4">Tiles Manage</h2>
+        {/* List goes here */}
+      </div>
+    )
+  }
+} 
   
-  //EXPORT
-  //=======================================================
-  export default TilesManage;
+//EXPORT
+//=======================================================
+export default TilesManage;
 

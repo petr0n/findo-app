@@ -2,59 +2,70 @@ import React, { Component } from "react";
 import TilesManage from "../../components/TilesManage";
 import TilesView from "../../components/TilesView";
 import TileAdd from "../../components/TileAdd";
-import Header from "../../components/Header";
 import AdminNav from "../../components/AdminNav";
-//CONTENT
-//=======================================================
+import "./admin.css";
+
 
 class Home extends Component {
-    state = {
-        placeholder: "This is only a template"
-    }
-    componentDidMount(){
-      // add logic
-      // get new tile suggestion via axios 
-      // loop through and add to <TileEdit />
-    }
-    handleNavClick = (page) => {
-        switch (this.state.currentPage) {
-            case "suggest":
-                return (
-                    <TilesManage
-                        key={"suggest"}
-                        />
-                );
-            case "view":
-                return (
-                    <TilesView
-                        key={"view"}
-                         />
-                );
-            case "add":
-                return (
-                    <TileAdd
-                        key={"add"}
-                         />
-                );
-            default:
-                return (
-                    <TilesManage
-                        key={"suggest"} />
-                );
-        }
-    }
+  state = {
+    currentPage: "tilesmanage",
+    page: ""
+  }
 
-    
-    render() {
+  componentDidMount() {
+    this.setState({ 
+      page: this.renderPage(this.state.pageName)
+    })
+  }
+
+  renderPage = (pageName) => {
+    switch (pageName) {
+      case "tilesmanage":
         return (
-          <div>
-            <h2>Admin Home</h2>
-            <Header />
-            <AdminNav handleNavClick = {this.handleNavClick()} />
-                  {this.this.handleNavClick()}
-          </div>
+          <TilesManage
+            key={"tilesmanage"}
+          />
+        );
+      case "tilesview":
+        return (
+          <TilesView
+            key={"view"}
+          />
+        );
+      case "addtile":
+        return (
+          <TileAdd
+            key={"add"}
+          />
+        );
+      default:
+        return (
+          <TilesManage
+            key={"suggest"} />
         );
     }
+
+  }
+  handleNavClick = (pageName) => {
+    console.log("pageName", pageName)
+    this.setState({
+      page: this.renderPage(pageName)
+    })
+  }
+
+
+  render() {
+    return (
+      <div className="container mx-auto flex px-5">
+        <div className="w-full">
+          <AdminNav handleNavClick={this.handleNavClick} />
+          <div className="page-bg">
+            {this.state.page}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 //EXPORT
