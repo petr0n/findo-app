@@ -40,11 +40,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(cors({
-  "origin": 'http://localhost:3000',
-  "credentials": true
-}));
-
 app.use(routes);
 
 
@@ -77,6 +72,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);
+  console.log(`🌎 ==> API server now on ${process.env.APP_URL}:${PORT}!`);
 });

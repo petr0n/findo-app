@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
+require("dotenv").config();
 
 let db = require("../../models");
 
@@ -23,7 +24,7 @@ router.get('/callback', // url -> /auth/google/callback
 			.then((dbModel) => {
 				console.log(dbModel)
 				// res.json(dbModel);
-				res.redirect("http://localhost:3000?token=" + req.user.token);
+				res.redirect(process.env.APP_URL + "?token=" + req.user.token);
 			})
 			.catch(err => res.status(422).json(err));
 	}
