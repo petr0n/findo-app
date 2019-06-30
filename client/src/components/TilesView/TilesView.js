@@ -1,84 +1,60 @@
-// What this page does:
-// This page displays all tiles
-// Gives an option to Edit a tile (this take you to the tileEdit component)
-// Gives and option to deactivate a tile (this updates the status of the tile)
-// Give an option to activate a tile (this updates the status of the tile) 
-
 //IMPORT
 //=======================================================
-import React, {Component} from "react";
-// import "./TilesView.css";
-// import "./Tile.js";
-// import "./Buttons/btnActivate";
-// import "./Buttons/btnDeactivate";
-// import ".Buttons/btnEdit";
+import React, { Component } from "react";
+import "./TilesView.css";
 import tileApi from "../../utils/tileAPI";
 
+// this page will act like a "page" would, where it will render the UL/LI and buttons
+//AdminNav will import his component
+
+//CONTENT
+//=======================================================
 class TilesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileText: " ",
+      //tileText = [],
+      //status ?
     }
   }
 
-  Button = (use) =>{
-    // use = approve or deny or whatever
-  
+  // load all tiles and save them to the state
+  //====================================================
+  componentDidMount() {
+    this.loadAllTiles();
   }
 
-  loadTiles = () => {
+  // Load all the tiles and set them to the this.state.tiles
+  //====================================================
+  loadAllTiles = () => {
     tileApi.getTiles()
-      .then(res =>
-        this.setState({ tiles: res.data })
+    .then(res =>
+      this.setState({
+        // insert db values to this.state.key
+      })
       )
-      .catch(err => console.log(err));
-  };
+  }
 
-  componentDidMount() {
-    this.loadTiles();
-  };
+  // handleEditTile render the edit tile component
+  //====================================================
 
-    // handleDeactivateClick = () => {
-    //   function updateTile (req, res) {
-    //     return axios.put("/api/tiles/" + id, tileData);
-    //     db.Tile
-    //         .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
-    //     }).catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
-    // handleActivateClick = () => {
-    //   function updateTile (req, res) {
-    //     return axios.put("/api/tiles/" + id, tileData);
-    //     .then(response => {
-    //       console.log(response.data);
-    //     }).catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
-    // handleEditClick = () => {
-    //   render () {
-    //     return (
-    //       tileEdit
-    //     )}
-    //     }).catch((error) => {
-    //       console.log(error);
-    //     };
+  // handleActivate/Deactivate
+  //====================================================
 
+  //render
+  //====================================================
   render() {
-    // const { tileText } = this.state;
+    //const { tileText } = this.state;
     return (
       <div>
         <h2 className="text-2xl">Tiles View</h2>
         {/* List goes here */}
       </div>
-    );
+    )
   }
-} 
+} // ==> end TilesView
 
 //EXPORT
 //=======================================================
 export default TilesView;
+

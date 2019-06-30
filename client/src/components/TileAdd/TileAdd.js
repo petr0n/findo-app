@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TileAddBtn from "./TileAddBtn";
-import API from "../../utils/tileAPI";
+import tileAPI from "../../utils/tileAPI";
 import "./TileAdd.css";
 
 
@@ -27,7 +27,7 @@ class TileAdd extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    API.createTile({
+    tileAPI.createTile({
       tileText: this.state.value,
       createdBy: this.user
     })
@@ -43,26 +43,28 @@ class TileAdd extends Component {
   //render
   //====================================================
   render() {
-    const { tileText } = this.state;
+    //const { tileText } = this.state;
     return (
       <div className="w-full max-w-xs">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tileText">
+            <label className="block text-gray-700 text-sm font-bold mb-2" for="tileText">
             Tile Copy:
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
+            <input rows="20" col="5" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
               id="tileText"
-              type="textarea"
+              type="text-area"
               name="tileText"
-              value={tileText}
-              //maxLength="80"
-              onChange={this.handleInputChange} />
+              value={this.state.tileText}
+              onChange={this.handleInputChange}
+            />
             <p className="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
           </div>
           <TileAddBtn className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
             disabled={!(this.state.tileText)} //prevent null submissions
-            onClick={this.handleFormSubmit}>
+            onClick={this.handleFormSubmit}
+            >
+            Submit
           </TileAddBtn>
         </form>
       </div>
