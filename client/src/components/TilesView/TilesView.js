@@ -57,6 +57,19 @@ class TilesView extends Component {
 
   // handleActivate/Deactivate
   //====================================================
+  // taken from gameboardAPI.js file:
+// handleActivateClick =() => {
+//   updateGameTile = () => { 
+//     tileApi.updateGameTile({ })
+//     .then(res =>
+//       this.setState({
+//         tiles: res.data
+//       })
+//       )
+//       .catch(err => console.log(err));
+    
+//   };
+// }
 
   //render
   //====================================================
