@@ -1,32 +1,43 @@
-//IMPORT
-//=======================================================
-import React from "react";
-import "./TilesManage.css";
-import "./btnApprove";
-import "./btnDeny";
-//import { Link } from "react-router-dom"
+import React, {Component} from "react";
+// import "./TilesView.css";
+// import "./Tile.js";
+// import "./Buttons/btnActivate";
+// import "./Buttons/btnDeactivate";
+// import ".Buttons/btnEdit";
+import tileApi from "../../utils/tileAPI";
 
-//CONTENT
-//=======================================================
-const TilesManage = () => (
-  <div className="bg-white">Tiles Manage</div>
-);
+class TilesManage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tileText: " ",
+    }
+  }
 
+    loadPendingTiles = () => {
+      tileApi.getPendingTiles()
+        .then(res =>
+          this.setState({ tiles: res.data })
+        )
+        .catch(err => console.log(err));
+    };
+
+    componentDidMount() {
+      this.loadPendingTiles();
+    }
+
+  render() {
+    // const { tileText } = this.state;
+    return (
+      <div>
+        <h2 className="text-2xl mb-4">Tiles Manage</h2>
+        {/* List goes here */}
+      </div>
+    )
+  }
+} 
+  
 //EXPORT
 //=======================================================
 export default TilesManage;
 
-//REQUIREMENTS
-//=======================================================
-
-/*
-
-TilesManage (page 11, component to be passed to Admin =>)
-Description: read from db a list of all tiles pending admin approval for use
-Imports: React, btnDeny, btnApprove
-Contains Files: 
-btnDeny = PUT that changes the <value> of status (copy, paste status value)
-btnApprove = PUT that changes the <value> of status (copy, paste status value)
-
-
-*/

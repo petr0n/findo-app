@@ -3,27 +3,30 @@ import TilesManage from "../../components/TilesManage";
 import TilesView from "../../components/TilesView";
 import TileAdd from "../../components/TileAdd";
 import AdminNav from "../../components/AdminNav";
-//CONTENT
-//=======================================================
+import "./admin.css";
+
 
 class Home extends Component {
   state = {
+    currentPage: "tilesmanage",
     page: ""
   }
+
   componentDidMount() {
-    // add logic
-    // get new tile suggestion via axios 
-    // loop through and add to <TileEdit />
+    this.setState({ 
+      page: this.renderPage(this.state.pageName)
+    })
   }
-  renderPage = (page) => {
-    switch (this.state.currentPage) {
-      case "suggest":
+
+  renderPage = (pageName) => {
+    switch (pageName) {
+      case "tilesmanage":
         return (
           <TilesManage
-            key={"suggest"}
+            key={"tilesmanage"}
           />
         );
-      case "viewall":
+      case "tilesview":
         return (
           <TilesView
             key={"view"}
@@ -43,19 +46,23 @@ class Home extends Component {
     }
 
   }
-  handleNavClick = (page) => {
-    console.log(page)
+  handleNavClick = (pageName) => {
+    console.log("pageName", pageName)
     this.setState({
-      page: this.renderPage(page)
+      page: this.renderPage(pageName)
     })
   }
 
 
   render() {
     return (
-      <div>
-        <AdminNav handleNavClick={this.handleNavClick} />
-        {this.state.page ? this.state.page : this.renderPage()}
+      <div className="container mx-auto flex px-5">
+        <div className="w-full">
+          <AdminNav handleNavClick={this.handleNavClick} />
+          <div className="page-bg">
+            {this.state.page}
+          </div>
+        </div>
       </div>
     );
   }

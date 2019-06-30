@@ -1,3 +1,3 @@
 //EXPORT
 //=======================================================
-export { default } from "./AdminWrapper";
+export { default } from "./Buttons";
