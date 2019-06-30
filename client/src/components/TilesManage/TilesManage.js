@@ -5,14 +5,7 @@ import "./TilesManage.css";
 // import "../List"; // componenet to hold the list
 // import "../ListItem";  // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
-<<<<<<< HEAD
-// import "./Tile.js";
-// import "./Buttons/btnActivate";
-// import "./Buttons/btnDeactivate";
-// import ".Buttons/btnEdit";
-=======
 import { List, ListItem } from "../TileList"
->>>>>>> 56c736795698f9b45d5018943ff79b43725d5259
 
 // this page will act like a "page" would, where it will render the UL/LI and buttons
 //AdminNav will import his component
