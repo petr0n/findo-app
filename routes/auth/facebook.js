@@ -18,13 +18,16 @@ router.get('/callback', // url -> /auth/facebook/callback
   console.log('fb callback req.user: ', req.user);
   let userDoc = {
     socialId: req.body.id,
-    socialType: "FB"
+    socialType: "FB",
+    name: req.user.displayName,
+    role: "user", 
+    email: "findo@facebook.com"
   };
   db.User
-    .findOneAndUpdate({ socialId: req.user.id }, {userDoc}, {new: true, upsert: true})
+    .findOneAndUpdate({ socialId: req.user.id }, userDoc, {new: true, upsert: true})
     .then((dbModel) => {
       console.log('dbModel' ,dbModel)
-			res.redirect("https://play.findo.games/gameselect");
+			res.redirect("/gameselect");
     })
     .catch(err => res.status(422).json(err));
 });
