@@ -15,16 +15,18 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
-	console.log('id', id);
-	db.User.findOne(
-		{ socialId: id },
-		(err, user) => {
-			console.log('======= DESERILAIZE USER CALLED ======')
-			console.log(user)
-			console.log('--------------')
-			done(null, user)
-		}
-	);
+	console.log('id', _id);
+	if (_id){
+		db.User.findOne(
+			{ socialId: _id },
+			(err, user) => {
+				console.log('======= DESERILAIZE USER CALLED ======')
+				console.log(user)
+				console.log('--------------')
+				done(null, user)
+			}
+		);
+	}
 	
 })
 
