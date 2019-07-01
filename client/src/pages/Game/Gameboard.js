@@ -15,11 +15,13 @@ class Gameboard extends Component {
 			loading: true,
 			tiles: [],
 			tilesData: [],
-			tileBigState: "inactive"
+			tileBigState: "inactive",
+			user: this.props.user
 		}
 	};
 
 	componentDidMount(){
+		console.log("Gameboard user: ", this.state.user)
 		this.getTiles();
 		// this.renderGrid();
 	}

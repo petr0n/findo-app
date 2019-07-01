@@ -25,23 +25,32 @@ class Game extends Component {
       hasPrevious: true,
       gameboardId: null,
       currentPage: this.props.page ? this.props.page : "login",
-      apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games"
+      apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
+      user: this.props.user ? this.props.user : null
     }
   }
 
   componentDidMount(){
-    console.log('Game this.props.user', this.props.user);
+    console.log('Game this.state.currentPage', this.state.currentPage);
   }
 
 
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
+  handlePageChange = (page, user, gameType) => {
+    this.setState({ 
+      currentPage: page,
+      user: user, 
+      gameType: gameType
+    });
+    console.log('Index this.state.user: ' , this.state.user);
+
     history.push("/" + page);
     this.changePage();
   }
 
+
+
+
   changePage(){
-    // console.log('this.state.currentPage' , this.state.currentPage);
     switch (this.state.currentPage) {
       case "gameselect":
         return (
@@ -49,7 +58,7 @@ class Game extends Component {
           key={"gameselect"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
-          user={this.props.user} />
+          user={this.state.user} />
         );
       case "gameboard":
         return (
@@ -57,23 +66,24 @@ class Game extends Component {
           key={"gameboard"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
-          user={this.props.user} />
+          user={this.state.user}
+          gameType={this.state.gameType} />
         );
       case "suggesttile":
-          return (
-            <SuggestTile 
-            key={"suggest"} 
-            gameboardId={this.state.gameboardId} 
-            handlePageChange={this.handlePageChange}
-            user={this.props.user} />
-          );  
+        return (
+          <SuggestTile 
+          key={"suggest"} 
+          gameboardId={this.state.gameboardId} 
+          handlePageChange={this.handlePageChange}
+          user={this.state.user} />
+        );  
       default:
         return (
           <Login key={"login"} 
           hasPrevious={this.state.hasPrevious} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={this.props.user} />
+          user={this.state.user} />
         );
     }
   }

@@ -36,8 +36,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('this.state.user', this.state.user);
-
     return (
       <BrowserRouter>
         <Switch>

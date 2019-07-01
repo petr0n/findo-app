@@ -57,6 +57,13 @@ const userSeed = [
     role: "user", 
     socialId: "12345g",
     socialType: "FB"
+  },
+  {
+    email: "guest@gmail.com",
+    name: "guest",
+    role: "guest", 
+    socialId: "imaguest1234",
+    socialType: "none"
   }
 ];
 

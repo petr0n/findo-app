@@ -15,8 +15,7 @@ class TileBig extends Component {
   render() {
     console.log('TileBig this.isActive', this.isActive);
     return (
-      <CSSTransition in={this.isActive} timeout={200} classNames="clicked" unmountOnExit>
-        <div className="tileBig flex items-center justify-center text-center">
+      <div className="tileBig flex items-center justify-center text-center">
           <div className="p-5">
             <p className="tileBigText">{this.tileBigData.tileText}</p>
             <div className="button-wrapper">
@@ -26,10 +25,11 @@ class TileBig extends Component {
             </div>
           </div>
         </div>
-      </CSSTransition>
     )  
   }
 };
+      // <CSSTransition in={this.isActive} timeout={200} classNames="clicked" unmountOnExit>
+      // </CSSTransition>
 
 //EXPORT
 //=======================================================

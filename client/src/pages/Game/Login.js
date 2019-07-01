@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom"; //react router dom
+import axios from "axios";
+
+
 
 
 class Login extends Component {
@@ -13,15 +15,33 @@ class Login extends Component {
   componentDidMount(){
     // add logic
   }
-  
 
-  // handleStartGame = (e, page) => {
-  //   e.preventDefault();
-  //   console.log(page);
-  //   this.setState({
-  //     currentPage: page
-  //   })
-  // }
+  logInGuestUser = () => {
+    const userData = {
+      "_id" : "5d1a21002c0c75975a32b01b",
+      "email" : "guest@gmail.com",
+      "name" : "guest",
+      "role" : "guest",
+      "socialId" : "imaguest1234",
+      "socialType" : "none"
+    };
+    axios.get('/auth/user',  {params: {user: userData}} ).then(response => {
+			console.log("Login response.data: ", response.data)
+			if (!!response.data.user) {
+				console.log('GUEST USER')
+				this.setState({
+					loggedIn: true,
+          user: response.data.user
+        });
+        return this.props.handlePageChange("gameselect", this.state.user);
+			} else {
+				this.setState({
+					loggedIn: false,
+          user: null
+				})
+      }
+		})
+  };
 
   loginBtns = () => {
     return (
@@ -34,7 +54,7 @@ class Login extends Component {
             <i className="fab fa-google"></i>GOOGLE
           </a>
         </div>
-        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("gameselect")}>
+        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
           Continue as Guest
         </div>
       </div>
@@ -42,7 +62,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log('this.props.user', this.props.user);
+    console.log('Login this.props.user', this.props.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
         <h1 className="start-text cursor-pointer mb-4">Login</h1>
