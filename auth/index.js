@@ -1,6 +1,7 @@
 const passport = require('passport');
 const FacebookStrategy = require('./facebookStrategy');
 const GoogleStratgey = require('./googleStrategy');
+const mongoose = require("mongoose");
 const db = require("../models");
 
 
