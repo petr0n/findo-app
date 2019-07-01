@@ -16,29 +16,28 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
 	console.log('_id', id);
-	if (id.match(/^[0-9a-fA-F]{24}$/)){
-		db.User.findById(id)
-			.then(user => {
-				console.log('======= DESERILAIZE USER CALLED ======')
-				console.log(user)
-				console.log('--------------')
-				done(null, user)
-			})
-			.catch(err => {
-				console.log(err);
-				done(null, null);
-			});
-		// db.User.findOne(
-		// 	{ _id: id },
-		// 	(err, user) => {
-		// 		console.log('======= DESERILAIZE USER CALLED ======')
-		// 		console.log(user)
-		// 		console.log('--------------')
-		// 		done(null, user)
-		// 	}
-		// );
-	}
-	done(null, null);
+	db.User.findById(id)
+	.then(user => {
+		console.log('======= DESERILAIZE USER CALLED ======')
+		console.log(user)
+		console.log('--------------')
+		done(null, user)
+	})
+	.catch(err => {
+		console.log(err);
+		done(err);
+	});
+	// if (id.match(/^[0-9a-fA-F]{24}$/)){
+	// 	// db.User.findOne(
+	// 	// 	{ _id: id },
+	// 	// 	(err, user) => {
+	// 	// 		console.log('======= DESERILAIZE USER CALLED ======')
+	// 	// 		console.log(user)
+	// 	// 		console.log('--------------')
+	// 	// 		done(null, user)
+	// 	// 	}
+	// 	// );
+	// }
 })
 
 // ==== Register Strategies ====
