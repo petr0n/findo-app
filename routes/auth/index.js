@@ -9,7 +9,8 @@ router.use("/google", gRoutes);
 
 router.get('/user', (req, res, next) => {
 	console.log('===== user!!======')
-	console.log(req.query.user);
+	console.log('req.query.user', req.query.user);
+	console.log('req.user', req.user);
 	if (req.query.user) { //guest user object
 		const userData = JSON.parse(req.query.user);
 		return res.json({ user: userData })
