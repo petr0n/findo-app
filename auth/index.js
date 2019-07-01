@@ -9,19 +9,20 @@ const db = require("../models");
 passport.serializeUser((user, done) => {
 	console.log('=== serialize ... called ===')
 	console.log(user) // the whole raw user object!
-	console.log('---------')
-	done(null, user.id)
+	console.log('---------');
+	done(null, user._id);
 })
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
-	console.log('userid', id);
-	db.User.findById(id)
+	let userId = mongoose.Schema.Types.ObjectId(id);
+	console.log('userId', userId);
+	db.User.findById(userId)
 	.then(user => {
-		console.log('======= DESERIALIZE USER CALLED ======')
-		console.log(user)
-		console.log('--------------')
-		done(null, user)
+		console.log('======= DESERIALIZE USER CALLED ======');
+		console.log(user);
+		console.log('--------------');
+		done(null, user);
 	})
 	.catch(err => {
 		console.log(err);
