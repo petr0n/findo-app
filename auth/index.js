@@ -16,18 +16,18 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
 	let userId = mongoose.Schema.Types.ObjectId(id);
-	console.log('userId', userId);
-	db.User.findById(userId)
-	.then(user => {
-		console.log('======= DESERIALIZE USER CALLED ======');
-		console.log(user);
-		console.log('--------------');
-		done(null, user);
-	})
-	.catch(err => {
-		console.log(err);
-		done(err);
-	});
+	console.log('id', id);
+	db.User.findOne({ socialId: id })
+		.then(user => {
+			console.log('======= DESERIALIZE USER CALLED ======');
+			console.log(user);
+			console.log('--------------');
+			done(null, user);
+		})
+		.catch(err => {
+			console.log(err);
+			done(err);
+		});
 	// if (id.match(/^[0-9a-fA-F]{24}$/)){
 	// 	// db.User.findOne(
 	// 	// 	{ _id: id },
