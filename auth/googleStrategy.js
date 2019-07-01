@@ -11,14 +11,14 @@ const strategy = new GoogleStrategy(
 		callbackURL: process.env.GOOGLE_CALLBACKURL
 	},
 		function (accessToken, refreshToken, profile, done) {
+			console.log('g profile', profile);
 			let userData = {
 				email: profile.emails[0].value,
+				socialId: profile.googleId,
 				name: profile.displayName,
 				token: accessToken
 			};
-			console.log('g userData', userData);
-			done(null, userData);
-			// User.findByGoogleId({ googleId: profile.id });
+			return done(null, userData);
 		}
 );
 module.exports = strategy;

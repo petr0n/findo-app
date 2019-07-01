@@ -17,14 +17,14 @@ router.get('/callback', // url -> /auth/facebook/callback
   (req, res) => {
   console.log('fb callback req.user: ', req.user);
   let userDoc = {
-    socialId: req.user._id,
+    socialId: req.user.socialId,
     socialType: "FB",
     name: req.user.name,
     role: "user", 
     email: req.user.email
   };
   db.User
-    .findOneAndUpdate({ socialId: req.user._id }, userDoc, {new: true, upsert: true})
+    .findOneAndUpdate({ socialId: req.user.socialId }, userDoc, {new: true, upsert: true})
     .then((dbModel) => {
       console.log('dbModel' ,dbModel);
 			res.redirect("/gameselect");
