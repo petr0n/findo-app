@@ -3,14 +3,10 @@
 import React from "react";
 //import { Link } from "react-router-dom"
 
-//CONTENT
+//CONTENT + EXPORT
 //=======================================================
 
-const FormBtn = props =>
+export const SubmitBtn = props =>
   <button {...props}>
     {props.children}
   </button>;
-
-//EXPORT
-//=======================================================
-export default FormBtn;
