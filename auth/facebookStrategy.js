@@ -1,5 +1,5 @@
 const FacebookStrategy = require('passport-facebook').Strategy;
-const User = require("../controllers/dbUserController");
+const User = require("../models/user");
 require("dotenv").config();
 
 
