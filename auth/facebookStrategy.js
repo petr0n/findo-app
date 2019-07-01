@@ -12,6 +12,7 @@ const strategy = new FacebookStrategy({
 	function(accessToken, refreshToken, profile, cb) {
 		console.log('fb login', profile);
 		let userData = {
+			id: profile.id,
 			email: profile.emails[0].value,
 			name: profile.displayName,
 			token: accessToken
