@@ -15,9 +15,9 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
-	let userId = mongoose.Schema.Types.ObjectId(id);
-	console.log('userId', userId);
-	db.User.findOne({ socialId: userId })
+	//let userId = mongoose.Schema.Types.ObjectId(id);
+	console.log('id', id);
+	db.User.findById(id)
 		.then(user => {
 			console.log('======= DESERIALIZE USER CALLED ======');
 			console.log(user);
