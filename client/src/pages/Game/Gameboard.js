@@ -21,7 +21,7 @@ class Gameboard extends Component {
 	};
 
 	componentDidMount(){
-		console.log("Gameboard user: ", this.state.user)
+		console.log("Gameboard user: ", this.props.user)
 		this.getTiles();
 		// this.renderGrid();
 	}

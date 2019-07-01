@@ -14,17 +14,19 @@ class GameSelect extends Component {
   };
   
   componentDidMount(){
-    console.log('GameSelect this.state.user', this.state.user);
+    
   }
   
   handleGameSelect = (gameType) => {
 		this.props.handlePageChange("gameboard", this.state.user, gameType);
-	}
+  }
+  
+
 
 
   render() {
 		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 flex items-center text-center hover_bg-orange-300";
-		// console.log('GameSelect this.state.user', this.state.user);
+		console.log('GameSelect this.state.user', this.state.user);
     return (
       <div>
         <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
