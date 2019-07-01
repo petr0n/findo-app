@@ -8,7 +8,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        apiUrl: this.props.apiUrl
+        apiUrl: this.props.apiUrl,
+        user: this.props.user
       }
   };
   
@@ -26,12 +27,12 @@ class Login extends Component {
       "socialType" : "none"
     };
     axios.get('/auth/user',  {params: {user: userData}} ).then(response => {
-			console.log("Login response.data: ", response.data)
+			console.log("LoginGuestUser response.data: ", response.data)
 			if (!!response.data.user) {
-				console.log('GUEST USER')
+        console.log('GUEST USER');
 				this.setState({
 					loggedIn: true,
-          user: response.data.user
+          user: response.data
         });
         return this.props.handlePageChange("gameselect", this.state.user);
 			} else {
@@ -61,14 +62,25 @@ class Login extends Component {
     )
   }
 
+  loggedInBtns = () => {
+    const userData = this.state.user;
+    return (
+      <div>You are logged in as {userData.user.name}
+        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
+          Go to your game
+        </div>
+      </div> 
+    )
+  }
+
   render() {
-    console.log('Login this.props.user', this.props.user);
+    console.log('Login this.state.user', this.state.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
         <h1 className="start-text cursor-pointer mb-4">Login</h1>
         {
-          this.props.user ?
-          <p>You are logged in as {this.props.user.name}</p> :  
+          this.state.user ?
+          this.loggedInBtns():  
           this.loginBtns() 
         }
         

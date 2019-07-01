@@ -28,7 +28,7 @@ class GameSelect extends Component {
     return (
       <div>
         <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
+					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user)}>Back to Login</div>
 				</div>
         <div className="background mx-auto rounded px-3 py-10 w-full flex items-center justify-center">
           <div className={btnStyle} onClick={() => this.handleGameSelect("isPG")}>Kid Friendly Board</div>
