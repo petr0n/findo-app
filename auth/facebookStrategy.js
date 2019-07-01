@@ -15,9 +15,15 @@ const strategy = new FacebookStrategy({
 			socialId: profile.id,
 			email: profile.emails[0].value,
 			name: profile.displayName,
-			token: accessToken
+			role: "user",
+			socialType: "FB"
 		};
-		return cb(null, userData);
+		User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
+			.then(user => {
+				console.log('fb strategy user: ', user);
+				return cb(null, user);
+			})
+			.catch(err => console.log('fb strategy err: ', err));
 	}
 );
 module.exports = strategy;
