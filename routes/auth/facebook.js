@@ -5,7 +5,7 @@ let db = require("../../models");
 
 
 router.get('/', // url -> /auth/facebook
-  passport.authenticate('facebook'), { scope: ['email'] });
+  passport.authenticate('facebook', { scope: ['email'] }));
 
 
   
