@@ -10,6 +10,7 @@ import './App.css';
 
 class App extends Component {
 
+
   componentDidMount() {
     axios.get('/auth/user').then(response => {
 			console.log(response.data)
@@ -36,7 +37,7 @@ class App extends Component {
             <Route path="/privacy" exact component={privacy} />
             <Route path="/gameselect" render={() => <Game page={"gameselect"} />} />
             <Route path="/gameboard" render={() => <Game page={"gameboard"} />} />
-            <Route path="/login" render={() => <Game page={"login"} />} />
+            <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
             <Route path="/admin" component={Admin} />
             <Route path="/" component={Game} />
           </Switch>
