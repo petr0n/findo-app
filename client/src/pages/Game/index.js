@@ -30,7 +30,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    // console.log('this.props.page', this.props.page);
+    console.log('Game this.props.user', this.props.user);
   }
 
 
@@ -46,7 +46,7 @@ class Game extends Component {
       case "gameselect":
         return (
           <GameSelect 
-          key={"game"} 
+          key={"gameselect"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
           user={this.props.user} />
@@ -54,7 +54,7 @@ class Game extends Component {
       case "gameboard":
         return (
           <Gameboard 
-          key={"game"} 
+          key={"gameboard"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
           user={this.props.user} />
@@ -62,7 +62,7 @@ class Game extends Component {
       case "suggesttile":
           return (
             <SuggestTile 
-            key={"game"} 
+            key={"suggest"} 
             gameboardId={this.state.gameboardId} 
             handlePageChange={this.handlePageChange}
             user={this.props.user} />

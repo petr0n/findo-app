@@ -42,7 +42,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log('this.props.user', this.props.user)
+    console.log('this.props.user', this.props.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
         <h1 className="start-text cursor-pointer mb-4">Login</h1>

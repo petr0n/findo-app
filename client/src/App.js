@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('/auth/user').then(response => {
-			console.log(response.data)
+			console.log("App response.data: ", response.data)
 			if (!!response.data.user) {
 				console.log('THERE IS A USER')
 				this.setState({
@@ -36,6 +36,8 @@ class App extends Component {
   }
 
   render() {
+    console.log('this.state.user', this.state.user);
+
     return (
       <BrowserRouter>
         <Switch>
