@@ -48,28 +48,32 @@ class Game extends Component {
           <GameSelect 
           key={"game"} 
           gameboardId={this.state.gameboardId} 
-          handlePageChange={this.handlePageChange} />
+          handlePageChange={this.handlePageChange}
+          user={this.props.user} />
         );
       case "gameboard":
         return (
           <Gameboard 
           key={"game"} 
           gameboardId={this.state.gameboardId} 
-          handlePageChange={this.handlePageChange} />
+          handlePageChange={this.handlePageChange}
+          user={this.props.user} />
         );
       case "suggesttile":
           return (
             <SuggestTile 
             key={"game"} 
             gameboardId={this.state.gameboardId} 
-            handlePageChange={this.handlePageChange} />
+            handlePageChange={this.handlePageChange}
+            user={this.props.user} />
           );  
       default:
         return (
           <Login key={"login"} 
           hasPrevious={this.state.hasPrevious} 
           handlePageChange={this.handlePageChange}
-          apiUrl={this.state.apiUrl} />
+          apiUrl={this.state.apiUrl}
+          user={this.props.user} />
         );
     }
   }
