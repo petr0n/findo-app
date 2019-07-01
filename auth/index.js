@@ -1,7 +1,7 @@
-    
 const passport = require('passport');
 const FacebookStrategy = require('./facebookStrategy');
 const GoogleStratgey = require('./googleStrategy');
+const mongoose = require("mongoose");
 const db = require("../models");
 
 
@@ -9,24 +9,25 @@ const db = require("../models");
 passport.serializeUser((user, done) => {
 	console.log('=== serialize ... called ===')
 	console.log(user) // the whole raw user object!
-	console.log('---------')
-	done(null, { _id: user._id })
+	console.log('---------');
+	done(null, user._id);
 })
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
-	console.log('id', id);
-	done(null, id)
-	// db.User.findOne(
-	// 	{ socialId: id },
-	// 	(err, user) => {
-	// 		console.log('======= DESERILAIZE USER CALLED ======')
-	// 		console.log(user)
-	// 		console.log('--------------')
-	// 		done(null, user)
-	// 	}
-	// );
-	
+	let userId = mongoose.Types.ObjectId(id);
+	console.log('id', userId);
+	db.User.findById(userId)
+		.then(user => {
+			console.log('======= DESERIALIZE USER CALLED ======');
+			console.log(user);
+			console.log('--------------');
+			done(null, user);
+		})
+		.catch(err => {
+			console.log(err);
+			done(err);
+		});
 })
 
 // ==== Register Strategies ====

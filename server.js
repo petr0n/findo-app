@@ -40,23 +40,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(cors({
-  "origin": 'http://localhost:3000',
-  "credentials": true
-}));
-
 app.use(routes);
 
 
 // If no API routes are hit, send the React app
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"), function(err) {
     if (err) {
       res.status(500).send(err)
     }
   })
 });
 
+
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on http://localhost:${PORT}!`);
+  console.log(`🌎 ==> API server now on ${process.env.APP_URL}:${PORT}!`);
 });

@@ -2,6 +2,8 @@
 //=======================================================
 import React, { Component } from "react";
 import "./TilesManage.css";
+// import "../List"; // componenet to hold the list
+// import "../ListItem";  // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
 import { List, ListItem } from "../TileList"
 

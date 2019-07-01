@@ -15,11 +15,13 @@ class Gameboard extends Component {
 			loading: true,
 			tiles: [],
 			tilesData: [],
-			tileBigState: "inactive"
+			tileBigState: "inactive",
+			user: this.props.user
 		}
 	};
 
 	componentDidMount(){
+		console.log("Gameboard user: ", this.props.user)
 		this.getTiles();
 		// this.renderGrid();
 	}
@@ -108,13 +110,14 @@ class Gameboard extends Component {
 		return (
 			<div className="board mx-auto">
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login")}>Back to Login</div>
+					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user)}>Back to Login</div>
 				</div>
 				<Board 
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 
 					tileBigData={this.state.tileBigData}
-					handleTileBigButtonClick={this.handleTileBigButtonClick} />
+					handleTileBigButtonClick={this.handleTileBigButtonClick}
+					user={this.state.user} />
 			</div>
 		);
 	}

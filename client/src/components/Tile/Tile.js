@@ -12,10 +12,10 @@ class Tile extends Component {
   };
 
   componentDidMount() {
-    console.log('tile mounted');
+    // console.log('tile mounted');
   }
   componentDidUpdate(){
-    console.log('tile updated');
+    // console.log('tile updated');
   }
 
 

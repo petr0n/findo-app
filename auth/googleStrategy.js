@@ -11,14 +11,20 @@ const strategy = new GoogleStrategy(
 		callbackURL: process.env.GOOGLE_CALLBACKURL
 	},
 		function (accessToken, refreshToken, profile, done) {
+			console.log('g profile', profile);
 			let userData = {
 				email: profile.emails[0].value,
+				socialId: profile.googleId,
 				name: profile.displayName,
-				token: accessToken
+				role: "user",
+				socialType: "GG"
 			};
-			console.log('g userData', userData);
-			done(null, userData);
-			// User.findByGoogleId({ googleId: profile.id });
+			User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
+				.then(user => {
+					console.log('gg strategy user: ', user);
+					return cb(null, user);
+				})
+				.catch(err => console.log('gg strategy err: ', err));
 		}
 );
 module.exports = strategy;

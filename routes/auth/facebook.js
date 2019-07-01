@@ -5,7 +5,7 @@ let db = require("../../models");
 
 
 router.get('/', // url -> /auth/facebook
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', { scope: ['email'] }));
 
 
   
@@ -17,18 +17,20 @@ router.get('/callback', // url -> /auth/facebook/callback
   (req, res) => {
   console.log('fb callback req.user: ', req.user);
   let userDoc = {
-    socialId: req.body.id,
-    socialType: "FB"
+    socialId: req.user.socialId,
+    socialType: "FB",
+    name: req.user.name,
+    role: "user", 
+    email: req.user.email
   };
   db.User
-    .findOneAndUpdate({ socialId: req.user.id }, {userDoc}, {new: true, upsert: true})
+    .findOneAndUpdate({ socialId: req.user.socialId }, userDoc, {new: true, upsert: true})
     .then((dbModel) => {
-      console.log('dbModel' ,dbModel)
-      // res.json(dbModel);
-			res.redirect("http://localhost:3000/gameselect");
-			//res.redirect("http://localhost:3000/gameselect?token=" + req.user.id);
+      console.log('dbModel' ,dbModel);
+			res.redirect("/gameselect");
     })
     .catch(err => res.status(422).json(err));
 });
 
 module.exports = router;
+

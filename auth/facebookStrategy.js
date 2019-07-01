@@ -1,5 +1,5 @@
 const FacebookStrategy = require('passport-facebook').Strategy;
-const User = require("../controllers/dbUserController");
+const User = require("../models/user");
 require("dotenv").config();
 
 
@@ -11,10 +11,19 @@ const strategy = new FacebookStrategy({
 	},
 	function(accessToken, refreshToken, profile, cb) {
 		console.log('fb login', profile);
-		return cb(null, profile);
-		// return cb(profile);
-		// User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    // });
+		let userData = {
+			socialId: profile.id,
+			email: profile.emails[0].value,
+			name: profile.displayName,
+			role: "user",
+			socialType: "FB"
+		};
+		User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
+			.then(user => {
+				console.log('fb strategy user: ', user);
+				return cb(null, user);
+			})
+			.catch(err => console.log('fb strategy err: ', err));
 	}
 );
 module.exports = strategy;

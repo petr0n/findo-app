@@ -5,7 +5,7 @@ const Privacy = () => {
   return (
     <div className="trans-white mx-auto p-2">
       <div className="p-4">
-        <a href="/" className="cursor-pointer rounded border-2 border-black p-3 m-3  hover:bg-black hover:text-white ">Back to game</a><br />
+        <a href="/" className="cursor-pointer rounded border-2 border-black p-3 m-3  hover_bg-black hover_text-white ">Back to game</a><br />
       </div>
       <h1>Privacy Policy</h1>
       <p>Effective date: June 21, 2019</p>
