@@ -46,7 +46,7 @@ class Login extends Component {
         <h1 className="start-text cursor-pointer mb-4">Login</h1>
         {
           this.props.user ?
-          <p>You are logged in as `${this.state.user.name}`</p> :  
+          <p>You are logged in as `${this.props.user.name}`</p> :  
           this.loginBtns() 
         }
         <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handlePageChange("gameselect")}>
