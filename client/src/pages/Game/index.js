@@ -25,7 +25,7 @@ class Game extends Component {
       hasPrevious: true,
       gameboardId: null,
       currentPage: this.props.page ? this.props.page : "login",
-      apiUrl: process.env.NODE_ENV === 'development' ? process.env.APP_URL : "https://play.findo.games"
+      apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games"
     }
   }
 

@@ -15,6 +15,6 @@ router.get('/user', (req, res, next) => {
 	} else {
 		return res.json({ user: null })
 	}
-})
+});
 
 module.exports = router;
