@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TileAddBtn from "./TileAddBtn";
+import { TextArea, SubmitBtn } from "../Form";
 import tileAPI from "../../utils/tileAPI";
 import "./TileAdd.css";
 
@@ -9,63 +9,53 @@ class TileAdd extends Component {
     super(props);
     this.state = {
       tileText: "",
-      createdBy: ""
+      createdBy: "5d178f7161ffbf2ff410ca4b"
     }
-    this.user = this.props.user
+    //this.user = this.props.user
+  }
+
+  // test
+  componentDidMount() {
+    console.log("mounted")
   }
 
   //handle user input change
   //====================================================
   handleInputChange = event => {
-    const { name, value } = event.target; //get the value
-    this.setState({  //update the input's state
+    const { name, value } = event.target;
+    this.setState({ 
       [name]: value
     });
-  };// ==> end input change
+  };
 
   //handle user submit
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
     tileAPI.createTile({
-      tileText: this.state.value,
-      createdBy: this.user
+      tileText: this.state.tileText,
+      createdBy: this.state.createdBy
     })
-    .then((res) => {
-      console.log(res);
-    })
-    .catch(function(err) {
-      //handle error
-      console.log(err);
-    });
-  };// ==> end form submit 
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+  };
 
   //render
   //====================================================
   render() {
-    //const { tileText } = this.state;
     return (
       <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tileText">
-            Tile Copy:
-            </label>
-            <input rows="20" col="5" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-auto"
-              id="tileText"
-              type="text-area"
-              name="tileText"
-              value={this.state.tileText}
-              onChange={this.handleInputChange}
+        <form>
+          <TextArea 
+            name="tileText"
+            placeholder="Add tile suggestion here"
+            value={this.state.tileText}
+            onChange={this.handleInputChange}
             />
-            <p className="text-indigo-700 text-xs italic">Character Count 0 (max 80)</p>
-          </div>
-          <TileAddBtn className="cursor-pointer bg-blue-500 hover_bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
-            disabled={!(this.state.tileText)} //prevent null submissions
+          <SubmitBtn
             onClick={this.handleFormSubmit}
-            >
-            Submit
-          </TileAddBtn>
+          >Submit
+          </SubmitBtn>
         </form>
       </div>
     );
