@@ -9,7 +9,13 @@ import axios from "axios";
 import './App.css';
 
 class App extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+      user: null
+    }
+  };
 
   componentDidMount() {
     axios.get('/auth/user').then(response => {
@@ -31,18 +37,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/privacy" exact component={privacy} />
-            <Route path="/gameselect" render={() => <Game page={"gameselect"} />} />
-            <Route path="/gameboard" render={() => <Game page={"gameboard"} />} />
-            <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/" component={Game} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/privacy" exact component={privacy} />
+          <Route path="/gameselect" render={() => <Game page={"gameselect"} user={this.state.user} />} />
+          <Route path="/gameboard" render={() => <Game page={"gameboard"} user={this.state.user} />} />
+          <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/" component={Game} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
