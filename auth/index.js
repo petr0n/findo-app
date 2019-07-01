@@ -28,17 +28,6 @@ passport.deserializeUser((id, done) => {
 			console.log(err);
 			done(err);
 		});
-	// if (id.match(/^[0-9a-fA-F]{24}$/)){
-	// 	// db.User.findOne(
-	// 	// 	{ _id: id },
-	// 	// 	(err, user) => {
-	// 	// 		console.log('======= DESERILAIZE USER CALLED ======')
-	// 	// 		console.log(user)
-	// 	// 		console.log('--------------')
-	// 	// 		done(null, user)
-	// 	// 	}
-	// 	// );
-	// }
 })
 
 // ==== Register Strategies ====
