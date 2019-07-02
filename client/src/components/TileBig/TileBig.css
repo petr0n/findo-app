@@ -17,7 +17,8 @@
 }
 
 .tileBigText {
-  font-size: 6em;
+  font-size: 5rem;
+  line-height: 1.2;
 }
 .clicked-enter {
   opacity: 0;

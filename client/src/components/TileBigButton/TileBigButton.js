@@ -6,7 +6,7 @@ class TileBigButton extends Component {
 
 	handleClick = () => {
 		let data = this.props.tileBigData;
-		data.isChecked = true;
+		// data.isChecked = true;
 		this.props.handleTileBigButtonClick(data);
 	}
 

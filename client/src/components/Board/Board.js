@@ -7,16 +7,10 @@ import TileBig from "../../components/TileBig";
 //=======================================================
 
 class Board extends Component {
-	// constructor(props) {
-  //   super(props); 
-  //   this.state = {
-  //     tileBigState: this.props.tileBigState
-  //     tileBigData: this.
-  //   }
-  // }
+
 
   render(){
-    // console.log('<Board tileBigState', this.props.tileBigState);
+    console.log('<Board this.state.tiles', this.props.tiles);
     return (
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}

@@ -10,24 +10,27 @@ class Tile extends Component {
       tileData: this.props.tileData
     }
   };
-
-  componentDidMount() {
-    // console.log('tile mounted');
-  }
-  componentDidUpdate(){
-    // console.log('tile updated');
-  }
+ 
+  // shouldComponentUpdate(prevState, nextState) {
+  //   return (this.state === nextState)
+  // }
+  // componentDidMount() {
+  // }
+  // componentDidUpdate(){
+  //   console.log('Tile tileData: ', this.state.tileData);
+  //   // console.log('tile updated');
+  // }
 
 
   handleClick = (tileData) => {
-    console.log('handleClick tileData.isChecked: ', tileData.isChecked)  
+    // console.log('handleClick tileData.isChecked: ', tileData.isChecked)  
     this.props.handleTileClick(tileData);
-    this.setState({ tileData: tileData })
+    // this.setState({ tileData: tileData })
   }
     
   render() {
     const tileData = this.state.tileData;
-    console.log('Tile tileData: ', tileData);
+    // console.log('Tile tileData: ', tileData);
     const tileCenterClass = this.props.isCenter && tileData.isChecked ? "center-tile selected" : "";
     const tileSelectedClass = tileData.isChecked ? " selected" : "";
     return (
