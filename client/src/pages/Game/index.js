@@ -33,11 +33,23 @@ class Game extends Component {
     
   }
   
-  showUserBar(){
+  showUserBar(loggedIn){
     const userData = this.state.user;
     return (
       <div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-20 text-xs">
-        Logged in as <span className="font-bold">{userData.user.name}</span>
+          {loggedIn ? 
+            <div className="w-full flex items-center justify-between">
+              <div>
+                Logged in as <span className="font-bold">{userData.user.name}</span>
+              </div>
+              <div>
+                <a href="/" className="mx-3 hover:text-purple-400">Home</a>
+                <a href="/logout" className="mx-3 hover:text-purple-400">Logout</a>
+              </div>
+            </div>
+            : 
+            <div>You are not logged in.</div>
+          }
       </div>
       )
     }
@@ -56,8 +68,6 @@ class Game extends Component {
     history.push("/" + page);
     this.changePage();
   }
-
-
 
 
   changePage(){
@@ -113,11 +123,7 @@ render() {
       >
         {this.changePage()}
       </ReactCSSTransitionGroup>
-      {
-        this.state.loggedIn ?
-        this.showUserBar() :
-        ''
-      }
+      {this.showUserBar(this.state.loggedIn)}
       <Footer />
     </Wrapper>
     );

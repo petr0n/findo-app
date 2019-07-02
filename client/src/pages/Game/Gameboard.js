@@ -94,7 +94,8 @@ class Gameboard extends Component {
 		const newTiles = tilesArr.map((tile) => {
 			if (tile._id === id) {
 				tile.isChecked = tile.isChecked ? false : true;
-				console.log('setTileState tile.isChecked ', tile.isChecked); 
+				// update tile in db too
+				this.updateGameTile(id, tile.isChecked);
 			}
 			return tile;
 		});
@@ -104,9 +105,12 @@ class Gameboard extends Component {
 		});
 	}
 
-	isWinningBoard = () => {
-
+	updateGameTile = (id, isChecked) => {
+		gameboardAPI.updateGameTile(id, isChecked)
+		.then(res => console.log('tile updated', res))
+		.catch(err => console.log(err))
 	}
+
 	
 	render() {
 		if (this.state.loading) {
@@ -114,9 +118,9 @@ class Gameboard extends Component {
 		}
 		return (
 			<div className="board mx-auto">
-				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
+				{/* <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
 					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user, this.state.loggedIn)}>Back to Login</div>
-				</div>
+				</div> */}
 				<Board
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 

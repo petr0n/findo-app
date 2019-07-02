@@ -10,7 +10,7 @@ class Board extends Component {
 
 
   render(){
-    console.log('<Board this.state.tiles', this.props.tiles);
+    // console.log('<Board this.state.tiles', this.props.tiles);
     return (
       <div className="board-inner flex flex-wrap justify-center"> 
         {this.props.tiles}

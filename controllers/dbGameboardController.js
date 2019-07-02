@@ -100,7 +100,7 @@ module.exports = {
     updateGameTile: function(req,res) {
         db.Gameboard
             .findOneAndUpdate({ "tiles._id": req.params.id }, 
-                {"$set": {"tiles.$.isChecked": req.body.isChecked}}, 
+                {"$set": {"tiles.$.isChecked": req.params.isChecked}}, 
                 { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

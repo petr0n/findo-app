@@ -83,11 +83,6 @@ class Login extends Component {
           this.loggedInBtns():  
           this.loginBtns() 
         }
-        
-        <br />
-        <br />
-        <a href="/">home</a>
-        <a href="/logout">Logout</a>
       </div>
     );
   }
