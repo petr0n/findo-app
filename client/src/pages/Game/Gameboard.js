@@ -16,30 +16,23 @@ class Gameboard extends Component {
 			tiles: [],
 			tilesData: [],
 			tileBigState: "inactive",
-			user: this.props.user
+			user: this.props.user,
+			gameType: this.props.gameType
 		}
 	};
 
 	componentDidMount(){
-		console.log("Gameboard user: ", this.props.user)
-		this.getTiles();
+		console.log("Gameboard gameType: ", this.state.gameType)
+		console.log("Gameboard user: ", this.state.user)
+		this.getTiles(this.state.gameType, "");
 		// this.renderGrid();
 	}
 
-	// getTiles = () => {
-	// 	axios.get("/api/tiles/game")
-	// 		.then((result) => { 
-	// 			const boardTiles = result.data;
-	// 			this.setState({ 
-	// 				loading: false,
-	// 				tilesData: this.renderGrid(boardTiles)
-	// 			}) 
-	// 		})
-	// 		.catch(error => { console.error(error); return Promise.reject(error); });
-	// }
 
-	getTiles = () => {
-		gameboardAPI.createGame({ gameType: "PG", userId: "5d16c2a8aa327c8da02bb17a" })
+	getTiles = (gameType, userId) => {
+		let gt = gameType ? gameType : "PG";
+		// let uid = userId ? userId : ;
+		gameboardAPI.createGame({ gameType: gt, userId: "5d16c2a8aa327c8da02bb17a" })
 			.then(res => {
 				this.setState({ 
 					loading: false,
