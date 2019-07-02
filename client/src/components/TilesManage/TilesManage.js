@@ -83,10 +83,10 @@ class TilesManage extends Component {
                     return (
                     <ListItem key={tiles._id}>
                         <div id="listItem">
-                            {tiles.tileText}
+                          {tiles.tileText}
+                          <button id="approve">Approve</button>
+                          <button id="deny">Deny</button>
                         </div>
-                        <button id="approve">Approve</button> 
-                        <button id="deny">Deny</button>
                     </ListItem>
                     );
                 })}

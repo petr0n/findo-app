@@ -86,7 +86,7 @@ class Gameboard extends Component {
 			}
 		}
 		// console.log('t', t);
-		return tiles;
+		return tiles; 
 	}
 
 	setTileState = () => {
