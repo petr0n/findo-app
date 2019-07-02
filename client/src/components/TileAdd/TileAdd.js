@@ -45,7 +45,7 @@ class TileAdd extends Component {
   render() {
     return (
       <div className="w-full max-w-xs">
-        <form>
+        <form className="tile-form">
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"

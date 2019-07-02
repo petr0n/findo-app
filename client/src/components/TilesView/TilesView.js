@@ -81,11 +81,11 @@ class TilesView extends Component {
                 {this.state.tiles.map(tiles => {
                     return (
                     <ListItem key={tiles._id}>
-                        <div>
+                        <div id="listItem">
                             {tiles.tileText}
+                          <button className={tiles.status==="active" ? "deactivate" : "activate"} id="toggle">{tiles.status==="active" ? "Deactivate" : "Activate"}</button>
+                          <button id="edit">Edit Me</button>
                         </div>
-                        <button>Activate/Deactivate</button>
-                        <button>Edit Me</button>
                     </ListItem>
                     );
                 })}

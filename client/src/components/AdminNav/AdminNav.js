@@ -5,11 +5,13 @@ import "./AdminNav.css";
 
 
 class AdminNav extends Component {
-	// displayTiles = () => {
-	// 	this.setState({
-	// 		displayTiles: !this.state.displayTiles
-	// 	})
-	// }
+	state = {activePage : "suggest"};
+
+	handleClick = (pageName, navItem) => {
+		this.props.handleNavClick(pageName);
+		this.setState({activePage: navItem});
+	};
+
 
 	render() {
 		const activeItem = "text-center block border border-orange-500 rounded py-2 px-4 bg-orange-500 hover:bg-orange-700 text-white cursor-pointer";
@@ -18,13 +20,13 @@ class AdminNav extends Component {
 			<nav className="mb-8">
 				<ul className="flex">
 					<li className="flex-1 mr-2">
-						<div className={activeItem} onClick={() => this.props.handleNavClick("tilesmanage")}>Suggested</div>
+						<div className={this.state.activePage === "suggest" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesmanage", "suggest")}>Suggested</div>
 					</li>
 					<li className="flex-1 mr-2">
-						<div className={inactiveItem} onClick={() => this.props.handleNavClick("tilesview")}>View All</div>
+						<div className={this.state.activePage === "view" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesview", "view")}>View All</div>
 					</li>
 					<li className="text-center flex-1">
-						<div className={inactiveItem} onClick={() => this.props.handleNavClick("addtile")}>Add Tile</div>
+						<div className={this.state.activePage === "add" ? activeItem : inactiveItem} onClick={() => this.handleClick("addtile", "add")}>Add Tile</div>
 					</li>
 				</ul>
 			</nav>
