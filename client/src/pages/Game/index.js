@@ -20,8 +20,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: "This is only a template",
-      loggedIn: false,
+      loggedIn: this.props.loggedIn ? this.props.loggedIn : false,
       hasPrevious: true,
       gameboardId: null,
       currentPage: this.props.page ? this.props.page : "login",
@@ -31,16 +30,27 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    console.log('Game this.state.currentPage', this.state.currentPage);
+    
   }
-
-
-  handlePageChange = (page, user, gameType) => {
+  
+  showUserBar(){
+    const userData = this.state.user;
+    return (
+      <div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-20 text-xs">
+        Logged in as <span className="font-bold">{userData.user.name}</span>
+      </div>
+      )
+    }
+    
+    
+  handlePageChange = (page, user, loggedIn, gameType) => {
     this.setState({ 
       currentPage: page,
       user: user, 
-      gameType: gameType
+      gameType: gameType,
+      loggedIn: loggedIn
     });
+    console.log('Index this.state.loggedIn', this.state.loggedIn);
     console.log('Index this.state.user: ' , this.state.user);
 
     history.push("/" + page);
@@ -58,7 +68,8 @@ class Game extends Component {
           key={"gameselect"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
-          user={this.state.user} />
+          user={this.state.user}
+          loggedIn={this.state.loggedIn} />
         );
       case "gameboard":
         return (
@@ -67,6 +78,7 @@ class Game extends Component {
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
           user={this.state.user}
+          loggedIn={this.state.loggedIn}
           gameType={this.state.gameType} />
         );
       case "suggesttile":
@@ -75,6 +87,7 @@ class Game extends Component {
           key={"suggest"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
+          loggedIn={this.state.loggedIn}
           user={this.state.user} />
         );  
       default:
@@ -83,7 +96,8 @@ class Game extends Component {
           hasPrevious={this.state.hasPrevious} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={this.state.user} />
+          user={this.state.user}
+          loggedIn={this.state.loggedIn} />
         );
     }
   }
@@ -99,6 +113,11 @@ render() {
       >
         {this.changePage()}
       </ReactCSSTransitionGroup>
+      {
+        this.state.loggedIn ?
+        this.showUserBar() :
+        ''
+      }
       <Footer />
     </Wrapper>
     );
