@@ -2,8 +2,6 @@
 //=======================================================
 import React, { Component } from "react";
 import "./TilesManage.css";
-// import "../List"; // componenet to hold the list
-// import "../ListItem";  // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
 import { List, ListItem } from "../TileList"
 
@@ -42,51 +40,42 @@ class TilesManage extends Component {
       .catch(err => console.log(err));
   };
 
-  // handleApproveClick
-  // this is still in progress.  need to consult with back end to get exact names of features within the tile 
-  //====================================================
-  // Also add onClickEvent at bottom
-  // className={btnStyle} onClick={() => this.props.handleStatusChange("isActive")}
+handleApproveClick = event => {
+    event.preventDefault();//prevent default form submit 
+    tileApi.createTile({
+      tileText: "",
+      createdBy: "5d178f7161ffbf2ff410ca4b",
+      eventType: this.state.eventType
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
 
-  // handleApproveClick = (approveTile) => {
-  //   console.log("approveTile" , approveTile);
-  //   this.setState({
-  //     approveTile: approveTile,
-  //     status: "active"
-  //   });
-  //   this.props.handleStatusChange("active");
-  // }
-
-  //handleDenyClick
-  // this is still in progress.  need to consult with back end to get exact names of features within the tile 
- //====================================================
-  // Also add onClickEvent at bottom
-  // className={btnStyle} onClick={() => this.props.handleStatusChange("isInactive")}
-
-    // handleDenyClick = (denyTile) => {
-  //   console.log("denyTile" , denyTile);
-  //   this.setState({
-  //     denyTile: denyTile,
-  //     status: "inactive"
-  //   });
-  //   this.props.handleStatusChange("inactive");
-  // }
+  handleDenyClick = event => {
+    event.preventDefault();//prevent default form submit 
+    tileApi.deleteTile({
+      tileText: this.state.tileText,
+      deletedBy: this.state.user
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+  };
 
   //render
   //====================================================
   render() {
     return (
-        <div id="list">
+        <div className="list">
             {this.state.tiles.length ? (
                 <List>
-                {this.state.tiles.map(tiles => {
+                {this.state.tiles.map((tiles, i) => {
                     return (
                     <ListItem key={tiles._id}>
                         <div id="listItem">
-                          {tiles.tileText}
-                          <button id="approve">Approve</button>
-                          <button id="deny">Deny</button>
+                            {tiles.tileText}
                         </div>
+                        <button onClick={this.handleApproveClick} id="approve">Approve</button> 
+                        <button onClick={this.handleDenyClick} id="deny">Deny</button>
                     </ListItem>
                     );
                 })}
@@ -95,9 +84,10 @@ class TilesManage extends Component {
                 <h3>No tiles to display</h3>
             )}
         </div>
+        
     );
   };
-} 
+}
 
 //EXPORT
 //=======================================================
