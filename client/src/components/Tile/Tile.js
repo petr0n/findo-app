@@ -5,40 +5,26 @@ import "./Tile.css";
 class Tile extends Component {
   constructor(props) {
     super(props);
-    //this.isCenter = this.props.isCenter;
     this.state = {
       tileData: this.props.tileData
     }
   };
  
-  // shouldComponentUpdate(prevState, nextState) {
-  //   return (this.state === nextState)
-  // }
-  // componentDidMount() {
-  // }
-  // componentDidUpdate(){
-  //   console.log('Tile tileData: ', this.state.tileData);
-  //   // console.log('tile updated');
-  // }
-
-
   handleClick = (tileData) => {
-    // console.log('handleClick tileData.isChecked: ', tileData.isChecked)  
     this.props.handleTileClick(tileData);
-    // this.setState({ tileData: tileData })
   }
     
   render() {
     const tileData = this.state.tileData;
     // console.log('Tile tileData: ', tileData);
-    const tileCenterClass = this.props.isCenter && tileData.isChecked ? "center-tile selected" : "";
+    const tileCenterClass = this.props.isCenter ? " center-tile" : "";
     const tileSelectedClass = tileData.isChecked ? " selected" : "";
     return (
       <div className="tile-wrapper flex items-center justify-center text-center p-1" onClick={() => this.handleClick(this.props.tileData)}>
         <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded " + tileCenterClass + tileSelectedClass}> 
           {
             this.props.isCenter ?
-            "FREE" : 
+            "FREE SPACE" : 
             tileData.tile.tileText
           }
         </div>

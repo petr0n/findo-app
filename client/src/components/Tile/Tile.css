@@ -22,10 +22,14 @@
   transition: box-shadow 1s;
 }
 
-.tile.center-tile {
+.tile.center-tile.selected {
+  color: white;
+  font-weight: bold;
   background-color: rgba(228, 44, 106, 0.8);
 }
 .tile.selected {
+  color: rgba(50, 6, 74, 1, 1);
+  font-weight: bold;
   background-color: rgba(252, 208, 44, 0.8);
 }
 
