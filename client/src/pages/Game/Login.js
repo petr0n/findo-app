@@ -34,7 +34,7 @@ class Login extends Component {
 					loggedIn: true,
           user: response.data
         });
-        return this.props.handlePageChange("gameselect", this.state.user);
+        return this.props.handlePageChange("gameselect", this.state.user, this.state.loggedIn);
 			} else {
 				this.setState({
 					loggedIn: false,

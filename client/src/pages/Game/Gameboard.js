@@ -14,49 +14,42 @@ class Gameboard extends Component {
     this.state = {
 			loading: true,
 			tiles: [],
+			tilesArr: [],
 			tilesData: [],
 			tileBigState: "inactive",
-			user: this.props.user
+			user: this.props.user,
+			loggedIn: this.props.loggedIn,
+			gameType: this.props.gameType
 		}
+		this.handleTileBigButtonClick = this.handleTileBigButtonClick.bind(this);
 	};
 
 	componentDidMount(){
-		console.log("Gameboard user: ", this.props.user)
-		this.getTiles();
-		// this.renderGrid();
+		// console.log("Gameboard gameType: ", this.state.gameType)
+		// console.log("Gameboard user: ", this.state.user)
+		this.getTiles(this.state.gameType, "");
 	}
 
-	// getTiles = () => {
-	// 	axios.get("/api/tiles/game")
-	// 		.then((result) => { 
-	// 			const boardTiles = result.data;
-	// 			this.setState({ 
-	// 				loading: false,
-	// 				tilesData: this.renderGrid(boardTiles)
-	// 			}) 
-	// 		})
-	// 		.catch(error => { console.error(error); return Promise.reject(error); });
-	// }
-
-	getTiles = () => {
-		gameboardAPI.createGame({ gameType: "PG", userId: "5d16c2a8aa327c8da02bb17a" })
+	getTiles = (gameType, userId) => {
+		let gt = gameType ? gameType : "PG";
+		// let uid = userId ? userId : ;
+		gameboardAPI.createGame({ gameType: gt, userId: "5d16c2a8aa327c8da02bb17a" })
 			.then(res => {
 				this.setState({ 
 					loading: false,
-					tilesData: this.renderGrid(res)
+					tilesData: this.renderGrid(res.data.tiles)
 				}) 
 			})
 			.catch(err => console.log(err))
 	}
 	
 	renderGrid = (boardTiles) => {
-		// console.log('boardTiles',boardTiles.data.tiles);
+		console.log('Gameboard renderGrid boardTiles', boardTiles);
 		this.setState({ 
-			tiles: this.makeTileGrid(boardTiles.data.tiles)
+			tilesArr: boardTiles,
+			tiles: this.makeTileGrid(boardTiles)
 		});
 	}
-
-	  	
 
 	handleTileClick = (tileData) => {
 		this.setState({ 
@@ -67,7 +60,8 @@ class Gameboard extends Component {
 	}
 	
 	handleTileBigButtonClick = (tileData) => {
-		console.log('handleTileBigButtonClick data: ', tileData);
+		console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
+		this.setTileState(this.state.tilesArr, tileData._id);
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
@@ -92,11 +86,22 @@ class Gameboard extends Component {
 			}
 		}
 		// console.log('t', t);
-		return tiles;
+		return tiles; 
 	}
 
-	setTileState = () => {
-
+	setTileState = (tilesArr, id) => {
+		console.log('setTileState run');
+		const newTiles = tilesArr.map((tile) => {
+			if (tile._id === id) {
+				tile.isChecked = tile.isChecked ? false : true;
+				console.log('setTileState tile.isChecked ', tile.isChecked); 
+			}
+			return tile;
+		});
+		this.setState({
+			tilesArr: newTiles,
+			tiles: this.makeTileGrid(newTiles)
+		});
 	}
 
 	isWinningBoard = () => {
@@ -110,14 +115,15 @@ class Gameboard extends Component {
 		return (
 			<div className="board mx-auto">
 				<div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user)}>Back to Login</div>
+					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user, this.state.loggedIn)}>Back to Login</div>
 				</div>
-				<Board 
+				<Board
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 
 					tileBigData={this.state.tileBigData}
 					handleTileBigButtonClick={this.handleTileBigButtonClick}
-					user={this.state.user} />
+					user={this.state.user}
+					loggedIn={this.state.loggedIn} />
 			</div>
 		);
 	}
