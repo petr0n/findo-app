@@ -11,7 +11,7 @@ class TileBigButton extends Component {
 	}
 
 	render() {
-		console.log('TileBigButton data: ', this.props.tileBigData)
+		// console.log('TileBigButton data: ', this.props.tileBigData)
 		return (
 			<div className="cursor-pointer btn rounded mx-auto items-center justify-between mb-2 w-full" 
 			onClick={() => this.handleClick()}>

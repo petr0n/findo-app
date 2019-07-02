@@ -13,7 +13,7 @@ class TileBig extends Component {
 
 
   render() {
-    console.log('TileBig this.isActive', this.isActive);
+    // console.log('TileBig this.isActive', this.isActive);
     return (
       <div className="tileBig flex items-center justify-center text-center">
           <div className="p-5">

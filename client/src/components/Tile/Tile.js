@@ -20,13 +20,14 @@ class Tile extends Component {
 
 
   handleClick = (tileData) => {
-    console.log('handleClick for TileBigClick: ', tileData)  
+    console.log('handleClick tileData.isChecked: ', tileData.isChecked)  
     this.props.handleTileClick(tileData);
+    this.setState({ tileData: tileData })
   }
     
   render() {
     const tileData = this.state.tileData;
-    //console.log('Tile isCenter: ', this.props.isCenter);
+    console.log('Tile tileData: ', tileData);
     const tileCenterClass = this.props.isCenter && tileData.isChecked ? "center-tile selected" : "";
     const tileSelectedClass = tileData.isChecked ? " selected" : "";
     return (

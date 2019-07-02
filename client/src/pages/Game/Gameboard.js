@@ -22,8 +22,8 @@ class Gameboard extends Component {
 	};
 
 	componentDidMount(){
-		console.log("Gameboard gameType: ", this.state.gameType)
-		console.log("Gameboard user: ", this.state.user)
+		// console.log("Gameboard gameType: ", this.state.gameType)
+		// console.log("Gameboard user: ", this.state.user)
 		this.getTiles(this.state.gameType, "");
 		// this.renderGrid();
 	}
@@ -43,13 +43,11 @@ class Gameboard extends Component {
 	}
 	
 	renderGrid = (boardTiles) => {
-		console.log('boardTiles',boardTiles.data.tiles);
+		console.log('boardTiles', boardTiles.data.tiles);
 		this.setState({ 
 			tiles: this.makeTileGrid(boardTiles.data.tiles)
 		});
 	}
-
-	  	
 
 	handleTileClick = (tileData) => {
 		this.setState({ 
@@ -61,7 +59,7 @@ class Gameboard extends Component {
 	
 	handleTileBigButtonClick = (tileData) => {
 		console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
-		this.setTileState(tileData, tileData._id);
+		this.setTileState(this.state.tiles, tileData._id);
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
@@ -89,20 +87,18 @@ class Gameboard extends Component {
 		return tiles; 
 	}
 
-	setTileState = () => {
-		this.setState({
-			"tileData": "dd"
-
+	setTileState = (tiles, id) => {
+		console.log('setTileState run')
+		const newTiles = tiles.map((tile) => {
+			if (tile.props.tileData._id === id) {
+				tile.props.tileData.isChecked = true;
+			}
+			return tile;
 		});
-	// // Update item
-	// this.setState({ "items":this.state.items.map(function(item) {
-	// 	if (item.itemId !== 22) return item;
-	// 	// update item here
 
-	// 	// remember to return item
-	// 	return item
-	// })
-	// });
+		this.setState({
+			tiles: newTiles
+		}, (() => { console.log('tiles', tiles) }));
 	}
 
 	isWinningBoard = () => {
