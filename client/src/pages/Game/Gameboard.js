@@ -43,7 +43,7 @@ class Gameboard extends Component {
 	}
 	
 	renderGrid = (boardTiles) => {
-		// console.log('boardTiles',boardTiles.data.tiles);
+		console.log('boardTiles',boardTiles.data.tiles);
 		this.setState({ 
 			tiles: this.makeTileGrid(boardTiles.data.tiles)
 		});
@@ -60,7 +60,8 @@ class Gameboard extends Component {
 	}
 	
 	handleTileBigButtonClick = (tileData) => {
-		console.log('handleTileBigButtonClick data: ', tileData);
+		console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
+		this.setTileState(tileData, tileData._id);
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
@@ -89,7 +90,19 @@ class Gameboard extends Component {
 	}
 
 	setTileState = () => {
+		this.setState({
+			"tileData": "dd"
 
+		});
+	// // Update item
+	// this.setState({ "items":this.state.items.map(function(item) {
+	// 	if (item.itemId !== 22) return item;
+	// 	// update item here
+
+	// 	// remember to return item
+	// 	return item
+	// })
+	// });
 	}
 
 	isWinningBoard = () => {

@@ -26,17 +26,23 @@ class Tile extends Component {
     
   render() {
     const tileData = this.state.tileData;
-    console.log('Tile isCenter: ', this.props.isCenter);
+    //console.log('Tile isCenter: ', this.props.isCenter);
+    const tileCenterClass = this.props.isCenter && tileData.isChecked ? "center-tile selected" : "";
+    const tileSelectedClass = tileData.isChecked ? " selected" : "";
     return (
       <div className="tile-wrapper flex items-center justify-center text-center p-1" onClick={() => this.handleClick(this.props.tileData)}>
-        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded " + (this.props.isCenter ? 'center-tile' : '') + (tileData.isChecked ? ' selected' : '')}> 
-          {this.props.isCenter ?
+        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded " + tileCenterClass + tileSelectedClass}> 
+          {
+            this.props.isCenter ?
             "FREE" : 
-            tileData.tile.tileText}
+            tileData.tile.tileText
+          }
         </div>
       </div>
     )
   }
 };
+
+/* <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded " + (this.props.isCenter ? 'center-tile' : '') + (tileData.isChecked ? ' selected' : '')}>  */
 
 export default Tile;
