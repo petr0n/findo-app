@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+//import { Redirect } from "react-router-dom";
 import { TextArea, SubmitBtn } from "../Form";
-import tileAPI from "../../utils/tileAPI";
+import tileApi from "../../utils/tileAPI";
 import "./TileAdd.css";
 
 
@@ -9,14 +10,9 @@ class TileAdd extends Component {
     super(props);
     this.state = {
       tileText: "",
-      createdBy: "5d178f7161ffbf2ff410ca4b"
+      createdBy: "5d178f7161ffbf2ff410ca4b",
     }
     //this.user = this.props.user
-  }
-
-  // test
-  componentDidMount() {
-    console.log("mounted")
   }
 
   //handle user input change
@@ -32,13 +28,16 @@ class TileAdd extends Component {
   //====================================================
   handleFormSubmit = event => {
     event.preventDefault();//prevent default form submit 
-    tileAPI.createTile({
+    tileApi.createTile({
       tileText: this.state.tileText,
       createdBy: this.state.createdBy
     })
     .then(res => console.log(res))
     .catch(err => console.log(err));
+    window.location.reload()
   };
+
+
 
   //render
   //====================================================
@@ -76,5 +75,23 @@ TileAdd (page 13, component to be passed to Admin => home)
 Description: contains a form to create a tile by a user
 Imports:React, Buttons
 Contains a clickEvent that is a POST
+
+      redirect: false
+
+  //setRedirect
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  }
+
+  //renderRedirect
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return  <Redirect to='/admin' />
+    }
+  }
+
+  this.renderRedirect()
 
 */
