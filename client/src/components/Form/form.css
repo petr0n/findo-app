@@ -5,20 +5,11 @@
     padding: 10px;
 }
 
-#edit {
-    line-height: 1;
-    padding: 5px;
-    width: 100px;
-    height: 40px;
+.edit-btn {
     background-color: rgba(252, 207, 44, .8);
-    color: black;
-    margin-left: 15px;
-    margin-right: 15px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 1s;
-    font-family: 'Rubik', sans-serif;
-    text-align: center;
-    border-radius: 5px;
-    align-content: right;
-    float: right;
+    color: var(--brand-purple);
+    box-shadow: 3px 3px 3px rgba(50, 6, 74, 0.5);
   }
+.edit-btn:hover {
+    box-shadow: none;
+}

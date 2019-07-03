@@ -46,17 +46,17 @@ class Login extends Component {
 
   loginBtns = () => {
     return (
-      <div>
-        <div className="flex justify-around w-full">
-          <a className="login-text cursor-pointer mb-4 mr-4" href={`${this.state.apiUrl}/auth/facebook`}>
+      <div className="w-full mb-6 text-center">
+        <div className="flex justify-around w-full mb-6">
+          <a className="login-link cursor-pointer p-2 rounded" href={`${this.state.apiUrl}/auth/facebook`}>
             <i className="fab fa-facebook-f"></i>FACEBOOK
           </a>
-          <a className="login-text cursor-pointer mb-4" href={`${this.state.apiUrl}/auth/google`}>
+          <a className="login-link cursor-pointer p-2 rounded" href={`${this.state.apiUrl}/auth/google`}>
             <i className="fab fa-google"></i>GOOGLE
           </a>
         </div>
-        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
-          Continue as Guest
+        <div className="guest-link cursor-pointer my-4 text-center p-2 rounded" onClick={() => this.logInGuestUser()}>
+          Play as Guest
         </div>
       </div>
     )
@@ -76,18 +76,17 @@ class Login extends Component {
   render() {
     console.log('Login this.state.user', this.state.user);
     return (
-      <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-        <h1 className="start-text cursor-pointer mb-4">Login</h1>
+      <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
+        <h1 className="mb-5 text-xl">Login</h1>
         {
           this.state.user ?
           this.loggedInBtns():  
           this.loginBtns() 
         }
-        
-        <br />
-        <br />
-        <a href="/">home</a>
-        <a href="/logout">Logout</a>
+        <div className="how-to">
+          <h4 className="text-lg">HOW TO PLAY</h4>
+          <p className="text-xs">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>
+        </div>
       </div>
     );
   }

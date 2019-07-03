@@ -8,21 +8,42 @@ import "./TileAdd.css";
 class TileAdd extends Component {
   constructor(props) {
     super(props);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       tileText: "",
       createdBy: "5d178f7161ffbf2ff410ca4b",
+      characterCount: this.countCharacters(80),
+      isSubmitDisabled: true,
+      isFormSubmitted: false
     }
     //this.user = this.props.user
+  }
+
+  componentDidMount() {
+    
   }
 
   //handle user input change
   //====================================================
   handleInputChange = event => {
     const { name, value } = event.target;
+    let total = 80 - event.target.value.length;
+    // console.log('this.state.tileText.length', this.state.tileText.length)
+    // console.log('total', total);
+    if (total < 0 || total === 0) {
+      this.setState({ isSubmitDisabled: true });
+    } else {
+      this.setState({ isSubmitDisabled: false });
+    }
     this.setState({ 
-      [name]: value
+      [name]: value,
+      characterCount: this.countCharacters(total)
     });
   };
+  
+  countCharacters = (total) => {
+    return (<p className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</p>);
+  }
 
   //handle user submit
   //====================================================
@@ -32,9 +53,14 @@ class TileAdd extends Component {
       tileText: this.state.tileText,
       createdBy: this.state.createdBy
     })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res);
+      this.setState({
+        isFormSubmitted: true
+      })
+    })
     .catch(err => console.log(err));
-    window.location.reload()
+    // window.location.reload()
   };
 
 
@@ -43,19 +69,22 @@ class TileAdd extends Component {
   //====================================================
   render() {
     return (
-      <div className="w-full max-w-xs">
-        <form className="tile-form">
+      <div className="w-full">
+        {this.state.isFormSubmitted ? 
+        <p>Thanks for your submission.</p> :
+        <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
-          <SubmitBtn
-            onClick={this.handleFormSubmit}
-          >Submit
-          </SubmitBtn>
+          <div className="w-full flex items-center justify-between">
+            {this.state.characterCount}
+            <SubmitBtn isSubmitDisabled={this.state.isSubmitDisabled} />
+          </div>
         </form>
+        }
       </div>
     );
   }

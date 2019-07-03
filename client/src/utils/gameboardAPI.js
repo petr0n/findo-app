@@ -25,7 +25,7 @@ export default {
         return axios.put("/api/gameboard/" + id);
     },
     // Updates tile to be checked
-    updateGameTile: function (id) {
-        return axios.delete("/api/gameboard/tile/" + id);
+    updateGameTile: function (id, isChecked) {
+        return axios.put("/api/gameboard/tile/" + id + "/" + isChecked);
     }
 };

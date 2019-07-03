@@ -4,10 +4,11 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import UserBar from "../../components/UserBar";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
 import GameSelect from "./GameSelect";
-import SuggestTile from "./SuggestTile"
+import SuggestTile from "./SuggestTile";
 import "./main.css";
 
 import {createBrowserHistory} from "history";
@@ -21,8 +22,6 @@ class Game extends Component {
     super(props);
     this.state = {
       loggedIn: this.props.loggedIn ? this.props.loggedIn : false,
-      hasPrevious: true,
-      gameboardId: null,
       currentPage: this.props.page ? this.props.page : "login",
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
       user: this.props.user ? this.props.user : null
@@ -33,14 +32,7 @@ class Game extends Component {
     
   }
   
-  showUserBar(){
-    const userData = this.state.user;
-    return (
-      <div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-20 text-xs">
-        Logged in as <span className="font-bold">{userData.user.name}</span>
-      </div>
-      )
-    }
+
     
     
   handlePageChange = (page, user, loggedIn, gameType) => {
@@ -56,8 +48,6 @@ class Game extends Component {
     history.push("/" + page);
     this.changePage();
   }
-
-
 
 
   changePage(){
@@ -113,11 +103,9 @@ render() {
       >
         {this.changePage()}
       </ReactCSSTransitionGroup>
-      {
-        this.state.loggedIn ?
-        this.showUserBar() :
-        ''
-      }
+      <UserBar 
+        loggedIn={this.state.loggedIn}
+        user={this.state.user} />
       <Footer />
     </Wrapper>
     );

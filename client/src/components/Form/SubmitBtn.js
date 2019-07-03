@@ -6,7 +6,9 @@ import React from "react";
 //CONTENT + EXPORT
 //=======================================================
 
-export const SubmitBtn = props =>
-  <button {...props} id="edit">
-    {props.children}
-  </button>;
+export const SubmitBtn = props => {
+  let disable = props.isSubmitDisabled ? "disabled" : "";
+    return (
+    <input type="submit" className={"edit-btn px-3 py-2 rounded " + (props.isSubmitDisabled ? "disabled-btn": "")} disabled={disable} value="Submit" />
+  );
+}

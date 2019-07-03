@@ -4,15 +4,29 @@ purple:   #32064a   rgba(50, 6, 74, 1)
 orange:   #e56b1f   rgba(229, 107, 31, 1)
 yellow:   #fcd02c   rgba(252, 208, 44, 1)
 red:      #e42c6a   rgba(228, 44, 106, 1)
+
+
+font-family: 'Teko', sans-serif;
+font-family: 'Open Sans', monospace;
 */
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Teko:600&display=swap');
+
+:root {
+  --brand-red: #e42c6a;
+  --brand-purple: #32064a;
+  --brand-orange:  #e56b1f;
+  --brand-yellow: #fcd02c;
+}
 
 body {
   background-image: url('../src/images/pageBG-lg.jpg');
-  background-color: #32064a;
+  background-color: var(--brand-purple);
   background-position: top center;
   background-repeat: no-repeat;
+  font-family: 'Open Sans', monospace;
 }
-
-.trans-white {
-  background-color: rgba(255, 255, 255, 0.8)
+h1, h2, h3, h4, h5 {
+  font-family: 'Teko', sans-serif;
 }
