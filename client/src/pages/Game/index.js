@@ -48,7 +48,14 @@ class Game extends Component {
               </div>
             </div>
             : 
-            <div>You are not logged in.</div>
+            <div className="w-full flex items-center justify-between">
+              <div>
+                You are not logged in.
+              </div>
+              <div>
+                <a href="/" className="mx-3 hover:text-purple-400">Home</a>
+              </div>
+            </div>
           }
       </div>
       )

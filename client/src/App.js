@@ -44,6 +44,7 @@ class App extends Component {
           <Route path="/privacy" exact component={privacy} />
           <Route path="/gameselect" render={() => <Game page={"gameselect"} user={this.state.user} />} />
           <Route path="/gameboard" render={() => <Game page={"gameboard"} user={this.state.user} />} />
+          <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
           <Route path="/admin" component={Admin} />
           <Route path="/" component={Game} />
