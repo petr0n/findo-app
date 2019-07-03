@@ -7,6 +7,6 @@ import React from "react";
 //=======================================================
 
 export const SubmitBtn = props =>
-  <button {...props} id="edit">
+  <button {...props} className="edit-btn px-3 py-2 rounded">
     {props.children}
-  </button>;
+  </button>

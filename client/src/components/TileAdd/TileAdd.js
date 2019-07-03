@@ -34,7 +34,7 @@ class TileAdd extends Component {
     })
     .then(res => console.log(res))
     .catch(err => console.log(err));
-    window.location.reload()
+    // window.location.reload()
   };
 
 
@@ -43,7 +43,7 @@ class TileAdd extends Component {
   //====================================================
   render() {
     return (
-      <div className="w-full max-w-xs">
+      <div className="w-full">
         <form className="tile-form">
           <TextArea 
             name="tileText"

@@ -15,7 +15,11 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now(),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Giant pumpkin",
@@ -24,7 +28,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Butter Sculpture",
@@ -33,7 +39,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-     approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+     approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Selfie Stick",
@@ -42,7 +50,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-     approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Face tattoo",
@@ -51,7 +61,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Triple scroller",
@@ -60,7 +72,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Shirtless guy",
@@ -69,7 +83,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Lady in bikini top",
@@ -78,7 +94,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Lady in full bikini",
@@ -87,7 +105,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Shirt with swearword",
@@ -96,7 +116,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Horse poop",
@@ -105,7 +127,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Cow pie",
@@ -114,7 +138,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Emu",
@@ -123,7 +149,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Footlong hotdog",
@@ -132,7 +160,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Mohawk hairdo",
@@ -141,7 +171,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Pregnant woman smoking",
@@ -150,7 +182,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Someone walking barefoot",
@@ -159,7 +193,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Small person holding a huge stuffed animal",
@@ -168,7 +204,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Political Seed Art",
@@ -177,7 +215,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Mullet",
@@ -186,7 +226,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Face tattoo",
@@ -195,7 +237,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Twins",
@@ -204,7 +248,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Baby in diaper only",
@@ -213,7 +259,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Family in matching shirts",
@@ -222,7 +270,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Farm kid sleeping on farm animal",
@@ -231,7 +281,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Big Pig Balls",
@@ -240,7 +292,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Baby pig",
@@ -249,7 +303,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Baby ducks",
@@ -258,7 +314,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Person wearing a fanny pack",
@@ -267,7 +325,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Non food item on a stick",
@@ -276,7 +336,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Giant parade cow",
@@ -285,7 +347,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Puddle of puke",
@@ -294,7 +358,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "A handshaking politican",
@@ -303,7 +369,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Triple scroller",
@@ -312,7 +380,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Live news show",
@@ -321,7 +391,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Visable thong",
@@ -330,7 +402,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Person taking photos with an iPad",
@@ -339,7 +413,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Person wearing blaze orange",
@@ -348,7 +424,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Man wearing a kilt",
@@ -357,7 +435,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Child on a leash",
@@ -366,7 +446,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Carny missing some teeth",
@@ -375,7 +457,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Someone with an eye patch",
@@ -384,7 +468,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Someone with unbearable body odor",
@@ -393,7 +479,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Someone wearing overalls with no shirt",
@@ -402,7 +490,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Selfie stick",
@@ -411,7 +501,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Double fisting corndogs",
@@ -420,7 +512,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Someone with a yard stick",
@@ -429,7 +523,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Camel toe",
@@ -438,7 +534,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Moose knuckle",
@@ -447,7 +545,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Something real dumb",
@@ -456,7 +556,9 @@ const tileSeed = [
     status: "inactive",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Airbrushed wolf t-shirt",
@@ -465,7 +567,9 @@ const tileSeed = [
     status: "pending",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Giant bunny",
@@ -474,7 +578,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Mustard stained shirt",
@@ -483,7 +589,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Person with painted face",
@@ -492,7 +600,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Mesh shirt",
@@ -501,7 +611,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Man with food in beard",
@@ -510,7 +622,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Person sleeping",
@@ -519,7 +633,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "MN State Fair mascot",
@@ -528,7 +644,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Escaped farm animal",
@@ -537,7 +655,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Clydedales (or draughthorse) pulling ornate coach",
@@ -546,7 +666,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Blue ribbon winning pies",
@@ -555,7 +677,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Really drunk person",
@@ -564,7 +688,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Screaming kids on the giant slide",
@@ -573,7 +699,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Double fisting roasted corn on the cob",
@@ -582,7 +710,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
   {
     tileText: "Big lake sturgeon",
@@ -591,7 +721,9 @@ const tileSeed = [
     status: "active",
     eventType: "MNStateFair",
     createdBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
-    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f")
+    approvedBy: mongoose.Types.ObjectId("5d1a9e0ee74e8974886b698f"),
+    dateCreated: Date.now(),
+    dateUpdated: Date.now()
   },
 ];
 

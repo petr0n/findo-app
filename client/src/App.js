@@ -46,7 +46,7 @@ class App extends Component {
           <Route path="/gameboard" render={() => <Game page={"gameboard"} user={this.state.user} />} />
           <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
-          <Route path="/admin" component={Admin} />
+          <Route path="/admin" render={() => <Admin user={this.state.user} />} />
           <Route path="/" component={Game} />
         </Switch>
       </BrowserRouter>

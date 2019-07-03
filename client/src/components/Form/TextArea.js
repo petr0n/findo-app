@@ -8,6 +8,6 @@ import "./form.css";
 
 export const TextArea = props =>
     <div className="form-group">
-        <textarea className="form-control" maxLength="80"
+        <textarea className="form-control w-full"
         {...props} />
     </div>
