@@ -8,11 +8,13 @@ import "./TileAdd.css";
 class TileAdd extends Component {
   constructor(props) {
     super(props);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       tileText: "",
       createdBy: "5d178f7161ffbf2ff410ca4b",
       characterCount: this.countCharacters(80),
-      isSubmitDisabled: true
+      isSubmitDisabled: true,
+      isFormSubmitted: false
     }
     //this.user = this.props.user
   }
@@ -51,7 +53,12 @@ class TileAdd extends Component {
       tileText: this.state.tileText,
       createdBy: this.state.createdBy
     })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res);
+      this.setState({
+        isFormSubmitted: true
+      })
+    })
     .catch(err => console.log(err));
     // window.location.reload()
   };
@@ -63,7 +70,9 @@ class TileAdd extends Component {
   render() {
     return (
       <div className="w-full">
-        <form className="tile-form">
+        {this.state.isFormSubmitted ? 
+        <p>Thanks for your submission.</p> :
+        <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
@@ -72,9 +81,10 @@ class TileAdd extends Component {
             />
           <div className="w-full flex items-center justify-between">
             {this.state.characterCount}
-            <SubmitBtn isSubmitDisabled={this.state.isSubmitDisabled} onClick={this.handleFormSubmit}>Submit</SubmitBtn>
+            <SubmitBtn isSubmitDisabled={this.state.isSubmitDisabled} />
           </div>
         </form>
+        }
       </div>
     );
   }

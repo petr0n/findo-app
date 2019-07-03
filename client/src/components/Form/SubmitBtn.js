@@ -9,8 +9,6 @@ import React from "react";
 export const SubmitBtn = props => {
   let disable = props.isSubmitDisabled ? "disabled" : "";
     return (
-    <button className={"edit-btn px-3 py-2 rounded " + (props.isSubmitDisabled ? "disabled-btn": "")} disabled={disable}>
-      {props.children}
-    </button>
+    <input type="submit" className={"edit-btn px-3 py-2 rounded " + (props.isSubmitDisabled ? "disabled-btn": "")} disabled={disable} value="Submit" />
   );
 }
