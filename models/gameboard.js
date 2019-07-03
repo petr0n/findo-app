@@ -6,7 +6,7 @@ const gameboardSchema = new Schema({
     ref: "User"}, 
   gameStarted: { type: Date, default: Date.now },
   gameFinished: {type: Date},
-  status: {type: String, required: true, default: "Active"}, //Active or Inactive
+  status: {type: String, required: true, default: "active"}, //active or inactive
   tiles: [
     {tile: {type: Schema.Types.ObjectId, ref: "Tile"}, 
     xPosition: {type: Number, required: true},

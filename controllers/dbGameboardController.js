@@ -8,7 +8,7 @@ module.exports = {
 
 	createGame: function (req, res) {
 		console.log(req.body.gameType);
-		let filter = (req.body.gameType === 'PG') ? { isPG: true, status: "active" } : { isR: true, status: "active" };
+		let filter = (req.body.gameType === 'PG') ? { isPG: true, isR: false, status: "active" } : { status: "active" };
 
 		db.Tile.findRandom(filter, {}, { limit: 24 }, function (err, results) {
 			if (!err) {
