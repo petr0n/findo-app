@@ -11,7 +11,7 @@ class TileAdd extends Component {
     this.state = {
       tileText: "",
       createdBy: "5d178f7161ffbf2ff410ca4b",
-      characterCount: this.countCharacters(0),
+      characterCount: this.countCharacters(80),
       isSubmitDisabled: true
     }
     //this.user = this.props.user
@@ -40,7 +40,7 @@ class TileAdd extends Component {
   };
   
   countCharacters = (total) => {
-    return (<p className="char-ctr text-indigo-700 text-xs italic">Character Count {total} (max 80)</p>);
+    return (<p className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</p>);
   }
 
   //handle user submit

@@ -81,7 +81,9 @@ class TilesView extends Component {
             {this.state.tiles.map(tiles => {
               return (
                 <ListItem key={tiles._id}>
-                  <div>{tiles.tileText}</div>
+                  <div className="break-all pr-2">
+                    {tiles.tileText}
+                  </div>
                   <div className="whitespace-no-wrap">
                     <button
                       className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>

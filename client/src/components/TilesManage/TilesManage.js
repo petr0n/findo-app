@@ -71,10 +71,10 @@ handleApproveClick = event => {
                 {this.state.tiles.map((tiles, i) => {
                     return (
                     <ListItem key={tiles._id}>
-                        <div className="listItem">
+                        <div className="break-all pr-2">
                             {tiles.tileText}
                         </div>
-                        <div>
+                        <div className="whitespace-no-wrap">
                           <button onClick={this.handleApproveClick} className="approve-btn rounded px-2 py-1 mr-4">Approve</button> 
                           <button onClick={this.handleDenyClick} className="deny-btn rounded px-2 py-1">Deny</button>
                         </div>
