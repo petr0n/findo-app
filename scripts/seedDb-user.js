@@ -8,15 +8,14 @@ mongoose.connect(
   { useCreateIndex: true, useNewUrlParser: true }
 );
 
-const userSeed = [
+const userSeed = [ 
   {
     email: "petron@gmail.com",
     name: "Peter Abeln",
     role: "admin", 
     socialId: "12345a",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "juliafercello@gmail.com",
@@ -24,8 +23,7 @@ const userSeed = [
     role: "admin", 
     socialId: "12345b",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "raper003@umn.edu",
@@ -33,8 +31,7 @@ const userSeed = [
     role: "admin", 
     socialId: "12345c",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "jason.fleming@comcast.net",
@@ -42,8 +39,7 @@ const userSeed = [
     role: "admin", 
     socialId: "12345d",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "onahbosen@gmail.com",
@@ -51,8 +47,7 @@ const userSeed = [
     role: "admin", 
     socialId: "12345e",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "samjones@gmail.com",
@@ -60,8 +55,7 @@ const userSeed = [
     role: "user", 
     socialId: "12345f",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "janemoneypenny@gmail.com",
@@ -69,8 +63,7 @@ const userSeed = [
     role: "user", 
     socialId: "12345g",
     socialType: "FB",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   },
   {
     email: "guest@gmail.com",
@@ -78,8 +71,7 @@ const userSeed = [
     role: "guest", 
     socialId: "imaguest1234",
     socialType: "none",
-    dateCreated: Date.now(),
-    dateUpdated: Date.now()
+    dateCreated: Date.now()
   }
 ];
 

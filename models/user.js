@@ -7,8 +7,7 @@ const userSchema = new Schema({
   socialId: {type: String, required: true, unique: true},
   socialType: {type: String, required: true},
   role: {type: String, required: true},
-  dateCreated: { type: Date, default: Date.now },
-  dateUpdated: {type: Date}
+  dateCreated: { type: Date, default: Date.now }
 });
 
 const User = mongoose.model("User", userSchema);

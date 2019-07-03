@@ -16,8 +16,7 @@ const tileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User", required: false
   },
-  dateCreated: { type: Date, default: Date.now },
-  dateUpdated: {type: Date}
+  dateCreated: { type: Date, default: Date.now }
 });
 
 tileSchema.plugin(random);
