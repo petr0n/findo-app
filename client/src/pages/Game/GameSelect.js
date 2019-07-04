@@ -24,7 +24,6 @@ class GameSelect extends Component {
   
 
 
-
   render() {
 		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 flex items-center text-center hover_bg-orange-300";
 		console.log('GameSelect this.state.user', this.state.user);

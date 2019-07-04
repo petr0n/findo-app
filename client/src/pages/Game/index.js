@@ -94,20 +94,22 @@ class Game extends Component {
 
 render() {
   return (
-    <Wrapper>
-      <Header />
-      <ReactCSSTransitionGroup
-        transitionName="fade" 
-        transitionEnterTimeout={1000} 
-        transitionLeaveTimeout={500}
-      >
-        {this.changePage()}
-      </ReactCSSTransitionGroup>
+    <>
+      <Wrapper>
+        <Header />
+        <ReactCSSTransitionGroup
+          transitionName="fade" 
+          transitionEnterTimeout={1000} 
+          transitionLeaveTimeout={500}
+        >
+          {this.changePage()}
+        </ReactCSSTransitionGroup>
+        <Footer />
+      </Wrapper>
       <UserBar 
         loggedIn={this.state.loggedIn}
         user={this.state.user} />
-      <Footer />
-    </Wrapper>
+    </>
     );
   }
 }

@@ -118,9 +118,6 @@ class Gameboard extends Component {
 		}
 		return (
 			<div className="board mx-auto">
-				{/* <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user, this.state.loggedIn)}>Back to Login</div>
-				</div> */}
 				<Board
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 
