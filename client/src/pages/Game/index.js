@@ -9,6 +9,7 @@ import Gameboard from "./Gameboard";
 import Login from "./Login";
 import GameSelect from "./GameSelect";
 import SuggestTile from "./SuggestTile";
+import Winner from "./Winner";
 import "./main.css";
 
 import {createBrowserHistory} from "history";
@@ -79,7 +80,16 @@ class Game extends Component {
           handlePageChange={this.handlePageChange}
           loggedIn={this.state.loggedIn}
           user={this.state.user} />
-        );  
+        );
+        case "winner":
+          return (
+            <Winner 
+            key={"winner"} 
+            gameboardId={this.state.gameboardId} 
+            handlePageChange={this.handlePageChange}
+            loggedIn={this.state.loggedIn}
+            user={this.state.user} />
+          );    
       default:
         return (
           <Login key={"login"} 
