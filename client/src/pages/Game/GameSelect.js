@@ -9,16 +9,17 @@ class GameSelect extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        user: this.props.user
+        user: this.props.user,
+        loggedIn: this.props.loggedIn
       }
   };
   
   componentDidMount(){
-    
+    console.log('GameSelect this.state.loggedIn: ', this.state.loggedIn);
   }
   
   handleGameSelect = (gameType) => {
-		this.props.handlePageChange("gameboard", this.state.user, gameType);
+		this.props.handlePageChange("gameboard", this.state.user, this.props.loggedIn, gameType);
   }
   
 
@@ -29,14 +30,11 @@ class GameSelect extends Component {
 		console.log('GameSelect this.state.user', this.state.user);
     return (
       <div>
-        <div className="background nav-toggle rounded mx-auto items-center justify-between mb-2 w-full">
-					<div className="login-text back cursor-pointer mb-4" onClick={() => this.props.handlePageChange("login", this.state.user)}>Back to Login</div>
-				</div>
         <div className="background mx-auto rounded px-3 py-10 w-full flex items-center justify-center">
-          <div className={btnStyle} onClick={() => this.handleGameSelect("isPG")}>Kid Friendly Board</div>
-          <div className={btnStyle} onClick={() => this.handleGameSelect("isR")}>Adult Style Board</div>
+          <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid Friendly Board</div>
+          <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult Style Board</div>
         </div>
-        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.state.user)}>
+        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.state.user, this.state.loggedIn)}>
           <div className={btnStyle}>Suggest a tile</div>
         </div>
       </div>

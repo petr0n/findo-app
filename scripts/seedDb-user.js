@@ -8,62 +8,70 @@ mongoose.connect(
   { useCreateIndex: true, useNewUrlParser: true }
 );
 
-const userSeed = [
+const userSeed = [ 
   {
     email: "petron@gmail.com",
     name: "Peter Abeln",
     role: "admin", 
     socialId: "12345a",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "juliafercello@gmail.com",
     name: "Julia Fercello",
     role: "admin", 
     socialId: "12345b",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "raper003@umn.edu",
     name: "Emily Raper",
     role: "admin", 
     socialId: "12345c",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "jason.fleming@comcast.net",
     name: "Jason Fleming",
     role: "admin", 
     socialId: "12345d",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "onahbosen@gmail.com",
     name: "Onah Bosen",
     role: "admin", 
     socialId: "12345e",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "samjones@gmail.com",
     name: "Sam Jones",
     role: "user", 
     socialId: "12345f",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "janemoneypenny@gmail.com",
     name: "Jane Moneypenny",
     role: "user", 
     socialId: "12345g",
-    socialType: "FB"
+    socialType: "FB",
+    dateCreated: Date.now()
   },
   {
     email: "guest@gmail.com",
     name: "guest",
     role: "guest", 
     socialId: "imaguest1234",
-    socialType: "none"
+    socialType: "none",
+    dateCreated: Date.now()
   }
 ];
 

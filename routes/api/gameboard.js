@@ -13,7 +13,7 @@ router.route("/:id")
   .put(dbGameboardController.updateGame);
 
 // Matches with "/api/gameboard/tile/:id"
-router.route("/tile/:id")
+router.route("/tile/:id/:isChecked")
 .put(dbGameboardController.updateGameTile);
 
 module.exports = router;

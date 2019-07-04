@@ -15,8 +15,12 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called');
+	console.log('id', id);
 	let userId = mongoose.Types.ObjectId(id);
-	console.log('id', userId);
+	
+	if (!id) {
+		userId = mongoose.Types.ObjectId("5d1a21002c0c75975a32b01b");
+	}
 	db.User.findById(userId)
 		.then(user => {
 			console.log('======= DESERIALIZE USER CALLED ======');

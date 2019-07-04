@@ -11,12 +11,14 @@ module.exports = {
         let rightDiagonal = [];
         let winningBoard = false;
 
+
         db.Gameboard
             .findById(req.params.id)
             .then(dbModel => {
                 // console.log(dbModel)
                 selectedTiles = dbModel.tiles.filter(function (tile) {
                     // console.log(tile.isChecked)
+
                     return tile.isChecked === true;
                 })
 
@@ -29,6 +31,7 @@ module.exports = {
 
                     //filter for y where it is the same as i
                     yTiles = selectedTiles.filter(function (tile) {
+
                         return tile.yPosition === i;
                     });
 

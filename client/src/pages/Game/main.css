@@ -23,19 +23,29 @@
   min-height: 200px;
 }
 
-.start-text, .info-text, .login-text {
-  color: #e01d60;
-  font-family: 'Rubik', sans-serif;
-  text-align: center;
-  text-shadow: 2px 2px #FECE30;
+
+.login-box h1 {
+  color: var(--brand-red);
+  text-transform: uppercase;
 }
 
-.start-text {
-  font-size: 3rem;
+.login-link {
+  color: var(--brand-orange);
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 1px var(--brand-yellow);
+}
+.guest-link {
+  color: var(--brand-orange);
+  display: inline;
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-shadow: 2px 2px 0 var(--brand-yellow);
 }
 
-.login-text {
-  font-size: 1.5rem;
+.login-link:hover, .guest-link:hover {
+  background-color: white;
+  text-shadow: none;
 }
 
 .nav-toggle {
@@ -54,7 +64,6 @@
   margin-right: 12px;
 }
 
-.guest {
-  font-size: 1rem;
+.how-to {
+  color: var(--brand-purple);
 }
-

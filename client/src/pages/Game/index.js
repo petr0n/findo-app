@@ -4,10 +4,11 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import UserBar from "../../components/UserBar";
 import Gameboard from "./Gameboard";
 import Login from "./Login";
 import GameSelect from "./GameSelect";
-import SuggestTile from "./SuggestTile"
+import SuggestTile from "./SuggestTile";
 import "./main.css";
 
 import {createBrowserHistory} from "history";
@@ -20,10 +21,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: "This is only a template",
-      loggedIn: false,
-      hasPrevious: true,
-      gameboardId: null,
+      loggedIn: this.props.loggedIn ? this.props.loggedIn : false,
       currentPage: this.props.page ? this.props.page : "login",
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
       user: this.props.user ? this.props.user : null
@@ -31,23 +29,25 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    console.log('Game this.state.currentPage', this.state.currentPage);
+    
   }
+  
 
-
-  handlePageChange = (page, user, gameType) => {
+    
+    
+  handlePageChange = (page, user, loggedIn, gameType) => {
     this.setState({ 
       currentPage: page,
       user: user, 
-      gameType: gameType
+      gameType: gameType,
+      loggedIn: loggedIn
     });
+    console.log('Index this.state.loggedIn', this.state.loggedIn);
     console.log('Index this.state.user: ' , this.state.user);
 
     history.push("/" + page);
     this.changePage();
   }
-
-
 
 
   changePage(){
@@ -58,7 +58,8 @@ class Game extends Component {
           key={"gameselect"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
-          user={this.state.user} />
+          user={this.state.user}
+          loggedIn={this.state.loggedIn} />
         );
       case "gameboard":
         return (
@@ -67,6 +68,7 @@ class Game extends Component {
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
           user={this.state.user}
+          loggedIn={this.state.loggedIn}
           gameType={this.state.gameType} />
         );
       case "suggesttile":
@@ -75,6 +77,7 @@ class Game extends Component {
           key={"suggest"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
+          loggedIn={this.state.loggedIn}
           user={this.state.user} />
         );  
       default:
@@ -83,7 +86,8 @@ class Game extends Component {
           hasPrevious={this.state.hasPrevious} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={this.state.user} />
+          user={this.state.user}
+          loggedIn={this.state.loggedIn} />
         );
     }
   }
@@ -99,6 +103,9 @@ render() {
       >
         {this.changePage()}
       </ReactCSSTransitionGroup>
+      <UserBar 
+        loggedIn={this.state.loggedIn}
+        user={this.state.user} />
       <Footer />
     </Wrapper>
     );
