@@ -2,78 +2,98 @@
 //=======================================================
 import React, { Component } from "react";
 import "./TilesView.css";
-// import "../List"; // componenet to hold the list
-// import "../ListItem"; // will hold each item/tile in pending tiles list
 import tileApi from "../../utils/tileAPI";
+import { TextArea, SubmitBtn } from "../Form";
 import { List, ListItem } from "../TileList";
 
-// this page will act like a "page" would, where it will render the UL/LI and buttons
-//AdminNav will import his component
-
-//CONTENT
+//CONTENT 
 //=======================================================
 class TilesView extends Component {
   constructor(props) {
     super(props);
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.state = {
-      tiles: []
-      //status ?
-    };
-  }
+      tiles: [],
+      isInEditMode: false,
+      tileEdit: {}
+    }
+  };
 
-  // load all tiles and save them to the state
+  // WHEN THE DOM IS LOADED RENDER ALL TILES
   //====================================================
   componentDidMount() {
     this.loadAllTiles();
-  }
+  };
 
-  // Load all the tiles and set them to the this.state.tiles
+  //FORM INTERACTIONS **************************************************
+
+  //HANDLE INPUT CHANGE
   //====================================================
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({ 
+      [name]: value
+    });
+  };
 
+  //API CALLS **************************************************
+
+  // LOAD ALL TILES
+  //====================================================
   loadAllTiles = () => {
-    tileApi
-      .getTiles({})
-      .then(res =>
-        this.setState({
-          tiles: res.data
-        })
+    tileApi.getTiles({ })
+    .then(res =>
+      this.setState({
+        tiles: res.data
+      })
       )
       .catch(err => console.log(err));
   };
 
-  // handleEditClick
+  // GET TILE BY ID
   //====================================================
-
-  /*
-  editTile = id => {
-      API.updateTile(id)
-      .then(res => this.showEditPage) //needs work
+  getThisTile = (id) => { 
+    console.log(id)
+    tileApi.getTile(id)
+    .then(res => {
+      this.setState({
+        tileEdit: res.data,
+        tileId: res.data._id,
+        isInEditMode: true
+      })
+      console.log('res', res.data)}
+      )
       .catch(err => console.log(err));
   };
 
-   Button click for "render": <btnTileEdit onClick={() => this.(tile._id)} />
-
-     */
-
-  // handleActivate/Deactivate
+  // UPDATE TILE
   //====================================================
-  // taken from gameboardAPI.js file:
-  // handleActivateClick =() => {
-  //   updateGameTile = () => {
-  //     tileApi.updateGameTile({ })
-  //     .then(res =>
-  //       this.setState({
-  //         tiles: res.data
-  //       })
-  //       )
-  //       .catch(err => console.log(err));
+  saveThisTile = (event) => {
+    //console.log(tileText)
+    event.preventDefault();
+    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText})
+    .then(res => {
+      console.log(res)
+      this.setState({
+        isInEditMode: false
+      })
+      this.loadAllTiles()
+      }
+    )
+      .catch(err => console.log(err));
 
-  //   };
-  // }
+  };
 
-  //render
+  // HANDLE ACTIVATE/DEACTIVATE TILE
   //====================================================
-  render() {
+  handleStatusChange = () => {
+  }
+
+  //RENDERING COMPONENTS**************************************************
+
+  //RENDER DEFAULT VIEW
+  //====================================================
+  renderDefaultView = () => {
     return (
       <div className="list">
         {this.state.tiles.length ? (
@@ -89,7 +109,11 @@ class TilesView extends Component {
                       className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>
                       {tiles.status === "active" ? "Deactivate" : "Activate"}
                     </button>
-                    <button className="edit-btn rounded px-2 py-1 mr-4">
+                    <button
+                      onClick={() =>
+                        this.getThisTile(tiles._id)
+                      }
+                      className="edit-btn rounded px-2 py-1 mr-4">
                       Edit <i className="fas fa-pencil-alt" />
                     </button>
                   </div>
@@ -102,8 +126,35 @@ class TilesView extends Component {
         )}
       </div>
     );
+  } // ==> end renderTileEdit
+
+  //RENDER TILE EDIT
+  //====================================================
+  renderTileEdit = (tile) => {
+    //const tile = {tileText: "Jason"}
+    //console.log(tile)
+    return (
+      <div className="w-full max-w-xs">
+        <form className="tile-form" onSubmit={this.saveThisTile}>
+          <TextArea 
+            name="tileText"
+            placeholder="This is not a valid return if null"
+            defaultValue={tile.tileText}
+            onChange={this.handleInputChange}
+            />
+          <SubmitBtn />
+        </form>
+      </div>
+    );
   }
-} // ==> end TilesView
+
+  //CONDITIONALLY RENDER THE COMPONENTS
+  //====================================================
+  render() {
+    return this.state.isInEditMode ? this.renderTileEdit(this.state.tileEdit) : this.renderDefaultView(this.state.tiles)
+  };
+
+} // ==> end class TilesView
 
 //EXPORT
 //=======================================================
