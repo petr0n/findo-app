@@ -24,7 +24,8 @@ router.get('/callback', // url -> /auth/google/callback
 			.then((dbModel) => {
 				console.log(dbModel)
 				// res.json(dbModel);
-				res.redirect(process.env.APP_URL + "?token=" + req.user.token);
+				//res.redirect(process.env.APP_URL + "?token=" + req.user.token);
+				res.redirect("/login");
 			})
 			.catch(err => res.status(422).json(err));
 	}

@@ -30,7 +30,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    
+    // console.log('Index didMount this.props.user: ' , this.props.user);  
   }
   
 
