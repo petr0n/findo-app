@@ -15,7 +15,7 @@ router.get('/callback', // url -> /auth/facebook/callback
     session: true
   }),
   (req, res) => {
-  console.log('fb callback req.user: ', req.user);
+  // console.log('fb callback req.user: ', req.user);
   let userDoc = {
     socialId: req.user.socialId,
     socialType: "FB",
@@ -23,13 +23,13 @@ router.get('/callback', // url -> /auth/facebook/callback
     role: "user", 
     email: req.user.email
   };
-  db.User
-    .findOneAndUpdate({ socialId: req.user.socialId }, userDoc, {new: true, upsert: true})
-    .then((dbModel) => {
-      console.log('dbModel' ,dbModel);
-			res.redirect("/gameselect");
-    })
-    .catch(err => res.status(422).json(err));
+  // db.User
+  //   .findOneAndUpdate({ socialId: req.user.socialId }, userDoc, {new: true, upsert: true})
+  //   .then((dbModel) => {
+  //     console.log('dbModel' ,dbModel);
+	// 		res.redirect("/login");
+  //   })
+  //   .catch(err => res.status(422).json(err));
 });
 
 module.exports = router;

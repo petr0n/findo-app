@@ -2,19 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 
 
-
-
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
         apiUrl: this.props.apiUrl,
-        user: this.props.user
+        // user: this.props.user
       }
   };
   
   componentDidMount(){
-    // add logic
+   
   }
 
   logInGuestUser = () => {
@@ -63,10 +61,10 @@ class Login extends Component {
   }
 
   loggedInBtns = () => {
-    const userData = this.state.user;
+    const userData = this.props.user;
     return (
-      <div>You are logged in as {userData.user.name}
-        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
+      <div>You are logged in as {userData.name}
+        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.props.handleLoadGameClick()}>
           Go to your game
         </div>
       </div> 
@@ -74,12 +72,12 @@ class Login extends Component {
   }
 
   render() {
-    console.log('Login this.state.user', this.state.user);
+    console.log('Login this.props.user', this.props.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
         <h1 className="mb-5 text-xl">Login</h1>
         {
-          this.state.user ?
+          this.props.user ?
           this.loggedInBtns():  
           this.loginBtns() 
         }
