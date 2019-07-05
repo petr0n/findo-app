@@ -16,7 +16,7 @@ router.get('/callback', // url -> /auth/facebook/callback
   }),
   (req, res) => {
   console.log('fb callback req.user: ', req.user);
-  res.redirect(process.env.APP_URL + "/login");
+  res.redirect(process.env.APP_URL + "/gameselect");
   // let userDoc = {
   //   socialId: req.user.socialId,
   //   socialType: "FB",

@@ -14,8 +14,8 @@ export default {
     },
     //GET games for user based on user id and game status
     getGamesByUserAndStatus: function (userId, status) {
-        return axios.get("/api/gameboard/" + userId);
-        //return axios.get("/api/gameboard?userId=" + userId + "&status="+ status);
+        // return axios.get("/api/gameboard/" + userId);
+        return axios.get("/api/gameboard?userId=" + userId + "&status="+ status);
     },
     // Deletes the game with the given id
     deleteGame: function (id) {

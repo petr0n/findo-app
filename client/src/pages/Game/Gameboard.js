@@ -21,30 +21,52 @@ class Gameboard extends Component {
 			user: this.props.user,
 			loggedIn: this.props.loggedIn,
 			gameType: this.props.gameType,
-			gameboardId: "",
+			gameboardId: this.props.gameboardId ? this.props.gameboardId : "",
 			gameWon: false
 		}
 		this.handleTileBigButtonClick = this.handleTileBigButtonClick.bind(this);
 	};
 
 	componentDidMount(){
-		// console.log("Gameboard gameType: ", this.state.gameType)
-		// console.log("Gameboard user: ", this.state.user)
-		this.getTiles(this.state.gameType, "");
+		console.log("Gameboard componentDidMount props gameboardId: ", this.props.gameboardId);
+		console.log("Gameboard componentDidMount gameboardId: ", this.state.gameboardId);
+		if (this.state.user) {
+			this.getTiles(this.state.gameType, this.state.user._id);
+		} else {
+			this.getTiles(this.state.gameType);
+		}
+	}
+
+	getUserGame = (userId) => {
+		 gameboardAPI.getGamesByUserAndStatus(userId, "active")
+		 .then(res => {
+			 console.log('Gameboard getUserGame res: ', res.data);
+			//  if (!res.data) {
+			// 	this.getTiles(this.state.gameType);
+			//  }
+			// this.setState({ 
+			// 	loading: false,
+			// 	tilesData: this.renderGrid(res.data.tiles),
+			// 	gameboardId: res.data._id
+			// }) 
+		})
+		.catch(err => console.log(err));
 	}
 
 	getTiles = (gameType, userId) => {
+
 		let gt = gameType ? gameType : "PG";
 		// let uid = userId ? userId : ;
-		gameboardAPI.createGame({ gameType: gt, userId: "5d16c2a8aa327c8da02bb17a" })
-			.then(res => {
-				this.setState({ 
-					loading: false,
-					tilesData: this.renderGrid(res.data.tiles),
-					gameboardId: res.data._id
-				}) 
-			})
-			.catch(err => console.log(err));
+		gameboardAPI.createGame({ gameType: gt, userId: userId })
+		.then(res => {
+			this.setState({ 
+				loading: false,
+				tilesData: this.renderGrid(res.data.tiles),
+				gameboardId: res.data._id
+			}) 
+		})
+		.catch(err => console.log(err));
+
 	}
 	
 	renderGrid = (boardTiles) => {

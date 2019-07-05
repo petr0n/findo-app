@@ -11,39 +11,48 @@ class GameSelect extends Component {
     super(props);
     this.state = {
         user: this.props.user,
-        loggedIn: this.props.loggedIn
+        loggedIn: this.props.loggedIn,
+        gameboardAPI: ""
       }
   };
   
   componentDidMount(){
     console.log('GameSelect this.state.loggedIn: ', this.state.loggedIn);
-    if (this.props.user){
-      this.getPreviousGame(this.props.user._id);
-    }
+    // if (this.props.user){
+    //   this.getUserGame(this.props.user._id);
+    // }
   }
   
   handleGameSelect = (gameType) => {
 		this.props.handlePageChange("gameboard", this.props.user, this.props.loggedIn, gameType);
   }
-  
-  getPreviousGame = (id) => {
-    gameboardAPI.getGamesByUserAndStatus(id, "active")
-      .then(res => {
-        console.log('GameSelect getPreviousGame: ', res);
-        this.setState({ 
-          gameboardId: res.data._id
-        }) 
-      })
-      .catch(err => console.log(err));
-  }
 
+  getUserGame = (userId) => {
+    gameboardAPI.getGamesByUserAndStatus(userId, "active")
+    .then(res => {
+      console.log('GameSelect getUserGame res: ', res.data[0]._id);
+      if (res.data[0]) {
+       this.setState({ 
+         gameboardId: res.data[0]._id
+        }) 
+      }
+   })
+   .catch(err => console.log(err));
+ }
+  
   selectPreviousGame = () => {
-    const userData = this.state.user;
+    const userData = this.props.user;
+    this.getUserGame(userData._id); 
+    console.log('GameSelect gameboardId: ', this.state.gameboardId);
+
     return (
-      <div>You are logged in as {userData.user.name}
-        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
-          Go to your game
-        </div>
+      <div>Welcome back {userData.name}!! 
+        {this.state.gameboardId ? 
+        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.handleGameSelect()}>
+          Finish your last game <i className="fas"></i>
+        </div> : 
+        <div>No previous game</div>
+        }
       </div> 
     )
   }
@@ -54,10 +63,13 @@ class GameSelect extends Component {
 		console.log('GameSelect this.props.user', this.props.user);
     return (
       <div>
-        <div className="background mx-auto rounded px-3 py-10 w-full flex items-center justify-center">
-          {this.selectPreviousGame}
-          <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid Friendly Board</div>
-          <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult Style Board</div>
+        <div className="background mx-auto rounded px-3 py-10 text-center">
+          {this.props.user ? this.selectPreviousGame() : ""}
+          <div className="w-full flex items-center justify-center">
+
+            <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid Friendly Board</div>
+            <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult Style Board</div>
+          </div>
         </div>
         <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user, this.props.loggedIn)}>
           <div className={btnStyle}>Suggest a tile</div>

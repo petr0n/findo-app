@@ -22,7 +22,7 @@ router.get('/callback', // url -> /auth/google/callback
 		// 	email: req.user.email
 		// }; 
 		// console.log('gg callback userDoc: ', userDoc);
-		res.redirect(process.env.APP_URL + "/login");
+		res.redirect(process.env.APP_URL + "/gameselect");
 	}
 );
 
