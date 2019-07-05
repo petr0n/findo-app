@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import gameboardAPI from "../../utils/gameboardAPI"
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
@@ -26,16 +27,14 @@ class Game extends Component {
       loggedIn: this.props.loggedIn ? this.props.loggedIn : false,
       currentPage: this.props.page ? this.props.page : "login",
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
-      user: this.props.user ? this.props.user : null
+      gameboardId: ""
+      // user: this.props.user ? this.props.user : null
     }
   }
 
   componentDidMount(){
-    
+    console.log('Index componentDidMount this.state: ' , this.state);  
   }
-  
-
-    
     
   handlePageChange = (page, user, loggedIn, gameType) => {
     this.setState({ 
@@ -44,43 +43,55 @@ class Game extends Component {
       gameType: gameType,
       loggedIn: loggedIn
     });
-    console.log('Index this.state.loggedIn', this.state.loggedIn);
-    console.log('Index this.state.user: ' , this.state.user);
+    // console.log('Index this.state.loggedIn', this.state.loggedIn);
+    // console.log('Index this.state.user: ' , this.state.user);
 
     history.push("/" + page);
     this.changePage();
   }
 
+  handleLoadGameClick = () => {
+    let userId = this.props.user._id;
+    gameboardAPI.getGamesByUserAndStatus(userId)
+      .then(res => {
+        console.log(res);
+        // this.setState({
+        //   currentPage: "gameboard",
+        //   gameboardId: res.id
+        // })
+      });
+
+  }
 
   changePage(){
     switch (this.state.currentPage) {
       case "gameselect":
         return (
           <GameSelect 
-          key={"gameselect"} 
-          gameboardId={this.state.gameboardId} 
-          handlePageChange={this.handlePageChange}
-          user={this.state.user}
-          loggedIn={this.state.loggedIn} />
+            key={"gameselect"} 
+            gameboardId={this.state.gameboardId} 
+            handlePageChange={this.handlePageChange}
+            user={this.props.user}
+            loggedIn={this.state.loggedIn} />
         );
       case "gameboard":
         return (
           <Gameboard 
-          key={"gameboard"} 
-          gameboardId={this.state.gameboardId} 
-          handlePageChange={this.handlePageChange}
-          user={this.state.user}
-          loggedIn={this.state.loggedIn}
-          gameType={this.state.gameType} />
+            key={"gameboard"} 
+            gameboardId={this.state.gameboardId} 
+            handlePageChange={this.handlePageChange}
+            user={this.state.user}
+            loggedIn={this.state.loggedIn}
+            gameType={this.state.gameType} />
         );
       case "suggesttile":
         return (
           <SuggestTile 
-          key={"suggest"} 
-          gameboardId={this.state.gameboardId} 
-          handlePageChange={this.handlePageChange}
-          loggedIn={this.state.loggedIn}
-          user={this.state.user} />
+            key={"suggest"} 
+            gameboardId={this.state.gameboardId} 
+            handlePageChange={this.handlePageChange}
+            loggedIn={this.state.loggedIn}
+            user={this.state.user} />
         );
       case "winner":
         return (
@@ -108,6 +119,7 @@ class Game extends Component {
   }
 
 render() {
+  console.log('Index render this.props.user', this.props.user);
   return (
     <>
       <Wrapper>
@@ -123,7 +135,7 @@ render() {
       </Wrapper>
       <UserBar 
         loggedIn={this.state.loggedIn}
-        user={this.state.user} />
+        user={this.props.user} />
     </>
     );
   }

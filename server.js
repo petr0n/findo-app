@@ -54,5 +54,5 @@ app.get("/*", function(req, res) {
 
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on ${process.env.APP_URL}:${PORT}!`);
+  console.log(`🌎 ==> API server now on ${process.env.APP_URL}!`);
 });
