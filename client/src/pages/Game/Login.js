@@ -3,7 +3,6 @@ import axios from "axios";
 
 
 
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -62,27 +61,12 @@ class Login extends Component {
     )
   }
 
-  loggedInBtns = () => {
-    const userData = this.state.user;
-    return (
-      <div>You are logged in as {userData.user.name}
-        <div className="guest login-text cursor-pointer mb-4" onClick={() => this.logInGuestUser()}>
-          Go to your game
-        </div>
-      </div> 
-    )
-  }
-
   render() {
     console.log('Login this.state.user', this.state.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
         <h1 className="mb-5 text-xl">Login</h1>
-        {
-          this.state.user ?
-          this.loggedInBtns():  
-          this.loginBtns() 
-        }
+        {this.loginBtns()}
         <div className="how-to">
           <h4 className="text-lg">HOW TO PLAY</h4>
           <p className="text-xs">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>

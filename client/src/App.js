@@ -42,11 +42,11 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/privacy" exact component={privacy} />
+          <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
           <Route path="/gameselect" render={() => <Game page={"gameselect"} user={this.state.user} />} />
           <Route path="/gameboard" render={() => <Game page={"gameboard"} user={this.state.user} />} />
           <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/winner" render={() => <Game page={"winner"} user={this.state.user} />} />
-          <Route path="/login" render={() => <Game page={"login"} user={this.state.user} />} />
           <Route path="/admin" render={() => <Admin user={this.state.user} />} />
           <Route path="/" component={Game} />
         </Switch>

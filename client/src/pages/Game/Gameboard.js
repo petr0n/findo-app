@@ -44,7 +44,7 @@ class Gameboard extends Component {
 					gameboardId: res.data._id
 				}) 
 			})
-			.catch(err => console.log(err))
+			.catch(err => console.log(err));
 	}
 	
 	renderGrid = (boardTiles) => {

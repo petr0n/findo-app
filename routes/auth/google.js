@@ -22,10 +22,10 @@ router.get('/callback', // url -> /auth/google/callback
 		db.User
 			.findOneAndUpdate({socialId: req.user.id}, req.body, {new: true, upsert: true})
 			.then((dbModel) => {
-				console.log(dbModel)
+				console.log('gg dbModel: ', dbModel)
 				// res.json(dbModel);
-				res.redirect(process.env.APP_URL + "?token=" + req.user.token);
-			})
+				res.redirect("/gameselect");
+			}) 
 			.catch(err => res.status(422).json(err));
 	}
 );

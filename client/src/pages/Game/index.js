@@ -5,10 +5,11 @@ import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import UserBar from "../../components/UserBar";
-import Gameboard from "./Gameboard";
+import Splash from "./Splash";
 import Login from "./Login";
-import GameSelect from "./GameSelect";
 import SuggestTile from "./SuggestTile";
+import GameSelect from "./GameSelect";
+import Gameboard from "./Gameboard";
 import Winner from "./Winner";
 import "./main.css";
 
@@ -81,16 +82,16 @@ class Game extends Component {
           loggedIn={this.state.loggedIn}
           user={this.state.user} />
         );
-        case "winner":
-          return (
-            <Winner 
-            key={"winner"} 
-            gameboardId={this.state.gameboardId} 
-            handlePageChange={this.handlePageChange}
-            loggedIn={this.state.loggedIn}
-            user={this.state.user} />
-          );    
-      default:
+      case "winner":
+        return (
+          <Winner 
+          key={"winner"} 
+          gameboardId={this.state.gameboardId} 
+          handlePageChange={this.handlePageChange}
+          loggedIn={this.state.loggedIn}
+          user={this.state.user} />
+        );
+      case "login":
         return (
           <Login key={"login"} 
           hasPrevious={this.state.hasPrevious} 
@@ -98,6 +99,10 @@ class Game extends Component {
           apiUrl={this.state.apiUrl}
           user={this.state.user}
           loggedIn={this.state.loggedIn} />
+        );
+      default:
+        return (
+          <Splash />
         );
     }
   }
