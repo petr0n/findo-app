@@ -15,7 +15,8 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user ? this.props.user : null
+      user: this.props.user ? this.props.user : null,
+      apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games"
     }
   }
   
@@ -24,14 +25,15 @@ class Admin extends Component {
     return (
       <Wrapper>
         <Header />
-        <Home />
+        <Home user={this.props.user} />
         <Footer />
         <UserBar 
-          user={this.state.user} />
-        </Wrapper>
-        );
-      }
+          apiUrl={this.state.apiUrl}
+          user={this.props.user} />
+      </Wrapper>
+      );
     }
+  }
     
 //EXPORT
 //=======================================================

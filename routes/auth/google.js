@@ -14,14 +14,6 @@ router.get('/callback', // url -> /auth/google/callback
 	}), 
 	(req, res) => {
 		console.log('gg callback req.user: ', req.user);
-		// let userDoc = {
-		// 	socialId: req.user.socialId,
-		// 	socialType: "GG", 
-		// 	name: req.user.name,
-		// 	role: "user",  
-		// 	email: req.user.email
-		// }; 
-		// console.log('gg callback userDoc: ', userDoc);
 		res.redirect(process.env.APP_URL + "/gameselect");
 	}
 );
