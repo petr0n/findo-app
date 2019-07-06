@@ -37,7 +37,7 @@
 
 .tileBig .button-wrapper {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {

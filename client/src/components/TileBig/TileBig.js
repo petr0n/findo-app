@@ -19,7 +19,7 @@ class TileBig extends Component {
         <div className="p-5 text-center flex items-center justify-center">
           <p className="tileBigText">{this.tileBigData.tileText}</p>
         </div>
-        <div className="button-wrapper py-4 text-center">
+        <div className="button-wrapper py-4 text-center w-full">
           <TileBigButton 
             tileBigData={this.props.tileBigData}
             handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
