@@ -4,6 +4,8 @@ import { TextArea, SubmitBtn } from "../Form";
 import tileApi from "../../utils/tileAPI";
 import "./TileAdd.css";
 
+//add radio for isAcitve Now (status: active)
+//isRating
 
 class TileAdd extends Component {
   constructor(props) {
