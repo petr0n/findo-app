@@ -9,8 +9,7 @@ import gameboardAPI from '../../utils/gameboardAPI';
 class GameSelect extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        user: props.user, 
+    this.state = { 
         gameboardId: ""
       }
   };
@@ -40,18 +39,20 @@ class GameSelect extends Component {
         <div className="background mx-auto rounded px-3 py-10 w-full text-center">
           {
             this.props.user ? 
-            <div>You are logged in as {this.props.user.name}</div> : 
+            <div>Welcome back {this.props.user.name}!</div> : 
             ""
           }
           {
             this.state.gameboardId ? 
-            <div className={btnStyle} onClick={() => this.props.handlePageChange("gameboard", this.props.user, null, this.state.gameboardId)}>Finish previous game</div> : 
+            <div>
+              <div className={(btnStyle) + " inline-block"} onClick={() => this.props.handlePageChange("gameboard", this.props.user, null, this.state.gameboardId)}>Finish previous game</div>
+              <div className="text-sm my-3">or start a new game</div>
+            </div> : 
             ""
           }
-          
           <div className=" flex items-center justify-center">
-            <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid Friendly Board</div>
-            <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult Style Board</div>
+            <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid-friendly Board</div>
+            <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult style Board</div>
           </div>
         </div>
         <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>

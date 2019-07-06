@@ -63,6 +63,7 @@ class Login extends Component {
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
         <h1 className="mb-5 text-xl">Login</h1>
+        {this.props.logoutMessage}
         {this.loginBtns()}
         <div className="how-to">
           <h4 className="text-lg">HOW TO PLAY</h4>

@@ -24,60 +24,67 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: this.props.page ? this.props.page : "login",
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
-      gameboardId: "",
-      user: this.props.user ? this.props.user : null
+      gameboardId: "", 
+      page: "login"
     }
   }
-
   componentDidMount(){
-    // console.log('Index componentDidMount this.state: ' , this.state);  
+    // console.log('Index componentDidMount this.props.page: ', this.props.page);
+    // console.log('Index componentDidMount this.state.user: ', this.state.user);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('Index componentDidUpdate this.state: ' , this.state);
+    console.log('Index componentDidUpdate prevState: ' , prevState);
+    console.log('-------------------');
+    console.log('Index componentDidUpdate this.props: ' , this.props);
+    console.log('Index componentDidUpdate prevProps: ' , prevProps);
+    if (this.state.page !== this.props.page) {
+      this.setState({
+        page: this.props.page
+      })
+    }
   }
     
   handlePageChange = (page, user, gameType, gameboardId) => {
     this.setState({ 
-      currentPage: page,
+      page: page,
       user: user, 
       gameType: gameType,
       gameboardId: gameboardId
     });
-    console.log('Index this.state: ' , this.state);
 
     history.push("/" + page);
-    this.changePage();
+    this.changePage(page, user);
   }
 
-  // handleLoadGameClick = () => {
-  //   let userId = this.props.user._id;
-  //   gameboardAPI.getGamesByUserAndStatus(userId)
-  //     .then(res => {
-  //       console.log(res);
-  //       // this.setState({
-  //       //   currentPage: "gameboard",
-  //       //   gameboardId: res.id
-  //       // })
-  //     });
-
+  // redirectIfLoggedIn = () => {
+  //   console.log('Index redirectIfLoggedIn props.user: ' , this.props.user);  
   // }
 
-  changePage(){
-    switch (this.state.currentPage) {
+  
+
+  changePage(page, user){
+    console.log('Index changePage this.state', this.state);
+    let currentPage = page ? page : this.state.page;
+    let currentUser = user ? user : this.props.user;
+    switch (currentPage) {
       case "gameselect":
         return (
           <GameSelect 
           key={"gameselect"} 
           handlePageChange={this.handlePageChange}
-          user={this.props.user} />
+          user={currentUser} />
         );
       case "gameboard":
         console.log('Index changePage this.state.gameboardId', this.state.gameboardId);
         return (
           <Gameboard 
             key={"gameboard"} 
-            gameboardId={this.state.gameboardId} 
+            gameboardId={this.props.gameboardId} 
             handlePageChange={this.handlePageChange}
-            user={this.state.user}
+            user={currentUser}
             gameType={this.state.gameType} />
         );
       case "suggesttile":
@@ -85,7 +92,7 @@ class Game extends Component {
           <SuggestTile 
             key={"suggest"} 
             handlePageChange={this.handlePageChange}
-            user={this.state.user} />
+            user={currentUser} />
         );
       case "winner":
         return (
@@ -93,15 +100,23 @@ class Game extends Component {
           key={"winner"} 
           gameboardId={this.state.gameboardId} 
           handlePageChange={this.handlePageChange}
-          user={this.state.user} />
+          user={currentUser} />
         );
       case "login":
         return (
           <Login key={"login"} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={this.state.user} />
+          user={currentUser} />
         );
+      case "logout":
+          return (
+            <Login key={"login"} 
+            logoutMessage={"You've logged out"}
+            handlePageChange={this.handlePageChange}
+            apiUrl={this.state.apiUrl}
+            user={currentUser} />
+          );
       default:
         return (
           <Splash />
@@ -110,7 +125,8 @@ class Game extends Component {
   }
 
 render() {
-  console.log('Index render this.props.user', this.props.user);
+  console.log('Index render this.props', this.props);
+
   return (
     <>
       <Wrapper>
@@ -120,12 +136,15 @@ render() {
           transitionEnterTimeout={1000} 
           transitionLeaveTimeout={500}
         >
-          {this.changePage()}
+          {
+            // this.props.page ? 
+            // this.changePage(this.props.page, this.props.user) :
+            this.changePage()
+          }
         </ReactCSSTransitionGroup>
         <Footer />
       </Wrapper>
-      <UserBar 
-        user={this.props.user} />
+      <UserBar user={this.props.user} />
     </>
     );
   }
