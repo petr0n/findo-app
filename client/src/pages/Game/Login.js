@@ -29,13 +29,11 @@ class Login extends Component {
 			if (!!response.data.user) {
         console.log('GUEST USER');
 				this.setState({
-					loggedIn: true,
           user: response.data
         });
-        return this.props.handlePageChange("gameselect", this.state.user, this.state.loggedIn);
+        return this.props.handlePageChange("gameselect", this.state.user);
 			} else {
 				this.setState({
-					loggedIn: false,
           user: null
 				})
       }

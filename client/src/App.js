@@ -12,7 +12,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
       user: null
     }
   };
@@ -23,12 +22,10 @@ class App extends Component {
 			if (!!response.data.user) {
 				console.log('THERE IS A USER')
 				this.setState({
-					loggedIn: true,
           user: response.data.user
 				})
 			} else {
 				this.setState({
-					loggedIn: false,
           user: null
 				})
 			}

@@ -8,15 +8,13 @@ class Winner extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        user: this.props.user,
-        loggedIn: this.props.loggedIn
+        user: this.props.user
       }
   };
   
   componentDidMount(){
-    console.log('GameSelect this.state.loggedIn: ', this.state.loggedIn);
-  }
 
+  }
 
   render() {
 		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 flex items-center text-center hover_bg-orange-300";
@@ -27,7 +25,7 @@ class Winner extends Component {
           <h1 className="text-5xl">WINNER!</h1>
           <p>You got FINDO!</p>
         </div>
-        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.state.user, this.state.loggedIn)}>
+        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.state.user)}>
           <div className={btnStyle}>Suggest a tile</div>
         </div>
       </div>

@@ -19,7 +19,6 @@ class Gameboard extends Component {
 			tilesData: [],
 			tileBigState: "inactive",
 			user: this.props.user,
-			loggedIn: this.props.loggedIn,
 			gameType: this.props.gameType,
 			gameboardId: this.props.gameboardId ? this.props.gameboardId : "",
 			gameWon: false
@@ -28,49 +27,50 @@ class Gameboard extends Component {
 	};
 
 	componentDidMount(){
-		console.log("Gameboard componentDidMount props gameboardId: ", this.props.gameboardId);
-		console.log("Gameboard componentDidMount gameboardId: ", this.state.gameboardId);
-		if (this.state.user) {
-			this.getTiles(this.state.gameType, this.state.user._id);
+		console.log("Gameboard componentDidMount props user: ", this.props.user);
+		console.log("Gameboard componentDidMount user: ", this.state.user);
+		if (this.props.gameboardId) {
+			this.getTiles(this.state.gameType, this.props.gameboardId);
 		} else {
 			this.getTiles(this.state.gameType);
 		}
 	}
+	
 
-	getUserGame = (userId) => {
-		 gameboardAPI.getGamesByUserAndStatus(userId, "active")
-		 .then(res => {
-			 console.log('Gameboard getUserGame res: ', res.data);
-			//  if (!res.data) {
-			// 	this.getTiles(this.state.gameType);
-			//  }
-			// this.setState({ 
-			// 	loading: false,
-			// 	tilesData: this.renderGrid(res.data.tiles),
-			// 	gameboardId: res.data._id
-			// }) 
-		})
-		.catch(err => console.log(err));
-	}
+	getTiles = (gameType, gameboardId) => {
+		
+		if (gameboardId) {
+			gameboardAPI.getGame(gameboardId)
+			.then(res => {
+				console.log("Gameboard getTiles w/ gameboardId res.data: ", res.data);
+					this.setState({ 
+						loading: false,
+						tilesData: this.renderGrid(res.data.tiles),
+						gameboardId: gameboardId
+					});
+				})
+				.catch(err => console.log(err));
 
-	getTiles = (gameType, userId) => {
+		} else {
 
-		let gt = gameType ? gameType : "PG";
-		// let uid = userId ? userId : ;
-		gameboardAPI.createGame({ gameType: gt, userId: userId })
-		.then(res => {
-			this.setState({ 
-				loading: false,
-				tilesData: this.renderGrid(res.data.tiles),
-				gameboardId: res.data._id
-			}) 
-		})
-		.catch(err => console.log(err));
+			let gt = gameType ? gameType : "PG";
+			gameboardAPI.createGame({ gameType: gt, userId: this.props.user })
+			.then(res => {
+				console.log("Gameboard getTiles res.data: ", res.data);
+
+				this.setState({ 
+					loading: false,
+					tilesData: this.renderGrid(res.data.tiles),
+					gameboardId: res.data._id
+				}) 
+			})
+			.catch(err => console.log(err));
+		}
 
 	}
 	
 	renderGrid = (boardTiles) => {
-		console.log('Gameboard renderGrid boardTiles', boardTiles);
+		// console.log('Gameboard renderGrid boardTiles', boardTiles);
 		this.setState({ 
 			tilesArr: boardTiles,
 			tiles: this.makeTileGrid(boardTiles)
@@ -140,7 +140,7 @@ class Gameboard extends Component {
 				console.log(res);
 				this.setState({ gameWon: res.data.winner });
 				if (res.data.winner) {
-					this.props.handlePageChange("winner", this.state.user, this.state.loggedIn);
+					this.props.handlePageChange("winner", this.state.user);
 				}
 			});
 		})
@@ -160,8 +160,7 @@ class Gameboard extends Component {
 					tileBigState={this.state.tileBigState} 
 					tileBigData={this.state.tileBigData}
 					handleTileBigButtonClick={this.handleTileBigButtonClick}
-					user={this.state.user}
-					loggedIn={this.state.loggedIn} />
+					user={this.state.user} />
 			</div>
 		);
 	}
