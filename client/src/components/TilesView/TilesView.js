@@ -114,7 +114,9 @@ class TilesView extends Component {
     }
   }
 
-  //RENDERING COMPONENTS**************************************************
+  handleOptionChange() {
+    //something
+  }
 
   //RENDER DEFAULT VIEW
   //====================================================
@@ -124,22 +126,39 @@ class TilesView extends Component {
         {this.state.tiles.length ? (
           <List>
             {this.state.tiles.map(tiles => {
+              console.log('tiles: ', tiles);
               return (
                 <ListItem key={tiles._id}>
                   <div className="break-all pr-2">
                     {tiles.tileText}
+                    {tiles.isPG}
+                    {
+                      tiles.isPG ? 
+                      <div>
+                        <input type="radio" name="isPG11" value="true" checked="checked" onChange={this.handleOptionChange} /> isPG
+                      </div> :
+                      <div>
+                        <input type="radio" name="isPG22" value="false" onChange={this.handleOptionChange} /> isPG
+                      </div>
+                    }
+                    {
+                      tiles.isR ? 
+                      <div>
+                        <input type="radio" name="isR" value="true" defaultChecked onChange={this.handleOptionChange} /> isR
+                      </div> :
+                      <div>
+                        <input type="radio" name="isR" value="false" onChange={this.handleOptionChange} /> isR
+                      </div>
+                    }
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
-                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)
-                      }
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)}
                       className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>
                       {tiles.status === "active" ? "Deactivate" : "Activate"}
                     </button>
                     <button
-                      onClick={() =>
-                        this.getThisTile(tiles._id)
-                      }
+                      onClick={() => this.getThisTile(tiles._id)}
                       className="edit-btn rounded px-2 py-1 mr-4">
                       Edit <i className="fas fa-pencil-alt" />
                     </button>
