@@ -14,7 +14,7 @@ module.exports = {
         db.Gameboard
             .findById(req.params.id)
             .then(dbModel => {
-                console.log(dbModel)
+                // console.log(dbModel)
                 selectedTiles = dbModel.tiles.filter(function (tile) {
                     // console.log(tile.isChecked)
 
@@ -38,14 +38,13 @@ module.exports = {
                     if (xTiles.length === 5) {
                         // console.log("X Winner");
                         winningBoard = true;
-                        console.log("db" + dbModel._id)
-                        console.log("X" + xTiles)
                         saveWinningGame(dbModel._id, xTiles);
                         break;
                     }
                     else if (yTiles.length === 5) {
                         // console.log("Y Winner")
                         winningBoard = true;
+                        saveWinningGame(dbModel._id, yTiles);
                         break;
                     }
                 }
@@ -66,10 +65,12 @@ module.exports = {
 
                     if (leftDiagonal.length === 5) {
                         winningBoard = true;
+                        saveWinningGame(dbModel._id, leftDiagonal);
                         // console.log("Left Diagonal Winner")
                     }
                     else if (rightDiagonal.length === 5) {
                         winningBoard = true;
+                        saveWinningGame(dbModel._id, rightDiagonal);
                         // console.log("Right Diagonal Winner")
                     }
                 }
@@ -91,12 +92,12 @@ function saveWinningGame(id, winningArray) {
         .findOneAndUpdate({ _id: id }, { $set: { gameFinished: new Date(), status: "winner" } }, { new: true })
         .then(dbmodel => {
             winningArray.map(function (tile) {
-                console.log("tiles " + tile._id)
-                // db.Gameboard.findOneAndUpdate({ "tiles._id": tile._id },
-                //     { "$set": { "tiles.$.isWinningTile": true } })
-                //     .then(dbModel => res.json(dbModel))
-                //     .catch(err => res.status(422).json(err));
+                db.Gameboard.findOneAndUpdate({ "tiles._id": tile._id },
+                    { "$set": { "tiles.$.isWinningTile": true } })
+                    .then(dbModel => (dbModel))
+                    .catch(err => (err));
             });
         })
-}
+        .catch(err => res.status(422).json(err));
+    }
 
