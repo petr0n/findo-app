@@ -11,11 +11,10 @@ module.exports = {
         let rightDiagonal = [];
         let winningBoard = false;
 
-
         db.Gameboard
             .findById(req.params.id)
             .then(dbModel => {
-                // console.log(dbModel)
+                console.log(dbModel)
                 selectedTiles = dbModel.tiles.filter(function (tile) {
                     // console.log(tile.isChecked)
 
@@ -39,6 +38,9 @@ module.exports = {
                     if (xTiles.length === 5) {
                         // console.log("X Winner");
                         winningBoard = true;
+                        console.log("db" + dbModel._id)
+                        console.log("X" + xTiles)
+                        saveWinningGame(dbModel._id, xTiles);
                         break;
                     }
                     else if (yTiles.length === 5) {
@@ -80,12 +82,21 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     // .catch(err => res.status(422).json(err))
-
-    // recordWinningGame: function(req,res) {
-    //     db.Gameboard
-    //         .findOneAndUpdate({ "tiles._id": req.params.id }, 
-    //             {"$set": {"tiles.$.isChecked": req.body.isChecked}}, 
-    //             { new: true })
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
 }
+
+function saveWinningGame(id, winningArray) {
+    //update status and dateFinished 
+    //update winning tiles to isWinningTile true
+    db.Gameboard
+        .findOneAndUpdate({ _id: id }, { $set: { gameFinished: new Date(), status: "winner" } }, { new: true })
+        .then(dbmodel => {
+            winningArray.map(function (tile) {
+                console.log("tiles " + tile._id)
+                // db.Gameboard.findOneAndUpdate({ "tiles._id": tile._id },
+                //     { "$set": { "tiles.$.isWinningTile": true } })
+                //     .then(dbModel => res.json(dbModel))
+                //     .catch(err => res.status(422).json(err));
+            });
+        })
+}
+
