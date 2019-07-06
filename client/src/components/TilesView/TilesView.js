@@ -66,7 +66,7 @@ class TilesView extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE TILE
+  // UPDATE TILE === TILE TEXT UPDATE
   //====================================================
   saveThisTile = (event) => {
     //console.log(tileText)
@@ -84,9 +84,34 @@ class TilesView extends Component {
 
   };
 
-  // HANDLE ACTIVATE/DEACTIVATE TILE
+  // UPDATE TILE === TILE STATUS
   //====================================================
-  handleStatusChange = () => {
+  changeTileStatus = (id, status) => {
+  console.log("the id is " + id)
+  //event.preventDefault();
+    if (status === 'active') {
+      tileApi.updateTile (id, {status: 'inactive'})
+      .then (res => {
+        console.log(res)
+        this.setState({
+          isInEditMode: false
+        })
+        this.loadAllTiles()
+        }
+      ) 
+      .catch(err => console.log(err))
+    } else {
+      tileApi.updateTile (id, {status: 'active'})
+      .then (res => {
+        console.log(res)
+        this.setState({
+          isInEditMode: false
+        })
+        this.loadAllTiles()
+        }
+      ) 
+      .catch(err => console.log(err))
+    }
   }
 
   //RENDERING COMPONENTS**************************************************
@@ -106,6 +131,8 @@ class TilesView extends Component {
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)
+                      }
                       className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>
                       {tiles.status === "active" ? "Deactivate" : "Activate"}
                     </button>
@@ -134,7 +161,7 @@ class TilesView extends Component {
     //const tile = {tileText: "Jason"}
     //console.log(tile)
     return (
-      <div className="w-full max-w-xs">
+      <div className="w-full max">
         <form className="tile-form" onSubmit={this.saveThisTile}>
           <TextArea 
             name="tileText"
