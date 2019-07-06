@@ -100,7 +100,7 @@ class Game extends Component {
           <Login key={"login"} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={this.state.user} />
+          user={this.props.user} />
         );
       default:
         return (
@@ -125,7 +125,8 @@ render() {
         <Footer />
       </Wrapper>
       <UserBar 
-        user={this.props.user} />
+        user={this.props.user}
+        apiUrl={this.state.apiUrl} />
     </>
     );
   }

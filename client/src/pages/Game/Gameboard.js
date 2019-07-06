@@ -154,7 +154,7 @@ class Gameboard extends Component {
 		}
 		return (
 			<div className="board mx-auto">
-				<p className="text-white"> {this.state.gameWon ? "Winner" : "Loser"}</p>
+				{/* <p className="text-white"> {this.state.gameWon ? "Winner" : "Loser"}</p> */}
 				<Board
 					tiles={this.state.tiles} 
 					tileBigState={this.state.tileBigState} 
