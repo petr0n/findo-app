@@ -17,12 +17,16 @@ class GameSelect extends Component {
   
 
   async componentDidUpdate() {
-    if (!this.state.gameboardId) {
+    if (!this.state.gameboardId && this.props.user) {
       const response = await gameboardAPI.getGamesByUserAndStatus(this.props.user._id, "active");
       // const json = await response.data[0].json();
-      this.setState({ 
-        gameboardId: response.data[0]._id
-      }); 
+      console.log('GameSelect componentDidUpdate response: ', response);
+      if (response.data.length) {
+      const id = await response.data[0]._id;
+        this.setState({ 
+          gameboardId: id
+        }); 
+      }
     }
   }
   
@@ -32,7 +36,7 @@ class GameSelect extends Component {
 
 
   render() {
-		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600";
+		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
     
     console.log('GameSelect this.props.user', this.props.user);
     return (
