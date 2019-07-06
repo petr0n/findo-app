@@ -3,21 +3,20 @@
 import React, { Component } from "react";
 import "./TilesManage.css";
 import tileApi from "../../utils/tileAPI";
-import { List, ListItem } from "../TileList"
+import { List, ListItem } from "../TileList";
 
-// this page will act like a "page" would, where it will render the UL/LI and buttons
-//AdminNav will import his component
-
-//CONTENT
+//CONTENT 
 //=======================================================
 class TilesManage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tiles: []
-      //status ?
+      tiles: [],
+      //isInEditMode: false,
     }
   };
+
+  //API CALLS **************************************************
 
   // load all tiles and save them to the state
   //====================================================
@@ -25,11 +24,8 @@ class TilesManage extends Component {
     this.loadPendingTiles();
   };
 
-  // Load all the tiles and set them to the this.state.tiles
+  // LOAD PENDING TILES
   //====================================================
-
-
-
   loadPendingTiles = () => {
     tileApi.getPendingTiles({})
       .then(res =>
@@ -40,54 +36,67 @@ class TilesManage extends Component {
       .catch(err => console.log(err));
   };
 
-  handleApproveClick = event => {
-    event.preventDefault();//prevent default form submit 
-    tileApi.createTile({
-      tileText: "",
-      createdBy: "5d178f7161ffbf2ff410ca4b",
-      eventType: this.state.eventType
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
-  handleDenyClick = event => {
-    event.preventDefault();//prevent default form submit 
-    tileApi.deleteTile({
-      tileText: this.state.tileText,
-      deletedBy: this.state.user
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
-  //render
+  // APPROVE CLICK (ACTIVE
   //====================================================
-  render() {
+  approvePendingTile = (id, status) => {
+    tileApi.updateTile (id, {status: 'active'})
+    .then (res => {
+      console.log(res)
+      this.loadPendingTiles()
+      }
+    ) 
+    .catch(err => console.log(err))
+  }
+
+  // DENY CLICK (INACTIVE)
+  //====================================================
+  denyPendingTile = (id, status) => {
+    tileApi.updateTile (id, {status: 'active'})
+    .then (res => {
+      console.log(res)
+      this.loadPendingTiles()
+      }
+    ) 
+    .catch(err => console.log(err))
+  }
+
+  //RENDERING COMPONENTS**************************************************
+
+  //RENDER DEFAULT VIEW
+  //====================================================
+
+  renderDefaultView = () => {
     return (
       <div className="list">
         {this.state.tiles.length ? (
           <List>
-            {this.state.tiles.map((tiles, i) => {
+            {this.state.tiles.map(tiles => {
               return (
                 <ListItem key={tiles._id}>
                   <div className="break-all pr-2">
                     {tiles.tileText}
                   </div>
                   <div className="whitespace-no-wrap">
-                    <button onClick={this.handleApproveClick} className="approve-btn rounded px-2 py-1 mr-4">Approve</button>
-                    <button onClick={this.handleDenyClick} className="deny-btn rounded px-2 py-1">Deny</button>
+                    <button onClick={() => this.approvePendingTile(tiles._id, tiles.status)}
+                    className="approve-btn rounded px-2 py-1 mr-4">Approve</button>
+                    <button onClick={() => this.denyPendingTile(tiles._id, tiles.status)}
+                    className="deny-btn rounded px-2 py-1">Deny</button>
                   </div>
                 </ListItem>
               );
             })}
           </List>
         ) : (
-            <h3>No tiles to display</h3>
+            <h3>No pending tiles to display</h3>
           )}
       </div>
-
     );
+  }; // ==> end renderDefaultView
+
+  //CONDITIONALLY RENDER THE COMPONENTS
+  //====================================================
+  render() {
+    return this.renderDefaultView(this.state.tiles)
   };
 }
 
