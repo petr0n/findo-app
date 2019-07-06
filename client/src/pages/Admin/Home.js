@@ -56,6 +56,7 @@ class Home extends Component {
 
 
   render() {
+    console.log('Admin home render user: ', this.props.user);
     return (
       <div className="container mx-auto flex">
         <div className="w-full">
