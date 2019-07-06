@@ -41,7 +41,7 @@ class TilesView extends Component {
   // LOAD ALL TILES
   //====================================================
   loadAllTiles = () => {
-    tileApi.getTiles({ })
+    tileApi.getTiles({ })  //getTilesView
     .then(res =>
       this.setState({
         tiles: res.data
