@@ -131,25 +131,6 @@ class TilesView extends Component {
                 <ListItem key={tiles._id}>
                   <div className="break-all pr-2">
                     {tiles.tileText}
-                    {tiles.isPG}
-                    {
-                      tiles.isPG ? 
-                      <div>
-                        <input type="radio" name="isPG11" value="true" checked="checked" onChange={this.handleOptionChange} /> isPG
-                      </div> :
-                      <div>
-                        <input type="radio" name="isPG22" value="false" onChange={this.handleOptionChange} /> isPG
-                      </div>
-                    }
-                    {
-                      tiles.isR ? 
-                      <div>
-                        <input type="radio" name="isR" value="true" defaultChecked onChange={this.handleOptionChange} /> isR
-                      </div> :
-                      <div>
-                        <input type="radio" name="isR" value="false" onChange={this.handleOptionChange} /> isR
-                      </div>
-                    }
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
