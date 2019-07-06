@@ -62,28 +62,35 @@ class TileAdd extends Component {
       })
     })
     .catch(err => console.log(err));
-    // window.location.reload()
+    // window.location.reload()   
   };
 
 
 
   //render
-  //====================================================
+  //===================================================
   render() {
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission.</p> :
+        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handlePageChange("home", this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button></p> :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
+          <button onClick={() => this.props.handlePageChange("home", this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button>
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
+          <div className="radio">
+            <label>
+            <input id="radio" type="radio" value="option1" />Kid Friendly Tile<br></br>
+            <input id="radio" type="radio" value="option2" /> Adult Tile
+            </label>
+          </div>
           <div className="w-full flex items-center justify-between">
             {this.state.characterCount}
-            <SubmitBtn isSubmitDisabled={this.state.isSubmitDisabled} />
+            <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
           </div>
         </form>
         }
@@ -101,28 +108,22 @@ export default TileAdd;
 //=======================================================
 
 /*
-
 TileAdd (page 13, component to be passed to Admin => home)
 Description: contains a form to create a tile by a user
 Imports:React, Buttons
 Contains a clickEvent that is a POST
-
       redirect: false
-
   //setRedirect
   setRedirect = () => {
     this.setState({
       redirect: true
     });
   }
-
   //renderRedirect
   renderRedirect = () => {
     if (this.state.redirect) {
       return  <Redirect to='/admin' />
     }
   }
-
   this.renderRedirect()
-
 */
