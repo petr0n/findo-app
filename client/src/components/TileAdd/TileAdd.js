@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { TextArea, SubmitBtn } from "../Form";
 import tileApi from "../../utils/tileAPI";
 import "./TileAdd.css";
+import "./index";
+import "../../pages/Admin/Home";
+import "../../pages/Game/SuggestTile";
 
 //add radio for isAcitve Now (status: active)
 //isRating
@@ -65,7 +68,9 @@ class TileAdd extends Component {
     // window.location.reload()   
   };
 
-
+  handlePageChange = (pageName) => {
+    this.props.handlePageChange(pageName);
+  };
 
   //render
   //===================================================
@@ -73,9 +78,9 @@ class TileAdd extends Component {
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handlePageChange("home", this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button></p> :
+        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handlePageChange(this.home, this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button></p> :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
-          <button onClick={() => this.props.handlePageChange("home", this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button>
+          <button onClick={() => this.props.handlePageChange(this.home, this.state.user)} id="btn">Return to Home</button> <button onClick={() => this.props.handlePageChange("SuggestTile", this.state.user)} id="btn">Add Another Tile</button>
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
@@ -84,8 +89,8 @@ class TileAdd extends Component {
             />
           <div className="radio">
             <label>
-            <input id="radio" type="radio" value="option1" />Kid Friendly Tile<br></br>
-            <input id="radio" type="radio" value="option2" /> Adult Tile
+            <input id="radio" type="radio" value="option1" name="gameSelect" />Kid Friendly Tile<br></br>
+            <input id="radio" type="radio" value="option2" name="gameSelect" /> Adult Tile
             </label>
           </div>
           <div className="w-full flex items-center justify-between">
