@@ -4,29 +4,25 @@ require("dotenv").config();
 
 let db = require("../../models");
 
-router.get('/', (req, res, next) => { // url -> /auth/google
-	// console.log('/auth/google req.query: ', req.query);
-	passport.authenticate('google', { scope: ["profile", "email"] })
-});  
+router.get('/', passport.authenticate('google', { scope: ["profile", "email"] }) );  
 
 
 router.get('/callback', // url -> /auth/google/callback
   passport.authenticate('google', { 
 		failureRedirect: '/error',
 		session: true 
-	}),
+	}), 
 	(req, res) => {
-		console.log('callback req.user: ', req.user);
-		//req.session.googleId = req.user.googleId;
-		// console.log('req.session: ', req.session);
-		db.User
-			.findOneAndUpdate({socialId: req.user.id}, req.body, {new: true, upsert: true})
-			.then((dbModel) => {
-				console.log(dbModel)
-				// res.json(dbModel);
-				res.redirect(process.env.APP_URL + "?token=" + req.user.token);
-			})
-			.catch(err => res.status(422).json(err));
+		console.log('gg callback req.user: ', req.user);
+		// let userDoc = {
+		// 	socialId: req.user.socialId,
+		// 	socialType: "GG", 
+		// 	name: req.user.name,
+		// 	role: "user",  
+		// 	email: req.user.email
+		// }; 
+		// console.log('gg callback userDoc: ', userDoc);
+		res.redirect(process.env.APP_URL + "/gameselect");
 	}
 );
 

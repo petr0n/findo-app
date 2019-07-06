@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const User = require("../controllers/dbUserController");
+const User = require("../models/user");
+
 
 require("dotenv").config();
 
@@ -14,7 +15,7 @@ const strategy = new GoogleStrategy(
 			console.log('g profile', profile);
 			let userData = {
 				email: profile.emails[0].value,
-				socialId: profile.googleId,
+				socialId: profile.id,
 				name: profile.displayName,
 				role: "user",
 				socialType: "GG"
@@ -22,7 +23,7 @@ const strategy = new GoogleStrategy(
 			User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
 				.then(user => {
 					console.log('gg strategy user: ', user);
-					return cb(null, user);
+					return done(null, user);
 				})
 				.catch(err => console.log('gg strategy err: ', err));
 		}

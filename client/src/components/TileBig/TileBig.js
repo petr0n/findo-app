@@ -15,16 +15,16 @@ class TileBig extends Component {
   render() {
     // console.log('TileBig this.isActive', this.isActive);
     return (
-      <div className="tileBig flex items-center justify-center text-center">
-          <div className="p-5">
-            <p className="tileBigText">{this.tileBigData.tileText}</p>
-            <div className="button-wrapper">
-              <TileBigButton 
-                tileBigData={this.props.tileBigData}
-                handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
-            </div>
-          </div>
+      <div className="tileBig flex flex-col">
+        <div className="p-5 text-center flex items-center justify-center">
+          <p className="tileBigText">{this.tileBigData.tileText}</p>
         </div>
+        <div className="button-wrapper py-4 text-center">
+          <TileBigButton 
+            tileBigData={this.props.tileBigData}
+            handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
+        </div>
+      </div>
     )  
   }
 };

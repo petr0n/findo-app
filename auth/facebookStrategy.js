@@ -9,7 +9,7 @@ const strategy = new FacebookStrategy({
 		callbackURL: process.env.FACEBOOK_CALLBACKURL,
 		profileFields: ['id', 'displayName', 'email']
 	},
-	function(accessToken, refreshToken, profile, cb) {
+	function(accessToken, refreshToken, profile, done) {
 		console.log('fb login', profile);
 		let userData = {
 			socialId: profile.id,
@@ -21,7 +21,7 @@ const strategy = new FacebookStrategy({
 		User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
 			.then(user => {
 				console.log('fb strategy user: ', user);
-				return cb(null, user);
+				return done(null, user);
 			})
 			.catch(err => console.log('fb strategy err: ', err));
 	}

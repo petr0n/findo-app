@@ -18,7 +18,7 @@ class TilesManage extends Component {
       //status ?
     }
   };
-  
+
   // load all tiles and save them to the state
   //====================================================
   componentDidMount() {
@@ -31,25 +31,25 @@ class TilesManage extends Component {
 
 
   loadPendingTiles = () => {
-    tileApi.getPendingTiles({ })
-    .then(res =>
-      this.setState({
-        tiles: res.data
-      })
+    tileApi.getPendingTiles({})
+      .then(res =>
+        this.setState({
+          tiles: res.data
+        })
       )
       .catch(err => console.log(err));
   };
 
-handleApproveClick = event => {
+  handleApproveClick = event => {
     event.preventDefault();//prevent default form submit 
     tileApi.createTile({
       tileText: "",
       createdBy: "5d178f7161ffbf2ff410ca4b",
       eventType: this.state.eventType
     })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-};
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
 
   handleDenyClick = event => {
     event.preventDefault();//prevent default form submit 
@@ -57,36 +57,36 @@ handleApproveClick = event => {
       tileText: this.state.tileText,
       deletedBy: this.state.user
     })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   //render
   //====================================================
   render() {
     return (
-        <div className="list">
-            {this.state.tiles.length ? (
-                <List>
-                {this.state.tiles.map((tiles, i) => {
-                    return (
-                    <ListItem key={tiles._id}>
-                        <div className="break-all pr-2">
-                            {tiles.tileText}
-                        </div>
-                        <div className="whitespace-no-wrap">
-                          <button onClick={this.handleApproveClick} className="approve-btn rounded px-2 py-1 mr-4">Approve</button> 
-                          <button onClick={this.handleDenyClick} className="deny-btn rounded px-2 py-1">Deny</button>
-                        </div>
-                    </ListItem>
-                    );
-                })}
-                </List>
-            ) : (
-                <h3>No tiles to display</h3>
-            )}
-        </div>
-        
+      <div className="list">
+        {this.state.tiles.length ? (
+          <List>
+            {this.state.tiles.map((tiles, i) => {
+              return (
+                <ListItem key={tiles._id}>
+                  <div className="break-all pr-2">
+                    {tiles.tileText}
+                  </div>
+                  <div className="whitespace-no-wrap">
+                    <button onClick={this.handleApproveClick} className="approve-btn rounded px-2 py-1 mr-4">Approve</button>
+                    <button onClick={this.handleDenyClick} className="deny-btn rounded px-2 py-1">Deny</button>
+                  </div>
+                </ListItem>
+              );
+            })}
+          </List>
+        ) : (
+            <h3>No tiles to display</h3>
+          )}
+      </div>
+
     );
   };
 }

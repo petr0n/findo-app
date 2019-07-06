@@ -15,7 +15,6 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: this.props.loggedIn ? this.props.loggedIn : false,
       user: this.props.user ? this.props.user : null
     }
   }
@@ -28,7 +27,6 @@ class Admin extends Component {
         <Home />
         <Footer />
         <UserBar 
-          loggedIn={this.state.loggedIn}
           user={this.state.user} />
         </Wrapper>
         );

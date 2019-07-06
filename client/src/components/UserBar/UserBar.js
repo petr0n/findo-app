@@ -4,10 +4,11 @@ const UserBar = (props) =>{
 	const userData = props.user;
 	return (
 		<div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-20 text-xs">
-			{props.loggedIn ? 
+			{userData ? 
 				<div className="w-full flex items-center justify-between">
 					<div>
-						Logged in as <span className="font-bold">{userData.user.name}</span>
+						Logged in as <span className="font-bold">{userData.name}</span>
+						<a href="/admin" className="pl-3">Admin</a>
 					</div>
 					<div>
 						<a href="/" className="mx-3 hover:text-purple-400">Home</a>

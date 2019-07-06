@@ -34,3 +34,29 @@
   opacity: 0;
   transition: opacity 200ms;
 }
+
+.tileBig .button-wrapper {
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .tileBigText {
+    font-size: 3em;
+    line-height: 1.2;
+  }
+} 
+@media screen and (max-width: 480px) {
+  .tileBigText {
+    font-size: 2em;
+    line-height: 1.2;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tile {
+      border-radius: 2px;
+      height: 54px;
+      font-size: .65em;
+  }
+}
