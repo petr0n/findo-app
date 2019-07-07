@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Game from "./pages/Game";
 import Admin from "./pages/Admin";
 import privacy from "./pages/privacy";
-import splash from "./pages/splash";
+import splash from "./pages/splash.js";
 import axios from "axios";
 
 
@@ -19,9 +19,9 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('/auth/user').then(response => {
-			console.log("App response.data: ", response.data)
+			console.log("App response.data: ", response.data);
 			if (!!response.data.user) {
-				console.log('THERE IS A USER')
+				console.log('THERE IS A USER');
 				this.setState({
           user: response.data.user
 				})
@@ -46,8 +46,8 @@ class App extends Component {
           <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/winner" render={() => <Game page={"winner"} user={this.state.user} />} />
           <Route path="/admin" render={() => <Admin user={this.state.user} />} />
-          <Route path="/" render={() => <Game page={"login"} user={this.state.user} />} />
-          {/* <Route path="/" component={splash} /> */}
+          {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} />*/}
+           <Route path="/" component={splash} />
         </Switch>
       </BrowserRouter>
     );
