@@ -51,7 +51,7 @@ class Login extends Component {
             <i className="fab fa-google"></i>GOOGLE
           </a>
         </div>
-        <div className="guest-link cursor-pointer my-4 text-center p-2 rounded" onClick={() => this.logInGuestUser()}>
+        <div className="guest-link cursor-pointer my-4 text-center p-2 rounded phosphate" onClick={() => this.logInGuestUser()}>
           Play as Guest
         </div>
       </div>
@@ -62,7 +62,7 @@ class Login extends Component {
     console.log('Login this.props.user', this.props.user);
     return (
       <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
-        <h1 className="mb-5 text-xl">Login</h1>
+        <h1 className="mb-5 text-xl phosphate">Login</h1>
         {this.loginBtns()}
         <div className="how-to">
           <h4 className="text-lg">HOW TO PLAY</h4>

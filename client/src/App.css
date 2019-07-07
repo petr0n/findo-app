@@ -9,7 +9,15 @@ red:      #e42c6a   rgba(228, 44, 106, 1)
 font-family: 'Teko', sans-serif;
 font-family: 'Open Sans', monospace;
 */
-
+@font-face {
+  font-family: 'phosphate';
+  src:url('./fonts/phosphate.woff') format('woff'),
+      url('./fonts/phosphate.svg#ARB-218-Neon-Blunt-MAR-50-Normal') format('svg'),
+      url('./fonts/phosphate.eot'),
+      url('./fonts/phosphate.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Teko:600&display=swap');
 
@@ -29,4 +37,87 @@ body {
 }
 h1, h2, h3, h4, h5 {
   font-family: 'Teko', sans-serif;
+}
+
+.phosphate {
+  font-family: phosphate;
+  line-height: 1;
+  padding-top: 12px;
+}
+
+/************ text colors ***************/
+
+.text-brand-red {
+  color: var(--brand-red);
+}
+.text-brand-purple {
+  color: var(--brand-purple);
+}
+.text-brand-orange {
+  color: var(--brand-orange);
+}
+.text-brand-yellow {
+  color: var(--brand-yellow);
+}
+
+/************ background colors ***************/
+.bg-brand-red {
+  background-color: var(--brand-red);
+}
+.bg-brand-purple {
+  background-color: var(--brand-purple);
+}
+.bg-brand-orange {
+  background-color: var(--brand-orange);
+}
+.bg-brand-yellow {
+  background-color: var(--brand-yellow);
+}
+
+.btn-double {
+  position: relative;
+}
+.btn-double > div {
+  top: -2px; 
+  left: -2px; 
+  border: 1px solid var(--brand-red);
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.btn-double > div + div {
+  top: 1px; 
+  left: 1px; 
+  border: 1px solid var(--brand-red);
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+}
+
+.btn-double-secondary {
+  position: relative;
+}
+.btn-double-secondary > div {
+  top: -2px; 
+  left: -2px; 
+  border: 1px solid var(--brand-orange);
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.btn-double-secondary > div + div {
+  top: 1px; 
+  left: 1px;
+  border: 1px solid var(--brand-orange);
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
 }
