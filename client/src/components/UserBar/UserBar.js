@@ -8,6 +8,7 @@ const UserBar = (props) =>{
 				<div className="w-full flex items-center justify-between">
 					<div>
 						Logged in as <span className="font-bold">{userData.name}</span>
+						{userData.role === "admin" ? "yes admin user" : "no not admin user"}
 						<a href="/admin" className="pl-3">Admin</a>
 					</div>
 					<div>

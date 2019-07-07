@@ -1,8 +1,9 @@
 //IMPORT
 //=======================================================
 import React, { Component } from "react";
-import "./TilesManage.css";
 import tileApi from "../../utils/tileAPI";
+import "./TilesManage.css"
+import { TextArea, SubmitBtn, Rating } from "../Form";
 import { List, ListItem } from "../TileList";
 
 //CONTENT 
@@ -10,64 +11,89 @@ import { List, ListItem } from "../TileList";
 class TilesManage extends Component {
   constructor(props) {
     super(props);
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.state = {
       tiles: [],
-      //isInEditMode: false,
+      isInEditMode: false,
+      tileEdit: {}
     }
   };
 
-  //API CALLS **************************************************
-
-  // load all tiles and save them to the state
+  // WHEN THE DOM IS LOADED CALL THE DEFAULT VIEW
   //====================================================
   componentDidMount() {
     this.loadPendingTiles();
   };
 
-  // LOAD PENDING TILES
+  //FORM INTERACTIONS **************************************************
+
+  //HANDLE INPUT CHANGE
+  //====================================================
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({ 
+      [name]: value
+    });
+  };
+
+  //API CALLS **************************************************
+
+  // LOAD ALL TILES
   //====================================================
   loadPendingTiles = () => {
-    tileApi.getPendingTiles({})
-      .then(res =>
-        this.setState({
-          tiles: res.data
-        })
+    tileApi.getPendingTiles({ }) 
+    .then(res =>
+      this.setState({
+        tiles: res.data
+      })
       )
       .catch(err => console.log(err));
   };
 
-  // APPROVE CLICK (ACTIVE
+  // GET TILE BY ID
   //====================================================
-  approvePendingTile = (id, status) => {
-    tileApi.updateTile (id, {status: 'active'})
-    .then (res => {
-      console.log(res)
-      this.loadPendingTiles()
-      }
-    ) 
-    .catch(err => console.log(err))
-  }
+  getThisTile = (id) => { 
+    console.log(id)
+    tileApi.getTile(id)
+    .then(res => {
+      this.setState({
+        tileEdit: res.data,
+        tileId: res.data._id,
+        isPG: res.data.isPG,
+        isR: res.data.isR,
+        isInEditMode: true
+      })
+      console.log('res', res.data)}
+      )
+      .catch(err => console.log(err));
+  };
 
-  // DENY CLICK (INACTIVE)
+  // UPDATE TILE === TILE TEXT UPDATE
   //====================================================
-  denyPendingTile = (id, status) => {
-    tileApi.updateTile (id, {status: 'active'})
-    .then (res => {
+  saveThisTile = (event) => {
+    event.preventDefault();
+    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText})
+    .then(res => {
       console.log(res)
-      this.loadPendingTiles()
+      this.setState({
+        isInEditMode: false
+      })
+      this.loadAllTiles()
       }
-    ) 
-    .catch(err => console.log(err))
-  }
+    )
+      .catch(err => console.log(err));
+  };
+
 
   //RENDERING COMPONENTS**************************************************
 
   //RENDER DEFAULT VIEW
   //====================================================
-
   renderDefaultView = () => {
     return (
       <div className="list">
+        <h1 className="list-inside bg-gray-200 text-center leading-loose tracking-wide text-2xl">Tiles Pending Admin Review</h1>
+        <br />
         {this.state.tiles.length ? (
           <List>
             {this.state.tiles.map(tiles => {
@@ -77,28 +103,69 @@ class TilesManage extends Component {
                     {tiles.tileText}
                   </div>
                   <div className="whitespace-no-wrap">
-                    <button onClick={() => this.approvePendingTile(tiles._id, tiles.status)}
-                    className="approve-btn rounded px-2 py-1 mr-4">Approve</button>
-                    <button onClick={() => this.denyPendingTile(tiles._id, tiles.status)}
-                    className="deny-btn rounded px-2 py-1">Deny</button>
+                    <button 
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={() =>
+                        this.getThisTile(tiles._id)
+                      }>
+                      Review <i className="far fa-arrow-alt-circle-right" />
+                    </button>
                   </div>
                 </ListItem>
               );
             })}
           </List>
         ) : (
-            <h3>No pending tiles to display</h3>
-          )}
+          <h3>No tiles to display</h3>
+        )}
       </div>
     );
-  }; // ==> end renderDefaultView
+  } // ==> end renderTileEdit
+
+  //RENDER TILE EDIT
+  //====================================================
+  renderTileEdit = (tile) => {
+    return (
+      <div className="w-full max">
+        <form className="tile-form" onSubmit={this.saveThisTile}>
+          <TextArea 
+            name="tileText"
+            placeholder="This is not a valid return if null"
+            defaultValue={tile.tileText}
+            onChange={this.handleInputChange}
+            />
+          <Rating>
+            <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
+            <input
+            name="isPG"
+            type="checkbox"
+            value={tile.isPG}
+            defaultChecked={this.state.isPG}
+            onChange={this.handleInputChange}
+            />  Is PG?
+            <br />
+            <input 
+            name="isR"
+            type="checkbox"
+            value={tile.isR}
+            defaultChecked={this.state.isR}
+            onChange={this.handleInputChange}
+            />  Is R?
+          </Rating>
+          <br />
+          <SubmitBtn />
+        </form>
+      </div>
+    );
+  }
 
   //CONDITIONALLY RENDER THE COMPONENTS
   //====================================================
   render() {
-    return this.renderDefaultView(this.state.tiles)
+    return this.state.isInEditMode ? this.renderTileEdit(this.state.tileEdit) : this.renderDefaultView(this.state.tiles)
   };
-}
+
+} // ==> end class TilesView
 
 //EXPORT
 //=======================================================
