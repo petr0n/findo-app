@@ -94,6 +94,10 @@ class TileAdd extends Component {
     })
   }
 
+  handleRadioChange = () => {
+    console.log("radio changed");
+  }
+
   //render
   //===================================================
   render() {
@@ -117,8 +121,9 @@ class TileAdd extends Component {
             {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
           <div className="radio">
             <label>
-            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.handleFormSubmit()} />Kid Friendly Tile<br></br> 
-            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.handleFormSubmit()}/> Adult Tile
+              <input id="radio" type="radio" value="PG" name="gameSelect" className={btnStyle} onChange={() => this.handleRadioChange()} /> PG </label>
+            <label>
+              <input id="radio" type="radio" value="R" name="gameSelect" className={btnStyle} onChange={() => this.handleRadioChange()}/> R
             </label>
           </div>
           <div className="w-full flex items-center justify-between">
