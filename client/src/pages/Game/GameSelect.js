@@ -65,7 +65,7 @@ class GameSelect extends Component {
           </div>
         </div>
         <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
-          <div className={btnStyle}>Suggest a tile</div>
+          <div className={(btnStyle) + " bg-white hover_bg-purple-300"}>Suggest a tile</div>
         </div>
       </div>
     );
