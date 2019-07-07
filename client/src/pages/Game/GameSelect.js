@@ -41,7 +41,7 @@ class GameSelect extends Component {
     console.log('GameSelect this.props.user', this.props.user);
     return (
       <div>
-        <div className="background mx-auto rounded px-3 py-10 w-full text-center">
+        <div className="background mx-auto rounded px-3 py-10 w-11/12 text-center">
           {
             this.props.user ? 
             <div>You are logged in as {this.props.user.name}</div> : 
@@ -64,9 +64,13 @@ class GameSelect extends Component {
             <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
           </div>
         </div>
-        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
-          <div className={(btnStyle) + " bg-white hover_bg-purple-300"}>Suggest a tile</div>
-        </div>
+        {
+          this.props.user ? 
+          <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
+            <div className={(btnStyle) + " bg-white hover_bg-purple-300"}>Suggest a tile</div>
+          </div> :
+          ""
+        }
       </div>
     );
   }

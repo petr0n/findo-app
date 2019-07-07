@@ -65,7 +65,7 @@ class Login extends Component {
   render() {
     console.log('Login this.props.user', this.props.user);
     return (
-      <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
+      <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-3 md_p-8 w-11/12 flex-none">
         <div className="how-to my-5">
           <h1 className="text-xl">HOW TO PLAY</h1>
           <p className="text-sm">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>
