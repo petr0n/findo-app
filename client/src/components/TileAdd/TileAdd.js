@@ -19,7 +19,9 @@ class TileAdd extends Component {
       createdBy: "5d178f7161ffbf2ff410ca4b",
       characterCount: this.countCharacters(80),
       isSubmitDisabled: true,
-      isFormSubmitted: false
+      isFormSubmitted: false,
+      isPG: false,
+      isR: false
     }
     //this.user = this.props.user
   }
@@ -47,7 +49,7 @@ class TileAdd extends Component {
   };
   
   countCharacters = (total) => {
-    return (<p className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</p>);
+    return (<div className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</div>);
   }
 
   //handle user submit
@@ -94,8 +96,8 @@ class TileAdd extends Component {
     })
   }
 
-  handleRadioChange = () => {
-    console.log("radio changed");
+  handleCheckbox = (e) => {
+    // now do stuff
   }
 
   //render
@@ -108,7 +110,7 @@ class TileAdd extends Component {
         <p>Thanks for your submission. <br></br>
         {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
           <div id="button-div" className="flex items-center justify-center" onClick={() => this.handleNavClick("suggest", TileAdd)}>
-            <div className={btnStyle} >Add Another Tile</div> 
+            <div className={btnStyle} onClick={this.props.handleNavClick("addtile")}>Add Another Tile</div> 
           </div>
         </p>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
@@ -118,18 +120,24 @@ class TileAdd extends Component {
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
-            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
-          <div className="radio">
-            <label>
-              <input id="radio" type="radio" value="PG" name="gameSelect" className={btnStyle} onChange={() => this.handleRadioChange()} /> PG </label>
-            <label>
-              <input id="radio" type="radio" value="R" name="gameSelect" className={btnStyle} onChange={() => this.handleRadioChange()}/> R
-            </label>
-          </div>
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex items-center justify-between mb-5">
             {this.state.characterCount}
-            <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
           </div>
+            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
+          <div className="flex flex-row items-center justify-between w-full mb-5">
+            <label className="text-xs">
+              <input type="checkbox" onChange={this.handleCheckbox} /> Activate immediately
+            </label>
+            <div className="flex flex-row">
+              <div className="text-xs mr-5">Tile Rating</div>
+              <label className="text-xs mr-2">
+                <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} /> PG </label>
+              <label className="text-xs">
+                <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} /> R
+              </label>
+            </div>
+          </div>
+          <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
         </form>
         }
       </div>

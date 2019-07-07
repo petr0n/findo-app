@@ -36,7 +36,8 @@ class Home extends Component {
         return (
           <TileAdd
             key={"add"}
-            user={this.props.user} />
+            user={this.props.user}
+            handleNavClick={this.handleNavClick} />
         );
       default:
         return (
@@ -59,7 +60,7 @@ class Home extends Component {
     console.log('Admin home render user: ', this.props.user);
     return (
       <div className="container mx-auto flex">
-        <div className="w-full">
+        <div className="w-11/12 mx-auto">
           <AdminNav handleNavClick={this.handleNavClick} />
           <div className="page-bg">
             {this.state.page}
