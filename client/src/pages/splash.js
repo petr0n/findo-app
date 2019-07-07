@@ -18,7 +18,7 @@ class Splash extends Component {
           this.setState(prevState => ({ redirect: !prevState.redirect }));
       }
       .bind(this),
-      4500
+      5000
   );
   }
 
