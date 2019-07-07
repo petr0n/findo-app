@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { TextArea, SubmitBtn } from "../Form";
 import tileApi from "../../utils/tileAPI";
 import "./TileAdd.css";
+import "./index";
+import "../../pages/Admin/Home";
+import "../../pages/Game/SuggestTile";
 
 //add radio for isAcitve Now (status: active)
 //isRating
@@ -50,10 +53,12 @@ class TileAdd extends Component {
   //handle user submit
   //====================================================
   handleFormSubmit = event => {
-    event.preventDefault();//prevent default form submit 
+    //event.preventDefault();//prevent default form submit 
     tileApi.createTile({
       tileText: this.state.tileText,
-      createdBy: this.state.createdBy
+      createdBy: this.state.createdBy,
+      isPG: this.state.isPG,
+      isR: this.state.isR
     })
     .then(res => {
       console.log(res);
@@ -65,15 +70,19 @@ class TileAdd extends Component {
     // window.location.reload()
   };
 
-
-
   //render
-  //====================================================
+  //===================================================
   render() {
+    const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission.</p> :
+        <p>Thanks for your submission. <br></br>
+        {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
+          <div id="button-div" className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
+            <div className={btnStyle} >Add Another Tile</div> 
+          </div>
+        </p>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
             name="tileText"
@@ -81,9 +90,16 @@ class TileAdd extends Component {
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
+            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
+          <div className="radio">
+            <label>
+            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.handleFormSubmit()} />Kid Friendly Tile<br></br> 
+            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.handleFormSubmit()}/> Adult Tile
+            </label>
+          </div>
           <div className="w-full flex items-center justify-between">
             {this.state.characterCount}
-            <SubmitBtn isSubmitDisabled={this.state.isSubmitDisabled} />
+            <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
           </div>
         </form>
         }
@@ -91,6 +107,9 @@ class TileAdd extends Component {
     );
   }
 } // ==> end class TileAdd
+
+
+
 
 //EXPORT
 //=======================================================
@@ -101,28 +120,22 @@ export default TileAdd;
 //=======================================================
 
 /*
-
 TileAdd (page 13, component to be passed to Admin => home)
 Description: contains a form to create a tile by a user
 Imports:React, Buttons
 Contains a clickEvent that is a POST
-
       redirect: false
-
   //setRedirect
   setRedirect = () => {
     this.setState({
       redirect: true
     });
   }
-
   //renderRedirect
   renderRedirect = () => {
     if (this.state.redirect) {
       return  <Redirect to='/admin' />
     }
   }
-
   this.renderRedirect()
-
 */
