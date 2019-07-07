@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import tileApi from "../../utils/tileAPI";
 import "./TilesManage.css"
-import { TextArea, SubmitBtn, Rating } from "../Form";
+import { TextArea, SubmitBtn } from "../Form";
 import { List, ListItem } from "../TileList";
 
 //CONTENT 
@@ -38,10 +38,10 @@ class TilesManage extends Component {
 
   //API CALLS **************************************************
 
-  // LOAD ALL TILES
+  // LOAD ALL PENDING TILES
   //====================================================
   loadPendingTiles = () => {
-    tileApi.getPendingTiles({ }) 
+    tileApi.getPendingTiles({}) 
     .then(res =>
       this.setState({
         tiles: res.data
@@ -61,6 +61,7 @@ class TilesManage extends Component {
         tileId: res.data._id,
         isPG: res.data.isPG,
         isR: res.data.isR,
+        status: res.data.status,
         isInEditMode: true
       })
       console.log('res', res.data)}
@@ -68,22 +69,25 @@ class TilesManage extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE TILE === TILE TEXT UPDATE
+  // UPDATE TILE === TEXT, RATING, STATUS
   //====================================================
   saveThisTile = (event) => {
     event.preventDefault();
-    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText})
+    tileApi.updateTile(this.state.tileId, {
+      tileText: this.state.tileText,
+      isPG: this.state.isPG,
+      isR: this.state.isR,
+      status: this.state.status
+    })
     .then(res => {
-      console.log(res)
       this.setState({
         isInEditMode: false
       })
-      this.loadAllTiles()
+      this.loadPendingTiles()
       }
     )
       .catch(err => console.log(err));
   };
-
 
   //RENDERING COMPONENTS**************************************************
 
@@ -134,24 +138,33 @@ class TilesManage extends Component {
             defaultValue={tile.tileText}
             onChange={this.handleInputChange}
             />
-          <Rating>
+          <div>
             <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
-            <input
-            name="isPG"
-            type="checkbox"
-            value={tile.isPG}
-            defaultChecked={this.state.isPG}
-            onChange={this.handleInputChange}
-            />  Is PG?
+            <div>
+              <h3>isPG</h3>
+              <select name="isPG" defaultValue={tile.isPG} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
             <br />
-            <input 
-            name="isR"
-            type="checkbox"
-            value={tile.isR}
-            defaultChecked={this.state.isR}
-            onChange={this.handleInputChange}
-            />  Is R?
-          </Rating>
+            <div>
+              <h3>isR</h3>
+              <select name="isR" defaultValue={tile.isR} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <h3>Status</h3>
+              <select name="status" defaultValue={tile.status} onChange={this.handleInputChange}>
+                <option value="pending">Pending</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
           <br />
           <SubmitBtn />
         </form>
