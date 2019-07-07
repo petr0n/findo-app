@@ -72,6 +72,34 @@ class TileAdd extends Component {
 		this.props.handlePageChange("gameboard", this.props.user, gameType);
   }
 
+  updateTile = (event) => {
+    event.preventDefault();
+    tileApi.updateTile(this.state.tileId, {isPG: this.state.isPG})
+    .then(res => {
+      console.log(res)
+      this.setState({
+        isPG: true
+      })
+      this.updateTile()
+      }
+    )
+      .catch(err => console.log(err));
+  };
+
+  updateTile = (event) => {
+    event.preventDefault();
+    tileApi.updateTile(this.state.tileId, {isR: this.state.isR})
+    .then(res => {
+      console.log(res)
+      this.setState({
+        isR: true
+      })
+      this.updateTile()
+      }
+    )
+      .catch(err => console.log(err));
+  };
+
   //render
   //===================================================
   render() {
@@ -79,19 +107,24 @@ class TileAdd extends Component {
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Return to Home</button> <button className={btnStyle} onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Add Another Tile</button></p> :
+        <p>Thanks for your submission. <br></br>
+        {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
+          <div id="button-div" className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
+            <div className={btnStyle} >Add Another Tile</div> 
+          </div>
+        </p>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
-          <button className={btnStyle} onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Return to Home</button> 
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
+            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
           <div className="radio">
             <label>
-            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.handleGameTileSelect("PG")} />Kid Friendly Tile<br></br>
-            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.handleGameTileSelect("R")}/> Adult Tile
+            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.updateTile()} />Kid Friendly Tile<br></br> 
+            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.updateTile()}/> Adult Tile
             </label>
           </div>
           <div className="w-full flex items-center justify-between">
@@ -104,6 +137,9 @@ class TileAdd extends Component {
     );
   }
 } // ==> end class TileAdd
+
+
+
 
 //EXPORT
 //=======================================================
