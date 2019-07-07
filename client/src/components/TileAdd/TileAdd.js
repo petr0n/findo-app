@@ -23,7 +23,9 @@ class TileAdd extends Component {
       isPG: false,
       isR: false,
       statusCheckbox: true,
-      tileStatus: "active"
+      tileStatus: "active",
+      ratingIsPg: true,
+      ratingIsR: false
     }
     //this.user = this.props.user
   }
@@ -75,34 +77,20 @@ class TileAdd extends Component {
     // window.location.reload()
   };
 
-  renderPage = (pageName) => {
-    switch (pageName) {
-      case "addtile":
-        return (
-          <TileAdd
-            user={this.props.user}
-            key={"suggest"} />
-        );
-      default:
-        return (
-          <TileAdd
-            key={"suggest"}
-            user={this.props.user} />
-        );
-    }
-
-  }
-  handleNavClick = (pageName) => {
-    console.log("pageName", pageName)
-    this.setState({
-      page: this.renderPage(pageName)
-    })
-  }
 
   handleRadioChange = (e) => {
-    this.setState({
-      [e.target.id]: true
-    });
+    this.setState({ [e.target.id]: true });
+    if (e.target.id === "isPG") {
+      this.setState({ 
+        isPG: true,
+        ratingIsPg: true 
+      });
+    } else if (e.target.id === "isR") {
+      this.setState({ 
+        isR: true,
+        ratingIsR: true 
+      });
+    }
   }
 
   handleCheckbox = (e) => {
@@ -119,23 +107,25 @@ class TileAdd extends Component {
   render() {
     const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
     const isStatusChecked = this.state.statusCheckbox;
+    const ratingIsPg = this.state.ratingIsPg;
+    const ratingIsR = this.state.ratingIsR;
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
         <p>Thanks for your submission. <br></br>
         {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
-          <div id="button-div" className="flex items-center justify-center" onClick={() => this.handleNavClick("suggest", TileAdd)}>
+          <div id="button-div" className="flex items-center justify-center" onClick={() => this.props.handleNavClick("suggest", TileAdd)}>
             <div className={btnStyle} >Add Another Tile</div> 
           </div>
         </p>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
             name="tileText"
-            placeholder="Add tile suggestion here"
+            placeholder="Tile text"
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex items-center justify-between mb-3">
             {this.state.characterCount}
           </div>
             {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
@@ -145,9 +135,9 @@ class TileAdd extends Component {
             </label>
             <div className="flex items-center justify-center">
               <div className="text-xs mr-1">Tile Rating</div>
-              <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} />
+              <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
               <label htmlFor="isPG" className="text-xs mr-1"> PG</label>
-              <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} />
+              <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
               <label htmlFor="isR" className="text-xs"> R</label>
             </div>
           </div>
