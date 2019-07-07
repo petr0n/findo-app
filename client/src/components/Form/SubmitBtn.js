@@ -5,7 +5,6 @@ import React from "react";
 
 //CONTENT + EXPORT
 //=======================================================
-
 export const SubmitBtn = props => {
   let disable = props.isSubmitDisabled ? "disabled" : "";
     return (

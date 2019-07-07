@@ -16,7 +16,6 @@ const Splash = () => {
           <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
       </div>
     );
-
 }
 
 export default Splash;

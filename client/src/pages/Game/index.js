@@ -103,10 +103,10 @@ class Game extends Component {
         );
       default:
         return (
-            <Login key={"login"}
-                   handlePageChange={this.handlePageChange}
-                   apiUrl={this.state.apiUrl}
-                   user={this.props.user} />
+          <Login key={"login"} 
+          handlePageChange={this.handlePageChange}
+          apiUrl={this.state.apiUrl}
+          user={this.props.user} />
         );
     }
   }

@@ -79,6 +79,7 @@ module.exports = {
     getGames: function (req, res) {
         db.Gameboard
             .find(req.query)
+            .sort({ gameStarted: 'desc'})
             .populate("userId")
             .populate("tiles.tile")
             .then(dbModel => res.json(dbModel))

@@ -84,6 +84,12 @@ class Gameboard extends Component {
 			// tiles: this.makeTileGrid(boardTiles)
 		});
 	}
+
+	handleBigTileCloseClick = () => {
+		this.setState({ 
+			tileBigState: "inactive",
+		});
+	}
 	
 	handleTileBigButtonClick = (tileData) => {
 		console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
@@ -160,7 +166,8 @@ class Gameboard extends Component {
 					tileBigState={this.state.tileBigState} 
 					tileBigData={this.state.tileBigData}
 					handleTileBigButtonClick={this.handleTileBigButtonClick}
-					user={this.state.user} />
+					user={this.state.user}
+					handleBigTileCloseClick={this.handleBigTileCloseClick} />
 			</div>
 		);
 	}
