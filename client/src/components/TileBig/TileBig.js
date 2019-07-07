@@ -12,11 +12,14 @@ class TileBig extends Component {
   }
 
 
+
   render() {
     // console.log('TileBig this.isActive', this.isActive);
     return (
       <div className="tileBig flex flex-col">
-        <div className="p-5 text-center flex items-center justify-center">
+      <div className="text-right p-3">
+          <i className="text-6xl far fa-times-circle" onClick={() => this.props.handleBigTileCloseClick()}></i></div>
+      <div className="p-5 text-center flex items-center justify-center">
           <p className="tileBigText">{this.tileBigData.tileText}</p>
         </div>
         <div className="button-wrapper py-4 text-center w-full">
