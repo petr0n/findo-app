@@ -60,8 +60,8 @@ class GameSelect extends Component {
           }
           
           <div className="flex items-center justify-center">
-            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-lg btn-double-secondary"} onClick={() => this.handleGameSelect("PG")}><div></div><div></div>Kid Friendly Board</div>
-            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-lg btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("PG")}><div></div><div></div>Kid Friendly Board</div>
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
           </div>
         </div>
         <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
