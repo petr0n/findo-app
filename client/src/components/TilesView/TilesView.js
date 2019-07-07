@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import "./TilesView.css";
 import tileApi from "../../utils/tileAPI";
-import { TextArea, SubmitBtn, Rating } from "../Form";
+import { TextArea, SubmitBtn } from "../Form";
 import { List, ListItem } from "../TileList";
 
 //CONTENT 
@@ -29,19 +29,16 @@ class TilesView extends Component {
 
   //HANDLE INPUT CHANGE
   //====================================================
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({ 
+      [name]: value,
     });
-  }
+  };
 
   //API CALLS **************************************************
 
-  // LOAD ALL TILES
+  // LOAD ALL NON-PENDING TILES
   //====================================================
   loadAllTiles = () => {
     tileApi.getTilesView({ }) 
@@ -64,6 +61,7 @@ class TilesView extends Component {
         tileId: res.data._id,
         isPG: res.data.isPG,
         isR: res.data.isR,
+        status: res.data.status,
         isInEditMode: true
       })
       console.log('res', res.data)}
@@ -71,13 +69,17 @@ class TilesView extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE TILE: TEXT AND STATUS
+  // UPDATE TILE === TEXT, RATING, STATUS
   //====================================================
   saveThisTile = (event) => {
     event.preventDefault();
-    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText}, {isPG: this.state.isPG}, {isR: this.state.isR})
+    tileApi.updateTile(this.state.tileId, {
+      tileText: this.state.tileText,
+      isPG: this.state.isPG,
+      isR: this.state.isR,
+      status: this.state.status
+    })
     .then(res => {
-      console.log(res)
       this.setState({
         isInEditMode: false
       })
@@ -117,7 +119,6 @@ class TilesView extends Component {
   }
 
   //RENDERING COMPONENTS**************************************************
-
 
   //RENDER DEFAULT VIEW
   //====================================================
@@ -172,24 +173,32 @@ class TilesView extends Component {
             defaultValue={tile.tileText}
             onChange={this.handleInputChange}
             />
-          <Rating>
+          <div>
             <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
-            <input
-            name="isPG"
-            type="checkbox"
-            value={tile.isPG}
-            defaultChecked={this.state.isPG}
-            onChange={this.handleInputChange}
-            />  Is PG?
+            <div>
+              <h3>isPG</h3>
+              <select name="isPG" defaultValue={tile.isPG} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
             <br />
-            <input 
-            name="isR"
-            type="checkbox"
-            value={tile.isR}
-            defaultChecked={this.state.isR}
-            onChange={this.handleInputChange}
-            />  Is R?
-          </Rating>
+            <div>
+              <h3>isR</h3>
+              <select name="isR" defaultValue={tile.isR} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <h3>Status</h3>
+              <select name="status" defaultValue={tile.status} onChange={this.handleInputChange}>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
           <br />
           <SubmitBtn />
         </form>
