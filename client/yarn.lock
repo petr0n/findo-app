@@ -2827,6 +2827,11 @@ css-declaration-sorter@^4.0.1:
     postcss "^7.0.1"
     timsort "^0.3.0"
 
+css-doodle@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/css-doodle/-/css-doodle-0.7.1.tgz#477466310df6554ec5182349745194ba37415670"
+  integrity sha512-TRs+7YLgP/yc0EdrL5Us2GRHbhIgf4GsQWAt5WdRxr5pwwpWl8Q9jZle431Z/5u5C29jiEoItjIaKE84xFh+kA==
+
 css-has-pseudo@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/css-has-pseudo/-/css-has-pseudo-0.10.0.tgz#3c642ab34ca242c59c41a125df9105841f6966ee"
