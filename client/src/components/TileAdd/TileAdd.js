@@ -21,7 +21,9 @@ class TileAdd extends Component {
       isSubmitDisabled: true,
       isFormSubmitted: false,
       isPG: false,
-      isR: false
+      isR: false,
+      statusCheckbox: true,
+      tileStatus: "active"
     }
     //this.user = this.props.user
   }
@@ -49,7 +51,7 @@ class TileAdd extends Component {
   };
   
   countCharacters = (total) => {
-    return (<div className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</div>);
+    return (<p className={"char-ctr text-xs italic " + (total < 10 ? "text-red-500" : "text-indigo-700")}>Character Count {total} (max 80)</p>);
   }
 
   //handle user submit
@@ -60,7 +62,8 @@ class TileAdd extends Component {
       tileText: this.state.tileText,
       createdBy: this.state.createdBy,
       isPG: this.state.isPG,
-      isR: this.state.isR
+      isR: this.state.isR,
+      status: this.state.tileStatus
     })
     .then(res => {
       console.log(res);
@@ -96,21 +99,33 @@ class TileAdd extends Component {
     })
   }
 
+  handleRadioChange = (e) => {
+    this.setState({
+      [e.target.id]: true
+    });
+  }
+
   handleCheckbox = (e) => {
-    // now do stuff
+    this.setState({statusCheckbox: !this.state.statusCheckbox}); //look at the !NOT sign
+    if (this.state.statusCheckbox) {
+      this.setState({ tileStatus: "active"})
+    } else {
+      this.setState({ tileStatus: "inactive"})
+    }
   }
 
   //render
   //===================================================
   render() {
     const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
+    const isStatusChecked = this.state.statusCheckbox;
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
         <p>Thanks for your submission. <br></br>
         {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
           <div id="button-div" className="flex items-center justify-center" onClick={() => this.handleNavClick("suggest", TileAdd)}>
-            <div className={btnStyle} onClick={this.props.handleNavClick("addtile")}>Add Another Tile</div> 
+            <div className={btnStyle} >Add Another Tile</div> 
           </div>
         </p>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
@@ -120,24 +135,23 @@ class TileAdd extends Component {
             value={this.state.tileText}
             onChange={this.handleInputChange}
             />
-          <div className="w-full flex items-center justify-between mb-5">
+          <div className="w-full flex items-center justify-between">
             {this.state.characterCount}
           </div>
             {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
           <div className="flex flex-row items-center justify-between w-full mb-5">
-            <label className="text-xs">
-              <input type="checkbox" onChange={this.handleCheckbox} /> Activate immediately
+            <label className="text-xs flex items-center justify-start">
+              <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} /> Activate immediately
             </label>
-            <div className="flex flex-row">
-              <div className="text-xs mr-5">Tile Rating</div>
-              <label className="text-xs mr-2">
-                <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} /> PG </label>
-              <label className="text-xs">
-                <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} /> R
-              </label>
+            <div className="flex items-center justify-center">
+              <div className="text-xs mr-1">Tile Rating</div>
+              <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} />
+              <label htmlFor="isPG" className="text-xs mr-1"> PG</label>
+              <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} />
+              <label htmlFor="isR" className="text-xs"> R</label>
             </div>
           </div>
-          <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
+           <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
         </form>
         }
       </div>
