@@ -68,9 +68,9 @@ class TileAdd extends Component {
     // window.location.reload()   
   };
 
-  handleClick = (pageName) => {
-    this.props.handlePageChange(pageName);
-  };
+  handleGameSelect = (gameType) => {
+		this.props.handlePageChange("gameboard", this.props.user, gameType);
+  }
 
   //render
   //===================================================
@@ -79,9 +79,9 @@ class TileAdd extends Component {
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handleClick(this.home, this.state.user)} id="btn">Return to Home</button> <button className={btnStyle} onClick={() => this.props.handleClick("SuggestTile", this.state.user)} id="btn">Add Another Tile</button></p> :
+        <p>Thanks for your submission.<br></br><button onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Return to Home</button> <button className={btnStyle} onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Add Another Tile</button></p> :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
-          <button className={btnStyle} onClick={() => this.props.handleClick(this.home, this.state.user)} id="btn">Return to Home</button> <button className={btnStyle} onClick={() => this.props.handleClick("SuggestTile", this.state.user)} id="btn">Add Another Tile</button>
+          <button className={btnStyle} onClick={() => this.props.handlePageChange("suggesttile", this.props.user)} id="btn">Return to Home</button> 
           <TextArea 
             name="tileText"
             placeholder="Add tile suggestion here"
@@ -90,8 +90,8 @@ class TileAdd extends Component {
             />
           <div className="radio">
             <label>
-            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.handleGameSelect("PG")} />Kid Friendly Tile<br></br>
-            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.handleGameSelect("R")}/> Adult Tile
+            <input id="radio" type="radio" value="option1" name="gameSelect" className={btnStyle} onClick={() => this.handleGameTileSelect("PG")} />Kid Friendly Tile<br></br>
+            <input id="radio" type="radio" value="option2" name="gameSelect" className={btnStyle} onClick={() => this.handleGameTileSelect("R")}/> Adult Tile
             </label>
           </div>
           <div className="w-full flex items-center justify-between">
