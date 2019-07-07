@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
 import "css-doodle";
+import "./splash.css";
 
 const Doodle = ({ rule = "" }) => <css-doodle>{rule}</css-doodle>;
 
@@ -10,14 +11,6 @@ class Splash extends Component {
   state = {
     redirect: false
   }
-  
-  
-  // TimeOut = () => {
-  //   const page = useState("login");
-  //   return page;
-  // }
-  // // setTimeout(this.TimeOut.bind(this), 3000);
-
 
   componentDidMount() {
     setTimeout(
@@ -48,7 +41,7 @@ class Splash extends Component {
             <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
             <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
         </div>
-        <div className="">
+        <div className="confetti-splash">
           <Doodle
             rule={`
             :doodle {

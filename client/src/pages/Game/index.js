@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-// import gameboardAPI from "../../utils/gameboardAPI";
+import { Transition } from "react-transition-group";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
@@ -46,19 +45,6 @@ class Game extends Component {
     history.push("/" + page);
     this.changePage();
   }
-
-  // handleLoadGameClick = () => {
-  //   let userId = this.props.user._id;
-  //   gameboardAPI.getGamesByUserAndStatus(userId)
-  //     .then(res => {
-  //       console.log(res);
-  //       // this.setState({
-  //       //   currentPage: "gameboard",
-  //       //   gameboardId: res.id
-  //       // })
-  //     });
-
-  // }
 
   changePage(){
     switch (this.state.currentPage) {
@@ -117,13 +103,13 @@ render() {
     <>
       <Wrapper>
         <Header />
-        <ReactCSSTransitionGroup
+        <Transition
           transitionName="fade" 
           transitionEnterTimeout={1000} 
           transitionLeaveTimeout={500}
         >
           {this.changePage()}
-        </ReactCSSTransitionGroup>
+        </Transition>
         <Footer />
       </Wrapper>
       <UserBar 
