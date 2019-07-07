@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
@@ -103,13 +103,14 @@ render() {
     <>
       <Wrapper>
         <Header />
-        <Transition
+        <CSSTransition
           transitionName="fade" 
           transitionEnterTimeout={1000} 
           transitionLeaveTimeout={500}
+          timeout={300}
         >
           {this.changePage()}
-        </Transition>
+        </CSSTransition>
         <Footer />
       </Wrapper>
       <UserBar 
