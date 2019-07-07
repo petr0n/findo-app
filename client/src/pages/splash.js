@@ -39,7 +39,15 @@ class Splash extends Component {
   render() {
     console.log('splash this.state.redirect', this.state.redirect)
     return (
-      <div className="flex items-center justify-center w-full h-screen">{this.renderRedirect()}
+      <div className="flex items-center justify-center w-full h-screen">
+        {this.renderRedirect()}
+        <div className="logo-splash">
+            <img src="../images/f.png" alt="F" className="mx-auto char letter-f bounce-in-top" />
+            <img src="../images/i.png" alt="I" className="mx-auto char letter-i bounce-in-top" />
+            <img src="../images/n.png" alt="N" className="mx-auto char letter-n bounce-in-top" />
+            <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
+            <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
+        </div>
         <div className="">
           <Doodle
             rule={`
@@ -83,53 +91,8 @@ class Splash extends Component {
             } `}
           />
         </div>
-        {/* <Doodle
-        rule={`
-          :doodle {
-            @grid: 25x1 / 18vmin;
-          }
-          :container {
-            perspective: 30vmin;
-          }
-
-          @place-cell: center;
-          @size: 100%;
-
-          border: @r(2px) solid @pd(
-            #e56b1f, #fcd02c, #e42c6a, #ffffff
-          );
-          @random(.1) { border-style: dashed; }
-          @random(.1) { border-style: dotted; }
-          @random(.1) {
-            border-width: @p(3px, 4px);
-            border-style: double;
-          }
-
-          border-radius: 50%;
-          transform-style: preserve-3d;
-          will-change: transform, opacity;
-          animation: scale-up 7s linear infinite;
-          animation-delay: calc(-7s / @size() * @i());
-
-          @keyframes scale-up {
-            0%, 100% {
-              transform: translate3d(0, 0, 0) rotate(0);
-              opacity: 0;
-            }
-            10% {
-              opacity: 1;
-            }
-            95% {
-              transform:
-                translate3d(0, 0, 45vmin)
-                rotateX(calc(@p(-1, 1) * @r(30deg, 330deg)))
-                rotateY(calc(@p(-1, 1) * @r(30deg, 330deg)))
-                rotateZ(calc(@p(-1, 1) * @r(30deg, 330deg)))
-            }
-          }`}
-      /> */}
       </div>
-    );
+    )
   }
 
 }
