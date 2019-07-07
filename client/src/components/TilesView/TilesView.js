@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import "./TilesView.css";
 import tileApi from "../../utils/tileAPI";
-import { TextArea, SubmitBtn } from "../Form";
+import { TextArea, SubmitBtn, Rating } from "../Form";
 import { List, ListItem } from "../TileList";
 
 //CONTENT 
@@ -19,7 +19,7 @@ class TilesView extends Component {
     }
   };
 
-  // WHEN THE DOM IS LOADED RENDER ALL TILES
+  // WHEN THE DOM IS LOADED CALL THE DEFAULT VIEW
   //====================================================
   componentDidMount() {
     this.loadAllTiles();
@@ -29,19 +29,22 @@ class TilesView extends Component {
 
   //HANDLE INPUT CHANGE
   //====================================================
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
       [name]: value
     });
-  };
+  }
 
   //API CALLS **************************************************
 
   // LOAD ALL TILES
   //====================================================
   loadAllTiles = () => {
-    tileApi.getTiles({ })
+    tileApi.getTilesView({ }) 
     .then(res =>
       this.setState({
         tiles: res.data
@@ -59,6 +62,8 @@ class TilesView extends Component {
       this.setState({
         tileEdit: res.data,
         tileId: res.data._id,
+        isPG: res.data.isPG,
+        isR: res.data.isR,
         isInEditMode: true
       })
       console.log('res', res.data)}
@@ -66,12 +71,11 @@ class TilesView extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE TILE === TILE TEXT UPDATE
+  // UPDATE TILE: TEXT AND STATUS
   //====================================================
   saveThisTile = (event) => {
-    //console.log(tileText)
     event.preventDefault();
-    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText})
+    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText}, {isPG: this.state.isPG}, {isR: this.state.isR})
     .then(res => {
       console.log(res)
       this.setState({
@@ -81,14 +85,12 @@ class TilesView extends Component {
       }
     )
       .catch(err => console.log(err));
-
   };
 
-  // UPDATE TILE === TILE STATUS
+  // UPDATE TILE: TILE STATUS
   //====================================================
   changeTileStatus = (id, status) => {
   console.log("the id is " + id)
-  //event.preventDefault();
     if (status === 'active') {
       tileApi.updateTile (id, {status: 'inactive'})
       .then (res => {
@@ -116,11 +118,14 @@ class TilesView extends Component {
 
   //RENDERING COMPONENTS**************************************************
 
+
   //RENDER DEFAULT VIEW
   //====================================================
   renderDefaultView = () => {
     return (
       <div className="list">
+        <h1 className="list-inside bg-gray-200 text-center leading-loose tracking-wide text-2xl">Active and Inactive Tiles</h1>
+        <br />
         {this.state.tiles.length ? (
           <List>
             {this.state.tiles.map(tiles => {
@@ -158,8 +163,6 @@ class TilesView extends Component {
   //RENDER TILE EDIT
   //====================================================
   renderTileEdit = (tile) => {
-    //const tile = {tileText: "Jason"}
-    //console.log(tile)
     return (
       <div className="w-full max">
         <form className="tile-form" onSubmit={this.saveThisTile}>
@@ -169,6 +172,25 @@ class TilesView extends Component {
             defaultValue={tile.tileText}
             onChange={this.handleInputChange}
             />
+          <Rating>
+            <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
+            <input
+            name="isPG"
+            type="checkbox"
+            value={tile.isPG}
+            defaultChecked={this.state.isPG}
+            onChange={this.handleInputChange}
+            />  Is PG?
+            <br />
+            <input 
+            name="isR"
+            type="checkbox"
+            value={tile.isR}
+            defaultChecked={this.state.isR}
+            onChange={this.handleInputChange}
+            />  Is R?
+          </Rating>
+          <br />
           <SubmitBtn />
         </form>
       </div>

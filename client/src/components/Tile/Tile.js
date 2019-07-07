@@ -20,8 +20,10 @@ class Tile extends Component {
     const tileCenterClass = this.props.isCenter ? " center-tile" : "";
     const tileSelectedClass = tileData.isChecked ? " selected" : "";
     return (
-      <div className="tile-wrapper flex items-center justify-center text-center p-1" onClick={() => this.handleClick(this.props.tileData)}>
-        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded " + tileCenterClass + tileSelectedClass}> 
+      <div 
+        className="tile-wrapper flex items-center justify-center text-center p-1" 
+        onClick={!this.props.isCenter ? () => this.handleClick(this.props.tileData) : ""}>
+        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded overflow-hidden break-words" + tileCenterClass + tileSelectedClass}> 
           {
             this.props.isCenter ?
             "FREE SPACE" : 

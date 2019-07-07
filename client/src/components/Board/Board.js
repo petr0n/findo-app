@@ -20,7 +20,8 @@ class Board extends Component {
             tileData={"asdf"} 
             tileBigState={this.props.tileBigState} 
             tileBigData={this.props.tileBigData}
-            handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
+            handleTileBigButtonClick={this.props.handleTileBigButtonClick}
+            handleBigTileCloseClick={this.props.handleBigTileCloseClick} />
         }
       </div>
     );
