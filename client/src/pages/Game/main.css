@@ -16,12 +16,6 @@
 .background {
   background-color: rgba(255,255,255,.8);
 }
-.login-box {
-  min-height: 200px;
-}
-.login-box-md {
-  min-height: 200px;
-}
 
 
 .login-box h1 {
@@ -67,3 +61,21 @@
 .how-to {
   color: var(--brand-purple);
 }
+
+
+
+@media screen and (max-width: 640px) {
+  .login-link {
+    font-size: 1.2rem;
+  }
+}
+
+/* @media screen and (max-width: 480px) {
+  .login-link {
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .login-link {
+  }
+} */

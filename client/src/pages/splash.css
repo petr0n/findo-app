@@ -1,3 +1,6 @@
+.confetti-splash {
+    z-index: 0;
+}
 .logo-splash {
     margin: auto;
     width: 60%;
@@ -6,6 +9,7 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .char {

@@ -36,12 +36,12 @@ class GameSelect extends Component {
 
 
   render() {
-		const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
+		const btnStyle = "cursor-pointer px-4 py-2 m-4 text-center inline-block";
     
     console.log('GameSelect this.props.user', this.props.user);
     return (
       <div>
-        <div className="background mx-auto rounded px-3 py-10 w-full text-center">
+        <div className="background mx-auto rounded px-3 py-10 w-11/12 text-center">
           {
             this.props.user ? 
             <div>You are logged in as {this.props.user.name}</div> : 
@@ -49,18 +49,28 @@ class GameSelect extends Component {
           }
           {
             this.state.gameboardId ? 
-            <div className={btnStyle} onClick={() => this.props.handlePageChange("gameboard", this.props.user, null, this.state.gameboardId)}>Finish previous game</div> : 
+            <div>
+                <div className={(btnStyle) + " hover_bg-red-300 text-brand-red phosphate text-3xl btn-double"} onClick={() => this.props.handlePageChange("gameboard", this.props.user, null, this.state.gameboardId)}>
+                <div></div><div></div>
+                Finish previous game
+              </div>
+              <div className="py-3">or start a new game</div>
+            </div> : 
             ""
           }
           
-          <div className=" flex items-center justify-center">
-            <div className={btnStyle} onClick={() => this.handleGameSelect("PG")}>Kid Friendly Board</div>
-            <div className={btnStyle} onClick={() => this.handleGameSelect("R")}>Adult Style Board</div>
+          <div className="flex items-center justify-center">
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("PG")}><div></div><div></div>Kid Friendly Board</div>
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
           </div>
         </div>
-        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
-          <div className={btnStyle}>Suggest a tile</div>
-        </div>
+        {
+          this.props.user ? 
+          <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
+            <div className={(btnStyle) + " bg-white hover_bg-purple-300"}>Suggest a tile</div>
+          </div> :
+          ""
+        }
       </div>
     );
   }
