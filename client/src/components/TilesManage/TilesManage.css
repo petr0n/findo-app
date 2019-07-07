@@ -1,20 +1,12 @@
 /*  TILESMANAGE STYLES
 //=======================================================*/
 
-.list button {
-    color: black;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+.bg-blue {
+    color: white;
     transition: box-shadow 1s;
 }
-.list button:hover {
+.bg-blue:hover {
+    color: white;
     box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
     transition: box-shadow 1s;
-}
-
-.approve-btn {
-    background-color: lightgreen;
-}
-
-.deny-btn {
-    background-color: rgba(255, 0, 0, .6);
 }
