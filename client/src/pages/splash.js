@@ -1,26 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import "./splash.css";
 
 
-class Splash extends Component {
-  // constructor(props) {
-  //   super(props);
-  // };
+const Splash = () => {
+
   
+
   
-  // TimeOut = () => {
-  //   const page = useState("login");
-  //   return page;
-  // }
-  // // setTimeout(this.TimeOut.bind(this), 3000);
-  
-  render() {
-      return (
-        <div>
-        Animation goes here
+    return (
+      <div className="logo-splash">
+          <img src="../images/f.png" alt="F" className="mx-auto char letter-f bounce-in-top" />
+          <img src="../images/i.png" alt="I" className="mx-auto char letter-i bounce-in-top" />
+          <img src="../images/n.png" alt="N" className="mx-auto char letter-n bounce-in-top" />
+          <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
+          <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
       </div>
     );
-  }
-
 }
 
 export default Splash;
