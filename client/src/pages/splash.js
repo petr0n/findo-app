@@ -6,7 +6,6 @@ import "./splash.css";
 const Doodle = ({ rule = "" }) => <css-doodle>{rule}</css-doodle>;
 
 
-
 class Splash extends Component {
   state = {
     redirect: false
@@ -18,10 +17,9 @@ class Splash extends Component {
           this.setState(prevState => ({ redirect: !prevState.redirect }));
       }
       .bind(this),
-      4000
-  );
+      5000
+    );
   }
-
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -30,7 +28,6 @@ class Splash extends Component {
   }
   
   render() {
-    console.log('splash this.state.redirect', this.state.redirect)
     return (
       <div className="flex items-center justify-center w-full h-screen">
         {this.renderRedirect()}

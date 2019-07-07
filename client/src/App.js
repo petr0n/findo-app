@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Game from "./pages/Game";
 import Admin from "./pages/Admin";
 import privacy from "./pages/privacy";
-import splash from "./pages/splash.js";
+import Splash from "./pages/splash.js";
 import axios from "axios";
 
 
@@ -46,8 +46,8 @@ class App extends Component {
           <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/winner" render={() => <Game page={"winner"} user={this.state.user} />} />
           <Route path="/admin" render={() => <Admin user={this.state.user} />} />
-          {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} />*/}
-           <Route path="/" component={splash} />
+          {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} /> */}
+          <Route path="/" component={Splash} /> 
         </Switch>
       </BrowserRouter>
     );
