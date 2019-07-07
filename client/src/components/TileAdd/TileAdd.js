@@ -70,6 +70,30 @@ class TileAdd extends Component {
     // window.location.reload()
   };
 
+  renderPage = (pageName) => {
+    switch (pageName) {
+      case "addtile":
+        return (
+          <TileAdd
+            user={this.props.user}
+            key={"suggest"} />
+        );
+      default:
+        return (
+          <TileAdd
+            key={"suggest"}
+            user={this.props.user} />
+        );
+    }
+
+  }
+  handleNavClick = (pageName) => {
+    console.log("pageName", pageName)
+    this.setState({
+      page: this.renderPage(pageName)
+    })
+  }
+
   //render
   //===================================================
   render() {
@@ -79,7 +103,7 @@ class TileAdd extends Component {
         {this.state.isFormSubmitted ? 
         <p>Thanks for your submission. <br></br>
         {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
-          <div id="button-div" className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
+          <div id="button-div" className="flex items-center justify-center" onClick={() => this.handleNavClick("suggest", TileAdd)}>
             <div className={btnStyle} >Add Another Tile</div> 
           </div>
         </p>  :
