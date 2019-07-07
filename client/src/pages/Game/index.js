@@ -6,7 +6,6 @@ import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import UserBar from "../../components/UserBar";
-import Splash from "./Splash";
 import Login from "./Login";
 import SuggestTile from "./SuggestTile";
 import GameSelect from "./GameSelect";
@@ -104,7 +103,10 @@ class Game extends Component {
         );
       default:
         return (
-          <Splash />
+            <Login key={"login"}
+                   handlePageChange={this.handlePageChange}
+                   apiUrl={this.state.apiUrl}
+                   user={this.props.user} />
         );
     }
   }
