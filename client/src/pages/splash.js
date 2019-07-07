@@ -35,11 +35,11 @@ class Splash extends Component {
       <div className="flex items-center justify-center w-full h-screen">
         {this.renderRedirect()}
         <div className="logo-splash">
-            <img src="../images/f.png" alt="F" className="mx-auto char letter-f bounce-in-top" />
-            <img src="../images/i.png" alt="I" className="mx-auto char letter-i bounce-in-top" />
-            <img src="../images/n.png" alt="N" className="mx-auto char letter-n bounce-in-top" />
-            <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
-            <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
+          <img src="../images/f.png" alt="F" className="mx-auto char letter-f bounce-in-top" />
+          <img src="../images/i.png" alt="I" className="mx-auto char letter-i bounce-in-top" />
+          <img src="../images/n.png" alt="N" className="mx-auto char letter-n bounce-in-top" />
+          <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
+          <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
         </div>
         <div className="confetti-splash">
           <Doodle
