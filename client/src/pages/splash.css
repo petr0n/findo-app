@@ -3,7 +3,7 @@
 }
 .logo-splash {
     margin: auto;
-    width: 60%;
+    width: 70%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,6 +15,10 @@
 .char {
     display: inline-block;
     text-align: center;
+}
+
+.logo-splash img {
+    width: 20%;
 }
 
 .letter-f  {
