@@ -23,25 +23,27 @@ class Home extends Component {
       case "tilesmanage":
         return (
           <TilesManage
-            key={"tilesmanage"}
-          />
+            user={this.props.user}
+            key={"tilesmanage"} />
         );
       case "tilesview":
         return (
           <TilesView
             key={"view"}
-          />
+            user={this.props.user} />
         );
       case "addtile":
         return (
           <TileAdd
             key={"add"}
-          />
+            user={this.props.user}
+            handleNavClick={this.handleNavClick} />
         );
       default:
         return (
           <TilesManage
-            key={"suggest"} />
+            key={"suggest"}
+            user={this.props.user} />
         );
     }
 
@@ -55,9 +57,10 @@ class Home extends Component {
 
 
   render() {
+    console.log('Admin home render user: ', this.props.user);
     return (
-      <div className="container mx-auto flex px-5">
-        <div className="w-full">
+      <div className="container mx-auto flex">
+        <div className="w-11/12 mx-auto">
           <AdminNav handleNavClick={this.handleNavClick} />
           <div className="page-bg">
             {this.state.page}

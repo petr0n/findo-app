@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-// import gameboardAPI from "../../utils/gameboardAPI";
+import { CSSTransition } from "react-transition-group";
 
 import Wrapper from "../../components/Wrapper";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import UserBar from "../../components/UserBar";
-import Splash from "./Splash";
 import Login from "./Login";
 import SuggestTile from "./SuggestTile";
 import GameSelect from "./GameSelect";
@@ -107,7 +105,7 @@ class Game extends Component {
           <Login key={"login"} 
           handlePageChange={this.handlePageChange}
           apiUrl={this.state.apiUrl}
-          user={currentUser} />
+          user={this.props.user} />
         );
       case "logout":
           return (
@@ -119,7 +117,10 @@ class Game extends Component {
           );
       default:
         return (
-          <Splash />
+          <Login key={"login"} 
+          handlePageChange={this.handlePageChange}
+          apiUrl={this.state.apiUrl}
+          user={this.props.user} />
         );
     }
   }
@@ -131,20 +132,19 @@ render() {
     <>
       <Wrapper>
         <Header />
-        <ReactCSSTransitionGroup
+        <CSSTransition
           transitionName="fade" 
           transitionEnterTimeout={1000} 
           transitionLeaveTimeout={500}
+          timeout={300}
         >
-          {
-            // this.props.page ? 
-            // this.changePage(this.props.page, this.props.user) :
-            this.changePage()
-          }
-        </ReactCSSTransitionGroup>
+          {this.changePage()}
+        </CSSTransition>
         <Footer />
       </Wrapper>
-      <UserBar user={this.props.user} />
+      <UserBar 
+        user={this.props.user}
+        apiUrl={this.state.apiUrl} />
     </>
     );
   }

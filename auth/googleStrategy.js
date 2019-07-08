@@ -17,10 +17,10 @@ const strategy = new GoogleStrategy(
 				email: profile.emails[0].value,
 				socialId: profile.id,
 				name: profile.displayName,
-				role: "user",
 				socialType: "GG"
 			};
-			User.findOneAndUpdate({ socialId: profile.id }, userData, {new: true, upsert: true})
+			User.findOneAndUpdate({ socialId: profile.id }, userData, {upsert: true})
+			//, role: {$ne : "admin"}
 				.then(user => {
 					console.log('gg strategy user: ', user);
 					return done(null, user);

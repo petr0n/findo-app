@@ -19,7 +19,7 @@ class TilesView extends Component {
     }
   };
 
-  // WHEN THE DOM IS LOADED RENDER ALL TILES
+  // WHEN THE DOM IS LOADED CALL THE DEFAULT VIEW
   //====================================================
   componentDidMount() {
     this.loadAllTiles();
@@ -32,16 +32,16 @@ class TilesView extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({ 
-      [name]: value
+      [name]: value,
     });
   };
 
   //API CALLS **************************************************
 
-  // LOAD ALL TILES
+  // LOAD ALL NON-PENDING TILES
   //====================================================
   loadAllTiles = () => {
-    tileApi.getTiles({ })
+    tileApi.getTilesView({ }) 
     .then(res =>
       this.setState({
         tiles: res.data
@@ -59,6 +59,9 @@ class TilesView extends Component {
       this.setState({
         tileEdit: res.data,
         tileId: res.data._id,
+        isPG: res.data.isPG,
+        isR: res.data.isR,
+        status: res.data.status,
         isInEditMode: true
       })
       console.log('res', res.data)}
@@ -66,14 +69,17 @@ class TilesView extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE TILE
+  // UPDATE TILE === TEXT, RATING, STATUS
   //====================================================
   saveThisTile = (event) => {
-    //console.log(tileText)
     event.preventDefault();
-    tileApi.updateTile(this.state.tileId, {tileText: this.state.tileText})
+    tileApi.updateTile(this.state.tileId, {
+      tileText: this.state.tileText,
+      isPG: this.state.isPG,
+      isR: this.state.isR,
+      status: this.state.status
+    })
     .then(res => {
-      console.log(res)
       this.setState({
         isInEditMode: false
       })
@@ -81,12 +87,35 @@ class TilesView extends Component {
       }
     )
       .catch(err => console.log(err));
-
   };
 
-  // HANDLE ACTIVATE/DEACTIVATE TILE
+  // UPDATE TILE: TILE STATUS
   //====================================================
-  handleStatusChange = () => {
+  changeTileStatus = (id, status) => {
+  console.log("the id is " + id)
+    if (status === 'active') {
+      tileApi.updateTile (id, {status: 'inactive'})
+      .then (res => {
+        console.log(res)
+        this.setState({
+          isInEditMode: false
+        })
+        this.loadAllTiles()
+        }
+      ) 
+      .catch(err => console.log(err))
+    } else {
+      tileApi.updateTile (id, {status: 'active'})
+      .then (res => {
+        console.log(res)
+        this.setState({
+          isInEditMode: false
+        })
+        this.loadAllTiles()
+        }
+      ) 
+      .catch(err => console.log(err))
+    }
   }
 
   //RENDERING COMPONENTS**************************************************
@@ -96,6 +125,8 @@ class TilesView extends Component {
   renderDefaultView = () => {
     return (
       <div className="list">
+        <h1 className="list-inside bg-gray-200 text-center leading-loose tracking-wide text-2xl">Active and Inactive Tiles</h1>
+        <br />
         {this.state.tiles.length ? (
           <List>
             {this.state.tiles.map(tiles => {
@@ -106,6 +137,8 @@ class TilesView extends Component {
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)
+                      }
                       className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>
                       {tiles.status === "active" ? "Deactivate" : "Activate"}
                     </button>
@@ -131,10 +164,8 @@ class TilesView extends Component {
   //RENDER TILE EDIT
   //====================================================
   renderTileEdit = (tile) => {
-    //const tile = {tileText: "Jason"}
-    //console.log(tile)
     return (
-      <div className="w-full max-w-xs">
+      <div className="w-full max">
         <form className="tile-form" onSubmit={this.saveThisTile}>
           <TextArea 
             name="tileText"
@@ -142,6 +173,33 @@ class TilesView extends Component {
             defaultValue={tile.tileText}
             onChange={this.handleInputChange}
             />
+          <div>
+            <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
+            <div>
+              <h3>isPG</h3>
+              <select name="isPG" defaultValue={tile.isPG} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <h3>isR</h3>
+              <select name="isR" defaultValue={tile.isR} onChange={this.handleInputChange}>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <h3>Status</h3>
+              <select name="status" defaultValue={tile.status} onChange={this.handleInputChange}>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <br />
           <SubmitBtn />
         </form>
       </div>

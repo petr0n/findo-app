@@ -43,17 +43,21 @@ class Login extends Component {
   loginBtns = () => {
     return (
       <div className="w-full mb-6 text-center">
-        <div className="flex justify-around w-full mb-6">
-          <a className="login-link cursor-pointer p-2 rounded" href={`${this.state.apiUrl}/auth/facebook`}>
+        <div className="flex justify-around w-full mb-10">
+          <a className="login-link cursor-pointer p-2 btn-double" href={`${this.state.apiUrl}/auth/facebook`}>
+            <div></div><div></div>
             <i className="fab fa-facebook-f"></i>FACEBOOK
           </a>
-          <a className="login-link cursor-pointer p-2 rounded" href={`${this.state.apiUrl}/auth/google`}>
+          <a className="login-link cursor-pointer p-2 btn-double" href={`${this.state.apiUrl}/auth/google`}>
+            <div></div><div></div>
             <i className="fab fa-google"></i>GOOGLE
           </a>
-        </div>
-        <div className="guest-link cursor-pointer my-4 text-center p-2 rounded" onClick={() => this.logInGuestUser()}>
+        </div><br />
+        <div className="guest-link cursor-pointer my-10 text-center p-2 btn-double-secondary phosphate" onClick={() => this.logInGuestUser()}>
+          <div></div><div></div>
           Play as Guest
         </div>
+        
       </div>
     )
   }
@@ -61,14 +65,14 @@ class Login extends Component {
   render() {
     console.log('Login this.props.user', this.props.user);
     return (
-      <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-8 w-full flex-none">
-        <h1 className="mb-5 text-xl">Login</h1>
-        {this.props.logoutMessage}
-        {this.loginBtns()}
-        <div className="how-to">
-          <h4 className="text-lg">HOW TO PLAY</h4>
-          <p className="text-xs">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>
+      <div className="background login-box mx-auto rounded flex flex-col items-center justify-center p-3 md_p-8 w-11/12 flex-none">
+        <div className="how-to my-5">
+          <h1 className="text-xl">HOW TO PLAY</h1>
+          <p className="text-sm">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>
         </div>
+        {/* <h1 className="my-10 text-xl phosphate">Login</h1> */}
+        <div className="text-xs mt-10 mb-5 text-gray-600">Log in with Facebook or Google to save your game</div>
+        {this.loginBtns()}
       </div>
     );
   }

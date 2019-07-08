@@ -1,29 +1,42 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import "css-doodle";
+import "./splash.css";
 
 const Doodle = ({ rule = "" }) => <css-doodle>{rule}</css-doodle>;
 
 
-class Winner extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: this.props.user
-    }
-  };
+class Splash extends Component {
+  state = {
+    redirect: false
+  }
 
+  componentDidMount() {
+    setTimeout(
+      function() {
+          this.setState(prevState => ({ redirect: !prevState.redirect }));
+      }
+      .bind(this),
+      5000
+    );
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/login' />
+    }
+  }
+  
   render() {
-    const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 flex items-center text-center hover_bg-orange-300";
-    console.log('GameSelect this.state.user', this.state.user);
     return (
       <div className="flex items-center justify-center w-full h-screen">
-        <div className="background mx-auto rounded px-3 py-10 w-full flex flex-col items-center justify-center">
-          <h1 className="text-5xl">WINNER!</h1>
-          <p>You got FINDO!</p>
-          <div className={btnStyle} onClick={() => this.props.handlePageChange("gameselect", this.props.user)}>Play again</div>
-        </div>
-        <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
-          <div className={btnStyle}>Suggest a tile</div>
+        {this.renderRedirect()}
+        <div className="logo-splash">
+          <img src="../images/f.png" alt="F" className="mx-auto char letter-f bounce-in-top" />
+          <img src="../images/i.png" alt="I" className="mx-auto char letter-i bounce-in-top" />
+          <img src="../images/n.png" alt="N" className="mx-auto char letter-n bounce-in-top" />
+          <img src="../images/d.png" alt="D" className="mx-auto char letter-d bounce-in-top" />
+          <img src="../images/o.png" alt="O" className="mx-auto char letter-o bounce-in-top" />
         </div>
         <div className="confetti-splash">
           <Doodle
@@ -69,8 +82,9 @@ class Winner extends Component {
           />
         </div>
       </div>
-    );
+    )
   }
+
 }
 
-export default Winner;
+export default Splash;
