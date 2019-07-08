@@ -13,9 +13,9 @@ class Winner extends Component {
   };
 
   render() {
-    console.log('Winner this.state.user', this.state.user);
+    // console.log('Winner this.state.user', this.state.user);
     return (
-      <div className="flex items-center justify-center w-full h-screen">
+      <div className="flex items-center justify-center w-full h-full">
         <div className="background winner-box mx-auto rounded px-3 py-10 w-full flex flex-col items-center justify-center">
           <h1 className="text-5xl phosphate text-brand-orange">WINNER!</h1>
           <p>You got FINDO!</p>

@@ -43,10 +43,8 @@ class App extends Component {
     const authUserUrl = window.location.pathname === "/logout" ? "/auth/user/logout=true" : "/auth/user";
     console.log('authUserUrl: ', authUserUrl);
     axios.get(authUserUrl).then(response => {
-			// console.log("App response.data: ", response.data)
 			if (!!response.data.user) {
         console.log('THERE IS A USER');
-        // console.log('App componentDidMount: ', response.data.user.role === "admin" ? "admin" : "user" );
 				this.setState({
           isAuthenticated: (response.data.user.role === "admin" ? true : false),
           user: response.data.user
@@ -61,7 +59,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('App this.state.user', this.state.user);
+    // console.log('App this.state.user', this.state.user);
     return (
       <BrowserRouter>
         <Switch>

@@ -25,22 +25,9 @@ class Game extends Component {
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
       gameboardId: "", 
       page: this.props.page ? this.props.page : "login"
-      // page: "login"
     }
   }
-  componentDidMount(){
 
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    // console.log('Index componentDidUpdate this.state: ' , this.state);
-    // console.log('Index componentDidUpdate prevState: ' , prevState);
-    // console.log('-------------------');
-    // console.log('Index componentDidUpdate this.props: ' , this.props);
-    // console.log('Index componentDidUpdate prevProps: ' , prevProps);
-
-  }
-    
   handlePageChange = (page, user, gameType, gameboardId) => {
     this.setState({ 
       page: page,
@@ -52,11 +39,6 @@ class Game extends Component {
     history.push("/" + page);
     this.changePage(page, user);
   }
-
-  // redirectIfLoggedIn = () => {
-  //   console.log('Index redirectIfLoggedIn props.user: ' , this.props.user);  
-  // }
-
   
 
   changePage(page, user){
