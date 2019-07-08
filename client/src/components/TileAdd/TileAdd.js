@@ -16,18 +16,18 @@ class TileAdd extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       tileText: "",
-      createdBy: "5d178f7161ffbf2ff410ca4b",
+      createdBy: this.props.user ? this.props.user._id : "5d178f7161ffbf2ff410ca4b",
       characterCount: this.countCharacters(80),
       isSubmitDisabled: true,
       isFormSubmitted: false,
-      isPG: false,
+      isPG: this.props.isPublic ? true : false,
       isR: false,
       statusCheckbox: true,
-      tileStatus: "active",
+      tileStatus: this.props.isPublic ? "pending" : "active",
       ratingIsPg: true,
-      ratingIsR: false
+      ratingIsR: false,
+      isPublic: this.props.isPublic ? true : false
     }
-    //this.user = this.props.user
   }
 
   componentDidMount() {
@@ -58,8 +58,9 @@ class TileAdd extends Component {
 
   //handle user submit
   //====================================================
-  handleFormSubmit = event => {
-    //event.preventDefault();//prevent default form submit 
+  handleFormSubmit = (event) => {
+    event.preventDefault();//prevent default form submit 
+    // console.log('this.state: ', this.state)
     tileApi.createTile({
       tileText: this.state.tileText,
       createdBy: this.state.createdBy,
@@ -74,7 +75,7 @@ class TileAdd extends Component {
       })
     })
     .catch(err => console.log(err));
-    // window.location.reload()
+
   };
 
 
@@ -83,41 +84,67 @@ class TileAdd extends Component {
     if (e.target.id === "isPG") {
       this.setState({ 
         isPG: true,
-        ratingIsPg: true 
+        ratingIsPg: true,
+        ratingIsR: false
       });
     } else if (e.target.id === "isR") {
       this.setState({ 
         isR: true,
-        ratingIsR: true 
+        isPG: false,
+        ratingIsR: true,
+        ratingIsPg: false
       });
     }
   }
 
   handleCheckbox = (e) => {
     this.setState({statusCheckbox: !this.state.statusCheckbox}); //look at the !NOT sign
-    if (this.state.statusCheckbox) {
-      this.setState({ tileStatus: "active"})
-    } else {
-      this.setState({ tileStatus: "inactive"})
-    }
+    let newTileStatus = this.state.statusCheckbox ? "inactive" : "active";
+    this.setState({ tileStatus: newTileStatus });
+  }
+
+  handleReload = () => {
+    this.setState({  // reset all values 
+      isFormSubmitted: false,
+      tileText: "",
+      characterCount: this.countCharacters(80),
+      isSubmitDisabled: true,
+      isPG: true,
+      isR: false,
+      statusCheckbox: true,
+      tileStatus: "active",
+      ratingIsPg: true,
+      ratingIsR: false
+    });
+    this.props.handleNavClick("addtile");
   }
 
   //render
   //===================================================
   render() {
-    const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
     const isStatusChecked = this.state.statusCheckbox;
     const ratingIsPg = this.state.ratingIsPg;
     const ratingIsR = this.state.ratingIsR;
+
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
-        <p>Thanks for your submission. <br></br>
-        {/* This div holds the button that should allow the user to add another tile. It's currently not working */}     
-          <div id="button-div" className="flex items-center justify-center" onClick={() => this.props.handleNavClick("suggest", TileAdd)}>
-            <div className={btnStyle} >Add Another Tile</div> 
-          </div>
-        </p>  :
+        <div className="text-center">Thanks for your submission. <br></br>
+          {
+            this.state.isPublic ?
+            <div id="button-div" className="flex items-center justify-center">
+              <div className="btn-double text-lg cursor-pointer my-10 text-brand-orange text-center p-3 phosphate" onClick={() => this.props.handlePageChange("gameselect", this.state.user)}>
+                <div></div><div></div>Back
+              </div> 
+            </div>
+            :
+            <div id="button-div" className="flex items-center justify-center">
+              <div className="btn-double text-lg cursor-pointer my-10 text-brand-orange text-center p-3 phosphate" onClick={this.handleReload}>
+                <div></div><div></div>Add Another Tile
+              </div>
+            </div> 
+          }
+        </div>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
             name="tileText"
@@ -128,55 +155,31 @@ class TileAdd extends Component {
           <div className="w-full flex items-center justify-between mb-3">
             {this.state.characterCount}
           </div>
-            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
-          <div className="flex flex-row items-center justify-between w-full mb-5">
-            <label className="text-xs flex items-center justify-start">
-              <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} /> Activate immediately
-            </label>
-            <div className="flex items-center justify-center">
-              <div className="text-xs mr-1">Tile Rating</div>
-              <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
-              <label htmlFor="isPG" className="text-xs mr-1"> PG</label>
-              <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
-              <label htmlFor="isR" className="text-xs"> R</label>
-            </div>
-          </div>
+            {
+              !this.state.isPublic ? 
+              <div className="flex flex-row items-center justify-between w-full mb-5">
+                <label className="text-xs flex items-center justify-start">
+                  <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
+                </label>
+                <div className="flex items-center justify-center">
+                  <div className="text-xs mr-2">Tile Rating:</div>
+                  <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
+                  <label htmlFor="isPG" className="text-xs mr-3">&nbsp;PG</label>
+                  <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
+                  <label htmlFor="isR" className="text-xs">&nbsp;R</label>
+                </div>
+              </div> :
+              ""
+            }
            <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
         </form>
         }
       </div>
     );
   }
-} // ==> end class TileAdd
-
-
+}
 
 
 //EXPORT
 //=======================================================
 export default TileAdd;
-
-
-//REQUIREMENTS
-//=======================================================
-
-/*
-TileAdd (page 13, component to be passed to Admin => home)
-Description: contains a form to create a tile by a user
-Imports:React, Buttons
-Contains a clickEvent that is a POST
-      redirect: false
-  //setRedirect
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    });
-  }
-  //renderRedirect
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return  <Redirect to='/admin' />
-    }
-  }
-  this.renderRedirect()
-*/

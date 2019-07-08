@@ -6,6 +6,7 @@ module.exports = {
     findAllTiles: function (req, res) {
         db.Tile
             .find(req.query)
+            .sort({ dateCreated: -1 })
             .populate("createdBy")
             .populate("approvedBy")
             .then(dbModel => res.json(dbModel))

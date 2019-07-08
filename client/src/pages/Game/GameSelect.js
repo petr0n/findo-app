@@ -9,8 +9,7 @@ import gameboardAPI from '../../utils/gameboardAPI';
 class GameSelect extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        user: props.user, 
+    this.state = { 
         gameboardId: ""
       }
   };
@@ -44,7 +43,7 @@ class GameSelect extends Component {
         <div className="background mx-auto rounded px-3 py-10 w-11/12 text-center">
           {
             this.props.user ? 
-            <div>You are logged in as {this.props.user.name}</div> : 
+            <div>Welcome back {this.props.user.name}!</div> : 
             ""
           }
           {
