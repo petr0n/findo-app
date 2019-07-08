@@ -75,6 +75,7 @@ class App extends Component {
           <Route path="/admin" render={() => <Admin user={this.state.user} />} />
           {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} /> */}
           <Route path="/" component={Splash} /> 
+          <PrivateRoute path="/admin1" render={() => <Admin user={this.state.user} />} />
         </Switch>
       </BrowserRouter>
     );

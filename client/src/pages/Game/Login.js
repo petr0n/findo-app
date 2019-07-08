@@ -29,7 +29,8 @@ class Login extends Component {
 			if (!!response.data.user) {
         console.log('GUEST USER');
 				this.setState({
-          user: response.data
+          user: response.data,
+          page: "gameselect"
         });
         return this.props.handlePageChange("gameselect", this.state.user);
 			} else {
@@ -70,7 +71,6 @@ class Login extends Component {
           <h1 className="text-xl">HOW TO PLAY</h1>
           <p className="text-sm">You will get a bingo-like card of 24 random tiles. Once you see what's on a tile in real life, click the tile to mark it as found. Similar to BINGO, once you get 5 in a row you win! It can be 5 in a row up, down or diagonally.</p>
         </div>
-        {/* <h1 className="my-10 text-xl phosphate">Login</h1> */}
         <div className="text-xs mt-10 mb-5 text-gray-600">Log in with Facebook or Google to save your game</div>
         {this.loginBtns()}
       </div>

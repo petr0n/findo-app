@@ -24,25 +24,21 @@ class Game extends Component {
     this.state = {
       apiUrl: process.env.NODE_ENV === 'development' ? "http://localhost:3001" : "https://play.findo.games",
       gameboardId: "", 
-      page: "login"
+      page: this.props.page ? this.props.page : "login"
+      // page: "login"
     }
   }
   componentDidMount(){
-    // console.log('Index componentDidMount this.props.page: ', this.props.page);
-    // console.log('Index componentDidMount this.state.user: ', this.state.user);
+
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('Index componentDidUpdate this.state: ' , this.state);
-    console.log('Index componentDidUpdate prevState: ' , prevState);
-    console.log('-------------------');
-    console.log('Index componentDidUpdate this.props: ' , this.props);
-    console.log('Index componentDidUpdate prevProps: ' , prevProps);
-    if (this.state.page !== this.props.page) {
-      this.setState({
-        page: this.props.page
-      })
-    }
+    // console.log('Index componentDidUpdate this.state: ' , this.state);
+    // console.log('Index componentDidUpdate prevState: ' , prevState);
+    // console.log('-------------------');
+    // console.log('Index componentDidUpdate this.props: ' , this.props);
+    // console.log('Index componentDidUpdate prevProps: ' , prevProps);
+
   }
     
   handlePageChange = (page, user, gameType, gameboardId) => {
@@ -67,6 +63,7 @@ class Game extends Component {
     console.log('Index changePage this.state', this.state);
     let currentPage = page ? page : this.state.page;
     let currentUser = user ? user : this.props.user;
+    console.log('Index changePage this.state', this.state);
     switch (currentPage) {
       case "gameselect":
         return (
@@ -90,7 +87,8 @@ class Game extends Component {
           <SuggestTile 
             key={"suggest"} 
             handlePageChange={this.handlePageChange}
-            user={currentUser} />
+            user={currentUser}
+            isPublic={true} />
         );
       case "winner":
         return (
@@ -126,7 +124,7 @@ class Game extends Component {
   }
 
 render() {
-  console.log('Index render this.props', this.props);
+  // console.log('Index render this.props', this.props);
 
   return (
     <>

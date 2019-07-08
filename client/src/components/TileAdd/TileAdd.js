@@ -20,14 +20,14 @@ class TileAdd extends Component {
       characterCount: this.countCharacters(80),
       isSubmitDisabled: true,
       isFormSubmitted: false,
-      isPG: true,
+      isPG: this.props.isPublic ? true : false,
       isR: false,
       statusCheckbox: true,
-      tileStatus: "active",
+      tileStatus: this.props.isPublic ? "pending" : "active",
       ratingIsPg: true,
-      ratingIsR: false
+      ratingIsR: false,
+      isPublic: this.props.isPublic ? true : false
     }
-    //this.user = this.props.user
   }
 
   componentDidMount() {
@@ -130,9 +130,20 @@ class TileAdd extends Component {
       <div className="w-full">
         {this.state.isFormSubmitted ? 
         <div className="text-center">Thanks for your submission. <br></br>
-          <div id="button-div" className="flex items-center justify-center" onClick={this.handleReload}>
-            <div className="edit-btn px-3 py-2 my-4 rounded">Add Another Tile</div> 
-          </div>
+          {
+            this.state.isPublic ?
+            <div id="button-div" className="flex items-center justify-center">
+              <div className="btn-double text-lg cursor-pointer my-10 text-brand-orange text-center p-3 phosphate" onClick={() => this.props.handlePageChange("gameselect", this.state.user)}>
+                <div></div><div></div>Back
+              </div> 
+            </div>
+            :
+            <div id="button-div" className="flex items-center justify-center">
+              <div className="btn-double text-lg cursor-pointer my-10 text-brand-orange text-center p-3 phosphate" onClick={this.handleReload}>
+                <div></div><div></div>Add Another Tile
+              </div>
+            </div> 
+          }
         </div>  :
         <form className="tile-form" onSubmit={this.handleFormSubmit}>
           <TextArea 
@@ -144,18 +155,22 @@ class TileAdd extends Component {
           <div className="w-full flex items-center justify-between mb-3">
             {this.state.characterCount}
           </div>
-          <div className="flex flex-row items-center justify-between w-full mb-5">
-            <label className="text-xs flex items-center justify-start">
-              <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
-            </label>
-            <div className="flex items-center justify-center">
-              <div className="text-xs mr-2">Tile Rating:</div>
-              <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
-              <label htmlFor="isPG" className="text-xs mr-3">&nbsp;PG</label>
-              <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
-              <label htmlFor="isR" className="text-xs">&nbsp;R</label>
-            </div>
-          </div>
+            {
+              !this.state.isPublic ? 
+              <div className="flex flex-row items-center justify-between w-full mb-5">
+                <label className="text-xs flex items-center justify-start">
+                  <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
+                </label>
+                <div className="flex items-center justify-center">
+                  <div className="text-xs mr-2">Tile Rating:</div>
+                  <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
+                  <label htmlFor="isPG" className="text-xs mr-3">&nbsp;PG</label>
+                  <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
+                  <label htmlFor="isR" className="text-xs">&nbsp;R</label>
+                </div>
+              </div> :
+              ""
+            }
            <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
         </form>
         }
