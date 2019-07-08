@@ -19,7 +19,7 @@ class Winner extends Component {
         <div className="background winner-box mx-auto rounded px-3 py-10 w-full flex flex-col items-center justify-center">
           <h1 className="text-5xl phosphate text-brand-orange">WINNER!</h1>
           <p>You got FINDO!</p>
-          <div className="btn-double cursor-pointer text-2xl text-brand-red m-8 px-3 py-1 hover_bg-brand-yellow" onClick={() => this.props.handlePageChange("gameselect", this.props.user)}>
+          <div className="btn-double phosphate cursor-pointer text-2xl text-brand-red m-8 px-3 py-2 hover_bg-brand-yellow" onClick={() => this.props.handlePageChange("gameselect", this.props.user)}>
             <div></div><div></div>Play again
           </div>
         </div>
