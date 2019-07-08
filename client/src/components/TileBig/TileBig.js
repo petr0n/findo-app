@@ -12,20 +12,23 @@ class TileBig extends Component {
   }
 
 
-
   render() {
     // console.log('TileBig this.isActive', this.isActive);
     return (
       <div className="tileBig flex flex-col">
-      <div className="text-right p-3">
-          <i className="far fa-times-circle text-brand-red xl_text-6xl text-3xl" onClick={() => this.props.handleBigTileCloseClick()}></i></div>
-      <div className="p-5 text-center flex items-center justify-center">
-          <p className="tileBigText">{this.tileBigData.tileText}</p>
+        <div className="text-right p-3">
+          <i className="far fa-times-circle text-brand-red xl_text-6xl text-3xl hover_text-orange-300" onClick={() => this.props.handleBigTileCloseClick()}></i>
         </div>
-        <div className="button-wrapper py-4 items-center w-full">
-          <TileBigButton 
-            tileBigData={this.props.tileBigData}
-            handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
+        <div className="flex flex-col items-center justify-center h-full">
+
+          <div className="p-5 text-center">
+            <p className="tileBigText font-bold">{this.tileBigData.tileText}</p>
+          </div>
+          <div className="py-10 items-center w-full">
+            <TileBigButton 
+              tileBigData={this.props.tileBigData}
+              handleTileBigButtonClick={this.props.handleTileBigButtonClick} />
+          </div>
         </div>
       </div>
     )  

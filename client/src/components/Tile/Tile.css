@@ -4,19 +4,19 @@
 
 .tile {
   background-color: rgba(255,255,255,.8);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, .6);
   font-size: 1em;
   height: 110px;
   line-height: 1;
   text-align: center;
-  transition: box-shadow 1s;
   width: 100%;
   z-index: 1;
 }
 
-.tile:hover {
+.tile:hover,
+.tile:active {
   background-color: rgba(252, 208, 44, 0.8);
-  box-shadow: 10px 10px 10px rgba(228, 44, 106, 0.8);
+  box-shadow: none;  
   cursor: pointer;
   transition: box-shadow 1s;
 }
@@ -67,6 +67,8 @@
     height: 125px;
     margin: 5px;
     border-radius: 4px;
+    padding: 2px;
+    margin: 1px;
   }
 }
 
@@ -75,13 +77,16 @@
     border-radius: 2px;
     height: 75px;
     font-size: .7em;
+    padding: 2px;
+    margin: 1px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .tile {
       border-radius: 2px;
-      height: 54px;
+      height: 64px;
       font-size: .65em;
+      margin: 0px;
   }
 }

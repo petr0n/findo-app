@@ -62,6 +62,16 @@
   color: var(--brand-purple);
 }
 
+.confetti-splash {
+  z-index: 0;
+}
+.winner-box {
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+}
+
+
 
 
 @media screen and (max-width: 640px) {

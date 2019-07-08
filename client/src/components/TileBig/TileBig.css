@@ -35,11 +35,6 @@
   transition: opacity 200ms;
 }
 
-.tileBig .button-wrapper {
-  position: absolute;
-  bottom: 10px;
-}
-
 @media screen and (max-width: 768px) {
   .tileBigText {
     font-size: 3em;

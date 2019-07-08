@@ -13,7 +13,6 @@ class Tile extends Component {
   handleClick = (tileData) => {
     this.props.handleTileClick(tileData);
   }
-    
   render() {
     const tileData = this.state.tileData;
     // console.log('Tile tileData: ', tileData);
@@ -22,6 +21,8 @@ class Tile extends Component {
     return (
       <div 
         className="tile-wrapper flex items-center justify-center text-center p-1" 
+        onPointerEnter={this.onTouch}
+        onPointerLeave={this.offTouch}
         onClick={!this.props.isCenter ? () => this.handleClick(this.props.tileData) : null}>
         <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded overflow-hidden break-words" + tileCenterClass + tileSelectedClass}> 
           {
