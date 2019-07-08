@@ -122,15 +122,10 @@ class TileAdd extends Component {
   //render
   //===================================================
   render() {
-    // const btnStyle = "cursor-pointer rounded bg-white border border-purple-500 px-4 py-2 m-4 text-center hover_bg-orange-300 hover_border-orange-600 inline-block";
     const isStatusChecked = this.state.statusCheckbox;
     const ratingIsPg = this.state.ratingIsPg;
     const ratingIsR = this.state.ratingIsR;
-    // console.log("statusCheckbox: ", this.state.statusCheckbox);
-    // console.log("tileStatus: ", this.state.tileStatus);
-    // console.log("isPG: ", this.state.isPG);
-    // console.log("isR: ", this.state.isR);
-    // console.log("this.props.user: ", this.props.user);
+
     return (
       <div className="w-full">
         {this.state.isFormSubmitted ? 
@@ -149,7 +144,6 @@ class TileAdd extends Component {
           <div className="w-full flex items-center justify-between mb-3">
             {this.state.characterCount}
           </div>
-            {/* This div holds the radio buttons that should allow a tile to be labeled as isPG or isR when suggested.  It's currently not working */}
           <div className="flex flex-row items-center justify-between w-full mb-5">
             <label className="text-xs flex items-center justify-start">
               <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
@@ -168,36 +162,9 @@ class TileAdd extends Component {
       </div>
     );
   }
-} // ==> end class TileAdd
-
-
+}
 
 
 //EXPORT
 //=======================================================
 export default TileAdd;
-
-
-//REQUIREMENTS
-//=======================================================
-
-/*
-TileAdd (page 13, component to be passed to Admin => home)
-Description: contains a form to create a tile by a user
-Imports:React, Buttons
-Contains a clickEvent that is a POST
-      redirect: false
-  //setRedirect
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    });
-  }
-  //renderRedirect
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return  <Redirect to='/admin' />
-    }
-  }
-  this.renderRedirect()
-*/
