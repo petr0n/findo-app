@@ -43,7 +43,7 @@ class GameSelect extends Component {
         <div className="background mx-auto rounded px-3 py-10 w-11/12 text-center">
           {
             this.props.user ? 
-            <div>Welcome back {this.props.user.name}!</div> : 
+            <div className="uppercase text-md">Welcome back <strong>{this.props.user.name}</strong>!</div> : 
             ""
           }
           {
@@ -53,20 +53,20 @@ class GameSelect extends Component {
                 <div></div><div></div>
                 Finish previous game
               </div>
-              <div className="py-3">or start a new game</div>
+              <div className="py-3 uppercase text-sm">or start a new game</div>
             </div> : 
             ""
           }
           
           <div className="flex items-center justify-center">
-            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("PG")}><div></div><div></div>Kid Friendly Board</div>
-            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-xl btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-md btn-double-secondary"} onClick={() => this.handleGameSelect("PG")}><div></div><div></div>Kid Friendly Board</div>
+            <div className={(btnStyle) + " hover_bg-orange-300 text-brand-orange phosphate text-md btn-double-secondary"} onClick={() => this.handleGameSelect("R")}><div></div><div></div>Adult Style Board</div>
           </div>
         </div>
         {
           this.props.user ? 
           <div className="flex items-center justify-center" onClick={() => this.props.handlePageChange("suggesttile", this.props.user)}>
-            <div className={(btnStyle) + " bg-white hover_bg-purple-300"}>Suggest a tile</div>
+            <div className={(btnStyle) + " bg-white hover_bg-purple-300 uppercase text-sm"}>Suggest a tile <i className="far fa-comment-alt"></i></div>
           </div> :
           ""
         }
