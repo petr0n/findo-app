@@ -1,8 +1,8 @@
-# Findo
+# FINDO
  
-Findo is a "scavenger hunt meets bingo" app for the MN State Fair.
+FINDO is a "scavenger hunt meets bingo" app for the MN State Fair.
 
-State Fairgoers are able to play a round of Findo while enjoying their food on a stick!  
+State Fairgoers are able to play a round of FINDO while enjoying their food on a stick!  
 
 Navigating to the app asks them to login with Google, Facebook or simply play as a guest.  From there, users must choose a kid-friendly or adult version for their board.  
 
@@ -16,8 +16,8 @@ The Admin capability lets privileged users add, edit and update tiles.
     
 # Project Overview 
 
-This project is built on the MERN stack and also utilizes passport, passport strategy for google and facebook, tailwind css, mongoose, mongoose-simple-random, react transition group, axios, and express sessions. 
+This project is built on the MERN stack and also utilizes passport, passport strategy for google and facebook, tailwind css, mongoose, mongoose-simple-random, react transition group, axios, css doodle and express sessions. 
 
-Play Findo here: https://play.findo.games/
+Play FINDO here: https://play.findo.games/
 
 Contributers: Jason Fleming, Julia Fercello, Peter Abeln, Emily Raper, and Onah Bosen
