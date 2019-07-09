@@ -13,7 +13,7 @@ class TileBigButton extends Component {
 	render() {
 		// console.log('TileBigButton data: ', this.props.tileBigData)
 		return (
-			<div className="cursor-pointer mx-auto phosphate text-brand-orange w-6/12 text-center pb-2 text-xl btn-double" 
+			<div className="cursor-pointer mx-auto phosphate text-brand-orange w-8/12 text-center pb-2 text-3xl btn-double hover_bg-brand-yellow" 
 			onClick={() => this.handleClick()}>
 				<div></div><div></div>
 				{this.props.tileBigData.isChecked ? "Deselect Tile" : "Select Tile"}

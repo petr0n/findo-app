@@ -19,7 +19,7 @@ font-family: 'Open Sans', monospace;
   font-style: normal;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400|Teko:600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Teko:600&display=swap');
 
 :root {
   --brand-red: #e42c6a;
@@ -61,21 +61,28 @@ h1, h2, h3, h4, h5 {
 }
 
 /************ background colors ***************/
-.bg-brand-red {
+.bg-brand-red, 
+.hover_bg-brand-red:hover {
   background-color: var(--brand-red);
 }
-.bg-brand-purple {
+.bg-brand-purple, 
+.hover_bg-brand-purple:hover  {
   background-color: var(--brand-purple);
 }
-.bg-brand-orange {
+.bg-brand-orange, 
+.hover_bg-brand-orange:hover  {
   background-color: var(--brand-orange);
 }
-.bg-brand-yellow {
+.bg-brand-yellow, 
+.hover_bg-brand-yellow:hover  {
   background-color: var(--brand-yellow);
 }
 
+
+
 .btn-double {
   position: relative;
+  text-transform: uppercase;
 }
 .btn-double > div {
   top: -2px; 
@@ -100,6 +107,7 @@ h1, h2, h3, h4, h5 {
 
 .btn-double-secondary {
   position: relative;
+  text-transform: uppercase;
 }
 .btn-double-secondary > div {
   top: -2px; 

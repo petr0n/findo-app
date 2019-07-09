@@ -38,7 +38,7 @@
 }
 
 .login-link:hover, .guest-link:hover {
-  background-color: white;
+  background-color: var(--brand-yellow);
   text-shadow: none;
 }
 
@@ -62,11 +62,25 @@
   color: var(--brand-purple);
 }
 
+.confetti-splash {
+  z-index: 0;
+}
+
+.winner-box {
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+}
+
+
 
 
 @media screen and (max-width: 640px) {
   .login-link {
     font-size: 1.2rem;
+  }
+  .winner-box {
+    width: 90%;
   }
 }
 

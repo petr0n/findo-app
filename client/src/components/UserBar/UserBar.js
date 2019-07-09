@@ -8,8 +8,10 @@ const UserBar = (props) =>{
 				<div className="w-full flex items-center justify-between">
 					<div>
 						Logged in as <span className="font-bold">{userData.name}</span>
-						{/* {userData.role === "admin" ? "role: admin" : "role: " + userData.role} */}
-						<a href="/admin" className="pl-3">Admin</a>
+						{
+							userData.role === "admin" ? 
+							<a href="/admin" className="pl-3">Admin</a> : ""
+						} 
 					</div>
 					<div>
 						<a href="/" className="mx-3 hover:text-purple-400">Home</a>

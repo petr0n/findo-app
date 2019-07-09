@@ -30,10 +30,6 @@ class TileAdd extends Component {
     }
   }
 
-  componentDidMount() {
-    
-  }
-
   //handle user input change
   //====================================================
   handleInputChange = event => {

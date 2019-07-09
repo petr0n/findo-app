@@ -17,7 +17,7 @@
 }
 
 .tileBigText {
-  font-size: 5rem;
+  font-size: 4.2rem;
   line-height: 1.2;
 }
 .clicked-enter {
@@ -33,11 +33,6 @@
 .clicked-exit-active {
   opacity: 0;
   transition: opacity 200ms;
-}
-
-.tileBig .button-wrapper {
-  position: absolute;
-  bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {
