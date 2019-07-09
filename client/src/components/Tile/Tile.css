@@ -13,8 +13,7 @@
   z-index: 1;
 }
 
-.tile:hover,
-.tile:active {
+.tile:hover {
   background-color: rgba(252, 208, 44, 0.8);
   box-shadow: none;  
   cursor: pointer;

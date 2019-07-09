@@ -3,7 +3,7 @@ import React from "react";
 const UserBar = (props) =>{
 	const userData = props.user;
 	return (
-		<div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-20 text-xs">
+		<div className="fixed bottom-0 left-0 w-full bg-orange-100 p-1 border-t border-orange-600 z-200 text-xs">
 			{userData ? 
 				<div className="w-full flex items-center justify-between">
 					<div>
