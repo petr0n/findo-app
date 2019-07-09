@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "css-doodle";
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon} from 'react-share';
 
 const Doodle = ({ rule = "" }) => <css-doodle>{rule}</css-doodle>;
 
@@ -14,6 +15,8 @@ class Winner extends Component {
 
   render() {
     // console.log('Winner this.state.user', this.state.user);
+    const shareUrl = "https://play.findo.games/";
+    const quote = "Play the new scavenger hunt meets bingo game for the MN State Fair - FINDO"
     return (
       <div className="flex items-center justify-center w-full h-full">
         <div className="background winner-box mx-auto rounded px-3 py-10 w-full flex flex-col items-center justify-center">
@@ -21,6 +24,15 @@ class Winner extends Component {
           <p>You got FINDO!</p>
           <div className="btn-double phosphate cursor-pointer text-2xl text-brand-red m-8 px-3 py-2 hover_bg-brand-yellow" onClick={() => this.props.handlePageChange("gameselect", this.props.user)}>
             <div></div><div></div>Play again
+          </div>
+          <h3 className="uppercase text-md text-center mt-6 mb-3">Share FINDO</h3>
+          <div className="share flex w-8/12 items-center mx-auto justify-between">
+            <FacebookShareButton url={shareUrl} quote={quote}>
+                <FacebookIcon size={64} round />
+              </FacebookShareButton>
+            <TwitterShareButton url={shareUrl} title={quote}>
+              <TwitterIcon size={64} round />
+            </TwitterShareButton>
           </div>
         </div>
         <div className="confetti-splash">
