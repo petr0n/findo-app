@@ -137,16 +137,13 @@ class TilesView extends Component {
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
-                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)
-                      }
-                      className={"activate-btn rounded px-2 py-1 mr-4 toggle " + (tiles.status === "active" ? "deactivate" : "activate")}>
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)}
+                      className={"activate-btn uppercase text-xs rounded text-white px-2 py-1 mr-2 toggle bg-brand-red hover_bg-brand-purple " + (tiles.status === "active" ? "deactivate" : "activate")}>
                       {tiles.status === "active" ? "Deactivate" : "Activate"}
                     </button>
                     <button
-                      onClick={() =>
-                        this.getThisTile(tiles._id)
-                      }
-                      className="edit-btn rounded px-2 py-1 mr-4">
+                      onClick={() => this.getThisTile(tiles._id)}
+                      className="edit-btn uppercase text-xs bg-brand-orange text-white rounded px-2 py-1 hover_bg-brand-purple">
                       Edit <i className="fas fa-pencil-alt" />
                     </button>
                   </div>

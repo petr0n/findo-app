@@ -6,27 +6,24 @@
 /*  TILESMANAGE STYLES
 //=======================================================*/
 
-.list button {
+/* .list button {
   color: black;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   transition: box-shadow 1s;
 }
 .list button:hover {
-  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
   transition: box-shadow 1s;
-}
-
+} */
+/* 
 .approve-btn, .activate-btn.activate {
   background-color: lightgreen;
-}
-
+} */
+/* 
 .deny-btn, .activate-btn.deactivate {
   background-color: rgba(255, 0, 0, .6);
-}
+} */
 
 .edit-btn.disabled-btn {
   color: white;
-  background-color: rgba(228, 44, 106, 1);
   box-shadow: none;
   cursor: not-allowed;
 }

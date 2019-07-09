@@ -27,7 +27,7 @@
 }
 
 .letter-f  {
-    -webkit-animation:  bounce-in-top var(--drop-duration) var(--start) both;
+    -webkit-animation: bounce-in-top var(--drop-duration) var(--start) both;
     animation: bounce-in-top var(--drop-duration) var(--start) both;
 }
 
