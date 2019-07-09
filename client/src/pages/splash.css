@@ -27,22 +27,27 @@
 }
 
 .letter-f  {
+    -webkit-animation:  bounce-in-top var(--drop-duration) var(--start) both;
     animation: bounce-in-top var(--drop-duration) var(--start) both;
 }
 
 .letter-i  {
-    animation:  bounce-in-top var(--drop-duration) calc(var(--start) + 0.5s) both;
+    -webkit-animation: bounce-in-top var(--drop-duration) calc(var(--start) + 0.5s) both;
+    animation: bounce-in-top var(--drop-duration) calc(var(--start) + 0.5s) both;
 }
 
 .letter-n  {
+    -webkit-animation: bounce-in-top var(--drop-duration) calc(var(--start) + 1s) both;
     animation: bounce-in-top var(--drop-duration) calc(var(--start) + 1s) both;
 }
 
 .letter-d  {
+    -webkit-animation: bounce-in-top var(--drop-duration) calc(var(--start) + 1.5s) both;
     animation: bounce-in-top var(--drop-duration) calc(var(--start) + 1.5s) both;
 }
 
 .letter-o  {
+    -webkit-animation: bounce-in-top var(--drop-duration) calc(var(--start) + 2s) both;
     animation: bounce-in-top var(--drop-duration) calc(var(--start) + 2s) both;
 }
 

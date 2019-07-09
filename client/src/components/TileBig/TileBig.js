@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { CSSTransition } from 'react-transition-group';
+
 import "./TileBig.css";
 import TileBigButton from "../TileBigButton";
+
 
 
 class TileBig extends Component {
@@ -20,7 +21,6 @@ class TileBig extends Component {
           <i className="far fa-times-circle text-brand-red xl_text-6xl text-3xl hover_text-orange-300" onClick={() => this.props.handleBigTileCloseClick()}></i>
         </div>
         <div className="flex flex-col items-center justify-center h-full">
-
           <div className="p-5 text-center">
             <p className="tileBigText font-bold">{this.tileBigData.tileText}</p>
           </div>
