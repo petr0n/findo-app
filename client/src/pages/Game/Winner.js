@@ -26,12 +26,12 @@ class Winner extends Component {
             <div></div><div></div>Play again
           </div>
           <h3 className="uppercase text-md text-center mt-6 mb-3">Share FINDO</h3>
-          <div className="share flex w-1/2 items-center mx-auto justify-between">
+          <div className="share flex w-8/12 items-center mx-auto justify-between">
             <FacebookShareButton url={shareUrl} quote={quote}>
-                <FacebookIcon size={32} round />
+                <FacebookIcon size={64} round />
               </FacebookShareButton>
             <TwitterShareButton url={shareUrl} title={quote}>
-              <TwitterIcon size={32} round />
+              <TwitterIcon size={64} round />
             </TwitterShareButton>
           </div>
         </div>
