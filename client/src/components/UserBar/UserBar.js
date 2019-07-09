@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserBar = (props) =>{
 	const userData = props.user;
@@ -10,7 +11,7 @@ const UserBar = (props) =>{
 						Logged in as <span className="font-bold">{userData.name}</span>
 						{
 							userData.role === "admin" ? 
-							<a href="/admin" className="pl-3">Admin</a> : ""
+							<Link to="/admin" className="pl-3">Admin</Link> : ""
 						} 
 					</div>
 					<div>
