@@ -10,48 +10,37 @@ import axios from "axios";
 import './App.css';
 
 
-// const fakeAuth = {
-//   isAuthenticated: false,
-//   authenticate(cb) {
-//     this.isAuthenticated = true
-//     setTimeout(cb, 100) // fake async
-//   },
-//   signout(cb) {
-//     this.isAuthenticated = false
-//     setTimeout(cb, 100) // fake async
-//   }
-// }
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    this.state.isAuthenticated === true
-      ? <Component {...props} />
+  <Route {...rest} render={(props) => {
+    console.log("PrivateRoute: ", rest);
+    return (
+      rest.isAdminUser === true
+      ? <Admin {...rest} />
       : <Redirect to='/' />
-  )} />
-)
+    )}} />
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false,
-      user: null
+      user: null,
+      isAdminUser: false
     }
   };
   
   componentDidMount() {
     
     const authUserUrl = window.location.pathname === "/logout" ? "/auth/user/logout=true" : "/auth/user";
-    console.log('authUserUrl: ', authUserUrl);
     axios.get(authUserUrl).then(response => {
 			if (!!response.data.user) {
         console.log('THERE IS A USER');
 				this.setState({
-          isAuthenticated: (response.data.user.role === "admin" ? true : false),
-          user: response.data.user
+          user: response.data.user,
+          isAdminUser: response.data.user.role === "admin" ? true : false
 				})
 			} else {
 				this.setState({
-          isAuthenticated: false,
           user: null
 				})
 			} 
@@ -59,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log('App this.state.user', this.state.user);
+    console.log('App this.state.isAdminUser', this.state.isAdminUser);
     return (
       <BrowserRouter>
         <Switch>
@@ -70,10 +59,11 @@ class App extends Component {
           <Route path="/gameboard" render={() => <Game page={"gameboard"} user={this.state.user} />} />
           <Route path="/suggesttile" render={() => <Game page={"suggesttile"} user={this.state.user} />} />
           <Route path="/winner" render={() => <Game page={"winner"} user={this.state.user} />} />
-          <Route path="/admin" render={() => <Admin user={this.state.user} />} />
-          {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} /> */}
+          <PrivateRoute isAdminUser={this.state.isAdminUser} user={this.state.user} path="/admin"  />
           <Route path="/" component={Splash} /> 
+          {/*<Route path="/" render={() => <Game page={"login"} user={this.state.user} />} /> 
           <PrivateRoute path="/admin1" render={() => <Admin user={this.state.user} />} />
+          */}
         </Switch>
       </BrowserRouter>
     );
