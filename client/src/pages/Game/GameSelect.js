@@ -18,8 +18,6 @@ class GameSelect extends Component {
   async componentDidUpdate() {
     if (!this.state.gameboardId && this.props.user) {
       const response = await gameboardAPI.getGamesByUserAndStatus(this.props.user._id, "active");
-      // const json = await response.data[0].json();
-      console.log('GameSelect componentDidUpdate response: ', response);
       if (response.data.length) {
       const id = await response.data[0]._id;
         this.setState({ 
@@ -36,8 +34,7 @@ class GameSelect extends Component {
 
   render() {
 		const btnStyle = "cursor-pointer px-4 py-2 m-4 text-center inline-block";
-    
-    console.log('GameSelect this.props.user', this.props.user);
+    // console.log('GameSelect this.props.user', this.props.user);
     return (
       <div>
         <div className="background mx-auto rounded px-3 py-10 w-11/12 text-center">

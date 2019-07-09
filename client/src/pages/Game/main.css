@@ -1,14 +1,14 @@
-.fade-enter {
+.page-wrapper-enter {
   opacity: 0.01;
 }
-.fade-enter.fade-enter-active {
+.page-wrapper-enter.page-wrapper-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
-.fade-leave {
+.page-wrapper-leave {
   opacity: 1;
 }
-.fade-leave.fade-leave-active {
+.page-wrapper-leave.page-wrapper-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
