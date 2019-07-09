@@ -107,17 +107,16 @@ class Game extends Component {
 
 render() {
   // console.log('Index render this.props', this.props);
-
+  const pageActive = true;
   return (
     <>
       <Wrapper>
         <Header />
         <CSSTransition
-          transitionName="fade" 
-          transitionEnterTimeout={1000} 
-          transitionLeaveTimeout={500}
-          timeout={300}
-        >
+          mountOnEnter
+          unmountOnExit
+          in={pageActive}
+          timeout={300}>
           {this.changePage()}
         </CSSTransition>
         <Footer />
