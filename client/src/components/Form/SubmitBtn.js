@@ -1,10 +1,5 @@
-//IMPORT
-//=======================================================
 import React from "react";
-//import { Link } from "react-router-dom"
 
-//CONTENT + EXPORT
-//=======================================================
 export const SubmitBtn = props => {
   let disable = props.isSubmitDisabled ? "disabled" : "";
     return (

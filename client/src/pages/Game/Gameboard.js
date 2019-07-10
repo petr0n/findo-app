@@ -21,19 +21,24 @@ class Gameboard extends Component {
 			user: this.props.user,
 			gameType: this.props.gameType,
 			gameboardId: this.props.gameboardId ? this.props.gameboardId : "",
-			gameWon: false
+			gameWon: false,
+			tileAnimation: "rubberBand"
 		}
 		this.handleTileBigButtonClick = this.handleTileBigButtonClick.bind(this);
 	};
 
 	componentDidMount(){
-		console.log("Gameboard componentDidMount props user: ", this.props.user);
-		console.log("Gameboard componentDidMount user: ", this.state.user);
+		// console.log("Gameboard componentDidMount user: ", this.state.user);
 		if (this.props.gameboardId) {
 			this.getTiles(this.state.gameType, this.props.gameboardId);
 		} else {
 			this.getTiles(this.state.gameType);
 		}
+		this.setRandomInterval(true);
+	}
+	componentWillUnmount() {
+		this.setRandomInterval(false);
+
 	}
 	
 
@@ -42,22 +47,19 @@ class Gameboard extends Component {
 		if (gameboardId) {
 			gameboardAPI.getGame(gameboardId)
 			.then(res => {
-				console.log("Gameboard getTiles w/ gameboardId res.data: ", res.data);
-					this.setState({ 
-						loading: false,
-						tilesData: this.renderGrid(res.data.tiles),
-						gameboardId: gameboardId
-					});
-				})
-				.catch(err => console.log(err));
-
+				//console.log("Gameboard getTiles w/ gameboardId res.data: ", res.data);
+				this.setState({ 
+					loading: false,
+					tilesData: this.renderGrid(res.data.tiles),
+					gameboardId: gameboardId
+				});
+			})
+			.catch(err => console.log(err));
 		} else {
-
 			let gt = gameType ? gameType : "PG";
 			gameboardAPI.createGame({ gameType: gt, userId: this.props.user })
 			.then(res => {
-				console.log("Gameboard getTiles res.data: ", res.data);
-
+				//console.log("Gameboard getTiles res.data: ", res.data);
 				this.setState({ 
 					loading: false,
 					tilesData: this.renderGrid(res.data.tiles),
@@ -92,12 +94,13 @@ class Gameboard extends Component {
 	}
 	
 	handleTileBigButtonClick = (tileData) => {
-		console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
-		this.setTileState(this.state.tilesArr, tileData._id);
+		// console.log('Gameboard handleTileBigButtonClick: ', this.state.tiles);
+		this.setTileState(this.state.tilesArr, tileData._id, "checkIt");
 		this.setState(prevstate => ({
       tileBigState: !prevstate.display,
     }));
 	}
+
 
 
 	makeTileGrid = (boardTiles) => {
@@ -113,7 +116,8 @@ class Gameboard extends Component {
 						tileData={boardTiles[ctr]} 
 						key={key} 
 						isCenter={isCenter} 
-						handleTileClick={this.handleTileClick} />);
+						handleTileClick={this.handleTileClick}
+						id={ctr} />);
 				ctr++;
 			}
 		}
@@ -121,13 +125,18 @@ class Gameboard extends Component {
 		return tiles; 
 	}
 
-	setTileState = (tilesArr, id) => {
-		console.log('setTileState run');
+	setTileState = (tilesArr, id, action) => {
+		// console.log('setTileState tileAnimation', this.state.tileAnimation);
+
+		// console.log("setTileState id : ", id);
 		const newTiles = tilesArr.map((tile) => {
-			if (tile._id === id) {
+			tile.tileAnimation = "";
+			if (tile._id === id && action === "checkIt") {
 				tile.isChecked = tile.isChecked ? false : true;
 				// update tile in db too
 				this.updateGameTile(id, tile.isChecked);
+			} else if (tile._id === id && action === "animateIt") {
+				tile.tileAnimation = this.state.tileAnimation ? this.state.tileAnimation : "";
 			}
 			return tile;
 		});
@@ -153,8 +162,40 @@ class Gameboard extends Component {
 		.catch(err => console.log(err))
 	}
 
+	setRandomInterval = (run) => {
+		let randomizer = setInterval(
+			function() {
+				this.setStateOnRandomTile();
+			}
+			.bind(this),
+			2500 );
+		if (!run) {
+			randomizer.clearInterval();
+		}
+	}
+
+	setStateOnRandomTile = () => {
+		// set random animation 
+		let animationArr = ["tada", "shake", "rubberBand", "jello", "wobble", "jackInTheBox"];
+		let randomNum = Math.floor(Math.random() * (6 - 1)) + 0;
+		let randomAnimation = animationArr[randomNum];
+		this.setState({ tileAnimation: randomAnimation });
+
+		// get random tile
+		let random = Math.floor(Math.random() * (25 - 1)) + 0;
+		// let randomTile = document.getElementById("tile-" + random);
+		let randomTileId = random !== 13 && this.state.tilesArr[random]._id;
+		if (randomTileId) {
+			this.setTileState(this.state.tilesArr, randomTileId, "animateIt");
+		}
+		// console.log("random: ", random);
+	}
+
 	
 	render() {
+		// console.log("this.state.tileAnimation: ", this.state.tileAnimation);
+		// console.log("Gameboard componentDidMount tilesArr: ", this.state.tilesArr);
+
 		if (this.state.loading) {
 			return (<div className="background">Loading...</div>)
 		}
