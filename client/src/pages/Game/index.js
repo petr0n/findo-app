@@ -39,13 +39,14 @@ class Game extends Component {
     history.push("/" + page);
     this.changePage(page, user);
   }
-  
 
-  changePage(page, user){
-    console.log('Index changePage this.state', this.state);
-    let currentPage = page ? page : this.state.page;
+
+  changePage(page, user) {
     let currentUser = user ? user : this.props.user;
-    console.log('Index changePage this.state', this.state);
+    let currentPage = page ? page : this.state.page;
+
+    currentPage = currentUser && (currentUser.role === "user" || currentUser.role === "admin") && currentPage === "login" ? "gameselect" : currentPage;
+    console.log("currentUser: ", currentUser);
     switch (currentPage) {
       case "gameselect":
         return (
@@ -55,7 +56,6 @@ class Game extends Component {
           user={currentUser} />
         );
       case "gameboard":
-        console.log('Index changePage this.state.gameboardId', this.state.gameboardId);
         return (
           <Gameboard 
             key={"gameboard"} 
@@ -105,26 +105,26 @@ class Game extends Component {
     }
   }
 
-render() {
-  // console.log('Index render this.props', this.props);
-  const pageActive = true;
-  return (
-    <>
-      <Wrapper>
-        <Header />
-        <CSSTransition
-          mountOnEnter
-          unmountOnExit
-          in={pageActive}
-          timeout={300}>
-          {this.changePage()}
-        </CSSTransition>
-        <Footer />
-      </Wrapper>
-      <UserBar 
-        user={this.props.user}
-        apiUrl={this.state.apiUrl} />
-    </>
+  render() {
+    // console.log('Index render this.props', this.props);
+    const pageActive = true;
+    return (
+      <>
+        <Wrapper>
+          <Header />
+          <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            in={pageActive}
+            timeout={300}>
+            {this.changePage()}
+          </CSSTransition>
+          <Footer />
+        </Wrapper>
+        <UserBar 
+          user={this.props.user}
+          apiUrl={this.state.apiUrl} />
+      </>
     );
   }
 }

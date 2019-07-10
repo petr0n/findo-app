@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import { Redirect } from "react-router-dom";
+
 import { TextArea, SubmitBtn } from "../Form";
 import tileApi from "../../utils/tileAPI";
 import "./TileAdd.css";
@@ -7,8 +7,6 @@ import "./index";
 import "../../pages/Admin/Home";
 import "../../pages/Game/SuggestTile";
 
-//add radio for isAcitve Now (status: active)
-//isRating
 
 class TileAdd extends Component {
   constructor(props) {
@@ -35,9 +33,7 @@ class TileAdd extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     let total = 80 - event.target.value.length;
-    // console.log('this.state.tileText.length', this.state.tileText.length)
-    // console.log('total', total);
-    if (total < 0 || total === 0) {
+    if (total < 0 || event.target.value.length === 0) {
       this.setState({ isSubmitDisabled: true });
     } else {
       this.setState({ isSubmitDisabled: false });
@@ -71,7 +67,6 @@ class TileAdd extends Component {
       })
     })
     .catch(err => console.log(err));
-
   };
 
 
@@ -146,28 +141,27 @@ class TileAdd extends Component {
             name="tileText"
             placeholder="Tile text"
             value={this.state.tileText}
-            onChange={this.handleInputChange}
-            />
+            onChange={this.handleInputChange} />
           <div className="w-full flex items-center justify-between mb-3">
             {this.state.characterCount}
           </div>
-            {
-              !this.state.isPublic ? 
-              <div className="flex flex-row items-center justify-between w-full mb-5">
-                <label className="text-xs flex items-center justify-start">
-                  <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
-                </label>
-                <div className="flex items-center justify-center">
-                  <div className="text-xs mr-2">Tile Rating:</div>
-                  <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
-                  <label htmlFor="isPG" className="text-xs mr-3">&nbsp;PG</label>
-                  <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
-                  <label htmlFor="isR" className="text-xs">&nbsp;R</label>
-                </div>
-              </div> :
-              ""
-            }
-           <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
+          {
+            !this.state.isPublic ? 
+            <div className="flex flex-row items-center justify-between w-full mb-5">
+              <label className="text-xs flex items-center justify-start">
+                <input type="checkbox" onChange={this.handleCheckbox} id="status" value="active" checked={isStatusChecked} />&nbsp;&nbsp;Activate immediately
+              </label>
+              <div className="flex items-center justify-center">
+                <div className="text-xs mr-2">Tile Rating:</div>
+                <input type="radio" id="isPG" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsPg} />
+                <label htmlFor="isPG" className="text-xs mr-3">&nbsp;PG</label>
+                <input type="radio" id="isR" name="gameSelect" onChange={this.handleRadioChange} checked={ratingIsR} />
+                <label htmlFor="isR" className="text-xs">&nbsp;R</label>
+              </div>
+            </div> :
+            ""
+          }
+          <SubmitBtn id="btn" isSubmitDisabled={this.state.isSubmitDisabled} />
         </form>
         }
       </div>

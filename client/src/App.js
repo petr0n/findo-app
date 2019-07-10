@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('App this.state.isAdminUser', this.state.isAdminUser);
+    // console.log('App this.state.isAdminUser', this.state.isAdminUser);
     return (
       <BrowserRouter>
         <Switch>
