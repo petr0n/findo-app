@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 //CONTENT
 //=======================================================
 const Footer = () => (
-  <div className="footer text-center text-white py-10">
+  <div className="footer text-center text-white py-10 uppercase text-xs">
     &copy; FINDO GAME - All rights reserved - <Link to="/privacy">Privacy</Link>
   </div>
 );
