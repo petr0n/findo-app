@@ -26,7 +26,7 @@ class Tile extends Component {
         onPointerLeave={this.offTouch}
         onClick={!this.props.isCenter ? () => this.handleClick(this.props.tileData) : null}
         id={"tile-" + this.props.id}>
-        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded break-words " + tileCenterClass + tileSelectedClass + (tileAnimation ? tileAnimation : "")}> 
+        <div className={"fade-in-fwd tile md_p-3 sm_p-1 flex items-center justify-center text-center rounded break-words " + tileCenterClass + tileSelectedClass + (tileAnimation ? " " + tileAnimation : "")}> 
           {
             this.props.isCenter ?
             "FREE SPACE" : 

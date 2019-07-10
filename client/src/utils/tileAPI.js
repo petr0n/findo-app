@@ -8,7 +8,7 @@ export default {
     },
     //GETS active and inactive tiles (pending is excluded)
     getTilesView: function() {
-        return axios.get("/api/tiles?status=active&status=inactive")
+        return axios.get("/api/tiles")
     },
     //GET tiles pending approval 
     getPendingTiles: function () {

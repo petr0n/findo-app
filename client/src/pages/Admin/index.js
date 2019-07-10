@@ -21,7 +21,7 @@ class Admin extends Component {
   }
   
   render() {
-    console.log("index admin user: ", this.props)
+    // console.log("index admin user: ", this.props)
     return (
       <Wrapper>
         <Header />

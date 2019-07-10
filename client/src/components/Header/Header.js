@@ -9,8 +9,15 @@ import "./Header.css";
 //=======================================================
 
 const Header = () => (
-  <div className="bounce-top flex items-center my-10">
+  <div className="bounce-top my-10">
     <img src="../../images/findo-logo.png" alt="FINDO LOGO" className="mx-auto" />
+    <div className="phosphate text-lg flex justify-between pl-5 pr-4 mt-1" style={{ color: "#F7D6C1", textShadow: "2px 2px 1px purple"}}>
+      <span>MN</span> 
+      <span>STATE</span> 
+      <span>FAIR</span>
+      <span>SCAVENGER</span> 
+      <span>BINGO</span>
+    </div>
   </div>
 );
 

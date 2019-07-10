@@ -19,11 +19,17 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  // force https
   app.use((req, res, next) => {
+    console.log("req.header: ", req.header('x-forwarded-proto'));
+    console.log("==================");
+    console.log("req.url: ", req.url);
+
     if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
+      res.redirect(`https://${req.header('host')}${req.url}`);
     else
-      next()
+      next();
   })
 }
 
