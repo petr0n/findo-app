@@ -170,7 +170,7 @@ class Gameboard extends Component {
 			.bind(this),
 			2500 );
 		if (!run) {
-			randomizer.clearInterval();
+			clearInterval(randomizer);
 		}
 	}
 
