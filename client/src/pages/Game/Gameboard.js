@@ -188,8 +188,8 @@ class Gameboard extends Component {
 		if (randomTileId) {
 			this.setTileState(this.state.tilesArr, randomTileId, "animateIt");
 		}
-		console.log("random: ", random);
-		console.log("randomTileId: ", randomTileId);
+		// console.log("random: ", random);
+		// console.log("randomTileId: ", randomTileId);
 	}
 
 	
