@@ -138,8 +138,8 @@ class TilesManage extends Component {
             defaultValue={tile.tileText}
             onChange={this.handleInputChange}
             />
-          <div>
-            <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2>
+          <div className="flex items-center justify-between">
+            {/* <h2 className="leading-loose tracking-wide text-2xl">Review tile rating</h2> */}
             <div>
               <h3>isPG</h3>
               <select name="isPG" defaultValue={tile.isPG} onChange={this.handleInputChange}>
@@ -147,7 +147,6 @@ class TilesManage extends Component {
                 <option value="false">False</option>
               </select>
             </div>
-            <br />
             <div>
               <h3>isR</h3>
               <select name="isR" defaultValue={tile.isR} onChange={this.handleInputChange}>
@@ -155,7 +154,6 @@ class TilesManage extends Component {
                 <option value="false">False</option>
               </select>
             </div>
-            <br />
             <div>
               <h3>Status</h3>
               <select name="status" defaultValue={tile.status} onChange={this.handleInputChange}>

@@ -9,7 +9,7 @@ class SuggestTile extends Component {
     return (
       <div>
         <div className="background login-box mx-auto rounded flex flex-col items-center p-8 w-full flex-none">
-          <h1 className="start-text cursor-pointer mb-4">Suggest a Tile</h1>
+          <h1 className="start-text cursor-pointer mb-4 phosphate">Suggest a Tile</h1>
           <TileAdd key={"add"} {...this.props} />
         </div>
       </div>
