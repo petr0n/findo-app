@@ -49,7 +49,7 @@ class Home extends Component {
 
   }
   handleNavClick = (pageName) => {
-    console.log("pageName", pageName)
+    // console.log("pageName", pageName)
     this.setState({
       page: this.renderPage(pageName)
     })
@@ -57,7 +57,7 @@ class Home extends Component {
 
 
   render() {
-    console.log('Admin home render user: ', this.props.user);
+    // console.log('Admin home render user: ', this.props.user);
     return (
       <div className="container mx-auto flex">
         <div className="w-11/12 mx-auto">

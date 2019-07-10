@@ -15,7 +15,7 @@ const UserBar = (props) =>{
 						} 
 					</div>
 					<div>
-						<a href="/" className="mx-3 hover:text-purple-400">Home</a>
+						<a href="/gameselect" className="mx-3 hover:text-purple-400">Home</a>
 						<a href={`${props.apiUrl}/logout`} className="mx-3 hover:text-purple-400">Logout</a>
 					</div>
 				</div>

@@ -137,14 +137,15 @@ class TilesView extends Component {
                   </div>
                   <div className="whitespace-no-wrap">
                     <button
-                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)}
-                      className={"activate-btn uppercase text-xs rounded text-white px-2 py-1 mr-2 toggle bg-brand-red hover_bg-brand-purple " + (tiles.status === "active" ? "deactivate" : "activate")}>
-                      {tiles.status === "active" ? "Deactivate" : "Activate"}
-                    </button>
-                    <button
                       onClick={() => this.getThisTile(tiles._id)}
-                      className="edit-btn uppercase text-xs bg-brand-orange text-white rounded px-2 py-1 hover_bg-brand-purple">
-                      Edit <i className="fas fa-pencil-alt" />
+                      className="edit-btn uppercase text-xs bg-brand-orange text-white font-bold text-lg px-3 py-2 mr-2 rounded hover_bg-brand-yellow">
+                      <i className="fas fa-pencil-alt" />
+                    </button>
+                    <button 
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)}
+                      className={" hover_bg-brand-purple text-white font-bold text-lg px-3 py-2 rounded " + (tiles.status === "active" ? "bg-brand-red" : "bg-green-400")}
+                      >
+                      {tiles.status === "active" ? <i className="fas fa-ban" /> : <i className="fas fa-thumbs-up"></i>}
                     </button>
                   </div>
                 </ListItem>

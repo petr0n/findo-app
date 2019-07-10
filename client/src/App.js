@@ -12,7 +12,7 @@ import './App.css';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => {
-    console.log("PrivateRoute: ", rest);
+    // console.log("PrivateRoute: ", rest);
     return (
       rest.isAdminUser === true
       ? <Admin {...rest} />

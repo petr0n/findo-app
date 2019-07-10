@@ -1,3 +1,3 @@
 //EXPORT
 //=======================================================
-export { default } from "./Tile"; 
+export { default } from "./TileAddEdit";
