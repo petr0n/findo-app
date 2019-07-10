@@ -46,7 +46,7 @@ class Game extends Component {
     let currentPage = page ? page : this.state.page;
 
     currentPage = currentUser && (currentUser.role === "user" || currentUser.role === "admin") && currentPage === "login" ? "gameselect" : currentPage;
-    console.log("currentUser: ", currentUser);
+    // console.log("currentUser: ", currentUser);
     switch (currentPage) {
       case "gameselect":
         return (

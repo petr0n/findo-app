@@ -149,10 +149,10 @@ class Gameboard extends Component {
 	updateGameTile = (id, isChecked) => {
 		gameboardAPI.updateGameTile(id, isChecked)
 		.then(res => {
-			console.log('tile updated', res);
+			// console.log('tile updated', res);
 			winnerAPI.checkForFindo(this.state.gameboardId)
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				this.setState({ gameWon: res.data.winner });
 				if (res.data.winner) {
 					this.props.handlePageChange("winner", this.state.user);
