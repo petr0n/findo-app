@@ -184,11 +184,12 @@ class Gameboard extends Component {
 		// get random tile
 		let random = Math.floor(Math.random() * (25 - 1)) + 0;
 		// let randomTile = document.getElementById("tile-" + random);
-		let randomTileId = random !== 13 && this.state.tilesArr[random]._id;
+		let randomTileId = random !== 12 ? this.state.tilesArr[random]._id : "";
 		if (randomTileId) {
 			this.setTileState(this.state.tilesArr, randomTileId, "animateIt");
 		}
-		// console.log("random: ", random);
+		console.log("random: ", random);
+		console.log("randomTileId: ", randomTileId);
 	}
 
 	
