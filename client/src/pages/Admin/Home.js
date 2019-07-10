@@ -20,17 +20,12 @@ class Home extends Component {
 
   renderPage = (pageName) => {
     switch (pageName) {
-      case "tilesmanage":
-        return (
-          <TilesManage
-            user={this.props.user}
-            key={"tilesmanage"} />
-        );
       case "tilesview":
         return (
           <TilesView
             key={"view"}
-            user={this.props.user} />
+            user={this.props.user}
+            handleNavClick={this.handleNavClick} />
         );
       case "addtile":
         return (
@@ -43,7 +38,8 @@ class Home extends Component {
         return (
           <TilesManage
             key={"suggest"}
-            user={this.props.user} />
+            user={this.props.user}
+            handleNavClick={this.handleNavClick} />
         );
     }
 

@@ -198,9 +198,13 @@ class TilesManage extends Component {
   //CONDITIONALLY RENDER THE COMPONENTS
   //====================================================
   render() {
-    // return this.state.isInEditMode ? this.renderTileEdit(this.state.tileEdit) : this.renderDefaultView(this.state.tiles);
-    return this.state.isInEditMode ? <TileAddEdit user={this.props.user} tile={this.state.tileEdit} /> : this.renderDefaultView(this.state.tiles);
-    
+    return this.state.isInEditMode ?       
+    <TileAddEdit 
+      user={this.props.user} 
+      tile={this.state.tileEdit}
+      handleNavClick={this.props.handleNavClick} /> :  
+    this.renderDefaultView(this.state.tiles);
+  
   };
 
 } // ==> end class TilesView
