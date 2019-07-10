@@ -21,9 +21,3 @@
 .deny-btn, .activate-btn.deactivate {
   background-color: rgba(255, 0, 0, .6);
 } */
-
-.edit-btn.disabled-btn {
-  color: white;
-  box-shadow: none;
-  cursor: not-allowed;
-}

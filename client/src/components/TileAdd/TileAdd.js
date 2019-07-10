@@ -35,9 +35,7 @@ class TileAdd extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     let total = 80 - event.target.value.length;
-    // console.log('this.state.tileText.length', this.state.tileText.length)
-    // console.log('total', total);
-    if (total < 0 || total === 0) {
+    if (total < 0 || event.target.value.length === 0) {
       this.setState({ isSubmitDisabled: true });
     } else {
       this.setState({ isSubmitDisabled: false });
@@ -71,7 +69,6 @@ class TileAdd extends Component {
       })
     })
     .catch(err => console.log(err));
-
   };
 
 

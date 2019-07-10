@@ -38,14 +38,15 @@ class Game extends Component {
 
     history.push("/" + page);
     this.changePage(page, user);
-    const wrapper = document.getElementById("wrapper");
-    wrapper.classList.toggle("");
   }
-  
+
 
   changePage(page, user) {
-    let currentPage = page ? page : this.state.page;
     let currentUser = user ? user : this.props.user;
+    let currentPage = page ? page : this.state.page;
+
+    currentPage = currentUser && (currentUser.role === "user" || currentUser.role === "admin") && currentPage === "login" ? "gameselect" : currentPage;
+    console.log("currentUser: ", currentUser);
     switch (currentPage) {
       case "gameselect":
         return (

@@ -4,12 +4,19 @@
     margin-bottom: 10px;
     padding: 10px;
 }
-/* 
+
+
 .edit-btn {
-    background-color: rgba(252, 207, 44, .8);
-    color: var(--brand-purple);
-  }
-  
+    color: white;
+    background-color: #e56b1f;
+}
 .edit-btn:hover {
+    background-color: #e42c6a;
+}
+.edit-btn.disabled-btn, .edit-btn.disabled-btn:hover {
+    background-color: #fcd02c;
+    color: rgba(255, 255, 255, .7);
     box-shadow: none;
-} */
+    cursor: not-allowed;
+}
+
