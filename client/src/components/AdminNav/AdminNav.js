@@ -20,10 +20,10 @@ class AdminNav extends Component {
 			<nav className="mb-8">
 				<ul className="flex">
 					<li className="flex-1 mr-2">
-						<div className={this.state.activePage === "suggest" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesmanage", "suggest")}>Suggested</div>
+						<div className={this.state.activePage === "suggest" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesmanage", "suggest")}>Pending Tiles</div>
 					</li>
 					<li className="flex-1 mr-2">
-						<div className={this.state.activePage === "view" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesview", "view")}>View All</div>
+						<div className={this.state.activePage === "view" ? activeItem : inactiveItem} onClick={() => this.handleClick("tilesview", "view")}>All Tiles</div>
 					</li>
 					<li className="text-center flex-1">
 						<div className={this.state.activePage === "add" ? activeItem : inactiveItem} onClick={() => this.handleClick("addtile", "add")}>Add Tile</div>
