@@ -165,7 +165,7 @@ class TilesView extends Component {
                       <i className="fas fa-pencil-alt" />
                     </button>
                     <button 
-                      onClick={() => this.changeTileStatus(tiles._id, tiles.status)}
+                      onClick={() => this.changeTileStatus(tiles._id, tiles.status === "inactive" || tiles.status === "pending") ? "active" : "inactive"}
                       className={" hover_bg-brand-purple text-white font-bold text-lg px-3 py-2 rounded " + (tiles.status === "active" ? "bg-brand-red" : "bg-green-400")}
                       >
                       {tiles.status === "active" ? <i className="fas fa-ban" /> : <i className="fas fa-thumbs-up"></i>}
